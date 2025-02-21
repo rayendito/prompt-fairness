@@ -97,7 +97,7 @@ class Annotator:
         
         self_object = {}
         self_object['id'] = self.annotator_number
-        self_object['profile'] = self.profile_dict
+        self_object['profile'] = nan_to_none(self.profile_dict)
         self_object['answers'] = nan_to_none(self.questions_dict)
         
         with open(f"{target_dir}/annotator{self.annotator_number}.json", "w", encoding="utf-8") as f:
