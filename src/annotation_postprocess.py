@@ -1,31 +1,9 @@
 import pandas as pd
 
-annotation_result_df = pd.read_csv("annotation_result/collected_prompts_clean.csv")
+
 EXCLUDED_QUESTIONS = [11]
-# NON_ANSWER_COLUMNS = """
-# username
-# Participant id
-# Time taken
-# Total approvals
-# Gender
-# Highest education level completed
-# Employment-sector
-# English speaking monolingual
-# Age
-# Sex
-# Ethnicity simplified
-# Country of birth
-# Country of residence
-# Nationality
-# Language
-# Student status
-# Employment status
-# """.strip().split()
-
+annotation_result_df = pd.read_csv("annotation_result/collected_prompts_clean.csv")
 NON_ANSWER_COLUMNS = ['Participant id', 'Time taken', 'Total approvals', 'Gender', 'Highest education level completed', 'Employment-sector', 'English speaking monolingual', 'Age', 'Sex', 'Ethnicity simplified', 'Country of birth', 'Country of residence', 'Nationality', 'Language', 'Student status', 'Employment status']
-
-# print(annotation_result_df.columns.tolist())
-
 
 def remove_rejected_and_clean(some_df):
     new_df = pd.DataFrame()
