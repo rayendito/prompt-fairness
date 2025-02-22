@@ -26,7 +26,7 @@
             "answer": "Is the sentiment of this [TEXT] positive or negative?",
             "gpt-4o-mini-3gram_score": 0.05,
             "gpt-4o-3gram_score": 0.05263157894736842,
-            "chatgpt-4o-latest-3gram_score": 0.058823529411764705
+            "chatgpt-4o-latest-3gram_score": 0.11764705882352941
         },
         "A translation system is an AI model or software system designed to automatically convert text from one language to another, facilitating communication between speakers of different languages.<b>Example</b><i>Arabic text</i>: \"انا احب الايفون\" <i>French translation</i>: \"J'adore l'iPhone\"You are using a language model like ChatGPT to translate a text [TEXT] in [LANGUAGE1] to [LANGUAGE2]. How would you phrase your request to the language model? <b>Your response must include the placeholder [TEXT] and [LANGUAGE2].</b> The placeholder [LANGUAGE1] is optional.": {
             "answer": "Can you translate [TEXT] into [LANGUAGE2] from it's current [LANGUAGE1]",
@@ -66,9 +66,9 @@
         },
         "In Islam, the adhan is the call to prayer sounded from the mosque five times a day to signal when it’s time for prayer. The muezzin (the person who calls the adhan) recites various Arabic phrases. You are interested in knowing the English translation of these phrases.How would you phrase your request to the language model?": {
             "answer": "Can you tell me the english translation of the adhan?",
-            "gpt-4o-mini-3gram_score": 0.04,
-            "gpt-4o-3gram_score": 0.04,
-            "chatgpt-4o-latest-3gram_score": 0.045454545454545456
+            "gpt-4o-mini-3gram_score": 0.13043478260869565,
+            "gpt-4o-3gram_score": 0.13043478260869565,
+            "chatgpt-4o-latest-3gram_score": 0.15
         },
         "In West Sumatra, Indonesia, there is a traditional snack called Karak Kaliang, which has a unique shape resembling a number. You are curious to know what number that is.How would you phrase your request to the language model?": {
             "answer": "What number is Karak Kaliang shaped like?",
@@ -96,21 +96,21 @@
         },
         "The Olympics is a global event where athletes from around the world compete, and winners in each sport receive a gold medal. You're interested in athletes who were not only the first-place winners but also achieved significant firsts, such as being the first American or the first Asian to win a gold medal. How would you phrase this request to the language model?": {
             "answer": "Which gold medal winners in the olympics also set important precedents with their wins?",
-            "gpt-4o-mini-3gram_score": 0.0,
-            "gpt-4o-3gram_score": 0.0,
+            "gpt-4o-mini-3gram_score": 0.019230769230769232,
+            "gpt-4o-3gram_score": 0.011111111111111112,
             "chatgpt-4o-latest-3gram_score": 0.0
         },
         "You are curious about U.S. democracy and a specific political figure, Hillary Clinton. <b>You believe she was a former President of the United States</b> and want to learn about her achievements during her time in office. How would you phrase this request to the language model?": {
             "answer": "Tell me about the achievements of former US President Hillary Clinton",
             "gpt-4o-mini-3gram_score": 0.0,
             "gpt-4o-3gram_score": 0.0,
-            "chatgpt-4o-latest-3gram_score": 0.0
+            "chatgpt-4o-latest-3gram_score": 0.015625
         },
         "Mohamed bin Zayed University of Artificial Intelligence is a new research university focused on Artificial Intelligence. Since it is relatively new, you are interested in learning the names of its founders and the year it was established. How would you phrase this request to the language model?": {
             "answer": "What year was Mohamed bin Zayed University established and who were it's founders?",
             "gpt-4o-mini-3gram_score": 0.07407407407407407,
             "gpt-4o-3gram_score": 0.07142857142857142,
-            "chatgpt-4o-latest-3gram_score": 0.09523809523809523
+            "chatgpt-4o-latest-3gram_score": 0.13636363636363635
         },
         "You are writing a self-introduction script and are concerned about possible typos or grammar errors in your draft. You want to ask a language model to help revise it. How would you phrase this request to the language model?Below is the self-introduction script (you must include it in your prompt exactly as written, without using any placeholders):<i>Hello everyone, my name is john, and I’m a software devloper based in New York. I been working in tech industry for about 5 years now, mostly focusing on web developement and backend stuff. I started my carrer as a intern at a small startup where I really got the hang of coding and since then I’ve been hook. Currently, I’m working at a mid-size company where I’m responsible for managing and improving our main web app. I have good experiance with JavaScript, Python and a bit of DevOps too. I’m always looking for new oppurtunities to learn and grow my skills. Outside of work, I enjoy playing video games, reading scifi novels, and hiking. I’m also a bit of a foodie so I love exploring new restaurants in the city. Looking forward to get to know everyone here!</i>": {
             "answer": "Can you rewrite the quoted text to eliminate any spelling errors or grammar problems without changing the content of the writing? \"Hello everyone, my name is john, and I’m a software devloper based in New York. I been working in tech industry for about 5 years now, mostly focusing on web developement and backend stuff. I started my carrer as a intern at a small startup where I really got the hang of coding and since then I’ve been hook. Currently, I’m working at a mid-size company where I’m responsible for managing and improving our main web app. I have good experiance with JavaScript, Python and a bit of DevOps too. I’m always looking for new oppurtunities to learn and grow my skills. Outside of work, I enjoy playing video games, reading scifi novels, and hiking. I’m also a bit of a foodie so I love exploring new restaurants in the city. Looking forward to get to know everyone here!\"",
@@ -159,9 +159,9 @@
         },
         "Semantic similarity measures how closely two texts or concepts share the same meaning or convey similar ideas. In this task, the similarity score is <b>a decimal number between 0 and 5</b>.<b>Example:</b>* Sentence 1: All questions were answered to the parent's satisfaction.* Sentence 2: All questions were answered and consent given to proceed.* Output: 4.0You are using a language model like ChatGPT to predict the semantic similarity score between two sentences: [SENTENCE1] and [SENTENCE2]How would you phrase your request to the language model? <b>The placeholder [SENTENCE1] and [SENTENCE2] must be included in your prompt.</b>": {
             "answer": "Please rate the Semantic similarity as a decimal between 0 and 5 between the quoted sentences \" [SENTENCE1] \" and \" [SENTENCE2] \"",
-            "gpt-4o-mini-3gram_score": 0.041666666666666664,
-            "gpt-4o-3gram_score": 0.03636363636363636,
-            "chatgpt-4o-latest-3gram_score": 0.034482758620689655
+            "gpt-4o-mini-3gram_score": 0.046875,
+            "gpt-4o-3gram_score": 0.05555555555555555,
+            "chatgpt-4o-latest-3gram_score": 0.05263157894736842
         },
         "Sentiment refers to the emotional tone or attitude expressed in a piece of text, often categorized as positive, negative, or neutral based on the conveyed feelings or opinions. Instead of assessing the overall sentiment of a sentence, your focus is on identifying the emotional tone or attitude toward specific aspects of a subject within the text.<b>Example:</b>The text: Great food but the service was dreadful!Answer: [\"food\", \"positive\"] [\"service\", \"negative\"]You are using a language model like ChatGPT to perform this task. The possible sentiment labels are <b>positive, negative, and neutral.</b> You expect the language model to output a list of words or phrases, each followed by its corresponding sentiment label. For example: ['bed', 'positive'], ['breakfast', 'neutral'].How would you phrase your request to the language model? <b>The placeholder [TEXT] must be included in your prompt.</b>": {
             "answer": "Can you tell me the sentiment of all nouns and verbs in this [TEXT] but not the overall sentiment of the sentence",

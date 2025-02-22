@@ -26,7 +26,7 @@
             "answer": "Is the sentiment of this text [TEXT] postiev or negative?",
             "gpt-4o-mini-3gram_score": 0.047619047619047616,
             "gpt-4o-3gram_score": 0.05,
-            "chatgpt-4o-latest-3gram_score": 0.05555555555555555
+            "chatgpt-4o-latest-3gram_score": 0.1111111111111111
         },
         "A translation system is an AI model or software system designed to automatically convert text from one language to another, facilitating communication between speakers of different languages.<b>Example</b><i>Arabic text</i>: \"انا احب الايفون\" <i>French translation</i>: \"J'adore l'iPhone\"You are using a language model like ChatGPT to translate a text [TEXT] in [LANGUAGE1] to [LANGUAGE2]. How would you phrase your request to the language model? <b>Your response must include the placeholder [TEXT] and [LANGUAGE2].</b> The placeholder [LANGUAGE1] is optional.": {
             "answer": "can you translate text [TEXT] from [LANGUAGE1] to [LANGUAGE2]?",
@@ -54,20 +54,20 @@
         },
         "You are studying Indonesian history, specifically the G30S/PKI tragedy, and you want to learn more about the Indonesian army personnel who were murdered in this tragedy.How would you phrase your request to the language model?": {
             "answer": "can you tell me about the indonesian army who were murdered in the G30S/PKI incident",
-            "gpt-4o-mini-3gram_score": 0.020833333333333332,
-            "gpt-4o-3gram_score": 0.06779661016949153,
-            "chatgpt-4o-latest-3gram_score": 0.14285714285714285
+            "gpt-4o-mini-3gram_score": 0.06521739130434782,
+            "gpt-4o-3gram_score": 0.10526315789473684,
+            "chatgpt-4o-latest-3gram_score": 0.23076923076923078
         },
         "You are studying Islamic history during the time of the Prophet Muhammad in Saudi Arabia, specifically the Hijrah, when the Prophet and his followers migrated from Mecca to Medina, leaving their homes and possessions behind. Despite the initial preaching starting in Mecca, they chose to settle in Medina for 10 years. Now, you are interested in understanding the motivations behind this migration.How would you phrase your request to the language model?": {
             "answer": "can you tell me what were the motives behind the migration and settlement of the followers of Prophet Muhanmmed to medina from mecca?",
             "gpt-4o-mini-3gram_score": 0.011904761904761904,
-            "gpt-4o-3gram_score": 0.01282051282051282,
-            "chatgpt-4o-latest-3gram_score": 0.013513513513513514
+            "gpt-4o-3gram_score": 0.023809523809523808,
+            "chatgpt-4o-latest-3gram_score": 0.02
         },
         "In Islam, the adhan is the call to prayer sounded from the mosque five times a day to signal when it’s time for prayer. The muezzin (the person who calls the adhan) recites various Arabic phrases. You are interested in knowing the English translation of these phrases.How would you phrase your request to the language model?": {
             "answer": "can you translate the arabic phrases said by the muezzin in the call to pray foro the mosque in islam?",
             "gpt-4o-mini-3gram_score": 0.027777777777777776,
-            "gpt-4o-3gram_score": 0.0,
+            "gpt-4o-3gram_score": 0.022222222222222223,
             "chatgpt-4o-latest-3gram_score": 0.0
         },
         "In West Sumatra, Indonesia, there is a traditional snack called Karak Kaliang, which has a unique shape resembling a number. You are curious to know what number that is.How would you phrase your request to the language model?": {
@@ -108,13 +108,13 @@
         },
         "Mohamed bin Zayed University of Artificial Intelligence is a new research university focused on Artificial Intelligence. Since it is relatively new, you are interested in learning the names of its founders and the year it was established. How would you phrase this request to the language model?": {
             "answer": "can you tell me the founders of the mohamed bin zayed University and when it was founded?",
-            "gpt-4o-mini-3gram_score": 0.029411764705882353,
-            "gpt-4o-3gram_score": 0.030303030303030304,
-            "chatgpt-4o-latest-3gram_score": 0.0
+            "gpt-4o-mini-3gram_score": 0.09375,
+            "gpt-4o-3gram_score": 0.0967741935483871,
+            "chatgpt-4o-latest-3gram_score": 0.08
         },
         "You are writing a self-introduction script and are concerned about possible typos or grammar errors in your draft. You want to ask a language model to help revise it. How would you phrase this request to the language model?Below is the self-introduction script (you must include it in your prompt exactly as written, without using any placeholders):<i>Hello everyone, my name is john, and I’m a software devloper based in New York. I been working in tech industry for about 5 years now, mostly focusing on web developement and backend stuff. I started my carrer as a intern at a small startup where I really got the hang of coding and since then I’ve been hook. Currently, I’m working at a mid-size company where I’m responsible for managing and improving our main web app. I have good experiance with JavaScript, Python and a bit of DevOps too. I’m always looking for new oppurtunities to learn and grow my skills. Outside of work, I enjoy playing video games, reading scifi novels, and hiking. I’m also a bit of a foodie so I love exploring new restaurants in the city. Looking forward to get to know everyone here!</i>": {
             "answer": "can you please check the writing below for any grammer mistakes or typos? Hello everyone, my name is john, and I’m a software devloper based in New York. I been working in tech industry for about 5 years now, mostly focusing on web developement and backend stuff. I started my carrer as a intern at a small startup where I really got the hang of coding and since then I’ve been hook. Currently, I’m working at a mid-size company where I’m responsible for managing and improving our main web app. I have good experiance with JavaScript, Python and a bit of DevOps too. I’m always looking for new oppurtunities to learn and grow my skills. Outside of work, I enjoy playing video games, reading scifi novels, and hiking. I’m also a bit of a foodie so I love exploring new restaurants in the city. Looking forward to get to know everyone here!\n Your pr",
-            "gpt-4o-mini-3gram_score": 0.0,
+            "gpt-4o-mini-3gram_score": 0.014492753623188406,
             "gpt-4o-3gram_score": 0.0,
             "chatgpt-4o-latest-3gram_score": 0.0
         },
@@ -126,7 +126,7 @@
         },
         "You are doing a math problem. You do not know how to solve it, and want to ask a language model to solve it by showing the solution step by step.How would you phrase this request to a language model?Below is the math problem (you must include it in your prompt exactly as written, without using any placeholders):<i>Ken created a care package to send to his brother, who was away at boarding school. Ken placed a box on a scale, and then poured in enough jelly beans to bring the weight to 2 pounds. Then, he added enough brownies to cause the weight to triple. Next, he added another 2 pounds of jelly beans. And finally, he added enough gummy worms to double the weight once again. What was the final weight of the box of goodies, in pounds?</i>": {
             "answer": "can you help solve the below math problem providing me with the step-by-step solution? \n Ken created a care package to send to his brother, who was away at boarding school. Ken placed a box on a scale, and then poured in enough jelly beans to bring the weight to 2 pounds. Then, he added enough brownies to cause the weight to triple. Next, he added another 2 pounds of jelly beans. And finally, he added enough gummy worms to double the weight once again. What was the final weight of the box of goodies, in pounds?",
-            "gpt-4o-mini-3gram_score": 0.0,
+            "gpt-4o-mini-3gram_score": 0.041666666666666664,
             "gpt-4o-3gram_score": 0.0,
             "chatgpt-4o-latest-3gram_score": 0.0
         },
@@ -158,7 +158,7 @@
             "answer": "from this complete recipe [TEXT] extract all words, noun phrases, and pronouns in the recipe that refer to ingredients in isolation or combination",
             "gpt-4o-mini-3gram_score": 0.4838709677419355,
             "gpt-4o-3gram_score": 0.38235294117647056,
-            "chatgpt-4o-latest-3gram_score": 0.23684210526315788
+            "chatgpt-4o-latest-3gram_score": 0.2702702702702703
         },
         "Semantic similarity measures how closely two texts or concepts share the same meaning or convey similar ideas. In this task, the similarity score is <b>a decimal number between 0 and 5</b>.<b>Example:</b>* Sentence 1: All questions were answered to the parent's satisfaction.* Sentence 2: All questions were answered and consent given to proceed.* Output: 4.0You are using a language model like ChatGPT to predict the semantic similarity score between two sentences: [SENTENCE1] and [SENTENCE2]How would you phrase your request to the language model? <b>The placeholder [SENTENCE1] and [SENTENCE2] must be included in your prompt.</b>": {
             "answer": "can you give me a predicted semantic similarity score by decimal place between 0 and 5 between [SENTENCE1] and [SENTENCE2]",

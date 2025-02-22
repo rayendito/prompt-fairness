@@ -33,26 +33,26 @@
         },
         "A translation system is an AI model or software system designed to automatically convert text from one language to another, facilitating communication between speakers of different languages.<b>Example</b><i>Arabic text</i>: \"انا احب الايفون\" <i>French translation</i>: \"J'adore l'iPhone\"You are using a language model like ChatGPT to translate a text [TEXT] in [LANGUAGE1] to [LANGUAGE2]. How would you phrase your request to the language model? <b>Your response must include the placeholder [TEXT] and [LANGUAGE2].</b> The placeholder [LANGUAGE1] is optional.": {
             "answer": "Hey, can you please translate the following text [TEXT] from [LANGUAGE 1] into [LANGUAGE2]?",
-            "gpt-4o-mini-3gram_score": 0.2,
-            "gpt-4o-3gram_score": 0.2,
-            "chatgpt-4o-latest-3gram_score": 0.07142857142857142
+            "gpt-4o-mini-3gram_score": 0.2857142857142857,
+            "gpt-4o-3gram_score": 0.2857142857142857,
+            "chatgpt-4o-latest-3gram_score": 0.15384615384615385
         },
         "Summarization is the process of condensing a piece of text into a shorter version while retaining its core content and main ideas. The goal is to provide a concise and clear overview of the original content.<b>Example</b><b>Article</b>: John recently moved to a new city for work. Although the transition has been challenging, he enjoys exploring new places and meeting new people. He's also adapting to his new job, where he is learning valuable skills and contributing to a growing team. Despite occasional homesickness, John feels optimistic about his future in the new city.<b>Summary</b>: John moved to a new city for work, finding the transition challenging but rewarding as he adapts to new experiences, both socially and professionally.You are using a language model like ChatGPT to summarize a text [TEXT]. How would you phrase your request to the language model? <b>Your response must include the placeholder [TEXT].</b>": {
             "answer": "Hey ChatGPT, can you please summarize the following text [TEXT] into a few short sentences?",
-            "gpt-4o-mini-3gram_score": 0.09090909090909091,
-            "gpt-4o-3gram_score": 0.07142857142857142,
-            "chatgpt-4o-latest-3gram_score": 0.10526315789473684
+            "gpt-4o-mini-3gram_score": 0.14285714285714285,
+            "gpt-4o-3gram_score": 0.15384615384615385,
+            "chatgpt-4o-latest-3gram_score": 0.14285714285714285
         },
         "Topic classification is the process of categorizing text into predefined categories or topics based on its content. This involves analyzing the text to determine its main subject or theme and assigning it to the most relevant category.You are given a text [TEXT], and want to use a language mode like ChatGPT to categorize the text into one of the following topic categories: \"World, Sports, Business, and Sci/Tech\". How would you phrase your request to the language model? <b>Example</b><b>Text</b>: Ky. Company Wins Grant to Study Peptides (AP) - A company founded by a chemistry researcher at the University of Louisville won a grant to develop a method of producing better peptides, which are short chains of amino acids, the building blocks of proteins.<b>Output</b>: Sci/Tech<b>Your response must include the placeholder [TEXT].</b> Do not forget to include the topic categories in your prompt!": {
             "answer": "Can you please categorize the following text [TEXT] into either World, Sports, Business or Sci/Tech?",
-            "gpt-4o-mini-3gram_score": 0.12,
-            "gpt-4o-3gram_score": 0.10344827586206896,
-            "chatgpt-4o-latest-3gram_score": 0.11538461538461539
+            "gpt-4o-mini-3gram_score": 0.16666666666666666,
+            "gpt-4o-3gram_score": 0.14285714285714285,
+            "chatgpt-4o-latest-3gram_score": 0.16
         },
         "There is an Indonesian children's song titled \"Balonku,\" which translates to \"My Balloon\" in English. You want to know how many balloon colors are mentioned in the song's lyrics.How would you phrase your request to the language model?": {
             "answer": "How many balloon colors are stated in the Indonesian song Balonku?",
-            "gpt-4o-mini-3gram_score": 0.12,
-            "gpt-4o-3gram_score": 0.08695652173913043,
+            "gpt-4o-mini-3gram_score": 0.16666666666666666,
+            "gpt-4o-3gram_score": 0.13636363636363635,
             "chatgpt-4o-latest-3gram_score": 0.045454545454545456
         },
         "You are studying Indonesian history, specifically the G30S/PKI tragedy, and you want to learn more about the Indonesian army personnel who were murdered in this tragedy.How would you phrase your request to the language model?": {
@@ -75,9 +75,9 @@
         },
         "Imagine you are creating a marketing brochure to promote a product (a giant drum), focusing on cost, quality, and environmental impact. You will spend your entire budget on the marketing campaign designed solely by AI, so it's crucial to craft a clear and effective request.How would you phrase this request to the language model?": {
             "answer": "Can you help me create a brochure promoting a giant drum? The focus of the brochure should be on the quality of the drum, the environmental impact and the low cost.",
-            "gpt-4o-mini-3gram_score": 0.010752688172043012,
-            "gpt-4o-3gram_score": 0.005221932114882507,
-            "chatgpt-4o-latest-3gram_score": 0.0049261083743842365
+            "gpt-4o-mini-3gram_score": 0.01079136690647482,
+            "gpt-4o-3gram_score": 0.005970149253731343,
+            "chatgpt-4o-latest-3gram_score": 0.009900990099009901
         },
         "Imagine you are writing a letter asking for help with a scientific project. You need the letter to be highly convincing, but you must submit the version written entirely by a large language model on the first attempt.How would you phrase this request to the language model?": {
             "answer": "Can you help me write a letter asking for help with a science project? The letter should be high quality and written in a very nice, polite manner.",
@@ -113,7 +113,7 @@
             "answer": "Can you help me revise the following text in the next paragraph? It should be free of typo's or any grammar errors, thanks!\n \n\n \"Hello everyone, my name is john, and I’m a software devloper based in New York. I been working in tech industry for about 5 years now, mostly focusing on web developement and backend stuff. I started my carrer as a intern at a small startup where I really got the hang of coding and since then I’ve been hook. Currently, I’m working at a mid-size company where I’m responsible for managing and improving our main web app. I have good experiance with JavaScript, Python and a bit of DevOps too. I’m always looking for new oppurtunities to learn and grow my skills. Outside of work, I enjoy playing video games, reading scifi novels, and hiking. I’m also a bit of a foodie so I love exploring new restaurants in the city. Looking forward to get to know everyone here!\"",
             "gpt-4o-mini-3gram_score": 0.039473684210526314,
             "gpt-4o-3gram_score": 0.012658227848101266,
-            "chatgpt-4o-latest-3gram_score": 0.043478260869565216
+            "chatgpt-4o-latest-3gram_score": 0.06666666666666667
         },
         "You are writing a self-introduction script and are concerned about possible typos or grammar errors in your draft. <i>You want to ask a language model to identify these errors one by one, so you can revise them yourself.</i> How would you phrase your request to language model?Below is the self-introduction script (you must include it in your prompt exactly as written, without using any placeholders):<i>Hello everyone, my name is john, and I’m a software devloper based in New York. I been working in tech industry for about 5 years now, mostly focusing on web developement and backend stuff. I started my carrer as a intern at a small startup where I really got the hang of coding and since then I’ve been hook. Currently, I’m working at a mid-size company where I’m responsible for managing and improving our main web app. I have good experiance with JavaScript, Python and a bit of DevOps too. I’m always looking for new oppurtunities to learn and grow my skills. Outside of work, I enjoy playing video games, reading scifi novels, and hiking. I’m also a bit of a foodie so I love exploring new restaurants in the city. Looking forward to get to know everyone here!</i>": {
             "answer": "Can you list out the errors in the following paragraph one at a time?\n \n\n Hello everyone, my name is john, and I’m a software devloper based in New York. I been working in tech industry for about 5 years now, mostly focusing on web developement and backend stuff. I started my carrer as a intern at a small startup where I really got the hang of coding and since then I’ve been hook. Currently, I’m working at a mid-size company where I’m responsible for managing and improving our main web app. I have good experiance with JavaScript, Python and a bit of DevOps too. I’m always looking for new oppurtunities to learn and grow my skills. Outside of work, I enjoy playing video games, reading scifi novels, and hiking. I’m also a bit of a foodie so I love exploring new restaurants in the city. Looking forward to get to know everyone here!",
@@ -169,14 +169,14 @@
         "You want to determine whether a given sentence is grammatically correct (CORRECT) or not (INCORRECT). Notably, grammaticality itself does not care about the meaningfulness of the sentence. The question is solely whether the sentence seems to violate some grammar rules of the target language or not.<b>Example:</b>The girl with many bags talk with Tim.INCORRECT (Why: since the number does not agree between the subject \"girl\" and its corresponding verb \"talk.\")You are using a language model like ChatGPT to assess the grammaticality of a given sentence [TEXT]. You expect the output to be either <b>CORRECT</b> or <b>INCORRECT</b>.How would you phrase this request to the language model? <b>The placeholder [TEXT] must be included in your prompt.</b>": {
             "answer": "Can you help me with a grammar problem? Is the following text grammatically correct or incorrect?\n \n\n [TEXT]",
             "gpt-4o-mini-3gram_score": 0.02702702702702703,
-            "gpt-4o-3gram_score": 0.023255813953488372,
+            "gpt-4o-3gram_score": 0.03571428571428571,
             "chatgpt-4o-latest-3gram_score": 0.03571428571428571
         },
         "You want to identify specific words or phrases in a sentence that directly name specific people, places, or organizations.The target categories are:<ul> <li><i>Location</i> (e.g., New York)</li> <li><i>Person</i> (e.g., John)</li> <li><i>Organization</i> (e.g., Apple)</li> <li><i>None</i> if a word does not fit into any other category</li> </ul>The language model should return a structured output as follows, where each line consists of a single word in the input text followed by its category. For example, if the input text consists of 5 words, the output might be:<ul> <li>word1 Location</li> <li>word2 Location</li> <li>word3 None</li> <li>word4 Organization</li> <li>word5 Organization</li> </ul><b>Example:</b><i>Sentence</i>: I love Google<i>Answer</i>:<ul> <li>I None</li> <li>love None</li> <li>Google Organization</li> </ul>You are using a language model like ChatGPT to perform this task over a given sentence [TEXT]. How would you phrase your request to the language model? <b>The placeholder [TEXT] must be included in your prompt.</b>": {
             "answer": "Hey, so I need to list out specific examples within the following paragraph that directly names either people, places or organizations. Every word in the paragraph should be rated. Each example should be on it's own line, followed by the category that it's in. If the word doesn't fit in a category, it should be given a category of \"None.\"\n \n\n [TEXT]",
             "gpt-4o-mini-3gram_score": 0.007936507936507936,
-            "gpt-4o-3gram_score": 0.008620689655172414,
-            "chatgpt-4o-latest-3gram_score": 0.007462686567164179
+            "gpt-4o-3gram_score": 0.017391304347826087,
+            "chatgpt-4o-latest-3gram_score": 0.015037593984962405
         },
         "You are using a language model like ChatGPT to generate a sentence that meets specific criteria. The criteria can vary, such as the topic being about a car or the sentence having at least 10 words.<b>Example</b><i>Requirement</i>: The sentence is shorter than 100 characters and includes the word \"chocolate\".<i>Output</i>: She likes eating chocolate.Suppose you have a particular requirement [REQUIREMENT]. How would you phrase your request to the language model? <b>Your response must include the placeholder [REQUIREMENT].</b>": {
             "answer": "Can you help me write a sentence that fills the following requirement [REQUIREMENT]?",

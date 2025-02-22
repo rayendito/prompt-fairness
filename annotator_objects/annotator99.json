@@ -22,7 +22,7 @@
         "Sentiment refers to the emotional tone or attitude expressed in a piece of text, typically categorized as positive, negative,or neutral based on the conveyed feelings or opinions.<b>Example</b>\"The address has been updated\" has neutral sentiment.You are using a language model like ChatGPT to determine the sentiment of a text [TEXT] into one of possible <b>three sentiment labels: positive, negative, and neutral</b>. How would you phrase your request to the language model? <b>Your response must include the placeholder [TEXT].</b>": {
             "answer": "Based on the emotional tone or attitude conveyed, classify the following text as having a positive, negative, or neutral sentiment. Here is the text: [TEXT]",
             "gpt-4o-mini-3gram_score": 0.10810810810810811,
-            "gpt-4o-3gram_score": 0.1891891891891892,
+            "gpt-4o-3gram_score": 0.2222222222222222,
             "chatgpt-4o-latest-3gram_score": 0.05714285714285714
         },
         "Sentiment refers to the emotional tone or attitude expressed in a piece of text. In this task, the goal is to classify a text into <b>one of two sentiment classes: positive or negative</b>.<b>Example</b>\"I love the iPhone\" has positive sentiment.You are using a language model like ChatGPT to determine the sentiment of a text [TEXT] into one of possible <b>two sentiment labels: positive and negative</b>. How would you phrase your request to the language model? <b>Your response must include the placeholder [TEXT].</b>": {
@@ -39,15 +39,15 @@
         },
         "Summarization is the process of condensing a piece of text into a shorter version while retaining its core content and main ideas. The goal is to provide a concise and clear overview of the original content.<b>Example</b><b>Article</b>: John recently moved to a new city for work. Although the transition has been challenging, he enjoys exploring new places and meeting new people. He's also adapting to his new job, where he is learning valuable skills and contributing to a growing team. Despite occasional homesickness, John feels optimistic about his future in the new city.<b>Summary</b>: John moved to a new city for work, finding the transition challenging but rewarding as he adapts to new experiences, both socially and professionally.You are using a language model like ChatGPT to summarize a text [TEXT]. How would you phrase your request to the language model? <b>Your response must include the placeholder [TEXT].</b>": {
             "answer": "Summarize the following text, retaining its core content and main ideas: [TEXT]",
-            "gpt-4o-mini-3gram_score": 0.3125,
-            "gpt-4o-3gram_score": 0.0,
-            "chatgpt-4o-latest-3gram_score": 0.0
+            "gpt-4o-mini-3gram_score": 0.4,
+            "gpt-4o-3gram_score": 0.09090909090909091,
+            "chatgpt-4o-latest-3gram_score": 0.058823529411764705
         },
         "Topic classification is the process of categorizing text into predefined categories or topics based on its content. This involves analyzing the text to determine its main subject or theme and assigning it to the most relevant category.You are given a text [TEXT], and want to use a language mode like ChatGPT to categorize the text into one of the following topic categories: \"World, Sports, Business, and Sci/Tech\". How would you phrase your request to the language model? <b>Example</b><b>Text</b>: Ky. Company Wins Grant to Study Peptides (AP) - A company founded by a chemistry researcher at the University of Louisville won a grant to develop a method of producing better peptides, which are short chains of amino acids, the building blocks of proteins.<b>Output</b>: Sci/Tech<b>Your response must include the placeholder [TEXT].</b> Do not forget to include the topic categories in your prompt!": {
             "answer": "Determine the most appropriate topic category for the following text. Choose from: World, Sports, Business, or Sci/Tech. The text is: [TEXT]",
             "gpt-4o-mini-3gram_score": 0.0,
             "gpt-4o-3gram_score": 0.0,
-            "chatgpt-4o-latest-3gram_score": 0.0
+            "chatgpt-4o-latest-3gram_score": 0.023809523809523808
         },
         "There is an Indonesian children's song titled \"Balonku,\" which translates to \"My Balloon\" in English. You want to know how many balloon colors are mentioned in the song's lyrics.How would you phrase your request to the language model?": {
             "answer": "Please analyze the lyrics of the Indonesian children's song 'Balonku' and count the number of distinct colors of balloons that are mentioned",
@@ -57,7 +57,7 @@
         },
         "You are studying Indonesian history, specifically the G30S/PKI tragedy, and you want to learn more about the Indonesian army personnel who were murdered in this tragedy.How would you phrase your request to the language model?": {
             "answer": "What was the impact of the murders of Indonesian army personnel during the G30S/PKI tragedy? How did this affect Indonesian politics and society?",
-            "gpt-4o-mini-3gram_score": 0.046153846153846156,
+            "gpt-4o-mini-3gram_score": 0.05,
             "gpt-4o-3gram_score": 0.05084745762711865,
             "chatgpt-4o-latest-3gram_score": 0.05263157894736842
         },
@@ -72,8 +72,8 @@
         },
         "In West Sumatra, Indonesia, there is a traditional snack called Karak Kaliang, which has a unique shape resembling a number. You are curious to know what number that is.How would you phrase your request to the language model?": {
             "answer": "The traditional snack 'Karak Kaliang' from West Sumatra, Indonesia, is known for its unique shape. What number does this snack typically look like?",
-            "gpt-4o-mini-3gram_score": 0.06521739130434782,
-            "gpt-4o-3gram_score": 0.05555555555555555,
+            "gpt-4o-mini-3gram_score": 0.08888888888888889,
+            "gpt-4o-3gram_score": 0.08571428571428572,
             "chatgpt-4o-latest-3gram_score": 0.0
         },
         "Imagine you are creating a marketing brochure to promote a product (a giant drum), focusing on cost, quality, and environmental impact. You will spend your entire budget on the marketing campaign designed solely by AI, so it's crucial to craft a clear and effective request.How would you phrase this request to the language model?": {
@@ -148,18 +148,18 @@
         "<b>Imagine</b> you are given a passage and a question. To answer the question, you must carefully read the passage. The answer may consist of <b>multiple disconnected sequences of words</b> extracted from the passage. If no suitable answer is found in the passage, the answer should be \"NA.\"<b>Example</b><i>Passage</i>:The library offers a wide range of books, including rare historical texts. Students often praise its quiet study areas, while some complain about the outdated computer systems. Recently, the library introduced a digital catalog to improve accessibility.<i>Question</i>: What are the features of the library mentioned in the passage?<i>Answer</i>: \"wide range of books,\" \"rare historical texts,\" \"quiet study areas,\" \"digital catalog\"You are using a language model like ChatGPT to perform this task. You are provided with a passage [PASSAGE] and a question [QUESTION].How would you phrase your request to the language model? <b>The placeholder [PASSAGE] and [QUESTION] must be part of your prompt.</b>": {
             "answer": "From the passage below, extract all phrases that describe the features or attributes relevant to answering the question. Your answer may include multiple disconnected sequences of words. If the passage does not contain the answer, respond with 'NA'. Passage: [PASSAGE] Question: [QUESTION]",
             "gpt-4o-mini-3gram_score": 0.033707865168539325,
-            "gpt-4o-3gram_score": 0.012658227848101266,
+            "gpt-4o-3gram_score": 0.013157894736842105,
             "chatgpt-4o-latest-3gram_score": 0.0379746835443038
         },
         "In recipes, ingredients can change form or be combined with other ingredients to form new substances, and as such are often referred to by different terms in the same recipe (including pronouns), such as \"flour\", \"dough\", \"cake\", and \"it\". In this task, you will be given a complete recipe [TEXT]. You want to ask a language model like ChatGPT to extract all words, noun phrases, and pronouns in the recipe that refer to ingredients in isolation or combination.The output should list each extracted item on a new line.<b>Example</b><i>Recipe</i>: Wash and peel the potatoes, then cut them into thin slices or wedges. Heat olive oil in a pan over medium heat and add the potato slices, cooking for 5-7 minutes while stirring occasionally. Season with salt, pepper, and any optional spices, and continue frying until the potatoes are golden and crispy, about 10-15 minutes. Remove from heat and serve hot.<i>Output</i>:<ul> <li>the potatoes</li> <li>them</li> <li>thin slices</li> <li>wedges</li> <li>olive oil</li> <li>the potato slices</li> <li>salt</li> <li>pepper</li> <li>any optional spices</li> <li>the potatoes</li> </ul>How would you phrase your request to the language model? <b>The placeholder [TEXT] must be part of your prompt.</b>": {
             "answer": "Extract all words, noun phrases, and pronouns from the following recipe that refer to ingredients (e.g., 'flour', 'dough', 'cake', 'it'). List each item on a new line. Recipe: [TEXT]",
-            "gpt-4o-mini-3gram_score": 0.5,
-            "gpt-4o-3gram_score": 0.38461538461538464,
+            "gpt-4o-mini-3gram_score": 0.5454545454545454,
+            "gpt-4o-3gram_score": 0.42105263157894735,
             "chatgpt-4o-latest-3gram_score": 0.4594594594594595
         },
         "Semantic similarity measures how closely two texts or concepts share the same meaning or convey similar ideas. In this task, the similarity score is <b>a decimal number between 0 and 5</b>.<b>Example:</b>* Sentence 1: All questions were answered to the parent's satisfaction.* Sentence 2: All questions were answered and consent given to proceed.* Output: 4.0You are using a language model like ChatGPT to predict the semantic similarity score between two sentences: [SENTENCE1] and [SENTENCE2]How would you phrase your request to the language model? <b>The placeholder [SENTENCE1] and [SENTENCE2] must be included in your prompt.</b>": {
             "answer": "Determine the semantic similarity between the following two sentences. Provide a score between 0 and 5, where 0 means the sentences are completely unrelated, and 5 means they have identical meaning.\n  Sentence 1: [SENTENCE1]\n  Sentence 2: [SENTENCE2]",
-            "gpt-4o-mini-3gram_score": 0.3090909090909091,
+            "gpt-4o-mini-3gram_score": 0.3333333333333333,
             "gpt-4o-3gram_score": 0.1935483870967742,
             "chatgpt-4o-latest-3gram_score": 0.23333333333333334
         },

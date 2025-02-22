@@ -35,7 +35,7 @@
             "answer": "Please translate the following paragraph in [LANGUAGE1] to [LANGUAGE2].\n [TEXT]",
             "gpt-4o-mini-3gram_score": 0.2727272727272727,
             "gpt-4o-3gram_score": 0.2727272727272727,
-            "chatgpt-4o-latest-3gram_score": 0.0
+            "chatgpt-4o-latest-3gram_score": 0.1
         },
         "Summarization is the process of condensing a piece of text into a shorter version while retaining its core content and main ideas. The goal is to provide a concise and clear overview of the original content.<b>Example</b><b>Article</b>: John recently moved to a new city for work. Although the transition has been challenging, he enjoys exploring new places and meeting new people. He's also adapting to his new job, where he is learning valuable skills and contributing to a growing team. Despite occasional homesickness, John feels optimistic about his future in the new city.<b>Summary</b>: John moved to a new city for work, finding the transition challenging but rewarding as he adapts to new experiences, both socially and professionally.You are using a language model like ChatGPT to summarize a text [TEXT]. How would you phrase your request to the language model? <b>Your response must include the placeholder [TEXT].</b>": {
             "answer": "Please could you summarise the following paragraph into no more than three sentences: [TEXT]",
@@ -52,7 +52,7 @@
         "There is an Indonesian children's song titled \"Balonku,\" which translates to \"My Balloon\" in English. You want to know how many balloon colors are mentioned in the song's lyrics.How would you phrase your request to the language model?": {
             "answer": "How many balloon colours are mentioned in the lyrics of the Indonesian song 'Balonku'?",
             "gpt-4o-mini-3gram_score": 0.24,
-            "gpt-4o-3gram_score": 0.2727272727272727,
+            "gpt-4o-3gram_score": 0.3333333333333333,
             "chatgpt-4o-latest-3gram_score": 0.08333333333333333
         },
         "You are studying Indonesian history, specifically the G30S/PKI tragedy, and you want to learn more about the Indonesian army personnel who were murdered in this tragedy.How would you phrase your request to the language model?": {
@@ -81,7 +81,7 @@
         },
         "Imagine you are creating a marketing brochure to promote a product (a giant drum), focusing on cost, quality, and environmental impact. You will spend your entire budget on the marketing campaign designed solely by AI, so it's crucial to craft a clear and effective request.How would you phrase this request to the language model?": {
             "answer": "create a marketing brochure to promote a giant drum, focusing on cost, quality, and environmental impact.",
-            "gpt-4o-mini-3gram_score": 0.0176678445229682,
+            "gpt-4o-mini-3gram_score": 0.01773049645390071,
             "gpt-4o-3gram_score": 0.02356902356902357,
             "chatgpt-4o-latest-3gram_score": 0.04201680672268908
         },
@@ -90,8 +90,8 @@
         },
         "You want to use a language model like ChatGPT to write a story with these characters: two dogs, one cat, five mice, two adults named Thomas and Haroon, and a child named Aeni. The story should be about Aeni's school life.How would you phrase the request to a language model?": {
             "answer": "Write a story suitable for children aged 5-10 with these characters: two dogs, one cat, five mice, two adults named Thomas and Haroon, and a child named Aeni. The story should be about Aeni's school life and be fun to read.",
-            "gpt-4o-mini-3gram_score": 0.11956521739130435,
-            "gpt-4o-3gram_score": 0.2222222222222222,
+            "gpt-4o-mini-3gram_score": 0.13186813186813187,
+            "gpt-4o-3gram_score": 0.2375,
             "chatgpt-4o-latest-3gram_score": 0.3333333333333333
         },
         "The Olympics is a global event where athletes from around the world compete, and winners in each sport receive a gold medal. You're interested in athletes who were not only the first-place winners but also achieved significant firsts, such as being the first American or the first Asian to win a gold medal. How would you phrase this request to the language model?": {
@@ -144,20 +144,20 @@
         },
         "<b>Imagine</b> you are given a passage and a question. To answer the question, you must carefully read the passage and directly extract the answer as a sequence of words. If no suitable answer is found in the passage, the answer should be \"NA.\"<b>Example</b><i>Passage</i>: Beyoncé announced a hiatus from her music career in January 2010, heeding her mother's advice, \"to live life, to be inspired by things again\". During the break she and her father parted ways as business partners. Beyoncé's musical break lasted nine months and saw her visit multiple European cities, the Great Wall of China, the Egyptian pyramids, Australia, English music festivals, and various museums and ballet performances.<i>Question</i>: Who inspired this hiatus?<i>Answer</i>: her motherYou are using a language model, such as ChatGPT, to perform this task. You are provided with a passage [PASSAGE] and a question [QUESTION].How would you phrase your request to the language model? <b>The placeholder [PASSAGE] and [QUESTION] must be part of your prompt.</b>": {
             "answer": "Read the following text: [PASSAGE]\n [QUESTION]",
-            "gpt-4o-mini-3gram_score": 0.0,
-            "gpt-4o-3gram_score": 0.0,
+            "gpt-4o-mini-3gram_score": 0.03225806451612903,
+            "gpt-4o-3gram_score": 0.03225806451612903,
             "chatgpt-4o-latest-3gram_score": 0.030303030303030304
         },
         "<b>Imagine</b> you are given a passage and a question. To answer the question, you must carefully read the passage. The answer may consist of <b>multiple disconnected sequences of words</b> extracted from the passage. If no suitable answer is found in the passage, the answer should be \"NA.\"<b>Example</b><i>Passage</i>:The library offers a wide range of books, including rare historical texts. Students often praise its quiet study areas, while some complain about the outdated computer systems. Recently, the library introduced a digital catalog to improve accessibility.<i>Question</i>: What are the features of the library mentioned in the passage?<i>Answer</i>: \"wide range of books,\" \"rare historical texts,\" \"quiet study areas,\" \"digital catalog\"You are using a language model like ChatGPT to perform this task. You are provided with a passage [PASSAGE] and a question [QUESTION].How would you phrase your request to the language model? <b>The placeholder [PASSAGE] and [QUESTION] must be part of your prompt.</b>": {
             "answer": "Read the following text: [PASSAGE]\n [QUESTION] There may be more than one answer",
-            "gpt-4o-mini-3gram_score": 0.0,
-            "gpt-4o-3gram_score": 0.0,
-            "chatgpt-4o-latest-3gram_score": 0.0
+            "gpt-4o-mini-3gram_score": 0.029411764705882353,
+            "gpt-4o-3gram_score": 0.02702702702702703,
+            "chatgpt-4o-latest-3gram_score": 0.022727272727272728
         },
         "In recipes, ingredients can change form or be combined with other ingredients to form new substances, and as such are often referred to by different terms in the same recipe (including pronouns), such as \"flour\", \"dough\", \"cake\", and \"it\". In this task, you will be given a complete recipe [TEXT]. You want to ask a language model like ChatGPT to extract all words, noun phrases, and pronouns in the recipe that refer to ingredients in isolation or combination.The output should list each extracted item on a new line.<b>Example</b><i>Recipe</i>: Wash and peel the potatoes, then cut them into thin slices or wedges. Heat olive oil in a pan over medium heat and add the potato slices, cooking for 5-7 minutes while stirring occasionally. Season with salt, pepper, and any optional spices, and continue frying until the potatoes are golden and crispy, about 10-15 minutes. Remove from heat and serve hot.<i>Output</i>:<ul> <li>the potatoes</li> <li>them</li> <li>thin slices</li> <li>wedges</li> <li>olive oil</li> <li>the potato slices</li> <li>salt</li> <li>pepper</li> <li>any optional spices</li> <li>the potatoes</li> </ul>How would you phrase your request to the language model? <b>The placeholder [TEXT] must be part of your prompt.</b>": {
             "answer": "Read the following recipe: [TEXT]\n provide a list of words, noun phrases and pronouns that refer to ingredients, as a bullet point list",
             "gpt-4o-mini-3gram_score": 0.027777777777777776,
-            "gpt-4o-3gram_score": 0.04411764705882353,
+            "gpt-4o-3gram_score": 0.058823529411764705,
             "chatgpt-4o-latest-3gram_score": 0.044444444444444446
         },
         "Semantic similarity measures how closely two texts or concepts share the same meaning or convey similar ideas. In this task, the similarity score is <b>a decimal number between 0 and 5</b>.<b>Example:</b>* Sentence 1: All questions were answered to the parent's satisfaction.* Sentence 2: All questions were answered and consent given to proceed.* Output: 4.0You are using a language model like ChatGPT to predict the semantic similarity score between two sentences: [SENTENCE1] and [SENTENCE2]How would you phrase your request to the language model? <b>The placeholder [SENTENCE1] and [SENTENCE2] must be included in your prompt.</b>": {

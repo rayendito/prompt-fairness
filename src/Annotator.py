@@ -3,6 +3,7 @@ import pandas as pd
 from .Questions import Questions
 
 class Annotator:
+    N_GRAM = 3
     N_QS = 29
     PROFILE_COLUMNS = ['Participant id', 'Time taken', 'Total approvals', 'Gender', 'Highest education level completed', 'Employment-sector', 'English speaking monolingual', 'Age', 'Sex', 'Ethnicity simplified', 'Country of birth', 'Country of residence', 'Nationality', 'Language', 'Student status', 'Employment status']
 
@@ -23,7 +24,6 @@ class Annotator:
         if not(self.__is_profile_valid(self.profile_dict)):
             raise ValueError("Invalid profile keys!")
 
-        N_GRAM = 3
         for k, v in self.answers.items():
             if not pd.isna(v['answer']):
                 # for model_name, model_answers in LLM_ANSWERS[QUESTION_CLEANER[k]['clean']].items():
@@ -32,8 +32,12 @@ class Annotator:
                     for llma in model_answers:
                         annoans_stripped = self.__remove_placeholders(v['answer'], self.questions[k]['placeholders'])
                         llmans_stripped = self.__remove_placeholders(llma, self.questions[k]['placeholders'])
-                        ngram_scores.append(self.__get_jaccard_ngram_score(llmans_stripped, annoans_stripped, N_GRAM))
-                    self.answers[k][f"{model_name}-{N_GRAM}gram_score"] = max(ngram_scores)
+                        ngram_scores.append(self.__get_jaccard_ngram_score(
+                            llmans_stripped.lower(),
+                            annoans_stripped.lower(),
+                            Annotator.N_GRAM)
+                        )
+                    self.answers[k][f"{model_name}-{Annotator.N_GRAM}gram_score"] = max(ngram_scores)
 
     def __get_jaccard_ngram_score(self, text1, text2, n):
         def get_word_ngrams(text, n):

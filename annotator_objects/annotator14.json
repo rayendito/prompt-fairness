@@ -27,7 +27,7 @@
         },
         "Sentiment refers to the emotional tone or attitude expressed in a piece of text. In this task, the goal is to classify a text into <b>one of two sentiment classes: positive or negative</b>.<b>Example</b>\"I love the iPhone\" has positive sentiment.You are using a language model like ChatGPT to determine the sentiment of a text [TEXT] into one of possible <b>two sentiment labels: positive and negative</b>. How would you phrase your request to the language model? <b>Your response must include the placeholder [TEXT].</b>": {
             "answer": "Classify the sentiment of the following text [TEXT] as either positive or negative.",
-            "gpt-4o-mini-3gram_score": 0.21739130434782608,
+            "gpt-4o-mini-3gram_score": 0.2727272727272727,
             "gpt-4o-3gram_score": 0.3157894736842105,
             "chatgpt-4o-latest-3gram_score": 0.375
         },
@@ -58,8 +58,8 @@
         "You are studying Indonesian history, specifically the G30S/PKI tragedy, and you want to learn more about the Indonesian army personnel who were murdered in this tragedy.How would you phrase your request to the language model?": {
             "answer": "Can you please let me know which members of the Indonesian army were murdered in the G30s/PKI tragedy of Indonesian history?",
             "gpt-4o-mini-3gram_score": 0.018518518518518517,
-            "gpt-4o-3gram_score": 0.045454545454545456,
-            "chatgpt-4o-latest-3gram_score": 0.08571428571428572
+            "gpt-4o-3gram_score": 0.06153846153846154,
+            "chatgpt-4o-latest-3gram_score": 0.11764705882352941
         },
         "You are studying Islamic history during the time of the Prophet Muhammad in Saudi Arabia, specifically the Hijrah, when the Prophet and his followers migrated from Mecca to Medina, leaving their homes and possessions behind. Despite the initial preaching starting in Mecca, they chose to settle in Medina for 10 years. Now, you are interested in understanding the motivations behind this migration.How would you phrase your request to the language model?": {
             "answer": "Can you please explain the main motivation behind Prophet Muhammad's migration from Mecca to Medina during the early period of Islamic history?",
@@ -81,20 +81,20 @@
         },
         "Imagine you are creating a marketing brochure to promote a product (a giant drum), focusing on cost, quality, and environmental impact. You will spend your entire budget on the marketing campaign designed solely by AI, so it's crucial to craft a clear and effective request.How would you phrase this request to the language model?": {
             "answer": "Create a marketing brochure to promote a giant drum, emphasising its cost-effectiveness, high quality, and positive environmental impact. The brochure should be persuasive, visually appealing, and tailored to attract potential buyers. Focus on clear, engaging language that highlights the drum's unique selling points and competitive advantages.",
-            "gpt-4o-mini-3gram_score": 0.006779661016949152,
-            "gpt-4o-3gram_score": 0.020289855072463767,
+            "gpt-4o-mini-3gram_score": 0.006802721088435374,
+            "gpt-4o-3gram_score": 0.023255813953488372,
             "chatgpt-4o-latest-3gram_score": 0.09219858156028368
         },
         "Imagine you are writing a letter asking for help with a scientific project. You need the letter to be highly convincing, but you must submit the version written entirely by a large language model on the first attempt.How would you phrase this request to the language model?": {
             "answer": "Write a persuasive letter requesting assistance with a scientific project. The letter should be clear, professional, and compelling, effectively communicating the project's importance, objectives, and potential impact. Emphasise the specific type of help needed and explain how the recipient's support will contribute to the project's success. The tone should be respectful and inspiring, encouraging a positive response.",
-            "gpt-4o-mini-3gram_score": 0.0078125,
+            "gpt-4o-mini-3gram_score": 0.00784313725490196,
             "gpt-4o-3gram_score": 0.05660377358490566,
             "chatgpt-4o-latest-3gram_score": 0.09734513274336283
         },
         "You want to use a language model like ChatGPT to write a story with these characters: two dogs, one cat, five mice, two adults named Thomas and Haroon, and a child named Aeni. The story should be about Aeni's school life.How would you phrase the request to a language model?": {
             "answer": "Write a story about Aeni's school life, featuring two dogs, one cat, five mice, and two adults named Thomas and Haroon. The story should highlight Aeni's experiences at school, incorporating the characters in a fun and engaging way. Focus on their interactions and how they support or influence Aeni's daily school life.",
-            "gpt-4o-mini-3gram_score": 0.15178571428571427,
-            "gpt-4o-3gram_score": 0.1485148514851485,
+            "gpt-4o-mini-3gram_score": 0.16216216216216217,
+            "gpt-4o-3gram_score": 0.16,
             "chatgpt-4o-latest-3gram_score": 0.15
         },
         "The Olympics is a global event where athletes from around the world compete, and winners in each sport receive a gold medal. You're interested in athletes who were not only the first-place winners but also achieved significant firsts, such as being the first American or the first Asian to win a gold medal. How would you phrase this request to the language model?": {
@@ -107,17 +107,17 @@
             "answer": "Tell me about the achievements of Hillary Clinton during her time as President of the United States.",
             "gpt-4o-mini-3gram_score": 0.11666666666666667,
             "gpt-4o-3gram_score": 0.20689655172413793,
-            "chatgpt-4o-latest-3gram_score": 0.07462686567164178
+            "chatgpt-4o-latest-3gram_score": 0.08450704225352113
         },
         "Mohamed bin Zayed University of Artificial Intelligence is a new research university focused on Artificial Intelligence. Since it is relatively new, you are interested in learning the names of its founders and the year it was established. How would you phrase this request to the language model?": {
             "answer": "Provide the names of the founders of Mohamed bin Zayed University of Artificial Intelligence and the year it was established",
-            "gpt-4o-mini-3gram_score": 0.7272727272727273,
+            "gpt-4o-mini-3gram_score": 0.8095238095238095,
             "gpt-4o-3gram_score": 0.6666666666666666,
             "chatgpt-4o-latest-3gram_score": 0.15384615384615385
         },
         "You are writing a self-introduction script and are concerned about possible typos or grammar errors in your draft. You want to ask a language model to help revise it. How would you phrase this request to the language model?Below is the self-introduction script (you must include it in your prompt exactly as written, without using any placeholders):<i>Hello everyone, my name is john, and I’m a software devloper based in New York. I been working in tech industry for about 5 years now, mostly focusing on web developement and backend stuff. I started my carrer as a intern at a small startup where I really got the hang of coding and since then I’ve been hook. Currently, I’m working at a mid-size company where I’m responsible for managing and improving our main web app. I have good experiance with JavaScript, Python and a bit of DevOps too. I’m always looking for new oppurtunities to learn and grow my skills. Outside of work, I enjoy playing video games, reading scifi novels, and hiking. I’m also a bit of a foodie so I love exploring new restaurants in the city. Looking forward to get to know everyone here!</i>": {
             "answer": "Please help me revise the following self-introduction script for any typos or grammar errors\n \n\n Hello everyone, my name is john, and I’m a software devloper based in New York. I been working in tech industry for about 5 years now, mostly focusing on web developement and backend stuff. I started my carrer as a intern at a small startup where I really got the hang of coding and since then I’ve been hook. Currently, I’m working at a mid-size company where I’m responsible for managing and improving our main web app. I have good experiance with JavaScript, Python and a bit of DevOps too. I’m always looking for new oppurtunities to learn and grow my skills. Outside of work, I enjoy playing video games, reading scifi novels, and hiking. I’m also a bit of a foodie so I love exploring new restaurants in the city. Looking forward to get to know everyone here!\n \n\n Thank you!\"",
-            "gpt-4o-mini-3gram_score": 0.24,
+            "gpt-4o-mini-3gram_score": 0.2916666666666667,
             "gpt-4o-3gram_score": 0.09090909090909091,
             "chatgpt-4o-latest-3gram_score": 0.08108108108108109
         },
@@ -160,8 +160,8 @@
         "In recipes, ingredients can change form or be combined with other ingredients to form new substances, and as such are often referred to by different terms in the same recipe (including pronouns), such as \"flour\", \"dough\", \"cake\", and \"it\". In this task, you will be given a complete recipe [TEXT]. You want to ask a language model like ChatGPT to extract all words, noun phrases, and pronouns in the recipe that refer to ingredients in isolation or combination.The output should list each extracted item on a new line.<b>Example</b><i>Recipe</i>: Wash and peel the potatoes, then cut them into thin slices or wedges. Heat olive oil in a pan over medium heat and add the potato slices, cooking for 5-7 minutes while stirring occasionally. Season with salt, pepper, and any optional spices, and continue frying until the potatoes are golden and crispy, about 10-15 minutes. Remove from heat and serve hot.<i>Output</i>:<ul> <li>the potatoes</li> <li>them</li> <li>thin slices</li> <li>wedges</li> <li>olive oil</li> <li>the potato slices</li> <li>salt</li> <li>pepper</li> <li>any optional spices</li> <li>the potatoes</li> </ul>How would you phrase your request to the language model? <b>The placeholder [TEXT] must be part of your prompt.</b>": {
             "answer": "Please extract all words, noun phrases, and pronouns in the following recipe that refer to ingredients in isolation or combination. List each extracted item on a new line.\n \n\n [TEXT]",
             "gpt-4o-mini-3gram_score": 0.6451612903225806,
-            "gpt-4o-3gram_score": 0.7096774193548387,
-            "chatgpt-4o-latest-3gram_score": 0.5588235294117647
+            "gpt-4o-3gram_score": 0.7666666666666667,
+            "chatgpt-4o-latest-3gram_score": 0.6060606060606061
         },
         "Semantic similarity measures how closely two texts or concepts share the same meaning or convey similar ideas. In this task, the similarity score is <b>a decimal number between 0 and 5</b>.<b>Example:</b>* Sentence 1: All questions were answered to the parent's satisfaction.* Sentence 2: All questions were answered and consent given to proceed.* Output: 4.0You are using a language model like ChatGPT to predict the semantic similarity score between two sentences: [SENTENCE1] and [SENTENCE2]How would you phrase your request to the language model? <b>The placeholder [SENTENCE1] and [SENTENCE2] must be included in your prompt.</b>": {
             "answer": "Please predict the semantic similarity score between the following two sentences, with a score between 0 and 5:\n \n\n [SENTENCE1]\n [SENTENCE2]",
@@ -171,13 +171,13 @@
         },
         "Sentiment refers to the emotional tone or attitude expressed in a piece of text, often categorized as positive, negative, or neutral based on the conveyed feelings or opinions. Instead of assessing the overall sentiment of a sentence, your focus is on identifying the emotional tone or attitude toward specific aspects of a subject within the text.<b>Example:</b>The text: Great food but the service was dreadful!Answer: [\"food\", \"positive\"] [\"service\", \"negative\"]You are using a language model like ChatGPT to perform this task. The possible sentiment labels are <b>positive, negative, and neutral.</b> You expect the language model to output a list of words or phrases, each followed by its corresponding sentiment label. For example: ['bed', 'positive'], ['breakfast', 'neutral'].How would you phrase your request to the language model? <b>The placeholder [TEXT] must be included in your prompt.</b>": {
             "answer": "\"Please identify the emotional tone or attitude toward specific aspects of the subject within the following text. For each aspect mentioned, output a list with the word or phrase followed by its corresponding sentiment label (positive, negative, or neutral).\n \n\n [TEXT]",
-            "gpt-4o-mini-3gram_score": 0.2682926829268293,
+            "gpt-4o-mini-3gram_score": 0.2839506172839506,
             "gpt-4o-3gram_score": 0.11842105263157894,
             "chatgpt-4o-latest-3gram_score": 0.029850746268656716
         },
         "You want to determine whether a given sentence is grammatically correct (CORRECT) or not (INCORRECT). Notably, grammaticality itself does not care about the meaningfulness of the sentence. The question is solely whether the sentence seems to violate some grammar rules of the target language or not.<b>Example:</b>The girl with many bags talk with Tim.INCORRECT (Why: since the number does not agree between the subject \"girl\" and its corresponding verb \"talk.\")You are using a language model like ChatGPT to assess the grammaticality of a given sentence [TEXT]. You expect the output to be either <b>CORRECT</b> or <b>INCORRECT</b>.How would you phrase this request to the language model? <b>The placeholder [TEXT] must be included in your prompt.</b>": {
             "answer": "Please assess the grammaticality of the following sentence and determine if it is CORRECT or INCORRECT based on grammar rules, without considering the sentence's meaning.\n \n\n [TEXT]",
-            "gpt-4o-mini-3gram_score": 0.043478260869565216,
+            "gpt-4o-mini-3gram_score": 0.06666666666666667,
             "gpt-4o-3gram_score": 0.08163265306122448,
             "chatgpt-4o-latest-3gram_score": 0.11904761904761904
         },

@@ -87,8 +87,8 @@
         },
         "You want to use a language model like ChatGPT to write a story with these characters: two dogs, one cat, five mice, two adults named Thomas and Haroon, and a child named Aeni. The story should be about Aeni's school life.How would you phrase the request to a language model?": {
             "answer": "Write a story about a child named Aeni who lives with his two dads Thomas and Haroon. They own two dogs and a cat and five mice as pets.",
-            "gpt-4o-mini-3gram_score": 0.02912621359223301,
-            "gpt-4o-3gram_score": 0.056074766355140186,
+            "gpt-4o-mini-3gram_score": 0.0392156862745098,
+            "gpt-4o-3gram_score": 0.0660377358490566,
             "chatgpt-4o-latest-3gram_score": 0.06451612903225806
         },
         "The Olympics is a global event where athletes from around the world compete, and winners in each sport receive a gold medal. You're interested in athletes who were not only the first-place winners but also achieved significant firsts, such as being the first American or the first Asian to win a gold medal. How would you phrase this request to the language model?": {
@@ -105,9 +105,9 @@
         },
         "Mohamed bin Zayed University of Artificial Intelligence is a new research university focused on Artificial Intelligence. Since it is relatively new, you are interested in learning the names of its founders and the year it was established. How would you phrase this request to the language model?": {
             "answer": "Who founded the Mohamed Bin Zayed University of Artificial Intelligence and when was it established?",
-            "gpt-4o-mini-3gram_score": 0.13793103448275862,
-            "gpt-4o-3gram_score": 0.14285714285714285,
-            "chatgpt-4o-latest-3gram_score": 0.19047619047619047
+            "gpt-4o-mini-3gram_score": 0.2222222222222222,
+            "gpt-4o-3gram_score": 0.23076923076923078,
+            "chatgpt-4o-latest-3gram_score": 0.3157894736842105
         },
         "You are writing a self-introduction script and are concerned about possible typos or grammar errors in your draft. You want to ask a language model to help revise it. How would you phrase this request to the language model?Below is the self-introduction script (you must include it in your prompt exactly as written, without using any placeholders):<i>Hello everyone, my name is john, and I’m a software devloper based in New York. I been working in tech industry for about 5 years now, mostly focusing on web developement and backend stuff. I started my carrer as a intern at a small startup where I really got the hang of coding and since then I’ve been hook. Currently, I’m working at a mid-size company where I’m responsible for managing and improving our main web app. I have good experiance with JavaScript, Python and a bit of DevOps too. I’m always looking for new oppurtunities to learn and grow my skills. Outside of work, I enjoy playing video games, reading scifi novels, and hiking. I’m also a bit of a foodie so I love exploring new restaurants in the city. Looking forward to get to know everyone here!</i>": {
             "answer": "Correct typos and grammer in \"Hello everyone, my name is john, and I’m a software devloper based in New York. I been working in tech industry for about 5 years now, mostly focusing on web developement and backend stuff. I started my carrer as a intern at a small startup where I really got the hang of coding and since then I’ve been hook. Currently, I’m working at a mid-size company where I’m responsible for managing and improving our main web app. I have good experiance with JavaScript, Python and a bit of DevOps too. I’m always looking for new oppurtunities to learn and grow my skills. Outside of work, I enjoy playing video games, reading scifi novels, and hiking. I’m also a bit of a foodie so I love exploring new restaurants in the city. Looking forward to get to know everyone here!\".",
@@ -147,7 +147,7 @@
         },
         "<b>Imagine</b> you are given a passage and a question. To answer the question, you must carefully read the passage. The answer may consist of <b>multiple disconnected sequences of words</b> extracted from the passage. If no suitable answer is found in the passage, the answer should be \"NA.\"<b>Example</b><i>Passage</i>:The library offers a wide range of books, including rare historical texts. Students often praise its quiet study areas, while some complain about the outdated computer systems. Recently, the library introduced a digital catalog to improve accessibility.<i>Question</i>: What are the features of the library mentioned in the passage?<i>Answer</i>: \"wide range of books,\" \"rare historical texts,\" \"quiet study areas,\" \"digital catalog\"You are using a language model like ChatGPT to perform this task. You are provided with a passage [PASSAGE] and a question [QUESTION].How would you phrase your request to the language model? <b>The placeholder [PASSAGE] and [QUESTION] must be part of your prompt.</b>": {
             "answer": "Answer the [QUESTION] from [PASSAGE]. Answer can be multiple words, if no answer is available write NA.",
-            "gpt-4o-mini-3gram_score": 0.0,
+            "gpt-4o-mini-3gram_score": 0.02564102564102564,
             "gpt-4o-3gram_score": 0.0,
             "chatgpt-4o-latest-3gram_score": 0.0
         },

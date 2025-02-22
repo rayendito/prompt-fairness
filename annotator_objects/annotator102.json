@@ -21,8 +21,8 @@
     "answers": {
         "Sentiment refers to the emotional tone or attitude expressed in a piece of text, typically categorized as positive, negative,or neutral based on the conveyed feelings or opinions.<b>Example</b>\"The address has been updated\" has neutral sentiment.You are using a language model like ChatGPT to determine the sentiment of a text [TEXT] into one of possible <b>three sentiment labels: positive, negative, and neutral</b>. How would you phrase your request to the language model? <b>Your response must include the placeholder [TEXT].</b>": {
             "answer": "Could you please determine the sentiment of this text [TEXT] and label it as positive, negative, or neutral?",
-            "gpt-4o-mini-3gram_score": 0.2,
-            "gpt-4o-3gram_score": 0.20833333333333334,
+            "gpt-4o-mini-3gram_score": 0.25,
+            "gpt-4o-3gram_score": 0.2608695652173913,
             "chatgpt-4o-latest-3gram_score": 0.15384615384615385
         },
         "Sentiment refers to the emotional tone or attitude expressed in a piece of text. In this task, the goal is to classify a text into <b>one of two sentiment classes: positive or negative</b>.<b>Example</b>\"I love the iPhone\" has positive sentiment.You are using a language model like ChatGPT to determine the sentiment of a text [TEXT] into one of possible <b>two sentiment labels: positive and negative</b>. How would you phrase your request to the language model? <b>Your response must include the placeholder [TEXT].</b>": {
@@ -49,7 +49,7 @@
         "There is an Indonesian children's song titled \"Balonku,\" which translates to \"My Balloon\" in English. You want to know how many balloon colors are mentioned in the song's lyrics.How would you phrase your request to the language model?": {
             "answer": "How many balloon colors are mentioned in the lyrics of the Indonesian children's song 'Balonku'?",
             "gpt-4o-mini-3gram_score": 0.45454545454545453,
-            "gpt-4o-3gram_score": 0.6111111111111112,
+            "gpt-4o-3gram_score": 0.7058823529411765,
             "chatgpt-4o-latest-3gram_score": 0.2857142857142857
         },
         "You are studying Indonesian history, specifically the G30S/PKI tragedy, and you want to learn more about the Indonesian army personnel who were murdered in this tragedy.How would you phrase your request to the language model?": {
@@ -134,7 +134,7 @@
             "answer": "Can you answer the following multiple-choice question?\n \n\n [QUESTION]\n \n\n The options are:\n [OPTIONS]\n \n\n Please provide the correct answer.",
             "gpt-4o-mini-3gram_score": 0.15,
             "gpt-4o-3gram_score": 0.08,
-            "chatgpt-4o-latest-3gram_score": 0.038461538461538464
+            "chatgpt-4o-latest-3gram_score": 0.08
         },
         "<b>Imagine</b> you are given a passage and a question. To answer the question, you must carefully read the passage and directly extract the answer as a sequence of words. If no suitable answer is found in the passage, the answer should be \"NA.\"<b>Example</b><i>Passage</i>: Beyoncé announced a hiatus from her music career in January 2010, heeding her mother's advice, \"to live life, to be inspired by things again\". During the break she and her father parted ways as business partners. Beyoncé's musical break lasted nine months and saw her visit multiple European cities, the Great Wall of China, the Egyptian pyramids, Australia, English music festivals, and various museums and ballet performances.<i>Question</i>: Who inspired this hiatus?<i>Answer</i>: her motherYou are using a language model, such as ChatGPT, to perform this task. You are provided with a passage [PASSAGE] and a question [QUESTION].How would you phrase your request to the language model? <b>The placeholder [PASSAGE] and [QUESTION] must be part of your prompt.</b>": {
             "answer": "Can you read the following passage [PASSAGE] and answer the question [QUESTION] by directly extracting the answer from the passage? If no suitable answer is found, please respond with 'NA.",
@@ -152,7 +152,7 @@
             "answer": "Can you extract all the words, noun phrases, and pronouns in the following recipe [TEXT] that refer to ingredients, whether in isolation or combination? Please list each extracted item on a new line.",
             "gpt-4o-mini-3gram_score": 0.3333333333333333,
             "gpt-4o-3gram_score": 0.425,
-            "chatgpt-4o-latest-3gram_score": 0.425
+            "chatgpt-4o-latest-3gram_score": 0.46153846153846156
         },
         "Semantic similarity measures how closely two texts or concepts share the same meaning or convey similar ideas. In this task, the similarity score is <b>a decimal number between 0 and 5</b>.<b>Example:</b>* Sentence 1: All questions were answered to the parent's satisfaction.* Sentence 2: All questions were answered and consent given to proceed.* Output: 4.0You are using a language model like ChatGPT to predict the semantic similarity score between two sentences: [SENTENCE1] and [SENTENCE2]How would you phrase your request to the language model? <b>The placeholder [SENTENCE1] and [SENTENCE2] must be included in your prompt.</b>": {
             "answer": "Can you predict the semantic similarity score between the following two sentences, [SENTENCE1] and [SENTENCE2]? The score should be a decimal number between 0 and 5, with 0 meaning no similarity and 5 meaning identical meaning.",
@@ -162,7 +162,7 @@
         },
         "Sentiment refers to the emotional tone or attitude expressed in a piece of text, often categorized as positive, negative, or neutral based on the conveyed feelings or opinions. Instead of assessing the overall sentiment of a sentence, your focus is on identifying the emotional tone or attitude toward specific aspects of a subject within the text.<b>Example:</b>The text: Great food but the service was dreadful!Answer: [\"food\", \"positive\"] [\"service\", \"negative\"]You are using a language model like ChatGPT to perform this task. The possible sentiment labels are <b>positive, negative, and neutral.</b> You expect the language model to output a list of words or phrases, each followed by its corresponding sentiment label. For example: ['bed', 'positive'], ['breakfast', 'neutral'].How would you phrase your request to the language model? <b>The placeholder [TEXT] must be included in your prompt.</b>": {
             "answer": "Can you identify the emotional tone or attitude toward specific aspects of the subject in the following text [TEXT]? Please provide a list of words or phrases, each followed by its corresponding sentiment label (positive, negative, or neutral).",
-            "gpt-4o-mini-3gram_score": 0.23684210526315788,
+            "gpt-4o-mini-3gram_score": 0.24096385542168675,
             "gpt-4o-3gram_score": 0.15306122448979592,
             "chatgpt-4o-latest-3gram_score": 0.04225352112676056
         },

@@ -87,7 +87,7 @@
         },
         "Imagine you are writing a letter asking for help with a scientific project. You need the letter to be highly convincing, but you must submit the version written entirely by a large language model on the first attempt.How would you phrase this request to the language model?": {
             "answer": "I need to convince my friend to help me with a scientific project. Can you help me write a letter to convince him?",
-            "gpt-4o-mini-3gram_score": 0.004484304932735426,
+            "gpt-4o-mini-3gram_score": 0.0045045045045045045,
             "gpt-4o-3gram_score": 0.015151515151515152,
             "chatgpt-4o-latest-3gram_score": 0.022727272727272728
         },
@@ -105,9 +105,9 @@
         },
         "You are curious about U.S. democracy and a specific political figure, Hillary Clinton. <b>You believe she was a former President of the United States</b> and want to learn about her achievements during her time in office. How would you phrase this request to the language model?": {
             "answer": "I am curious about Hillary Clinton. She was a former President of the United States, right? I wanna learn about her achievements during her time as a President in the office",
-            "gpt-4o-mini-3gram_score": 0.08421052631578947,
+            "gpt-4o-mini-3gram_score": 0.09574468085106383,
             "gpt-4o-3gram_score": 0.13953488372093023,
-            "chatgpt-4o-latest-3gram_score": 0.12345679012345678
+            "chatgpt-4o-latest-3gram_score": 0.1375
         },
         "Mohamed bin Zayed University of Artificial Intelligence is a new research university focused on Artificial Intelligence. Since it is relatively new, you are interested in learning the names of its founders and the year it was established. How would you phrase this request to the language model?": {
             "answer": "I am interested in Mohammed bin Zayed University of Artificial Intelligence, which is a relatively new research university focused on AI. Do you know the names of its founders and the year it was established?",
@@ -119,7 +119,7 @@
             "answer": "I have a self-introduction script below, but I am concerned about the possible typos or grammar errors in it. Can you help me fix the possible problem? Here is the script\n \n\n Hello everyone, my name is john, and I’m a software devloper based in New York. I been working in tech industry for about 5 years now, mostly focusing on web developement and backend stuff. I started my carrer as a intern at a small startup where I really got the hang of coding and since then I’ve been hook. Currently, I’m working at a mid-size company where I’m responsible for managing and improving our main web app. I have good experiance with JavaScript, Python and a bit of DevOps too. I’m always looking for new oppurtunities to learn and grow my skills. Outside of work, I enjoy playing video games, reading scifi novels, and hiking. I’m also a bit of a foodie so I love exploring new restaurants in the city. Looking forward to get to know everyone here!",
             "gpt-4o-mini-3gram_score": 0.045454545454545456,
             "gpt-4o-3gram_score": 0.04477611940298507,
-            "chatgpt-4o-latest-3gram_score": 0.03773584905660377
+            "chatgpt-4o-latest-3gram_score": 0.057692307692307696
         },
         "You are writing a self-introduction script and are concerned about possible typos or grammar errors in your draft. <i>You want to ask a language model to identify these errors one by one, so you can revise them yourself.</i> How would you phrase your request to language model?Below is the self-introduction script (you must include it in your prompt exactly as written, without using any placeholders):<i>Hello everyone, my name is john, and I’m a software devloper based in New York. I been working in tech industry for about 5 years now, mostly focusing on web developement and backend stuff. I started my carrer as a intern at a small startup where I really got the hang of coding and since then I’ve been hook. Currently, I’m working at a mid-size company where I’m responsible for managing and improving our main web app. I have good experiance with JavaScript, Python and a bit of DevOps too. I’m always looking for new oppurtunities to learn and grow my skills. Outside of work, I enjoy playing video games, reading scifi novels, and hiking. I’m also a bit of a foodie so I love exploring new restaurants in the city. Looking forward to get to know everyone here!</i>": {
             "answer": "I have a self-introduction script below, but I am concerned about the possible typos or grammar errors in it. Can you help me identify the possible problems one by one? Here is the script\n \n\n Hello everyone, my name is john, and I’m a software devloper based in New York. I been working in tech industry for about 5 years now, mostly focusing on web developement and backend stuff. I started my carrer as a intern at a small startup where I really got the hang of coding and since then I’ve been hook. Currently, I’m working at a mid-size company where I’m responsible for managing and improving our main web app. I have good experiance with JavaScript, Python and a bit of DevOps too. I’m always looking for new oppurtunities to learn and grow my skills. Outside of work, I enjoy playing video games, reading scifi novels, and hiking. I’m also a bit of a foodie so I love exploring new restaurants in the city. Looking forward to get to know everyone here!",
@@ -161,7 +161,7 @@
             "answer": "In recipes, ingredients can change form or be combined with other ingredients to form new substances, and as such are often referred to by different terms in the same recipe (including pronouns), such as \"flour\", \"dough\", \"cake\", and \"it\".\n \n\n I will give you a complete recipe, and you need to extract all words, noun phrases, and pronouns in the recipe that refer to ingredients in isolation or combination.\n \n The output should list each extracted item on a new line.\n \n Can you extract all words, noun phrases, and pronouns in the recipe below that refer to ingredients in isolation or combination?\n \n Recipe: [TEXT]",
             "gpt-4o-mini-3gram_score": 0.23076923076923078,
             "gpt-4o-3gram_score": 0.20212765957446807,
-            "chatgpt-4o-latest-3gram_score": 0.1414141414141414
+            "chatgpt-4o-latest-3gram_score": 0.16494845360824742
         },
         "Semantic similarity measures how closely two texts or concepts share the same meaning or convey similar ideas. In this task, the similarity score is <b>a decimal number between 0 and 5</b>.<b>Example:</b>* Sentence 1: All questions were answered to the parent's satisfaction.* Sentence 2: All questions were answered and consent given to proceed.* Output: 4.0You are using a language model like ChatGPT to predict the semantic similarity score between two sentences: [SENTENCE1] and [SENTENCE2]How would you phrase your request to the language model? <b>The placeholder [SENTENCE1] and [SENTENCE2] must be included in your prompt.</b>": {
             "answer": "I will give you two texts, you need to predict the semantic similarity score between them. Semantic similarity measures how closely two texts or concepts share the same meaning or convey similar ideas. In this context, the similarity score is a decimal number between 0 and 5.\n \n\n What is the semantic similarity score between two texts below?\n \n\n Sentence 1: [SENTENCE1]\n Sentence 2: [SENTENCE2]",

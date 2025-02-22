@@ -27,8 +27,8 @@
         },
         "Sentiment refers to the emotional tone or attitude expressed in a piece of text. In this task, the goal is to classify a text into <b>one of two sentiment classes: positive or negative</b>.<b>Example</b>\"I love the iPhone\" has positive sentiment.You are using a language model like ChatGPT to determine the sentiment of a text [TEXT] into one of possible <b>two sentiment labels: positive and negative</b>. How would you phrase your request to the language model? <b>Your response must include the placeholder [TEXT].</b>": {
             "answer": "Please categorize [TEXT] into one of two possible categories : Positive or Negative.",
-            "gpt-4o-mini-3gram_score": 0.07692307692307693,
-            "gpt-4o-3gram_score": 0.03125,
+            "gpt-4o-mini-3gram_score": 0.12,
+            "gpt-4o-3gram_score": 0.06451612903225806,
             "chatgpt-4o-latest-3gram_score": 0.0
         },
         "A translation system is an AI model or software system designed to automatically convert text from one language to another, facilitating communication between speakers of different languages.<b>Example</b><i>Arabic text</i>: \"انا احب الايفون\" <i>French translation</i>: \"J'adore l'iPhone\"You are using a language model like ChatGPT to translate a text [TEXT] in [LANGUAGE1] to [LANGUAGE2]. How would you phrase your request to the language model? <b>Your response must include the placeholder [TEXT] and [LANGUAGE2].</b> The placeholder [LANGUAGE1] is optional.": {
@@ -67,32 +67,32 @@
         "In Islam, the adhan is the call to prayer sounded from the mosque five times a day to signal when it’s time for prayer. The muezzin (the person who calls the adhan) recites various Arabic phrases. You are interested in knowing the English translation of these phrases.How would you phrase your request to the language model?": {
             "answer": "In the Islamic call to prayer, known as the \"adhan\", a caller, or \"muezzin\", recites various phrases in Arabic. Can you translate these phrases into English for me please?",
             "gpt-4o-mini-3gram_score": 0.046511627906976744,
-            "gpt-4o-3gram_score": 0.15384615384615385,
-            "chatgpt-4o-latest-3gram_score": 0.05
+            "gpt-4o-3gram_score": 0.18421052631578946,
+            "chatgpt-4o-latest-3gram_score": 0.07692307692307693
         },
         "In West Sumatra, Indonesia, there is a traditional snack called Karak Kaliang, which has a unique shape resembling a number. You are curious to know what number that is.How would you phrase your request to the language model?": {
             "answer": "There's an Indonesian snack named \"Karak Kaliang\" which apparently has a unique shape that resembles a number - can you tell me what number it looks like please?",
-            "gpt-4o-mini-3gram_score": 0.07692307692307693,
+            "gpt-4o-mini-3gram_score": 0.08695652173913043,
             "gpt-4o-3gram_score": 0.075,
             "chatgpt-4o-latest-3gram_score": 0.0
         },
         "Imagine you are creating a marketing brochure to promote a product (a giant drum), focusing on cost, quality, and environmental impact. You will spend your entire budget on the marketing campaign designed solely by AI, so it's crucial to craft a clear and effective request.How would you phrase this request to the language model?": {
             "answer": "I need you to craft some marketing materials for me for a product I am trying to promote - specifically a giant drum. I need your wording to emphasize the cost, quality and environmental impact of the product. The wording must be clear and effective, such that I could precisely copy your provided response for use in marketing materials. Don't hesitate to ask clarifying questions if you feel unable to comply in full with my request.",
-            "gpt-4o-mini-3gram_score": 0.005780346820809248,
+            "gpt-4o-mini-3gram_score": 0.005797101449275362,
             "gpt-4o-3gram_score": 0.005115089514066497,
             "chatgpt-4o-latest-3gram_score": 0.0
         },
         "Imagine you are writing a letter asking for help with a scientific project. You need the letter to be highly convincing, but you must submit the version written entirely by a large language model on the first attempt.How would you phrase this request to the language model?": {
             "answer": "I need you to write a letter for me asking for help on a scientific project I'm working on. The wording of the letter must be entirely convincing. The details of the project aren't as relevant as the request for assistance - feel free to be creative in the request. The tone must be sincere and genuine without being overly formal.",
-            "gpt-4o-mini-3gram_score": 0.0038314176245210726,
+            "gpt-4o-mini-3gram_score": 0.011627906976744186,
             "gpt-4o-3gram_score": 0.012,
-            "chatgpt-4o-latest-3gram_score": 0.007874015748031496
+            "chatgpt-4o-latest-3gram_score": 0.015873015873015872
         },
         "You want to use a language model like ChatGPT to write a story with these characters: two dogs, one cat, five mice, two adults named Thomas and Haroon, and a child named Aeni. The story should be about Aeni's school life.How would you phrase the request to a language model?": {
             "answer": "I want you to write me a story about a child named Aeni and their life at school. You must include the following supporting characters in the story : two dogs, one cat, five mice, and two adults named Thomas and Haroon. There is no limit on length and the story should have a happy, positive tone.",
-            "gpt-4o-mini-3gram_score": 0.11666666666666667,
-            "gpt-4o-3gram_score": 0.12280701754385964,
-            "chatgpt-4o-latest-3gram_score": 0.0989010989010989
+            "gpt-4o-mini-3gram_score": 0.12605042016806722,
+            "gpt-4o-3gram_score": 0.13274336283185842,
+            "chatgpt-4o-latest-3gram_score": 0.1111111111111111
         },
         "The Olympics is a global event where athletes from around the world compete, and winners in each sport receive a gold medal. You're interested in athletes who were not only the first-place winners but also achieved significant firsts, such as being the first American or the first Asian to win a gold medal. How would you phrase this request to the language model?": {
             "answer": "Throughout the history of the Olympic Games, can you give me a list of names of Gold Medal winners (from any event) who achieved significant \"firsts\" such as being the first American or the first Asian to win a gold medal - but not necessarily limited to race. Tell me which year the milestone was achieved in.",
@@ -175,7 +175,7 @@
         "You want to identify specific words or phrases in a sentence that directly name specific people, places, or organizations.The target categories are:<ul> <li><i>Location</i> (e.g., New York)</li> <li><i>Person</i> (e.g., John)</li> <li><i>Organization</i> (e.g., Apple)</li> <li><i>None</i> if a word does not fit into any other category</li> </ul>The language model should return a structured output as follows, where each line consists of a single word in the input text followed by its category. For example, if the input text consists of 5 words, the output might be:<ul> <li>word1 Location</li> <li>word2 Location</li> <li>word3 None</li> <li>word4 Organization</li> <li>word5 Organization</li> </ul><b>Example:</b><i>Sentence</i>: I love Google<i>Answer</i>:<ul> <li>I None</li> <li>love None</li> <li>Google Organization</li> </ul>You are using a language model like ChatGPT to perform this task over a given sentence [TEXT]. How would you phrase your request to the language model? <b>The placeholder [TEXT] must be included in your prompt.</b>": {
             "answer": "From the following text, where either a Location, Person or Organization appears, I want you to generate a bullet-pointed list showing them. Your structured output should be on multiple lines, where each line consists of a single word in the input text followed by its category. If a word does not fit into either Location, Person or Organization, label it as NA. All words from the text must be classified. Here is the text I want you to use :\n \n\n [TEXT]",
             "gpt-4o-mini-3gram_score": 0.0916030534351145,
-            "gpt-4o-3gram_score": 0.04827586206896552,
+            "gpt-4o-3gram_score": 0.05555555555555555,
             "chatgpt-4o-latest-3gram_score": 0.08088235294117647
         },
         "You are using a language model like ChatGPT to generate a sentence that meets specific criteria. The criteria can vary, such as the topic being about a car or the sentence having at least 10 words.<b>Example</b><i>Requirement</i>: The sentence is shorter than 100 characters and includes the word \"chocolate\".<i>Output</i>: She likes eating chocolate.Suppose you have a particular requirement [REQUIREMENT]. How would you phrase your request to the language model? <b>Your response must include the placeholder [REQUIREMENT].</b>": {

@@ -33,9 +33,9 @@
         },
         "A translation system is an AI model or software system designed to automatically convert text from one language to another, facilitating communication between speakers of different languages.<b>Example</b><i>Arabic text</i>: \"انا احب الايفون\" <i>French translation</i>: \"J'adore l'iPhone\"You are using a language model like ChatGPT to translate a text [TEXT] in [LANGUAGE1] to [LANGUAGE2]. How would you phrase your request to the language model? <b>Your response must include the placeholder [TEXT] and [LANGUAGE2].</b> The placeholder [LANGUAGE1] is optional.": {
             "answer": "Please could you translate the following text [TEXT] from [LANGUAGE1] to [LANGUAGE2] ?",
-            "gpt-4o-mini-3gram_score": 0.45454545454545453,
-            "gpt-4o-3gram_score": 0.45454545454545453,
-            "chatgpt-4o-latest-3gram_score": 0.08333333333333333
+            "gpt-4o-mini-3gram_score": 0.5,
+            "gpt-4o-3gram_score": 0.5,
+            "chatgpt-4o-latest-3gram_score": 0.18181818181818182
         },
         "Summarization is the process of condensing a piece of text into a shorter version while retaining its core content and main ideas. The goal is to provide a concise and clear overview of the original content.<b>Example</b><b>Article</b>: John recently moved to a new city for work. Although the transition has been challenging, he enjoys exploring new places and meeting new people. He's also adapting to his new job, where he is learning valuable skills and contributing to a growing team. Despite occasional homesickness, John feels optimistic about his future in the new city.<b>Summary</b>: John moved to a new city for work, finding the transition challenging but rewarding as he adapts to new experiences, both socially and professionally.You are using a language model like ChatGPT to summarize a text [TEXT]. How would you phrase your request to the language model? <b>Your response must include the placeholder [TEXT].</b>": {
             "answer": "Please could you summarize the following text [TEXT]?",
@@ -51,7 +51,7 @@
         },
         "There is an Indonesian children's song titled \"Balonku,\" which translates to \"My Balloon\" in English. You want to know how many balloon colors are mentioned in the song's lyrics.How would you phrase your request to the language model?": {
             "answer": "In the Indonesian children's song titled \"Balonku\", how many balloon colours are mentioned in the song's lyrics?",
-            "gpt-4o-mini-3gram_score": 0.1724137931034483,
+            "gpt-4o-mini-3gram_score": 0.21428571428571427,
             "gpt-4o-3gram_score": 0.19230769230769232,
             "chatgpt-4o-latest-3gram_score": 0.16
         },
@@ -69,7 +69,7 @@
         },
         "In Islam, the adhan is the call to prayer sounded from the mosque five times a day to signal when it’s time for prayer. The muezzin (the person who calls the adhan) recites various Arabic phrases. You are interested in knowing the English translation of these phrases.How would you phrase your request to the language model?": {
             "answer": "During the adhan, please could you translate the Arabic phrases recited by the muezzin into English?",
-            "gpt-4o-mini-3gram_score": 0.0,
+            "gpt-4o-mini-3gram_score": 0.03225806451612903,
             "gpt-4o-3gram_score": 0.05,
             "chatgpt-4o-latest-3gram_score": 0.0
         },
@@ -161,13 +161,13 @@
             "answer": "Please could you read through the following [TEXT] and extract all words, noun phrases, and pronouns in the recipe that refer to ingredients in isolation or combination?",
             "gpt-4o-mini-3gram_score": 0.42857142857142855,
             "gpt-4o-3gram_score": 0.34210526315789475,
-            "chatgpt-4o-latest-3gram_score": 0.21428571428571427
+            "chatgpt-4o-latest-3gram_score": 0.24390243902439024
         },
         "Semantic similarity measures how closely two texts or concepts share the same meaning or convey similar ideas. In this task, the similarity score is <b>a decimal number between 0 and 5</b>.<b>Example:</b>* Sentence 1: All questions were answered to the parent's satisfaction.* Sentence 2: All questions were answered and consent given to proceed.* Output: 4.0You are using a language model like ChatGPT to predict the semantic similarity score between two sentences: [SENTENCE1] and [SENTENCE2]How would you phrase your request to the language model? <b>The placeholder [SENTENCE1] and [SENTENCE2] must be included in your prompt.</b>": {
             "answer": "Please could you provide me with a semantic similarity measure score for the following 2 sentences, [SENTENCE1] and [SENTENCE2]? The similarity score should be a decimal number between 0 and 5.",
             "gpt-4o-mini-3gram_score": 0.15384615384615385,
             "gpt-4o-3gram_score": 0.06451612903225806,
-            "chatgpt-4o-latest-3gram_score": 0.07462686567164178
+            "chatgpt-4o-latest-3gram_score": 0.09090909090909091
         },
         "Sentiment refers to the emotional tone or attitude expressed in a piece of text, often categorized as positive, negative, or neutral based on the conveyed feelings or opinions. Instead of assessing the overall sentiment of a sentence, your focus is on identifying the emotional tone or attitude toward specific aspects of a subject within the text.<b>Example:</b>The text: Great food but the service was dreadful!Answer: [\"food\", \"positive\"] [\"service\", \"negative\"]You are using a language model like ChatGPT to perform this task. The possible sentiment labels are <b>positive, negative, and neutral.</b> You expect the language model to output a list of words or phrases, each followed by its corresponding sentiment label. For example: ['bed', 'positive'], ['breakfast', 'neutral'].How would you phrase your request to the language model? <b>The placeholder [TEXT] must be included in your prompt.</b>": {
             "answer": "Please could you look through the following [TEXT] and output a list of words or phrases; give each word or phrase a corresponding sentiment label, either positive, negative or neutral?",
