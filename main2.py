@@ -6,6 +6,6 @@ columns = final_df.columns.tolist()
 
 annotators = []
 for i, row in final_df.iterrows():
-    ann = Annotator(i, row[2:31], row[31:])
+    ann = Annotator(i, row[2:31], row[31:], rejected=True)
     annotators.append(Annotator(i, row[2:31], row[31:]))
     ann.save_self("rejected_annotator_objects")

@@ -18,6 +18,16 @@
         "Student status": "No",
         "Employment status": "Part-Time"
     },
+    "max_llm_detection_score": {
+        "max-gpt-4o-mini-3gram_score": 0.1724137931034483,
+        "max-gpt-4o-3gram_score": 0.21739130434782608,
+        "max-chatgpt-4o-latest-3gram_score": 0.38461538461538464
+    },
+    "avg_llm_detection_score": {
+        "avg-gpt-4o-mini-3gram_score": 0.04209417838259316,
+        "avg-gpt-4o-3gram_score": 0.05662213131260209,
+        "avg-chatgpt-4o-latest-3gram_score": 0.05960995023901016
+    },
     "answers": {
         "Sentiment refers to the emotional tone or attitude expressed in a piece of text, typically categorized as positive, negative,or neutral based on the conveyed feelings or opinions.<b>Example</b>\"The address has been updated\" has neutral sentiment.You are using a language model like ChatGPT to determine the sentiment of a text [TEXT] into one of possible <b>three sentiment labels: positive, negative, and neutral</b>. How would you phrase your request to the language model? <b>Your response must include the placeholder [TEXT].</b>": {
             "answer": "Categorise the sentiment of text [TEXT] as either positive, negative, or neutral.",
