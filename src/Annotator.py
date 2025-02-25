@@ -66,7 +66,9 @@ class Annotator:
     def __is_profile_valid(self, profile):
         profile_keys = profile.keys()
         for pk in Annotator.PROFILE_COLUMNS:
-            if pk not in profile_keys:
+            if pk.strip() not in profile_keys:
+                print(profile_keys)
+                print("culprit :", pk)
                 return False
         return True
     
