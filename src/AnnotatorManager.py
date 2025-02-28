@@ -1,6 +1,5 @@
 import os, json
 import pandas as pd
-from .enums import *
 
 class AnnotatorManager:
     def __init__(self, questions, annotator_dir):
