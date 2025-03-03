@@ -9,8 +9,8 @@ questions = Questions().get_questions()
 
 for anjson in os.listdir(PASSED_ANNOTATORS):
     ann_obj = json.load(open(os.path.join(PASSED_ANNOTATORS, anjson)))
+    tasks_to_run = []
     for i, q in enumerate(ann_obj['answers'].keys()):
-        tasks_to_run = []
         if(not pd.isna(ann_obj['answers'][q]['answer'])):
             ANNOTATOR_PROMPT = ann_obj['answers'][q]['answer']
             PLACEHOLDERS = questions[q]['placeholders']
@@ -85,19 +85,20 @@ for anjson in os.listdir(PASSED_ANNOTATORS):
             else:
                 raise NotImplementedError(f"task type {TASK_EVAL_TYPE} not implemented yet!")
             break
-        results_yagesya = lm_eval.simple_evaluate(
-            model="vllm",
-            model_args = {
-                "pretrained" : "openai-community/gpt2"
-            },
-            tasks=tasks_to_run,
-            num_fewshot=0,
-            task_manager=task_manager,
-            limit=10,
-            write_out = True,
-            log_samples = True,
-        )
-        print(results_yagesya)
+    print(f"{len(tasks_to_run)=}")
+    results_yagesya = lm_eval.simple_evaluate(
+        model="vllm",
+        model_args = {
+            "pretrained" : "openai-community/gpt2"
+        },
+        tasks=tasks_to_run,
+        num_fewshot=0,
+        task_manager=task_manager,
+        limit=10,
+        write_out = True,
+        log_samples = True,
+    )
+    print(results_yagesya)
     break
 # def process_docs(doc):
 #     return doc
