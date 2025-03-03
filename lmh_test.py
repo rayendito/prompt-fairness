@@ -46,8 +46,8 @@ for anjson in os.listdir(PASSED_ANNOTATORS):
                         "dataset_path": "csv",
                         "dataset_name": None,
                         "doc_to_text": doc_to_text,
-                        "doc_to_target": doc_to_text,
-                        "doc_to_choice": doc_to_text,
+                        "doc_to_target": doc_to_target,
+                        "doc_to_choice": doc_to_choice,
                         "output_type": TASK_EVAL_TYPE,
                         "dataset_kwargs" : {
                             "data_files" : {
@@ -73,7 +73,7 @@ for anjson in os.listdir(PASSED_ANNOTATORS):
                         "dataset_path": "csv",
                         "dataset_name": None,
                         "doc_to_text": doc_to_text,
-                        "doc_to_target": doc_to_text,
+                        "doc_to_target": doc_to_target,
                         "output_type": TASK_EVAL_TYPE,
                         "dataset_kwargs" : {
                             "data_files" : {
