@@ -98,7 +98,8 @@ for anjson in os.listdir(PASSED_ANNOTATORS):
         write_out = True,
         log_samples = True,
     )
-    print(results_yagesya)
+    with open("hasilgannn.json", "w+") as dasda:
+        dasda.write(json.dumps(results_yagesya, indent=4)) 
     break
 # def process_docs(doc):
 #     return doc
