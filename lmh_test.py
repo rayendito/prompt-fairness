@@ -1,4 +1,4 @@
-import os, json
+import os, json, ast
 import lm_eval # type: ignore
 import pandas as pd
 from src.Questions import Questions
@@ -7,7 +7,43 @@ task_manager = lm_eval.tasks.TaskManager()
 PASSED_ANNOTATORS = "passed_annotator_objects"
 questions = Questions().get_questions()
 
-for anjson in os.listdir(PASSED_ANNOTATORS):
+
+def create_doc_to_text(ANNOTATOR_PROMPT, PLACEHOLDERS):
+    def doc_to_text(doc):
+        rs = ANNOTATOR_PROMPT
+        if (len(PLACEHOLDERS) > 0):
+            for ph in PLACEHOLDERS:
+                rs = rs.replace(ph, doc[ph])
+            return rs
+        else:
+            return rs
+    return doc_to_text
+
+def create_doc_to_choice(CHOICES):
+    def doc_to_choice(doc):
+        return ast.literal_eval(doc[CHOICES])
+    return doc_to_choice
+
+def create_doc_to_target(TASK_EVAL_TYPE, LABELS):
+    if(TASK_EVAL_TYPE == "multiple_choice"):
+        def doc_to_target(doc):
+            if(len(LABELS) == 1):
+                return int(doc[LABELS[0]])
+            else:
+                # TODO: implement for the one with more labels
+                print(f"{LABELS=}")
+                raise NotImplementedError()
+    else:
+        def doc_to_target(doc):
+            if(len(LABELS) == 1):
+                return doc[LABELS[0]]
+            else:
+                # TODO: implement for the one with more labels
+                print(f"{LABELS=}")
+                raise NotImplementedError()
+    return doc_to_target
+
+for anjson in sorted(os.listdir(PASSED_ANNOTATORS)):
     ann_obj = json.load(open(os.path.join(PASSED_ANNOTATORS, anjson)))
     tasks_to_run = []
     for i, q in enumerate(ann_obj['answers'].keys()):
@@ -18,36 +54,17 @@ for anjson in os.listdir(PASSED_ANNOTATORS):
             LABELS = questions[q]['labels']
             CHOICES = questions[q]['choices']
             
-            def doc_to_text(doc):
-                rs = ANNOTATOR_PROMPT
-                if (len(PLACEHOLDERS) > 0):
-                    for ph in PLACEHOLDERS:
-                        rs = rs.replace(ph, doc[ph])
-                    return rs
-                else:
-                    return ANNOTATOR_PROMPT
-
             if (TASK_EVAL_TYPE == "multiple_choice"):
-                def doc_to_target(doc):
-                    if(len(LABELS) == 1):
-                        return int(doc[LABELS[0]])
-                    else:
-                        # TODO: implement for the one with more labels
-                        raise NotImplementedError()
-                
-                def doc_to_choice(doc):
-                    return doc[CHOICES]
-
                 for dset in questions[q]['dataset']:
                     dset_name = dset.replace(".csv", "")
                     tskdef = {
-                        "task": f"question_{i}_{dset_name}", # A dict that configures a task
-                        "test_split": "test", # A dict that configures a task
+                        "task": f"question_{i}_{dset_name}",
+                        "test_split": "test",
                         "dataset_path": "csv",
                         "dataset_name": None,
-                        "doc_to_text": doc_to_text,
-                        "doc_to_target": doc_to_target,
-                        "doc_to_choice": doc_to_choice,
+                        "doc_to_text": create_doc_to_text(ANNOTATOR_PROMPT, PLACEHOLDERS),
+                        "doc_to_target": create_doc_to_target(TASK_EVAL_TYPE, LABELS),
+                        "doc_to_choice": create_doc_to_choice(CHOICES),
                         "output_type": TASK_EVAL_TYPE,
                         "dataset_kwargs" : {
                             "data_files" : {
@@ -57,23 +74,16 @@ for anjson in os.listdir(PASSED_ANNOTATORS):
                     }
                     tasks_to_run.append(tskdef)
 
-            elif (TASK_EVAL_TYPE == "generate_until"):
-                def doc_to_target(doc):
-                    if(len(LABELS) == 1):
-                        return doc[LABELS[0]]
-                    else:
-                        # TODO: implement for the one with more labels
-                        raise NotImplementedError()
-                
+            elif (TASK_EVAL_TYPE == "generate_until"):                
                 for dset in questions[q]['dataset']:
                     dset_name = dset.replace(".csv", "")
                     tskdef = {
-                        "task": f"question_{i}_{dset_name}", # A dict that configures a task
-                        "test_split": "test", # A dict that configures a task
+                        "task": f"question_{i}_{dset_name}",
+                        "test_split": "test",
                         "dataset_path": "csv",
                         "dataset_name": None,
-                        "doc_to_text": doc_to_text,
-                        "doc_to_target": doc_to_target,
+                        "doc_to_text": create_doc_to_text(ANNOTATOR_PROMPT, PLACEHOLDERS),
+                        "doc_to_target": create_doc_to_target(TASK_EVAL_TYPE, LABELS),
                         "output_type": TASK_EVAL_TYPE,
                         "dataset_kwargs" : {
                             "data_files" : {
@@ -84,24 +94,24 @@ for anjson in os.listdir(PASSED_ANNOTATORS):
                     tasks_to_run.append(tskdef)
             else:
                 print(f"task type {TASK_EVAL_TYPE} not implemented yet.")
+            # break
     print(f"{len(tasks_to_run)=}")
-    for t in tasks_to_run:
-        print(t.task)
-    # results_yagesya = lm_eval.simple_evaluate(
-    #     model="vllm",
-    #     model_args = {
-    #         "pretrained" : "openai-community/gpt2"
-    #     },
-    #     tasks=tasks_to_run,
-    #     num_fewshot=0,
-    #     task_manager=task_manager,
-    #     limit=10,
-    #     write_out = True,
-    #     log_samples = True,
-    # )
-    # with open("hasilgannn.json", "w+") as dasda:
-    #     dasda.write(json.dumps(results_yagesya, indent=4)) 
-    # break
+    results_yagesya = lm_eval.simple_evaluate(
+        model="vllm",
+        model_args = {
+            "pretrained" : "openai-community/gpt2"
+        },
+        # tasks=[tasks_to_run[2]],
+        tasks=[tasks_to_run[0], tasks_to_run[4]],
+        num_fewshot=0,
+        task_manager=task_manager,
+        limit=10,
+        write_out = True,
+        log_samples = True,
+    )
+    with open("hasil_sampel.json", "w+") as dasda:
+        dasda.write(json.dumps(results_yagesya, indent=4)) 
+    break
 # def process_docs(doc):
 #     return doc
 
