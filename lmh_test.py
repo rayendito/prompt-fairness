@@ -83,24 +83,25 @@ for anjson in os.listdir(PASSED_ANNOTATORS):
                     }
                     tasks_to_run.append(tskdef)
             else:
-                raise NotImplementedError(f"task type {TASK_EVAL_TYPE} not implemented yet!")
-            break
+                print(f"task type {TASK_EVAL_TYPE} not implemented yet.")
     print(f"{len(tasks_to_run)=}")
-    results_yagesya = lm_eval.simple_evaluate(
-        model="vllm",
-        model_args = {
-            "pretrained" : "openai-community/gpt2"
-        },
-        tasks=tasks_to_run,
-        num_fewshot=0,
-        task_manager=task_manager,
-        limit=10,
-        write_out = True,
-        log_samples = True,
-    )
-    with open("hasilgannn.json", "w+") as dasda:
-        dasda.write(json.dumps(results_yagesya, indent=4)) 
-    break
+    for t in tasks_to_run:
+        print(t.task)
+    # results_yagesya = lm_eval.simple_evaluate(
+    #     model="vllm",
+    #     model_args = {
+    #         "pretrained" : "openai-community/gpt2"
+    #     },
+    #     tasks=tasks_to_run,
+    #     num_fewshot=0,
+    #     task_manager=task_manager,
+    #     limit=10,
+    #     write_out = True,
+    #     log_samples = True,
+    # )
+    # with open("hasilgannn.json", "w+") as dasda:
+    #     dasda.write(json.dumps(results_yagesya, indent=4)) 
+    # break
 # def process_docs(doc):
 #     return doc
 
