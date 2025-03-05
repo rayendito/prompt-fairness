@@ -2,15 +2,13 @@
     "results": {
         "question_0_500-sentiment_3class": {
             "alias": "question_0_500-sentiment_3class",
-            "acc,none": 0.2,
-            "acc_stderr,none": 0.13333333333333333,
-            "acc_norm,none": 0.2,
-            "acc_norm_stderr,none": 0.13333333333333333
+            "f1,none": 0.3333333333333333,
+            "f1_stderr,none": "N/A"
         },
-        "question_2_100-eng_Latn-spa_Latn": {
-            "alias": "question_2_100-eng_Latn-spa_Latn",
-            "exact_match,none": 0.0,
-            "exact_match_stderr,none": 0.0
+        "question_2_100-eng_Latn-zho_Hans": {
+            "alias": "question_2_100-eng_Latn-zho_Hans",
+            "bleu,none": 0.0,
+            "bleu_stderr,none": 0.0
         }
     },
     "group_subtasks": {
@@ -33,15 +31,22 @@
             "target_delimiter": " ",
             "fewshot_delimiter": "\n\n",
             "num_fewshot": 0,
+            "metric_list": [
+                {
+                    "metric": "f1",
+                    "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                    "higher_is_better": true
+                }
+            ],
             "output_type": "multiple_choice",
             "repeats": 1,
             "should_decontaminate": false
         },
-        "question_2_100-eng_Latn-spa_Latn": {
+        "question_2_100-eng_Latn-zho_Hans": {
             "dataset_path": "csv",
             "dataset_kwargs": {
                 "data_files": {
-                    "test": "/content/prompt-fairness/question_artefacts/test_datasets/100-eng_Latn-spa_Latn.csv"
+                    "test": "/content/prompt-fairness/question_artefacts/test_datasets/100-eng_Latn-zho_Hans.csv"
                 }
             },
             "test_split": "test",
@@ -52,6 +57,13 @@
             "target_delimiter": " ",
             "fewshot_delimiter": "\n\n",
             "num_fewshot": 0,
+            "metric_list": [
+                {
+                    "metric": "bleu",
+                    "aggregation": "bleu",
+                    "higher_is_better": true
+                }
+            ],
             "output_type": "generate_until",
             "generation_kwargs": {
                 "until": [
@@ -65,19 +77,18 @@
     },
     "versions": {
         "question_0_500-sentiment_3class": "Yaml",
-        "question_2_100-eng_Latn-spa_Latn": "Yaml"
+        "question_2_100-eng_Latn-zho_Hans": "Yaml"
     },
     "n-shot": {
         "question_0_500-sentiment_3class": 0,
-        "question_2_100-eng_Latn-spa_Latn": 0
+        "question_2_100-eng_Latn-zho_Hans": 0
     },
     "higher_is_better": {
         "question_0_500-sentiment_3class": {
-            "acc": true,
-            "acc_norm": true
+            "f1": true
         },
-        "question_2_100-eng_Latn-spa_Latn": {
-            "exact_match": true
+        "question_2_100-eng_Latn-zho_Hans": {
+            "bleu": true
         }
     },
     "n-samples": {
@@ -85,7 +96,7 @@
             "original": 500,
             "effective": 10
         },
-        "question_2_100-eng_Latn-spa_Latn": {
+        "question_2_100-eng_Latn-zho_Hans": {
             "original": 100,
             "effective": 10
         }
@@ -150,14 +161,15 @@
                 ],
                 "filter": "none",
                 "metrics": [
-                    "acc",
-                    "acc_norm"
+                    "f1"
                 ],
                 "doc_hash": "8cfefd8c2b2605e212cd034595339fa410dad5bb453a129a1ea4b28c46a16f77",
                 "prompt_hash": "4f181e74b6a470d9536c06607d638d3cd130153468271a7b960ed581d210fa34",
                 "target_hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
-                "acc": 0.0,
-                "acc_norm": 0.0
+                "f1": [
+                    0,
+                    2
+                ]
             },
             {
                 "doc_id": 1,
@@ -217,14 +229,15 @@
                 ],
                 "filter": "none",
                 "metrics": [
-                    "acc",
-                    "acc_norm"
+                    "f1"
                 ],
                 "doc_hash": "6ee35e42d9ae7877c45112a8fd88f45cd942882e7adc17cb975d272496885e74",
                 "prompt_hash": "698e6cafdeb6c26791ff5b21305325fab69422bc3fdc63ce9a5337d62ce3bef4",
                 "target_hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
-                "acc": 1.0,
-                "acc_norm": 1.0
+                "f1": [
+                    0,
+                    0
+                ]
             },
             {
                 "doc_id": 2,
@@ -284,14 +297,15 @@
                 ],
                 "filter": "none",
                 "metrics": [
-                    "acc",
-                    "acc_norm"
+                    "f1"
                 ],
                 "doc_hash": "e97ce4cfebe563bcefa6b86476076a7f85468327c743e4e8679a705fa1973b89",
                 "prompt_hash": "1bbcb1922311b1d3b40eb0a5ad4da9f182c7292592b935849ed8386224fb1efd",
                 "target_hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
-                "acc": 0.0,
-                "acc_norm": 0.0
+                "f1": [
+                    0,
+                    2
+                ]
             },
             {
                 "doc_id": 3,
@@ -351,14 +365,15 @@
                 ],
                 "filter": "none",
                 "metrics": [
-                    "acc",
-                    "acc_norm"
+                    "f1"
                 ],
                 "doc_hash": "71dc0b86de6196afdda8a9ea6d5c9a8054a97c4543e4c765a87593b8e62fe788",
                 "prompt_hash": "ba7058407af416ed5a2b8cb90b514c95087633215960ecab87d0264f2531f1a1",
                 "target_hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
-                "acc": 0.0,
-                "acc_norm": 0.0
+                "f1": [
+                    0,
+                    2
+                ]
             },
             {
                 "doc_id": 4,
@@ -418,14 +433,15 @@
                 ],
                 "filter": "none",
                 "metrics": [
-                    "acc",
-                    "acc_norm"
+                    "f1"
                 ],
                 "doc_hash": "eaf51f1cf31c94c33715329fa6cf52aa0e2c6bf608cbea6b507de451e82c0910",
                 "prompt_hash": "2821c57547d8bec3d64bd72ab8591fee9cae309e93a0a88906c43f5c7bf51b98",
                 "target_hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
-                "acc": 0.0,
-                "acc_norm": 0.0
+                "f1": [
+                    0,
+                    2
+                ]
             },
             {
                 "doc_id": 5,
@@ -485,14 +501,15 @@
                 ],
                 "filter": "none",
                 "metrics": [
-                    "acc",
-                    "acc_norm"
+                    "f1"
                 ],
                 "doc_hash": "b51eb72cb0542a4677cc7473687c54faabc5812cfe24dbfcf22b9324aae97c94",
                 "prompt_hash": "a723ea98c2cf900d2d472df9f4d0e73b4d98501a20d74cd1bb317abb98868683",
                 "target_hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
-                "acc": 1.0,
-                "acc_norm": 1.0
+                "f1": [
+                    0,
+                    0
+                ]
             },
             {
                 "doc_id": 6,
@@ -552,14 +569,15 @@
                 ],
                 "filter": "none",
                 "metrics": [
-                    "acc",
-                    "acc_norm"
+                    "f1"
                 ],
                 "doc_hash": "1f0ebfd7f1c259bda52a7d00d6b2442a5787a039d03b676c88090e698982c842",
                 "prompt_hash": "a59978b162efc3c9293c65a388cc44ea8fbd2205861ec5ba57e64c92af64f254",
                 "target_hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
-                "acc": 0.0,
-                "acc_norm": 0.0
+                "f1": [
+                    0,
+                    2
+                ]
             },
             {
                 "doc_id": 7,
@@ -619,14 +637,15 @@
                 ],
                 "filter": "none",
                 "metrics": [
-                    "acc",
-                    "acc_norm"
+                    "f1"
                 ],
                 "doc_hash": "0af52bfff8a2c38a35261f5808e75f618dfd436be82e152bb86127a1970fa58b",
                 "prompt_hash": "54de0ef5d705564844742a6e3967637617a31db7b1176e59f4ed379e013dedf5",
                 "target_hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
-                "acc": 0.0,
-                "acc_norm": 0.0
+                "f1": [
+                    0,
+                    2
+                ]
             },
             {
                 "doc_id": 8,
@@ -686,14 +705,15 @@
                 ],
                 "filter": "none",
                 "metrics": [
-                    "acc",
-                    "acc_norm"
+                    "f1"
                 ],
                 "doc_hash": "83d46b8aec93ab8e3a3d491faf075a24c5adc0f47d94206dd25936d13eccb3ff",
                 "prompt_hash": "19f539de456ea86d7b8b87bbe37caab9891779b360b5e3138e32920f1f95d35e",
                 "target_hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
-                "acc": 0.0,
-                "acc_norm": 0.0
+                "f1": [
+                    0,
+                    2
+                ]
             },
             {
                 "doc_id": 9,
@@ -753,28 +773,30 @@
                 ],
                 "filter": "none",
                 "metrics": [
-                    "acc",
-                    "acc_norm"
+                    "f1"
                 ],
                 "doc_hash": "a1caac01009dbd035600b0624a5454d795e24fc61e1b08fc074fdcd2da0958fb",
                 "prompt_hash": "d05a38e88b57660960447a265176b0227c6a5d69031f131d5c6edd5752b43b45",
                 "target_hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
-                "acc": 0.0,
-                "acc_norm": 0.0
+                "f1": [
+                    0,
+                    2
+                ]
             }
         ],
-        "question_2_100-eng_Latn-spa_Latn": [
+        "question_2_100-eng_Latn-zho_Hans": [
             {
                 "doc_id": 0,
                 "doc": {
                     "[TEXT]": "Vatican City's population is around 800. It is the smallest independent country in the world and the country with the lowest population.",
-                    "[LANGUAGE2]": "Spanish",
-                    "translation": "Con aproximadamente 800 habitantes, la Ciudad del Vaticano es el pa\u00eds independiente m\u00e1s peque\u00f1o del mundo y el de menor poblaci\u00f3n."
+                    "[LANGUAGE1]": "English",
+                    "[LANGUAGE2]": "Chinese",
+                    "translation": "梵蒂冈城的人口大约有 800 人。它是世界上最小的独立国家，也是人口最少的国家。"
                 },
-                "target": "Con aproximadamente 800 habitantes, la Ciudad del Vaticano es el pa\u00eds independiente m\u00e1s peque\u00f1o del mundo y el de menor poblaci\u00f3n.",
+                "target": "梵蒂冈城的人口大约有 800 人。它是世界上最小的独立国家，也是人口最少的国家。",
                 "arguments": [
                     [
-                        "Translate Vatican City's population is around 800. It is the smallest independent country in the world and the country with the lowest population. in [LANGUAGE1] to Spanish.",
+                        "Translate Vatican City's population is around 800. It is the smallest independent country in the world and the country with the lowest population. in English to Chinese.",
                         {
                             "until": [
                                 "\n\n"
@@ -793,24 +815,28 @@
                 ],
                 "filter": "none",
                 "metrics": [
-                    "exact_match"
+                    "bleu"
                 ],
-                "doc_hash": "5033840dff4fda54e91650df0b4447b7d929a601d43583ae0f88c337547ae404",
-                "prompt_hash": "51ebf1624a714c5e7973ecc410fea4c5dc64d83dfc1beb8dce9b2e7122c127d2",
-                "target_hash": "8deb149784e51fe4fd87282143291ba1486bce5e4e6c5668e102918b8742a121",
-                "exact_match": 0.0
+                "doc_hash": "5598de9012ba4c78dc52fd8f3faeb38cc9aaddf9ffa487d6b6a0a6e51cfe0180",
+                "prompt_hash": "e45de5af3c730a3f9b5db06f3cde0778c39e282e621e78ff05bc7cd3225e740f",
+                "target_hash": "bc7b466fd9dc837b34bf59a6a2d7e0f7cbe68b2d0e95e9a4b8f9537c01fb1678",
+                "bleu": [
+                    "梵蒂冈城的人口大约有 800 人。它是世界上最小的独立国家，也是人口最少的国家。",
+                    ""
+                ]
             },
             {
                 "doc_id": 1,
                 "doc": {
                     "[TEXT]": "All citizens of Vatican City are Roman Catholic.",
-                    "[LANGUAGE2]": "Spanish",
-                    "translation": "La totalidad de los ciudadanos que viven en Ciudad del Vaticano adscriben a la religi\u00f3n cat\u00f3lica romana."
+                    "[LANGUAGE1]": "English",
+                    "[LANGUAGE2]": "Chinese",
+                    "translation": "梵蒂冈城的所有公民均为罗马天主教徒。"
                 },
-                "target": "La totalidad de los ciudadanos que viven en Ciudad del Vaticano adscriben a la religi\u00f3n cat\u00f3lica romana.",
+                "target": "梵蒂冈城的所有公民均为罗马天主教徒。",
                 "arguments": [
                     [
-                        "Translate All citizens of Vatican City are Roman Catholic. in [LANGUAGE1] to Spanish.",
+                        "Translate All citizens of Vatican City are Roman Catholic. in English to Chinese.",
                         {
                             "until": [
                                 "\n\n"
@@ -829,24 +855,28 @@
                 ],
                 "filter": "none",
                 "metrics": [
-                    "exact_match"
+                    "bleu"
                 ],
-                "doc_hash": "829e215a68a5abf09da266b822add945cdffb53e99d3380eb4b9c28747f4d0ad",
-                "prompt_hash": "aafac13603ef962c2b7e6ab8541d21d161dec5822abe9b14ffc080e28cff210a",
-                "target_hash": "392910c071174d728584540fc24d15779c64a6201878675e02a4b2d8147658f7",
-                "exact_match": 0.0
+                "doc_hash": "715c4405e8652f355ec5096fe4267666c75c59cd3624eab96150708b91b42b96",
+                "prompt_hash": "f751533ebc7b14a370ffe6d4d12ded2c6d671cccd9ced0aed94bee5c4b1100ff",
+                "target_hash": "3f860627b17199d19fd6b5731f9192281413875bc88831391712d3751c427e31",
+                "bleu": [
+                    "梵蒂冈城的所有公民均为罗马天主教徒。",
+                    ""
+                ]
             },
             {
                 "doc_id": 2,
                 "doc": {
                     "[TEXT]": "It has a notably wide variety of plant communities, due to its range of microclimates, differing soils and varying levels of altitude.",
-                    "[LANGUAGE2]": "Spanish",
-                    "translation": "Posee un amplio y extraordinario abanico de comunidades vegetales, gracias a la variedad de microclimas, suelos y niveles de altitud."
+                    "[LANGUAGE1]": "English",
+                    "[LANGUAGE2]": "Chinese",
+                    "translation": "由于小气候、土壤和海拔高度的多样性，这里的植物群落种类非常丰富，并因此闻名于世。"
                 },
-                "target": "Posee un amplio y extraordinario abanico de comunidades vegetales, gracias a la variedad de microclimas, suelos y niveles de altitud.",
+                "target": "由于小气候、土壤和海拔高度的多样性，这里的植物群落种类非常丰富，并因此闻名于世。",
                 "arguments": [
                     [
-                        "Translate It has a notably wide variety of plant communities, due to its range of microclimates, differing soils and varying levels of altitude. in [LANGUAGE1] to Spanish.",
+                        "Translate It has a notably wide variety of plant communities, due to its range of microclimates, differing soils and varying levels of altitude. in English to Chinese.",
                         {
                             "until": [
                                 "\n\n"
@@ -865,24 +895,28 @@
                 ],
                 "filter": "none",
                 "metrics": [
-                    "exact_match"
+                    "bleu"
                 ],
-                "doc_hash": "593ad75670b5d5d091d7d913f5cdad1413fe72ace818e952a1bc5fc7422d41c8",
-                "prompt_hash": "37fcf325a97dd99808ed9a575bdd259a689a61646e32de92d5d9353a556eeb83",
-                "target_hash": "ccd09eb90cfdf1b17bf26ed5bc67f64b2794f043cf5ef0e9e2ae36166a4d5fea",
-                "exact_match": 0.0
+                "doc_hash": "a344c57eac99fda4de5328e0bf6c811ba3bf0a4c2a1c8499b08d5bbd73809771",
+                "prompt_hash": "7514b929ce1f6b7df9f94bd1c86880666a1f9a6a44661ddc448f8dbfd73d1cbe",
+                "target_hash": "a1de088fa4b00087b72da157c5d71c0ca01923eb22c5b66e3977505c59f5f768",
+                "bleu": [
+                    "由于小气候、土壤和海拔高度的多样性，这里的植物群落种类非常丰富，并因此闻名于世。",
+                    ""
+                ]
             },
             {
                 "doc_id": 3,
                 "doc": {
                     "[TEXT]": "The Amazon River is the second longest and the biggest river on Earth. It carries more than 8 times as much water as the second biggest river.",
-                    "[LANGUAGE2]": "Spanish",
-                    "translation": "El r\u00edo Amazonas es el m\u00e1s caudaloso y el segundo m\u00e1s extenso del planeta. Contiene 8 veces m\u00e1s agua que el r\u00edo que le sigue en tama\u00f1o."
+                    "[LANGUAGE1]": "English",
+                    "[LANGUAGE2]": "Chinese",
+                    "translation": "亚马逊河是世界上第二长，也是最大的河流。 它的水量是第二大河流的 8 倍以上。"
                 },
-                "target": "El r\u00edo Amazonas es el m\u00e1s caudaloso y el segundo m\u00e1s extenso del planeta. Contiene 8 veces m\u00e1s agua que el r\u00edo que le sigue en tama\u00f1o.",
+                "target": "亚马逊河是世界上第二长，也是最大的河流。 它的水量是第二大河流的 8 倍以上。",
                 "arguments": [
                     [
-                        "Translate The Amazon River is the second longest and the biggest river on Earth. It carries more than 8 times as much water as the second biggest river. in [LANGUAGE1] to Spanish.",
+                        "Translate The Amazon River is the second longest and the biggest river on Earth. It carries more than 8 times as much water as the second biggest river. in English to Chinese.",
                         {
                             "until": [
                                 "\n\n"
@@ -901,24 +935,28 @@
                 ],
                 "filter": "none",
                 "metrics": [
-                    "exact_match"
+                    "bleu"
                 ],
-                "doc_hash": "6322e3e9d83e54751df46007a1b0f1c7956a1282ee722cbc86d406bc2479d003",
-                "prompt_hash": "506a335f2dea0ccf2764466062a461dd7600ffeb1a3c31771fc893cf162a3600",
-                "target_hash": "0b77a2eda53edf5b1ba2f6d60a369797ce4bb1f365f3c1b25ea602485992f778",
-                "exact_match": 0.0
+                "doc_hash": "bb302d4ac5f2094fcae675c046a5fd51f6b4dc896fd994fbeb41fc43b90508f8",
+                "prompt_hash": "17cb41290495f7960135f8d2d457bf5a5001adb4871e837718aec17e1c068548",
+                "target_hash": "5934d35f136dfdee5a906de4d2c46be72d951e09144ac62b7ccdca8756985525",
+                "bleu": [
+                    "亚马逊河是世界上第二长，也是最大的河流。 它的水量是第二大河流的 8 倍以上。",
+                    ""
+                ]
             },
             {
                 "doc_id": 4,
                 "doc": {
                     "[TEXT]": "Lion prides act much like packs of wolves or dogs, animals surprisingly similar to lions (but not other big cats) in behavior, and also very deadly to their prey.",
-                    "[LANGUAGE2]": "Spanish",
-                    "translation": "Las manadas de leones tienen el mismo comportamiento que las de los lobos o los perros, con quienes guardan una sorprendente similitud (a diferencia de los otros grandes felinos) tanto en su conducta como en que son altamente letales para sus presas."
+                    "[LANGUAGE1]": "English",
+                    "[LANGUAGE2]": "Chinese",
+                    "translation": "狮群的行为与狼群或狗群非常类似。这些动物与狮子的行为惊人地相似（但与其他大型猫科动物不同），而且这些行为对它们的猎物来说也是非常致命的。"
                 },
-                "target": "Las manadas de leones tienen el mismo comportamiento que las de los lobos o los perros, con quienes guardan una sorprendente similitud (a diferencia de los otros grandes felinos) tanto en su conducta como en que son altamente letales para sus presas.",
+                "target": "狮群的行为与狼群或狗群非常类似。这些动物与狮子的行为惊人地相似（但与其他大型猫科动物不同），而且这些行为对它们的猎物来说也是非常致命的。",
                 "arguments": [
                     [
-                        "Translate Lion prides act much like packs of wolves or dogs, animals surprisingly similar to lions (but not other big cats) in behavior, and also very deadly to their prey. in [LANGUAGE1] to Spanish.",
+                        "Translate Lion prides act much like packs of wolves or dogs, animals surprisingly similar to lions (but not other big cats) in behavior, and also very deadly to their prey. in English to Chinese.",
                         {
                             "until": [
                                 "\n\n"
@@ -937,24 +975,28 @@
                 ],
                 "filter": "none",
                 "metrics": [
-                    "exact_match"
+                    "bleu"
                 ],
-                "doc_hash": "7512c2244a92bac4af55116c00c2e0f7986d6666e2674027a0cc12c0a02983f9",
-                "prompt_hash": "a675ee4b4cb4bdcf8844a45ac21cf1c379042398b1824c8072566b31f41f5c07",
-                "target_hash": "93a1462b5c3da272c1f148d02fc5d5e17d959d08f60b9f31ed957c200658aa15",
-                "exact_match": 0.0
+                "doc_hash": "4dd3a7dc264f2486947574c579f00ff279978eef3ef74d34a9dcde0ad149941d",
+                "prompt_hash": "b6de42d2f971b393f53e32263f1db47eb7a042c6cd0fb57504c24b2d0a5742a4",
+                "target_hash": "b821cdd0a3c2eedd80a25b98b2fbf8e8a189232a4d3fc5388b3c089ede0a3321",
+                "bleu": [
+                    "狮群的行为与狼群或狗群非常类似。这些动物与狮子的行为惊人地相似（但与其他大型猫科动物不同），而且这些行为对它们的猎物来说也是非常致命的。",
+                    ""
+                ]
             },
             {
                 "doc_id": 5,
                 "doc": {
                     "[TEXT]": "It was one of the major stops during Henry Louis Gates' PBS special Wonders of the African World.",
-                    "[LANGUAGE2]": "Spanish",
-                    "translation": "Fue una de las paradas m\u00e1s importantes del especial Maravillas del mundo africano, de Henry Louis Gates, en PBS."
+                    "[LANGUAGE1]": "English",
+                    "[LANGUAGE2]": "Chinese",
+                    "translation": "这是亨利·路易斯·盖茨 (Henry Louis Gates) 在美国公共广播公司的《非洲世界的奇迹》特别节目中的重要一站。"
                 },
-                "target": "Fue una de las paradas m\u00e1s importantes del especial Maravillas del mundo africano, de Henry Louis Gates, en PBS.",
+                "target": "这是亨利·路易斯·盖茨 (Henry Louis Gates) 在美国公共广播公司的《非洲世界的奇迹》特别节目中的重要一站。",
                 "arguments": [
                     [
-                        "Translate It was one of the major stops during Henry Louis Gates' PBS special Wonders of the African World. in [LANGUAGE1] to Spanish.",
+                        "Translate It was one of the major stops during Henry Louis Gates' PBS special Wonders of the African World. in English to Chinese.",
                         {
                             "until": [
                                 "\n\n"
@@ -973,24 +1015,28 @@
                 ],
                 "filter": "none",
                 "metrics": [
-                    "exact_match"
+                    "bleu"
                 ],
-                "doc_hash": "7dbf64dc8e3061c8a8739c85d1cf772ad01ebef76aa3a2dfb3b1103c1d460f91",
-                "prompt_hash": "13fff2de49600f3bf07eb1d2d7814cfdc802650f1e87461d263d3e4d5fefe9ea",
-                "target_hash": "f4b8116fc2f4e50dbbc1c32f0b9ceb0d388ace4ffbbd13854fda43310dcc92e6",
-                "exact_match": 0.0
+                "doc_hash": "634b072bb95ec1a84b2e27737d2606fb66bf06044eb0758927c56017641f7c3b",
+                "prompt_hash": "1f7de8c7bee6d7cf319355032305add61577ec29f20c337dcd0dc87399510b7c",
+                "target_hash": "c6e2253ea7f7646e8a2ff150e97cbad73723c60799d0d76bef7dde7e794c67d6",
+                "bleu": [
+                    "这是亨利·路易斯·盖茨 (Henry Louis Gates) 在美国公共广播公司的《非洲世界的奇迹》特别节目中的重要一站。",
+                    ""
+                ]
             },
             {
                 "doc_id": 6,
                 "doc": {
                     "[TEXT]": "Argentina is well known for having one of the best polo teams and players in the world.",
-                    "[LANGUAGE2]": "Spanish",
-                    "translation": "Argentina es famosa por contar con uno de los mejores equipos y los mejores jugadores de polo a nivel mundial."
+                    "[LANGUAGE1]": "English",
+                    "[LANGUAGE2]": "Chinese",
+                    "translation": "阿根廷以拥有世界顶尖的马球队和球员而闻名。"
                 },
-                "target": "Argentina es famosa por contar con uno de los mejores equipos y los mejores jugadores de polo a nivel mundial.",
+                "target": "阿根廷以拥有世界顶尖的马球队和球员而闻名。",
                 "arguments": [
                     [
-                        "Translate Argentina is well known for having one of the best polo teams and players in the world. in [LANGUAGE1] to Spanish.",
+                        "Translate Argentina is well known for having one of the best polo teams and players in the world. in English to Chinese.",
                         {
                             "until": [
                                 "\n\n"
@@ -1009,24 +1055,28 @@
                 ],
                 "filter": "none",
                 "metrics": [
-                    "exact_match"
+                    "bleu"
                 ],
-                "doc_hash": "304477ef7a0951e3e1313ae50b31742e7dd60466e934434728fb82d85bced30a",
-                "prompt_hash": "6415c16ff9fa355ea76da254d022eee3d7734f50788c37e05ff1e1dd7d4a2eea",
-                "target_hash": "43ad2402e22bd5644155b9234f4d531cc3699b64e244a3a4aeacc7bb69596296",
-                "exact_match": 0.0
+                "doc_hash": "bc3c2afc829ae35c54ed03a7e105541c33f0ad9abdaa1d921fcf440acf498ebb",
+                "prompt_hash": "26ce0bd072a5756a7c2a4ee78c6a8bce96e3d4d36b3677d2ade10dc88bdbe16d",
+                "target_hash": "2b39d264f575fad6f706f5eac1566e1b5166e153eaa607402c45907c6cf88f5d",
+                "bleu": [
+                    "阿根廷以拥有世界顶尖的马球队和球员而闻名。",
+                    ""
+                ]
             },
             {
                 "doc_id": 7,
                 "doc": {
-                    "[TEXT]": "Sleep interruption is the process of purposefully awakening during your normal sleep period and falling asleep a short time later (10\u201360 minutes).",
-                    "[LANGUAGE2]": "Spanish",
-                    "translation": "La interrupci\u00f3n del sue\u00f1o consiste en despertarse intencionalmente durante el per\u00edodo normal de sue\u00f1o y dormirse despu\u00e9s de un rato (10 a 60 minutos)."
+                    "[TEXT]": "Sleep interruption is the process of purposefully awakening during your normal sleep period and falling asleep a short time later (10–60 minutes).",
+                    "[LANGUAGE1]": "English",
+                    "[LANGUAGE2]": "Chinese",
+                    "translation": "睡眠中断是指这样的过程：在正常睡眠期间有意地醒来，并且在短时间之后（10-60分钟）睡着。"
                 },
-                "target": "La interrupci\u00f3n del sue\u00f1o consiste en despertarse intencionalmente durante el per\u00edodo normal de sue\u00f1o y dormirse despu\u00e9s de un rato (10 a 60 minutos).",
+                "target": "睡眠中断是指这样的过程：在正常睡眠期间有意地醒来，并且在短时间之后（10-60分钟）睡着。",
                 "arguments": [
                     [
-                        "Translate Sleep interruption is the process of purposefully awakening during your normal sleep period and falling asleep a short time later (10\u201360 minutes). in [LANGUAGE1] to Spanish.",
+                        "Translate Sleep interruption is the process of purposefully awakening during your normal sleep period and falling asleep a short time later (10–60 minutes). in English to Chinese.",
                         {
                             "until": [
                                 "\n\n"
@@ -1045,24 +1095,28 @@
                 ],
                 "filter": "none",
                 "metrics": [
-                    "exact_match"
+                    "bleu"
                 ],
-                "doc_hash": "8d599034255186515e17a3ed6be7bd08413705efb58706b78a259d14b95aa475",
-                "prompt_hash": "3e6a3ba843f40143a78293193036d6bca7d2121d1c8de63cdc305455507af02a",
-                "target_hash": "755668d034d543b8d6780243226a3c202ed85050d8864a3bec0a83439ab8c9c9",
-                "exact_match": 0.0
+                "doc_hash": "a88b941c0f9284daa62eec726f06a5af86597b09974d0f4c78c26464d03164e2",
+                "prompt_hash": "b0020a4093e0b5c2eb092309ab3a3b7e8fbb9a9431ad0aa85aa5c2e001701171",
+                "target_hash": "e2c6f23563b0940fa4ce89c04847e00baf6062311159d4460edbf0dcfac6e9d2",
+                "bleu": [
+                    "睡眠中断是指这样的过程：在正常睡眠期间有意地醒来，并且在短时间之后（10-60分钟）睡着。",
+                    ""
+                ]
             },
             {
                 "doc_id": 8,
                 "doc": {
-                    "[TEXT]": "For example, \u201clearning\u201d and \u201csocialization\u201d are suggested as important motivations for Internet use (James et al., 1995).",
-                    "[LANGUAGE2]": "Spanish",
-                    "translation": "Por ejemplo, se se\u00f1alan el \u00abaprendizaje\u00bb y la \u00absocializaci\u00f3n\u00bb como incentivos significativos para el uso de Internet (James et al., 1995)."
+                    "[TEXT]": "For example, “learning” and “socialization” are suggested as important motivations for Internet use (James et al., 1995).",
+                    "[LANGUAGE1]": "English",
+                    "[LANGUAGE2]": "Chinese",
+                    "translation": "例如，“学习”和“交际”被认为是使用互联网的重要动机（詹姆斯等，1995）。"
                 },
-                "target": "Por ejemplo, se se\u00f1alan el \u00abaprendizaje\u00bb y la \u00absocializaci\u00f3n\u00bb como incentivos significativos para el uso de Internet (James et al., 1995).",
+                "target": "例如，“学习”和“交际”被认为是使用互联网的重要动机（詹姆斯等，1995）。",
                 "arguments": [
                     [
-                        "Translate For example, \u201clearning\u201d and \u201csocialization\u201d are suggested as important motivations for Internet use (James et al., 1995). in [LANGUAGE1] to Spanish.",
+                        "Translate For example, “learning” and “socialization” are suggested as important motivations for Internet use (James et al., 1995). in English to Chinese.",
                         {
                             "until": [
                                 "\n\n"
@@ -1081,24 +1135,28 @@
                 ],
                 "filter": "none",
                 "metrics": [
-                    "exact_match"
+                    "bleu"
                 ],
-                "doc_hash": "862d963659318eff1c2a68c5baa087576048cedab5fd72fe23c0cbe6a1bb35cb",
-                "prompt_hash": "1fb767cf473bce2fbf0fe7c38d0bc5c80accf0cf1f72e3a93014e2b34d934425",
-                "target_hash": "ee54e1f9b4cf4dfc865b8591dfd6e5ccf941f38f3eda2df85b59d21543c5fc3c",
-                "exact_match": 0.0
+                "doc_hash": "ec47c1aaf4c7837750c1141bc3ce1113bb0e340287724d8222c03947ece82a95",
+                "prompt_hash": "9ae7163589f6cd0f2faf6d85a7ed917261e262a2655eb2adfa33dc29d70ab39c",
+                "target_hash": "e1cafde16e8860d7599538823f8fb8204db0b4e9bbdb85de30b1fc01ac42f83a",
+                "bleu": [
+                    "例如，“学习”和“交际”被认为是使用互联网的重要动机（詹姆斯等，1995）。",
+                    ""
+                ]
             },
             {
                 "doc_id": 9,
                 "doc": {
                     "[TEXT]": "After a week of losses in the midterm election, Bush told an audience about the expansion of trade in Asia.",
-                    "[LANGUAGE2]": "Spanish",
-                    "translation": "Luego de una semana de derrotas en elecciones de medio mandato, Bush dio un discurso a la audiencia sobre la expansi\u00f3n comercial en el continente asi\u00e1tico."
+                    "[LANGUAGE1]": "English",
+                    "[LANGUAGE2]": "Chinese",
+                    "translation": "在经过一周的中期选举失利后，布什向听众讲述了亚洲贸易扩张的形势。"
                 },
-                "target": "Luego de una semana de derrotas en elecciones de medio mandato, Bush dio un discurso a la audiencia sobre la expansi\u00f3n comercial en el continente asi\u00e1tico.",
+                "target": "在经过一周的中期选举失利后，布什向听众讲述了亚洲贸易扩张的形势。",
                 "arguments": [
                     [
-                        "Translate After a week of losses in the midterm election, Bush told an audience about the expansion of trade in Asia. in [LANGUAGE1] to Spanish.",
+                        "Translate After a week of losses in the midterm election, Bush told an audience about the expansion of trade in Asia. in English to Chinese.",
                         {
                             "until": [
                                 "\n\n"
@@ -1117,12 +1175,15 @@
                 ],
                 "filter": "none",
                 "metrics": [
-                    "exact_match"
+                    "bleu"
                 ],
-                "doc_hash": "1b9eaccb5115aa5d3772850e9994abf3f97706fe95ba13a1e69aee2cb12ce140",
-                "prompt_hash": "83d3d90660b344f21269a1f95b3fcf9e1510d06536d8a658a4810d9df1f32145",
-                "target_hash": "c7f3b9ab080417fc9591fb380c747f88b58404aef11762b0959dba3afa840705",
-                "exact_match": 0.0
+                "doc_hash": "be55abb790641130a7c2b80fef2a303eb8b7d820b1714efa88f95cb1c416757a",
+                "prompt_hash": "f43320f2bf1467ddfeb9b150c508929153cf1eb541360b8c5873e8183800b29a",
+                "target_hash": "418148d8ec581fd506b806bd078e6b04a79782e728170ef2bf890e111c4a34cc",
+                "bleu": [
+                    "在经过一周的中期选举失利后，布什向听众讲述了亚洲贸易扩张的形势。",
+                    ""
+                ]
             }
         ]
     },
@@ -1143,8 +1204,8 @@
         "torch_seed": 1234,
         "fewshot_seed": 1234
     },
-    "git_hash": "53760e5",
-    "date": 1741163308.778775,
+    "git_hash": "93a2607",
+    "date": 1741168971.2411351,
     "pretty_env_info": "PyTorch version: 2.5.1+cu124\nIs debug build: False\nCUDA used to build PyTorch: 12.4\nROCM used to build PyTorch: N/A\n\nOS: Ubuntu 22.04.4 LTS (x86_64)\nGCC version: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0\nClang version: 14.0.0-1ubuntu1.1\nCMake version: version 3.31.4\nLibc version: glibc-2.35\n\nPython version: 3.11.11 (main, Dec  4 2024, 08:55:07) [GCC 11.4.0] (64-bit runtime)\nPython platform: Linux-6.1.85+-x86_64-with-glibc2.35\nIs CUDA available: True\nCUDA runtime version: 12.5.82\nCUDA_MODULE_LOADING set to: LAZY\nGPU models and configuration: GPU 0: Tesla T4\nNvidia driver version: 550.54.15\ncuDNN version: Probably one of the following:\n/usr/lib/x86_64-linux-gnu/libcudnn.so.9.2.1\n/usr/lib/x86_64-linux-gnu/libcudnn_adv.so.9.2.1\n/usr/lib/x86_64-linux-gnu/libcudnn_cnn.so.9.2.1\n/usr/lib/x86_64-linux-gnu/libcudnn_engines_precompiled.so.9.2.1\n/usr/lib/x86_64-linux-gnu/libcudnn_engines_runtime_compiled.so.9.2.1\n/usr/lib/x86_64-linux-gnu/libcudnn_graph.so.9.2.1\n/usr/lib/x86_64-linux-gnu/libcudnn_heuristic.so.9.2.1\n/usr/lib/x86_64-linux-gnu/libcudnn_ops.so.9.2.1\nHIP runtime version: N/A\nMIOpen runtime version: N/A\nIs XNNPACK available: True\n\nCPU:\nArchitecture:                         x86_64\nCPU op-mode(s):                       32-bit, 64-bit\nAddress sizes:                        46 bits physical, 48 bits virtual\nByte Order:                           Little Endian\nCPU(s):                               2\nOn-line CPU(s) list:                  0,1\nVendor ID:                            GenuineIntel\nModel name:                           Intel(R) Xeon(R) CPU @ 2.00GHz\nCPU family:                           6\nModel:                                85\nThread(s) per core:                   2\nCore(s) per socket:                   1\nSocket(s):                            1\nStepping:                             3\nBogoMIPS:                             4000.25\nFlags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd ibrs ibpb stibp fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves arat md_clear arch_capabilities\nHypervisor vendor:                    KVM\nVirtualization type:                  full\nL1d cache:                            32 KiB (1 instance)\nL1i cache:                            32 KiB (1 instance)\nL2 cache:                             1 MiB (1 instance)\nL3 cache:                             38.5 MiB (1 instance)\nNUMA node(s):                         1\nNUMA node0 CPU(s):                    0,1\nVulnerability Gather data sampling:   Not affected\nVulnerability Itlb multihit:          Not affected\nVulnerability L1tf:                   Mitigation; PTE Inversion\nVulnerability Mds:                    Vulnerable; SMT Host state unknown\nVulnerability Meltdown:               Vulnerable\nVulnerability Mmio stale data:        Vulnerable\nVulnerability Reg file data sampling: Not affected\nVulnerability Retbleed:               Vulnerable\nVulnerability Spec rstack overflow:   Not affected\nVulnerability Spec store bypass:      Vulnerable\nVulnerability Spectre v1:             Vulnerable: __user pointer sanitization and usercopy barriers only; no swapgs barriers\nVulnerability Spectre v2:             Vulnerable; IBPB: disabled; STIBP: disabled; PBRSB-eIBRS: Not affected; BHI: Vulnerable (Syscall hardening enabled)\nVulnerability Srbds:                  Not affected\nVulnerability Tsx async abort:        Vulnerable\n\nVersions of relevant libraries:\n[pip3] numpy==1.26.4\n[pip3] optree==0.14.0\n[pip3] torch==2.5.1+cu124\n[pip3] torchaudio==2.5.1+cu124\n[pip3] torchsummary==1.5.1\n[pip3] torchvision==0.20.1+cu124\n[pip3] triton==3.1.0\n[conda] Could not collect",
     "transformers_version": "4.48.3",
     "upper_git_hash": null,

@@ -1,7 +1,9 @@
 import os, json, ast
 import lm_eval # type: ignore
 import pandas as pd
+import numpy as np
 from src.Questions import Questions
+from lm_eval.utils import weighted_f1_score
 
 task_manager = lm_eval.tasks.TaskManager()
 PASSED_ANNOTATORS = "passed_annotator_objects"
@@ -43,6 +45,12 @@ def create_doc_to_target(TASK_EVAL_TYPE, LABELS):
                 raise NotImplementedError()
     return doc_to_target
 
+def convert_to_json_friendly(obj):
+    if isinstance(obj, np.int64):
+        return int(obj)  # Convert to regular Python int
+    else:
+        return "NON JSON SERIALIZABLE"
+
 for anjson in sorted(os.listdir(PASSED_ANNOTATORS)):
     ann_obj = json.load(open(os.path.join(PASSED_ANNOTATORS, anjson)))
     tasks_to_run = []
@@ -70,7 +78,12 @@ for anjson in sorted(os.listdir(PASSED_ANNOTATORS)):
                             "data_files" : {
                                 "test" : f"{os.getcwd()}/question_artefacts/test_datasets/{dset}"
                             }
-                        }
+                        },
+                        "metric_list" : [{
+                            "metric" : "f1",
+                            "aggregation" : weighted_f1_score,
+                            "higher_is_better" : True,
+                        }]
                     }
                     tasks_to_run.append(tskdef)
 
@@ -89,20 +102,25 @@ for anjson in sorted(os.listdir(PASSED_ANNOTATORS)):
                             "data_files" : {
                                 "test" : f"{os.getcwd()}/question_artefacts/test_datasets/{dset}"
                             }
-                        }
+                        },
+                        "metric_list" : [{
+                            "metric" : "bleu",
+                            "aggregation" : "bleu",
+                            "higher_is_better" : True,
+                        }]
                     }
                     tasks_to_run.append(tskdef)
             else:
                 print(f"task type {TASK_EVAL_TYPE} not implemented yet.")
             # break
     print(f"{len(tasks_to_run)=}")
-    results_yagesya = lm_eval.simple_evaluate(
+    results = lm_eval.simple_evaluate(
         model="vllm",
         model_args = {
             "pretrained" : "openai-community/gpt2"
         },
         # tasks=[tasks_to_run[2]],
-        tasks=[tasks_to_run[0], tasks_to_run[4]],
+        tasks=[tasks_to_run[0], tasks_to_run[2]],
         num_fewshot=0,
         task_manager=task_manager,
         limit=10,
@@ -110,7 +128,7 @@ for anjson in sorted(os.listdir(PASSED_ANNOTATORS)):
         log_samples = True,
     )
     with open("hasil_sampel.json", "w+") as dasda:
-        dasda.write(json.dumps(results_yagesya, indent=4)) 
+        dasda.write(json.dumps(results, indent=4, ensure_ascii=False, default=convert_to_json_friendly)) 
     break
 # def process_docs(doc):
 #     return doc
