@@ -3,7 +3,7 @@ import lm_eval # type: ignore
 import pandas as pd
 import numpy as np
 from src.Questions import Questions
-from lm_eval.utils import weighted_f1_score
+from lm_eval.utils import weighted_f1_score # type: ignore
 
 task_manager = lm_eval.tasks.TaskManager()
 PASSED_ANNOTATORS = "passed_annotator_objects"
@@ -61,7 +61,7 @@ for anjson in sorted(os.listdir(PASSED_ANNOTATORS)):
             TASK_EVAL_TYPE = questions[q]['task_eval_type']
             LABELS = questions[q]['labels']
             CHOICES = questions[q]['choices']
-            
+
             if (TASK_EVAL_TYPE == "multiple_choice"):
                 for dset in questions[q]['dataset']:
                     dset_name = dset.replace(".csv", "")
@@ -104,8 +104,8 @@ for anjson in sorted(os.listdir(PASSED_ANNOTATORS)):
                             }
                         },
                         "metric_list" : [{
-                            "metric" : "bleu",
-                            "aggregation" : "bleu",
+                            "metric" : "bleu_dua",
+                            "aggregation" : "bleu_dua",
                             "higher_is_better" : True,
                         }]
                     }
@@ -130,41 +130,3 @@ for anjson in sorted(os.listdir(PASSED_ANNOTATORS)):
     with open("hasil_sampel.json", "w+") as dasda:
         dasda.write(json.dumps(results, indent=4, ensure_ascii=False, default=convert_to_json_friendly)) 
     break
-# def process_docs(doc):
-#     return doc
-
-# def pf_d2t_dummy(someinput):
-#     return someinput
-
-# tskdef = {
-#     "task": "pf_sentiment_analysis", # A dict that configures a task
-#     "test_split": "test", # A dict that configures a task
-#     "dataset_path": "csv",
-#     "dataset_name": None,
-#     "doc_to_text": pf_d2t_dummy,
-#     "doc_to_target": pf_d2t_dummy,
-#     "output_type": "loglikelihood",
-#     "dataset_kwargs" : {
-#         "data_files" : {
-#             "test" : f"{os.getcwd()}/question_artefacts/test_datasets/500-sentiment_3class.csv"
-#         }
-#     }
-# }
-
-
-# task_dict = lm_eval.tasks.get_task_dict([tskdef], task_manager)
-# print(task_dict)
-
-# # task: pf_sentiment_analysis
-# # class: !function task.PFSenta
-# # task: pf_sentiment_analysis
-# # test_split: test
-# # dataset_path: csv
-# # dataset_name: null
-# # doc_to_text: !function utils.pf_d2text
-# # doc_to_target: !function utils.pf_d2target
-# # output_type: loglikelihood
-# # process_docs: !function utils.process_docs
-# # dataset_kwargs:
-# #   data_files:
-# #     test: /Documents/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv
