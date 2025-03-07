@@ -1,0 +1,778 @@
+{
+    "results": {
+        "question_0_500-sentiment_3class": {
+            "alias": "question_0_500-sentiment_3class",
+            "f1,none": 0.75,
+            "f1_stderr,none": "N/A"
+        }
+    },
+    "group_subtasks": {
+        "null": []
+    },
+    "configs": {
+        "question_0_500-sentiment_3class": {
+            "dataset_path": "csv",
+            "dataset_kwargs": {
+                "data_files": {
+                    "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+                }
+            },
+            "test_split": "test",
+            "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+            "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+            "unsafe_code": false,
+            "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+            "description": "",
+            "target_delimiter": " ",
+            "fewshot_delimiter": "\n\n",
+            "num_fewshot": 0,
+            "metric_list": [
+                {
+                    "metric": "f1",
+                    "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                    "higher_is_better": true
+                }
+            ],
+            "output_type": "multiple_choice",
+            "repeats": 1,
+            "should_decontaminate": false
+        }
+    },
+    "versions": {
+        "question_0_500-sentiment_3class": "Yaml"
+    },
+    "n-shot": {
+        "question_0_500-sentiment_3class": 0
+    },
+    "higher_is_better": {
+        "question_0_500-sentiment_3class": {
+            "f1": true
+        }
+    },
+    "n-samples": {
+        "question_0_500-sentiment_3class": {
+            "original": 500,
+            "effective": 10
+        }
+    },
+    "samples": {
+        "question_0_500-sentiment_3class": [
+            {
+                "doc_id": 0,
+                "doc": {
+                    "[TEXT]": "this is n't just the cliffsnotes version of nicholas nickleby , it 's the cliffsnotes with pages missing .",
+                    "label": 0,
+                    "choices": "['negative', 'neutral', 'positive']"
+                },
+                "target": 0,
+                "arguments": [
+                    [
+                        "Is the sentiment of the text positive? this is n't just the cliffsnotes version of nicholas nickleby , it 's the cliffsnotes with pages missing .",
+                        " negative"
+                    ],
+                    [
+                        "Is the sentiment of the text positive? this is n't just the cliffsnotes version of nicholas nickleby , it 's the cliffsnotes with pages missing .",
+                        " neutral"
+                    ],
+                    [
+                        "Is the sentiment of the text positive? this is n't just the cliffsnotes version of nicholas nickleby , it 's the cliffsnotes with pages missing .",
+                        " positive"
+                    ]
+                ],
+                "resps": [
+                    [
+                        [
+                            -11.032124519348145,
+                            false
+                        ]
+                    ],
+                    [
+                        [
+                            -13.032124519348145,
+                            false
+                        ]
+                    ],
+                    [
+                        [
+                            -10.782124519348145,
+                            false
+                        ]
+                    ]
+                ],
+                "filtered_resps": [
+                    [
+                        -11.032124519348145,
+                        false
+                    ],
+                    [
+                        -13.032124519348145,
+                        false
+                    ],
+                    [
+                        -10.782124519348145,
+                        false
+                    ]
+                ],
+                "filter": "none",
+                "metrics": [
+                    "f1"
+                ],
+                "doc_hash": "8cfefd8c2b2605e212cd034595339fa410dad5bb453a129a1ea4b28c46a16f77",
+                "prompt_hash": "3fb97ddfca46c2d49e04aaa3927ecdaf9f522b6d6f38fd8f654b84c098c50513",
+                "target_hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+                "f1": [
+                    0,
+                    2
+                ]
+            },
+            {
+                "doc_id": 1,
+                "doc": {
+                    "[TEXT]": "the acting is stiff , the story lacks all trace of wit , the sets look like they were borrowed from gilligan 's island -- and the cgi scooby might well be the worst special-effects creation of the year .",
+                    "label": 0,
+                    "choices": "['negative', 'neutral', 'positive']"
+                },
+                "target": 0,
+                "arguments": [
+                    [
+                        "Is the sentiment of the text positive? the acting is stiff , the story lacks all trace of wit , the sets look like they were borrowed from gilligan 's island -- and the cgi scooby might well be the worst special-effects creation of the year .",
+                        " negative"
+                    ],
+                    [
+                        "Is the sentiment of the text positive? the acting is stiff , the story lacks all trace of wit , the sets look like they were borrowed from gilligan 's island -- and the cgi scooby might well be the worst special-effects creation of the year .",
+                        " neutral"
+                    ],
+                    [
+                        "Is the sentiment of the text positive? the acting is stiff , the story lacks all trace of wit , the sets look like they were borrowed from gilligan 's island -- and the cgi scooby might well be the worst special-effects creation of the year .",
+                        " positive"
+                    ]
+                ],
+                "resps": [
+                    [
+                        [
+                            -14.506999969482422,
+                            false
+                        ]
+                    ],
+                    [
+                        [
+                            -16.256999969482422,
+                            false
+                        ]
+                    ],
+                    [
+                        [
+                            -14.881999969482422,
+                            false
+                        ]
+                    ]
+                ],
+                "filtered_resps": [
+                    [
+                        -14.506999969482422,
+                        false
+                    ],
+                    [
+                        -16.256999969482422,
+                        false
+                    ],
+                    [
+                        -14.881999969482422,
+                        false
+                    ]
+                ],
+                "filter": "none",
+                "metrics": [
+                    "f1"
+                ],
+                "doc_hash": "6ee35e42d9ae7877c45112a8fd88f45cd942882e7adc17cb975d272496885e74",
+                "prompt_hash": "dc6945e4b01d6c622e610a68be87ff2a650045e724dd4a96302df0dbcf543449",
+                "target_hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+                "f1": [
+                    0,
+                    0
+                ]
+            },
+            {
+                "doc_id": 2,
+                "doc": {
+                    "[TEXT]": "murder by numbers is like a couple of mediocre tv-movie - of-the-week films clumsily stuck together .",
+                    "label": 0,
+                    "choices": "['negative', 'neutral', 'positive']"
+                },
+                "target": 0,
+                "arguments": [
+                    [
+                        "Is the sentiment of the text positive? murder by numbers is like a couple of mediocre tv-movie - of-the-week films clumsily stuck together .",
+                        " negative"
+                    ],
+                    [
+                        "Is the sentiment of the text positive? murder by numbers is like a couple of mediocre tv-movie - of-the-week films clumsily stuck together .",
+                        " neutral"
+                    ],
+                    [
+                        "Is the sentiment of the text positive? murder by numbers is like a couple of mediocre tv-movie - of-the-week films clumsily stuck together .",
+                        " positive"
+                    ]
+                ],
+                "resps": [
+                    [
+                        [
+                            -12.336584091186523,
+                            false
+                        ]
+                    ],
+                    [
+                        [
+                            -14.336584091186523,
+                            false
+                        ]
+                    ],
+                    [
+                        [
+                            -12.586584091186523,
+                            false
+                        ]
+                    ]
+                ],
+                "filtered_resps": [
+                    [
+                        -12.336584091186523,
+                        false
+                    ],
+                    [
+                        -14.336584091186523,
+                        false
+                    ],
+                    [
+                        -12.586584091186523,
+                        false
+                    ]
+                ],
+                "filter": "none",
+                "metrics": [
+                    "f1"
+                ],
+                "doc_hash": "e97ce4cfebe563bcefa6b86476076a7f85468327c743e4e8679a705fa1973b89",
+                "prompt_hash": "dde9b7d94ad08b1e0817be7e834ef8cd76275e199e46b43d21c5ce5005417571",
+                "target_hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+                "f1": [
+                    0,
+                    0
+                ]
+            },
+            {
+                "doc_id": 3,
+                "doc": {
+                    "[TEXT]": "what could and should have been biting and droll is instead a tepid waste of time and talent .",
+                    "label": 0,
+                    "choices": "['negative', 'neutral', 'positive']"
+                },
+                "target": 0,
+                "arguments": [
+                    [
+                        "Is the sentiment of the text positive? what could and should have been biting and droll is instead a tepid waste of time and talent .",
+                        " negative"
+                    ],
+                    [
+                        "Is the sentiment of the text positive? what could and should have been biting and droll is instead a tepid waste of time and talent .",
+                        " neutral"
+                    ],
+                    [
+                        "Is the sentiment of the text positive? what could and should have been biting and droll is instead a tepid waste of time and talent .",
+                        " positive"
+                    ]
+                ],
+                "resps": [
+                    [
+                        [
+                            -12.297735214233398,
+                            false
+                        ]
+                    ],
+                    [
+                        [
+                            -15.172735214233398,
+                            false
+                        ]
+                    ],
+                    [
+                        [
+                            -12.110235214233398,
+                            false
+                        ]
+                    ]
+                ],
+                "filtered_resps": [
+                    [
+                        -12.297735214233398,
+                        false
+                    ],
+                    [
+                        -15.172735214233398,
+                        false
+                    ],
+                    [
+                        -12.110235214233398,
+                        false
+                    ]
+                ],
+                "filter": "none",
+                "metrics": [
+                    "f1"
+                ],
+                "doc_hash": "71dc0b86de6196afdda8a9ea6d5c9a8054a97c4543e4c765a87593b8e62fe788",
+                "prompt_hash": "1f36437ced122317c8e2d4e7c50e8619651009e8639186e4d28b7995a517deee",
+                "target_hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+                "f1": [
+                    0,
+                    2
+                ]
+            },
+            {
+                "doc_id": 4,
+                "doc": {
+                    "[TEXT]": "if we do n't demand a standard of quality for the art that we choose , we deserve the trash that we get .",
+                    "label": 0,
+                    "choices": "['negative', 'neutral', 'positive']"
+                },
+                "target": 0,
+                "arguments": [
+                    [
+                        "Is the sentiment of the text positive? if we do n't demand a standard of quality for the art that we choose , we deserve the trash that we get .",
+                        " negative"
+                    ],
+                    [
+                        "Is the sentiment of the text positive? if we do n't demand a standard of quality for the art that we choose , we deserve the trash that we get .",
+                        " neutral"
+                    ],
+                    [
+                        "Is the sentiment of the text positive? if we do n't demand a standard of quality for the art that we choose , we deserve the trash that we get .",
+                        " positive"
+                    ]
+                ],
+                "resps": [
+                    [
+                        [
+                            -11.0712251663208,
+                            false
+                        ]
+                    ],
+                    [
+                        [
+                            -13.9462251663208,
+                            false
+                        ]
+                    ],
+                    [
+                        [
+                            -11.4462251663208,
+                            false
+                        ]
+                    ]
+                ],
+                "filtered_resps": [
+                    [
+                        -11.0712251663208,
+                        false
+                    ],
+                    [
+                        -13.9462251663208,
+                        false
+                    ],
+                    [
+                        -11.4462251663208,
+                        false
+                    ]
+                ],
+                "filter": "none",
+                "metrics": [
+                    "f1"
+                ],
+                "doc_hash": "eaf51f1cf31c94c33715329fa6cf52aa0e2c6bf608cbea6b507de451e82c0910",
+                "prompt_hash": "38c912b311f3d5843d8e9b8ee509bc0dc0ff983bffd0b7bbf153010d641b4245",
+                "target_hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+                "f1": [
+                    0,
+                    0
+                ]
+            },
+            {
+                "doc_id": 5,
+                "doc": {
+                    "[TEXT]": "a lousy movie that 's not merely unwatchable , but also unlistenable .",
+                    "label": 0,
+                    "choices": "['negative', 'neutral', 'positive']"
+                },
+                "target": 0,
+                "arguments": [
+                    [
+                        "Is the sentiment of the text positive? a lousy movie that 's not merely unwatchable , but also unlistenable .",
+                        " negative"
+                    ],
+                    [
+                        "Is the sentiment of the text positive? a lousy movie that 's not merely unwatchable , but also unlistenable .",
+                        " neutral"
+                    ],
+                    [
+                        "Is the sentiment of the text positive? a lousy movie that 's not merely unwatchable , but also unlistenable .",
+                        " positive"
+                    ]
+                ],
+                "resps": [
+                    [
+                        [
+                            -13.51855182647705,
+                            false
+                        ]
+                    ],
+                    [
+                        [
+                            -15.64355182647705,
+                            false
+                        ]
+                    ],
+                    [
+                        [
+                            -13.89355182647705,
+                            false
+                        ]
+                    ]
+                ],
+                "filtered_resps": [
+                    [
+                        -13.51855182647705,
+                        false
+                    ],
+                    [
+                        -15.64355182647705,
+                        false
+                    ],
+                    [
+                        -13.89355182647705,
+                        false
+                    ]
+                ],
+                "filter": "none",
+                "metrics": [
+                    "f1"
+                ],
+                "doc_hash": "b51eb72cb0542a4677cc7473687c54faabc5812cfe24dbfcf22b9324aae97c94",
+                "prompt_hash": "2297ff2cd8e6e70f2b2af756d78f3e18be7990ad595fc3a6a108a32659594b1f",
+                "target_hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+                "f1": [
+                    0,
+                    0
+                ]
+            },
+            {
+                "doc_id": 6,
+                "doc": {
+                    "[TEXT]": "a grim , flat and boring werewolf movie that refuses to develop an energy level .",
+                    "label": 0,
+                    "choices": "['negative', 'neutral', 'positive']"
+                },
+                "target": 0,
+                "arguments": [
+                    [
+                        "Is the sentiment of the text positive? a grim , flat and boring werewolf movie that refuses to develop an energy level .",
+                        " negative"
+                    ],
+                    [
+                        "Is the sentiment of the text positive? a grim , flat and boring werewolf movie that refuses to develop an energy level .",
+                        " neutral"
+                    ],
+                    [
+                        "Is the sentiment of the text positive? a grim , flat and boring werewolf movie that refuses to develop an energy level .",
+                        " positive"
+                    ]
+                ],
+                "resps": [
+                    [
+                        [
+                            -11.684892654418945,
+                            false
+                        ]
+                    ],
+                    [
+                        [
+                            -13.622392654418945,
+                            false
+                        ]
+                    ],
+                    [
+                        [
+                            -11.559892654418945,
+                            false
+                        ]
+                    ]
+                ],
+                "filtered_resps": [
+                    [
+                        -11.684892654418945,
+                        false
+                    ],
+                    [
+                        -13.622392654418945,
+                        false
+                    ],
+                    [
+                        -11.559892654418945,
+                        false
+                    ]
+                ],
+                "filter": "none",
+                "metrics": [
+                    "f1"
+                ],
+                "doc_hash": "1f0ebfd7f1c259bda52a7d00d6b2442a5787a039d03b676c88090e698982c842",
+                "prompt_hash": "5ce4b250fb5c9ed8df78d5db7048efd0d5ec64e1754050829dc2fc519beb5e37",
+                "target_hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+                "f1": [
+                    0,
+                    2
+                ]
+            },
+            {
+                "doc_id": 7,
+                "doc": {
+                    "[TEXT]": "` abandon all hope , ye who enter here ' ... you should definitely let dante 's gloomy words be your guide .",
+                    "label": 0,
+                    "choices": "['negative', 'neutral', 'positive']"
+                },
+                "target": 0,
+                "arguments": [
+                    [
+                        "Is the sentiment of the text positive? ` abandon all hope , ye who enter here ' ... you should definitely let dante 's gloomy words be your guide .",
+                        " negative"
+                    ],
+                    [
+                        "Is the sentiment of the text positive? ` abandon all hope , ye who enter here ' ... you should definitely let dante 's gloomy words be your guide .",
+                        " neutral"
+                    ],
+                    [
+                        "Is the sentiment of the text positive? ` abandon all hope , ye who enter here ' ... you should definitely let dante 's gloomy words be your guide .",
+                        " positive"
+                    ]
+                ],
+                "resps": [
+                    [
+                        [
+                            -13.137203216552734,
+                            false
+                        ]
+                    ],
+                    [
+                        [
+                            -14.824703216552734,
+                            false
+                        ]
+                    ],
+                    [
+                        [
+                            -13.199703216552734,
+                            false
+                        ]
+                    ]
+                ],
+                "filtered_resps": [
+                    [
+                        -13.137203216552734,
+                        false
+                    ],
+                    [
+                        -14.824703216552734,
+                        false
+                    ],
+                    [
+                        -13.199703216552734,
+                        false
+                    ]
+                ],
+                "filter": "none",
+                "metrics": [
+                    "f1"
+                ],
+                "doc_hash": "0af52bfff8a2c38a35261f5808e75f618dfd436be82e152bb86127a1970fa58b",
+                "prompt_hash": "48208f00076dcf525912a7208d81b3fe8227f3d2cb10deddaf75c9f8817b4715",
+                "target_hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+                "f1": [
+                    0,
+                    0
+                ]
+            },
+            {
+                "doc_id": 8,
+                "doc": {
+                    "[TEXT]": "julia is played with exasperating blandness by laura regan .",
+                    "label": 0,
+                    "choices": "['negative', 'neutral', 'positive']"
+                },
+                "target": 0,
+                "arguments": [
+                    [
+                        "Is the sentiment of the text positive? julia is played with exasperating blandness by laura regan .",
+                        " negative"
+                    ],
+                    [
+                        "Is the sentiment of the text positive? julia is played with exasperating blandness by laura regan .",
+                        " neutral"
+                    ],
+                    [
+                        "Is the sentiment of the text positive? julia is played with exasperating blandness by laura regan .",
+                        " positive"
+                    ]
+                ],
+                "resps": [
+                    [
+                        [
+                            -11.656181335449219,
+                            false
+                        ]
+                    ],
+                    [
+                        [
+                            -12.468681335449219,
+                            false
+                        ]
+                    ],
+                    [
+                        [
+                            -11.531181335449219,
+                            false
+                        ]
+                    ]
+                ],
+                "filtered_resps": [
+                    [
+                        -11.656181335449219,
+                        false
+                    ],
+                    [
+                        -12.468681335449219,
+                        false
+                    ],
+                    [
+                        -11.531181335449219,
+                        false
+                    ]
+                ],
+                "filter": "none",
+                "metrics": [
+                    "f1"
+                ],
+                "doc_hash": "83d46b8aec93ab8e3a3d491faf075a24c5adc0f47d94206dd25936d13eccb3ff",
+                "prompt_hash": "aecbd59fdac5d8a5658757cb83b1dde7f31b78e460cdb4c484591df58d180244",
+                "target_hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+                "f1": [
+                    0,
+                    2
+                ]
+            },
+            {
+                "doc_id": 9,
+                "doc": {
+                    "[TEXT]": "instead of accurately accounting a terrible true story , the film 's more determined to become the next texas chainsaw massacre .",
+                    "label": 0,
+                    "choices": "['negative', 'neutral', 'positive']"
+                },
+                "target": 0,
+                "arguments": [
+                    [
+                        "Is the sentiment of the text positive? instead of accurately accounting a terrible true story , the film 's more determined to become the next texas chainsaw massacre .",
+                        " negative"
+                    ],
+                    [
+                        "Is the sentiment of the text positive? instead of accurately accounting a terrible true story , the film 's more determined to become the next texas chainsaw massacre .",
+                        " neutral"
+                    ],
+                    [
+                        "Is the sentiment of the text positive? instead of accurately accounting a terrible true story , the film 's more determined to become the next texas chainsaw massacre .",
+                        " positive"
+                    ]
+                ],
+                "resps": [
+                    [
+                        [
+                            -12.21875,
+                            false
+                        ]
+                    ],
+                    [
+                        [
+                            -14.59375,
+                            false
+                        ]
+                    ],
+                    [
+                        [
+                            -12.40625,
+                            false
+                        ]
+                    ]
+                ],
+                "filtered_resps": [
+                    [
+                        -12.21875,
+                        false
+                    ],
+                    [
+                        -14.59375,
+                        false
+                    ],
+                    [
+                        -12.40625,
+                        false
+                    ]
+                ],
+                "filter": "none",
+                "metrics": [
+                    "f1"
+                ],
+                "doc_hash": "a1caac01009dbd035600b0624a5454d795e24fc61e1b08fc074fdcd2da0958fb",
+                "prompt_hash": "36ad43deb02c1057aa39074bafa41cfcb341b58aa0d7455a5c4463b5a136ff86",
+                "target_hash": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+                "f1": [
+                    0,
+                    0
+                ]
+            }
+        ]
+    },
+    "config": {
+        "model": "vllm",
+        "model_args": {
+            "pretrained": "openai-community/gpt2"
+        },
+        "batch_size": null,
+        "batch_sizes": [],
+        "device": null,
+        "use_cache": null,
+        "limit": 10,
+        "bootstrap_iters": 100000,
+        "gen_kwargs": null,
+        "random_seed": 0,
+        "numpy_seed": 1234,
+        "torch_seed": 1234,
+        "fewshot_seed": 1234
+    },
+    "git_hash": "397772c",
+    "date": 1741341594.1365702,
+    "pretty_env_info": "PyTorch version: 2.5.1+cu124\nIs debug build: False\nCUDA used to build PyTorch: 12.4\nROCM used to build PyTorch: N/A\n\nOS: Ubuntu 22.04.4 LTS (x86_64)\nGCC version: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0\nClang version: 14.0.0-1ubuntu1.1\nCMake version: version 3.31.6\nLibc version: glibc-2.35\n\nPython version: 3.11.11 (main, Dec  4 2024, 08:55:07) [GCC 11.4.0] (64-bit runtime)\nPython platform: Linux-6.1.85+-x86_64-with-glibc2.35\nIs CUDA available: True\nCUDA runtime version: 12.5.82\nCUDA_MODULE_LOADING set to: LAZY\nGPU models and configuration: GPU 0: Tesla T4\nNvidia driver version: 550.54.15\ncuDNN version: Probably one of the following:\n/usr/lib/x86_64-linux-gnu/libcudnn.so.9.2.1\n/usr/lib/x86_64-linux-gnu/libcudnn_adv.so.9.2.1\n/usr/lib/x86_64-linux-gnu/libcudnn_cnn.so.9.2.1\n/usr/lib/x86_64-linux-gnu/libcudnn_engines_precompiled.so.9.2.1\n/usr/lib/x86_64-linux-gnu/libcudnn_engines_runtime_compiled.so.9.2.1\n/usr/lib/x86_64-linux-gnu/libcudnn_graph.so.9.2.1\n/usr/lib/x86_64-linux-gnu/libcudnn_heuristic.so.9.2.1\n/usr/lib/x86_64-linux-gnu/libcudnn_ops.so.9.2.1\nHIP runtime version: N/A\nMIOpen runtime version: N/A\nIs XNNPACK available: True\n\nCPU:\nArchitecture:                         x86_64\nCPU op-mode(s):                       32-bit, 64-bit\nAddress sizes:                        46 bits physical, 48 bits virtual\nByte Order:                           Little Endian\nCPU(s):                               2\nOn-line CPU(s) list:                  0,1\nVendor ID:                            GenuineIntel\nModel name:                           Intel(R) Xeon(R) CPU @ 2.00GHz\nCPU family:                           6\nModel:                                85\nThread(s) per core:                   2\nCore(s) per socket:                   1\nSocket(s):                            1\nStepping:                             3\nBogoMIPS:                             4000.35\nFlags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch invpcid_single ssbd ibrs ibpb stibp fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm mpx avx512f avx512dq rdseed adx smap clflushopt clwb avx512cd avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves arat md_clear arch_capabilities\nHypervisor vendor:                    KVM\nVirtualization type:                  full\nL1d cache:                            32 KiB (1 instance)\nL1i cache:                            32 KiB (1 instance)\nL2 cache:                             1 MiB (1 instance)\nL3 cache:                             38.5 MiB (1 instance)\nNUMA node(s):                         1\nNUMA node0 CPU(s):                    0,1\nVulnerability Gather data sampling:   Not affected\nVulnerability Itlb multihit:          Not affected\nVulnerability L1tf:                   Mitigation; PTE Inversion\nVulnerability Mds:                    Vulnerable; SMT Host state unknown\nVulnerability Meltdown:               Vulnerable\nVulnerability Mmio stale data:        Vulnerable\nVulnerability Reg file data sampling: Not affected\nVulnerability Retbleed:               Vulnerable\nVulnerability Spec rstack overflow:   Not affected\nVulnerability Spec store bypass:      Vulnerable\nVulnerability Spectre v1:             Vulnerable: __user pointer sanitization and usercopy barriers only; no swapgs barriers\nVulnerability Spectre v2:             Vulnerable; IBPB: disabled; STIBP: disabled; PBRSB-eIBRS: Not affected; BHI: Vulnerable (Syscall hardening enabled)\nVulnerability Srbds:                  Not affected\nVulnerability Tsx async abort:        Vulnerable\n\nVersions of relevant libraries:\n[pip3] numpy==1.26.4\n[pip3] optree==0.14.1\n[pip3] torch==2.5.1+cu124\n[pip3] torchaudio==2.5.1+cu124\n[pip3] torchsummary==1.5.1\n[pip3] torchvision==0.20.1+cu124\n[pip3] triton==3.1.0\n[conda] Could not collect",
+    "transformers_version": "4.48.3",
+    "upper_git_hash": null,
+    "tokenizer_pad_token": [
+        "<|endoftext|>",
+        "50256"
+    ],
+    "tokenizer_eos_token": [
+        "<|endoftext|>",
+        "50256"
+    ],
+    "tokenizer_bos_token": [
+        "<|endoftext|>",
+        "50256"
+    ],
+    "eot_token_id": 50256,
+    "max_length": 1024
+}

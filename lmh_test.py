@@ -72,7 +72,7 @@ for anjson in sorted(os.listdir(PASSED_ANNOTATORS),
         if len(args.question_indices) == len(ann_obj['answers']):
             quantifier = "all"
         else:
-            quantifier = "-".join(args.question_indices)
+            quantifier = "-".join([str(d) for d in args.question_indices])
         with open(os.path.join(results_dir, f"annotator{ann_obj['id']}-question_{quantifier}.json"), "w+") as resf:
             resf.write(json.dumps(results, indent=4, ensure_ascii=False, default=convert_to_json_friendly)) 
     else:
