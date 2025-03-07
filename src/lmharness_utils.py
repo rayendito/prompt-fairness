@@ -44,6 +44,7 @@ def convert_to_json_friendly(obj):
         return "NON JSON SERIALIZABLE"
 
 def create_task_def(
+        annotator_id,
         dataset_file,
         task_type,
         question_index,
@@ -54,7 +55,7 @@ def create_task_def(
 ):
     dataset_name = dataset_file.replace(".csv", "")
     task_def = {
-        "task": f"question_{question_index}_{dataset_name}",
+        "task": f"annotator_{str(annotator_id)}-question_{question_index}-{dataset_name}",
         "test_split": "test",
         "dataset_path": "csv",
         "dataset_name": None,
