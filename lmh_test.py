@@ -111,16 +111,15 @@ for anjson in sorted(os.listdir(PASSED_ANNOTATORS)):
                     }
                     tasks_to_run.append(tskdef)
             else:
-                print(f"task type {TASK_EVAL_TYPE} not implemented yet.")
-            # break
+                raise NotImplementedError(f"task type {TASK_EVAL_TYPE} not implemented yet.")
+
     print(f"{len(tasks_to_run)=}")
     results = lm_eval.simple_evaluate(
         model="vllm",
         model_args = {
             "pretrained" : "openai-community/gpt2"
         },
-        # tasks=[tasks_to_run[2]],
-        tasks=[tasks_to_run[0], tasks_to_run[2]],
+        tasks=[tasks_to_run[2]],
         num_fewshot=0,
         task_manager=task_manager,
         limit=10,
