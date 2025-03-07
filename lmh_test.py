@@ -18,7 +18,7 @@ args = parser.parse_args()
 if args.question_indices != "all":
     args.question_indices = [int(d) for d in args.question_indices.split(",")] 
 
-results_dir = f"lm_harness_runs/{args.run_name}"
+results_dir = f"lm_harness_runs/"
 os.makedirs(results_dir, exist_ok=True)
 
 all_tasks = []
