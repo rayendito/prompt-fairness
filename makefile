@@ -1,2 +1,2 @@
 qobj :
-	python src/llmans_postprocess.py
+	python src/scripts/llmans_postprocess.py

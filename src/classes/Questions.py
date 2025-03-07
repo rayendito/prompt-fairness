@@ -37,7 +37,7 @@ class Questions:
                         question_scores.append(annobj['answers'][rd['question_raw']][sm])
                 self.questions[rd['question_raw']]['rejected_avg_scores'][f"{sm}"] = (sum(question_scores) / len(question_scores)) if len(question_scores) > 0 else None
         
-        with open("question_object.json", "w") as lkj:
+        with open("question_artefacts/question_object.json", "w") as lkj:
             lkj.write(json.dumps(self.questions, indent=4))
 
     def get_questions(self):

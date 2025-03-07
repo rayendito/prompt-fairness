@@ -2,8 +2,8 @@ import os, json, argparse
 import lm_eval # type: ignore
 import pandas as pd
 import numpy as np
-from src.Questions import Questions
-from src.lmharness_utils import *
+from src import Questions
+from src.utils.lmharness_utils import *
 
 parser = argparse.ArgumentParser()
 task_manager = lm_eval.tasks.TaskManager()

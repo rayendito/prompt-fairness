@@ -1,2 +1,3 @@
-from .Annotator import *
-from .AnnotatorManager import *
+from .classes.Annotator import *
+from .classes.AnnotatorManager import *
+from .classes.Questions import *
