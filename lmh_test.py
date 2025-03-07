@@ -119,26 +119,29 @@ for anjson in sorted(os.listdir(PASSED_ANNOTATORS)):
                         }]
                     }
             else:
-                raise NotImplementedError(f"task type {TASK_EVAL_TYPE} not implemented yet.")
-            
+                tskdef = None
+        
+        if(tskdef):
             if(args.question_index == "all"):
                 tasks_to_run.append(tskdef)
             elif(i == args.question_index):
                 tasks_to_run.append(tskdef)
                 break
 
-    print(f"annotator id :{ann_obj["id"]}\ntasks to run : {len(tasks_to_run)}")
-    results = lm_eval.simple_evaluate(
-        model="vllm",
-        model_args = {
-            "pretrained" : args.model_string
-        },
-        tasks=tasks_to_run,
-        num_fewshot=0,
-        task_manager=task_manager,
-        limit=10,
-        write_out = True,
-        log_samples = True,
-    )
-    with open(os.path.join(results_dir, f"annotator{ann_obj[id]}-question_{args.question_index}.json"), "w+") as resf:
-        resf.write(json.dumps(results, indent=4, ensure_ascii=False, default=convert_to_json_friendly)) 
+    print(f"Annotator id :{ann_obj['id']}\nTasks to run : {len(tasks_to_run)}")
+    
+    # if(len(tasks_to_run) > 0):
+    #     results = lm_eval.simple_evaluate(
+    #         model="vllm",
+    #         model_args = {
+    #             "pretrained" : args.model_string
+    #         },
+    #         tasks=tasks_to_run,
+    #         num_fewshot=0,
+    #         task_manager=task_manager,
+    #         limit=10,
+    #         write_out = True,
+    #         log_samples = True,
+    #     )
+    #     with open(os.path.join(results_dir, f"annotator{ann_obj['id']}-question_{args.question_index}.json"), "w+") as resf:
+    #         resf.write(json.dumps(results, indent=4, ensure_ascii=False, default=convert_to_json_friendly)) 
