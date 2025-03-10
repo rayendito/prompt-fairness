@@ -42,14 +42,16 @@ def get_empty_question_profile(empty=[]):
         },
     }
 
-def update_question_profile(empty_profile, row, filler):
+def update_question_profile(empty_profile, row, filler, exclude_highschool):
     if(filler == "population"):
         value = [1]
     else:
         value = [row[filler]]
-    
+
     for pc in PROFILE_COLUMNS:
         if (pc == "Employment-sector"):
+            if exclude_highschool and is_highschool(row):
+                continue
             if row[pc] in ["Medicine"]:
                 empty_profile["employment_sector"]["Health-STEM"] += value
             elif row[pc] in ["Manufacturing", "Science, Technology, Engineering & Mathematics", "Technology and Telecommunications", "Manufacturing and Industry"]:
@@ -57,6 +59,8 @@ def update_question_profile(empty_profile, row, filler):
             elif row[pc] in ["Arts", "Hospitality & Tourism", "Education & Training", "Policing", "Government & Public Administration", "Business Management & Administration", "Legal", "Education and Research", "Hospitality and Tourism"]:
                 empty_profile["employment_sector"]["Humanities"] += value
         elif (pc == "Ethnicity simplified"):
+            if exclude_highschool and is_highschool(row):
+                continue
             if row[pc] == "White" :
                 empty_profile["race"]["White"] += value
             elif row[pc] == "Asian":
@@ -75,6 +79,8 @@ def update_question_profile(empty_profile, row, filler):
             elif row[pc] in ["Graduate degree (MA/MSc/MPhil/other)", "Doctorate degree (PhD/other)", "Master degree"]:
                 empty_profile["education"]["Postgraduate"] += value
         elif (pc == "Sex"):
+            if exclude_highschool and is_highschool(row):
+                continue
             if row[pc] == "Male":
                 empty_profile["sex"]["male"] += value
             else:
@@ -87,6 +93,8 @@ def update_question_profile(empty_profile, row, filler):
             elif 41 <= row[pc] and row[pc] <= 50 :
                 empty_profile["age"]["41-50"] += value
         elif (pc == "English speaking monolingual"):
+            if exclude_highschool and is_highschool(row):
+                continue
             if row[pc] in ["I only know English"]:
                 empty_profile["language"]["L1"] += value
             elif row[pc] in ["Guaranteed non English L1"]:
@@ -94,9 +102,7 @@ def update_question_profile(empty_profile, row, filler):
 
 def reduce_dict(d, method="avg"):
     def compute(lst):
-        print(lst)
         cleaned = [x for x in lst if not (isinstance(x, float) and pd.isna(x))]
-        print(cleaned)
         if not cleaned:
             return 0
         return sum(cleaned) if method == "sum" else sum(cleaned) / len(cleaned)
@@ -107,3 +113,8 @@ def reduce_dict(d, method="avg"):
         return compute(d)
     else:
         return d
+    
+def is_highschool(row):
+    if row["Highest education level completed"] in ["High school diploma/A-levels", "Technical/community college", "Highschool"]:
+        return True
+    return False

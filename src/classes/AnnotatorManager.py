@@ -32,11 +32,10 @@ class AnnotatorManager:
                 asdasd.write(json.dumps(question_profiles, indent=4))
     
     @staticmethod
-    def get_profile_of_question(df, filler="population"):
+    def get_profile_of_question(df, filler="population", exclude_highschool=False):
         empty_profile = get_empty_question_profile()
         for i, row in df.iterrows():
-            update_question_profile(empty_profile, row, filler)
-        breakpoint()
+            update_question_profile(empty_profile, row, filler, exclude_highschool)
         if(filler == "population"):
             return reduce_dict(empty_profile, method="sum")
         elif("score" in filler):
