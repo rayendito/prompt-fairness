@@ -71,12 +71,21 @@ if(len(all_tasks) > 0):
         task_manager=task_manager,
         write_out = True,
         log_samples = True,
+        limit=1,
     )
     if len(args.question_indices) == len(ann_obj['answers']):
         quantifier = "all"
     else:
         quantifier = "-".join([str(d) for d in args.question_indices])
-    with open(os.path.join(results_dir, f"{args.run_name}-question_{quantifier}.json"), "w+") as resf:
-        resf.write(json.dumps(results, indent=4, ensure_ascii=False, default=convert_to_json_friendly)) 
+    respath = os.path.join(results_dir, f"{args.run_name}")
+    os.makedirs(respath, exist_ok=True)
+    with open(os.path.join(respath, f"results-{args.run_name}-question_{quantifier}.json"), "w+") as res_res:
+        res_res.write(json.dumps(results["results"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
+    with open(os.path.join(respath, f"samples-{args.run_name}-question_{quantifier}.json"), "w+") as res_sa:
+        res_sa.write(json.dumps(results["samples"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
+    with open(os.path.join(respath, f"configs-{args.run_name}-question_{quantifier}.json"), "w+") as res_configs:
+        res_configs.write(json.dumps(results["configs"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
+    with open(os.path.join(respath, f"config-{args.run_name}-question_{quantifier}.json"), "w+") as res_config:
+        res_config.write(json.dumps(results["config"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
 else:
     print(f"no tasks to run for annotator{ann_obj['id']}!")

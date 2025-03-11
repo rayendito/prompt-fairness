@@ -1,0 +1,2162 @@
+{
+    "annotator_0-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_10-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_100-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_101-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_104-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_105-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_11-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_16-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_17-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_19-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_2-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_22-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_23-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_25-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_26-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_27-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_28-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_29-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_3-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_31-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_32-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_34-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_35-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_36-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_37-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_38-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_39-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_4-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_41-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_42-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_43-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_45-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_46-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_47-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_48-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_49-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_5-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_50-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_51-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_52-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_53-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_54-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_55-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_57-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_58-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_6-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_60-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_61-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_63-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_64-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_65-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_66-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_67-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_7-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_70-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_71-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_73-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_74-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_75-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_76-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_77-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_78-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_8-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_80-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_81-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_82-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_84-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_85-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_86-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_89-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_9-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_90-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_92-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_93-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_94-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_95-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_96-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_97-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_98-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    },
+    "annotator_99-question_0-500-sentiment_3class": {
+        "dataset_path": "csv",
+        "dataset_kwargs": {
+            "data_files": {
+                "test": "/content/prompt-fairness/question_artefacts/test_datasets/500-sentiment_3class.csv"
+            }
+        },
+        "test_split": "test",
+        "doc_to_text": "    def doc_to_text(doc):\n        rs = ANNOTATOR_PROMPT\n        if (len(PLACEHOLDERS) > 0):\n            for ph in PLACEHOLDERS:\n                rs = rs.replace(ph, doc[ph])\n            return rs\n        else:\n            return rs\n",
+        "doc_to_target": "        def doc_to_target(doc):\n            if(len(LABELS) == 1):\n                return int(doc[LABELS[0]])\n            else:\n                # TODO: implement for the one with more labels\n                print(f\"{LABELS=}\")\n                raise NotImplementedError()\n",
+        "unsafe_code": false,
+        "doc_to_choice": "    def doc_to_choice(doc):\n        return ast.literal_eval(doc[CHOICES])\n",
+        "description": "",
+        "target_delimiter": " ",
+        "fewshot_delimiter": "\n\n",
+        "num_fewshot": 0,
+        "metric_list": [
+            {
+                "metric": "f1",
+                "aggregation": "def weighted_f1_score(items):\n    from sklearn.metrics import f1_score\n\n    unzipped_list = list(zip(*items))\n    golds = unzipped_list[0]\n    preds = unzipped_list[1]\n    fscore = f1_score(golds, preds, average=\"weighted\")\n    return fscore\n",
+                "higher_is_better": true
+            }
+        ],
+        "output_type": "multiple_choice",
+        "repeats": 1,
+        "should_decontaminate": false
+    }
+}
