@@ -26,7 +26,7 @@ class AnnotatorManager:
             for question in questions.keys():
                 if question in self.all_df.columns:
                     df_nonnan = self.all_df[["annotator_id", question] + PROFILE_COLUMNS].dropna(subset=[question])
-                    question_profiles[question] = AnnotatorManager.get_profile_of_question(df_nonnan)
+                    question_profiles[question] = AnnotatorManager.get_profile_of_question(df_nonnan, exclude_highschool=True)
                 
             with open("question_artefacts/question_profiles.json", "w") as asdasd:
                 asdasd.write(json.dumps(question_profiles, indent=4))

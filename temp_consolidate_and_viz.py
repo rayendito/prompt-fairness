@@ -1,23 +1,53 @@
-import json
+import json, argparse
 import pandas as pd
+import matplotlib.pyplot as plt
 from src import AnnotatorManager, Questions
 
-questions = Questions().get_questions()
-ann_manager = AnnotatorManager(questions, "passed_annotator_objects")
+parser = argparse.ArgumentParser()
+parser.add_argument("--result_json_file", type=str, required=True, help="result json file")
+parser.add_argument("--question_number", type=str, required=True, help="question number")
+args = parser.parse_args()
 
-res_json_path = "lm_harness_runs/openaigpt2-limit10-question_0.json"
+questions = Questions().get_questions()
+questions_profile_count = json.load(open("question_artefacts/question_profiles.json", "r"))
+question_list = list(questions_profile_count.keys())
+ann_manager = AnnotatorManager(questions, "passed_annotator_objects", refresh_qp_file=True)
+
+res_json_path = f"lm_harness_runs/{args.result_json_file}"
 results_obj = json.load(open(res_json_path, "r"))['results']
 
 res_dataset  = []
 for k, v in results_obj.items():
     res_dataset.append({
         "annotator_id" : int(k.split("-")[0].split("_")[-1]),
-        "question_0_score" : v['f1,none']
+        f"question_{args.result_json_file}_score" : v['f1,none']
     })
 
 df = pd.DataFrame(res_dataset)
 merged_df = pd.merge(ann_manager.all_df, df, on='annotator_id', how='left')
 
-asdasd = ann_manager.get_profile_of_question(merged_df, filler="question_0_score", exclude_highschool=True)
-with open("q1_score_dist.json", "w") as wkek:
-    wkek.write(json.dumps(asdasd, indent=4))
+question_demo_count = questions_profile_count[question_list[int(args.question_number)]]
+question_profile_score = ann_manager.get_profile_of_question(merged_df, filler=f"question_{args.result_json_file}_score", exclude_highschool=True)
+
+fig, axes = plt.subplots(2, len(question_profile_score), figsize=(15, 10), gridspec_kw={'height_ratios': [1, 1]})
+for i, (category, values) in enumerate(question_profile_score.items()):
+    labels, scores = zip(*values.items())
+    axes[0, i].bar(labels, scores, color='skyblue')
+    axes[0, i].set_title(category)
+    axes[0, i].set_xticks(range(len(labels)))  # Set fixed tick positions
+    axes[0, i].set_xticklabels(labels, rotation=45, ha='right')
+    axes[0, i].set_ylim(0, 1)
+    axes[0, i].grid(axis='y', linestyle='--', alpha=0.7)
+    
+    # Pie chart for annotator count
+    count_labels, count_values = zip(*question_demo_count[category].items())
+    wedges, texts, autotexts = axes[1, i].pie(count_values, labels=count_labels, autopct=lambda p: f'{int(p * sum(count_values) / 100)}', colors=plt.cm.Paired.colors)
+    for text in autotexts:
+        text.set_fontsize(10)
+    axes[1, i].set_title(f"{category} count")
+
+fig.suptitle(f"{args.result_json_file.replace(".json", "")} Scores by Category", fontsize=16)
+plt.tight_layout()
+plt.savefig(f"lm_harness_results/visualizations/viz-{args.result_json_file.replace(".json", ".png")}", dpi=300)
+with open(f"lm_harness_results/demography_stats/demoscores-{args.result_json_file}", "w") as dmjs:
+    dmjs.write(json.dumps(question_profile_score, indent=4))
