@@ -43,8 +43,6 @@ for i, (category, values) in enumerate(question_profile_score.items()):
     # Pie chart for annotator count
     count_labels, count_values = zip(*question_demo_count[category].items())
     wedges, _ = axes[1, i].pie(count_values, labels=count_values, colors=plt.cm.Paired.colors)
-    # for text in autotexts:
-    #     text.set_fontsize(10)
     axes[1, i].set_title(f"{category} count")
     axes[1, i].legend(wedges, count_labels, loc="upper center", fontsize=8, bbox_to_anchor=(0.5, -0.01))
 
