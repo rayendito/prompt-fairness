@@ -18,9 +18,9 @@ def get_empty_question_profile(empty=[]):
         "race" : {
             "White" : empty.copy(),
             "Asian" : empty.copy(),
-            "Mixed" : empty.copy(),
             "Black" : empty.copy(),
-            "Other" : empty.copy(),
+            # "Mixed" : empty.copy(),
+            # "Other" : empty.copy(),
         },
         "education" : {
             "Highschool" : empty.copy(),
@@ -65,12 +65,12 @@ def update_question_profile(empty_profile, row, filler, exclude_highschool):
                 empty_profile["race"]["White"] += value
             elif row[pc] == "Asian":
                 empty_profile["race"]["Asian"] += value
-            elif row[pc] == "Mixed":
-                empty_profile["race"]["Mixed"] += value
             elif row[pc] == "Black":
                 empty_profile["race"]["Black"] += value
-            elif row[pc] == "Other":
-                empty_profile["race"]["Other"] += value
+            # elif row[pc] == "Mixed":
+            #     empty_profile["race"]["Mixed"] += value
+            # elif row[pc] == "Other":
+            #     empty_profile["race"]["Other"] += value
         elif (pc == "Highest education level completed"):
             if row[pc] in ["High school diploma/A-levels", "Technical/community college", "Highschool"]:
                 empty_profile["education"]["Highschool"] += value
