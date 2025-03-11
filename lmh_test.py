@@ -69,7 +69,6 @@ if(len(all_tasks) > 0):
         tasks=all_tasks,
         num_fewshot=0,
         task_manager=task_manager,
-        limit=10,
         write_out = True,
         log_samples = True,
     )
