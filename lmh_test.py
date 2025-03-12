@@ -71,7 +71,6 @@ if(len(all_tasks) > 0):
         task_manager=task_manager,
         write_out = True,
         log_samples = True,
-        limit=1,
     )
     if len(args.question_indices) == len(ann_obj['answers']):
         quantifier = "all"

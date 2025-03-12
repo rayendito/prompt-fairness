@@ -1,0 +1,15 @@
+#!/bin/bash
+#SBATCH --job-name=gpt2-question0
+#SBATCH --output="%x-%j.out"
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user="Ryandito.Diandaru@mbzuai.ac.ae"
+#SBATCH --time=72:00:00
+#SBATCH --gres=gpu:1
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --mem=200G
+#SBATCH -p cscc-gpu-p
+#SBATCH -q cscc-gpu-qos
+
+
+python lmh_test.py --run_name "gpt2_question0" --model_string "openai-community/gpt2" --question_indices 0
