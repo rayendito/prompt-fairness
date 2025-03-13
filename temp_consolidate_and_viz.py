@@ -5,7 +5,7 @@ from src import AnnotatorManager, Questions
 
 # parsers
 parser = argparse.ArgumentParser()
-parser.add_argument("--result_json_file", type=str, required=True, help="result json file")
+parser.add_argument("--experiment_name", type=str, required=True, help="result json file")
 parser.add_argument("--question_number", type=str, required=True, help="question number")
 args = parser.parse_args()
 
@@ -16,20 +16,20 @@ questions_profile_count = json.load(open("question_artefacts/question_profiles.j
 question_list = list(questions_profile_count.keys())
 
 # result object
-res_json_path = f"lm_harness_runs/{args.result_json_file}"
-results_obj = json.load(open(res_json_path, "r"))['results']
+res_json_path = f"lm_harness_runs/{args.experiment_name}/results-{args.experiment_name}-question_{args.question_number}.json"
+results_obj = json.load(open(res_json_path, "r"))
 res_dataset  = []
 for k, v in results_obj.items():
     res_dataset.append({
         "annotator_id" : int(k.split("-")[0].split("_")[-1]),
-        f"question_{args.result_json_file}_score" : v['f1,none']
+        f"question_{args.experiment_name}_score" : v['f1,none']
     })
 df = pd.DataFrame(res_dataset)
 merged_df = pd.merge(ann_manager.all_df, df, on='annotator_id', how='left')
 
 # visualization
 question_demo_count = questions_profile_count[question_list[int(args.question_number)]]
-question_profile_score = ann_manager.get_profile_of_question(merged_df, filler=f"question_{args.result_json_file}_score")
+question_profile_score = ann_manager.get_profile_of_question(merged_df, filler=f"question_{args.experiment_name}_score")
 fig, axes = plt.subplots(2, len(question_profile_score), figsize=(15, 10), gridspec_kw={'height_ratios': [1, 1]})
 for i, (category, values) in enumerate(question_profile_score.items()):
     labels, scores = zip(*values.items())
@@ -47,8 +47,8 @@ for i, (category, values) in enumerate(question_profile_score.items()):
     axes[1, i].legend(wedges, count_labels, loc="upper center", fontsize=8, bbox_to_anchor=(0.5, -0.01))
 
 
-fig.suptitle(f"{args.result_json_file.replace(".json", "")} Scores by Category", fontsize=16)
+fig.suptitle(f"{args.experiment_name.replace(".json", "")} Scores by Category", fontsize=16)
 plt.tight_layout()
-plt.savefig(f"lm_harness_processed/visualizations/visualization-{args.result_json_file.replace(".json", ".png")}", dpi=300)
-with open(f"lm_harness_processed/demography_stats/demoscores-{args.result_json_file}", "w") as dmjs:
+plt.savefig(f"lm_harness_processed/visualizations/visualization-{args.experiment_name.replace(".json", ".png")}", dpi=300)
+with open(f"lm_harness_processed/demography_stats/demoscores-{args.experiment_name}.json", "w") as dmjs:
     dmjs.write(json.dumps(question_profile_score, indent=4))
