@@ -4,6 +4,8 @@ import pandas as pd
 import numpy as np
 from src import Questions
 from src.utils.lmharness_utils import *
+from dotenv import load_dotenv
+load_dotenv()
 
 parser = argparse.ArgumentParser()
 task_manager = lm_eval.tasks.TaskManager()

@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=gpt2-question0
+#SBATCH --job-name=llama3dot2_1B_Instruct-question0
 #SBATCH --output="%x-%j.out"
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user="Ryandito.Diandaru@mbzuai.ac.ae"
@@ -12,4 +12,4 @@
 #SBATCH -q cscc-gpu-qos
 
 
-python lmh_test.py --run_name "gpt2_question0" --model_string "openai-community/gpt2" --question_indices 0
+python lmh_test.py --run_name "llama3dot2_1B_Instruct-question0" --model_string "meta-llama/Llama-3.2-1B-Instruct" --question_indices 0
