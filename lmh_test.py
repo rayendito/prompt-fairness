@@ -73,7 +73,6 @@ if(len(all_tasks) > 0):
         task_manager=task_manager,
         write_out = True,
         log_samples = True,
-        limit=10,
     )
     if len(args.question_indices) == len(ann_obj['answers']):
         quantifier = "all"
@@ -83,6 +82,7 @@ if(len(all_tasks) > 0):
     os.makedirs(respath, exist_ok=True)
     with open(os.path.join(respath, f"results-{args.run_name}-question_{quantifier}.json"), "w+") as res_res:
         res_res.write(json.dumps(results["results"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
+    # TODO : store samples in the big cluster
     with open(os.path.join(respath, f"samples-{args.run_name}-question_{quantifier}.json"), "w+") as res_sa:
         res_sa.write(json.dumps(results["samples"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
     with open(os.path.join(respath, f"configs-{args.run_name}-question_{quantifier}.json"), "w+") as res_configs:
