@@ -11,5 +11,6 @@
 #SBATCH -p cscc-gpu-p
 #SBATCH -q cscc-gpu-qos
 
-
+conda activate env_prompt_fairness
+export TOKENIZERS_PARALLELISM=false
 python lmh_test.py --run_name "gpt2-question0lim100" --model_string "openai-community/gpt2" --question_indices 0
