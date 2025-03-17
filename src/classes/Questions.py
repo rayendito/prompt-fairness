@@ -36,6 +36,7 @@ class Questions:
                 "prompt_injections" : self.get_injections(rd['placeholder']),
                 "choices" : rd['choices'].strip() if not pd.isna(rd['choices']) else None,
                 "labels" : custom_labels if custom_dataset else (self.get_cell_list(rd['label'])),
+                "metrics" : rd['metric_name'].strip().split("\n") if not pd.isna(rd['metric_name']) else [],
             }
 
             for sm in ["gpt-4o-mini-3gram_score", "gpt-4o-3gram_score", "chatgpt-4o-latest-3gram_score"]:
