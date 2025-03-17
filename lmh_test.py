@@ -79,11 +79,12 @@ if(len(all_tasks) > 0):
     else:
         quantifier = "-".join([str(d) for d in args.question_indices])
     respath = os.path.join(results_dir, f"{args.run_name}")
+    respath_samples = os.path.join("/l/users/ryandito.diandaru","prompt_fairness_outputs")
     os.makedirs(respath, exist_ok=True)
+    os.makedirs(respath_samples, exist_ok=True)
     with open(os.path.join(respath, f"results-{args.run_name}-question_{quantifier}.json"), "w+") as res_res:
         res_res.write(json.dumps(results["results"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
-    # TODO : store samples in the big cluster
-    with open(os.path.join(respath, f"samples-{args.run_name}-question_{quantifier}.json"), "w+") as res_sa:
+    with open(os.path.join(respath_samples, f"samples-{args.run_name}-question_{quantifier}.json"), "w+") as res_sa:
         res_sa.write(json.dumps(results["samples"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
     with open(os.path.join(respath, f"configs-{args.run_name}-question_{quantifier}.json"), "w+") as res_configs:
         res_configs.write(json.dumps(results["configs"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
