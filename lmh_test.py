@@ -42,7 +42,7 @@ for anjson in sorted(os.listdir(PASSED_ANNOTATORS),
             TASK_EVAL_TYPE = questions[q]['task_eval_type']
             LABELS = questions[q]['labels']
             CHOICES = questions[q]['choices']
-            
+
             for dataset_file in questions[q]['dataset']:
                 tskdef = create_task_def(
                     annotator_id = ann_obj['id'],
@@ -57,10 +57,9 @@ for anjson in sorted(os.listdir(PASSED_ANNOTATORS),
                 local_tasks.append(tskdef)
             tasks_to_run += local_tasks
 
-    print(f"Annotator id : {ann_obj['id']}", end=" === ")
-    print(f"Tasks to run : {len(tasks_to_run)}")
+    # print(f"Annotator id : {ann_obj['id']}", end=" === ")
+    # print(f"Tasks to run : {len(tasks_to_run)}")
     all_tasks += tasks_to_run
-
 print(f"total tasks to run {len(all_tasks)}")
 if(len(all_tasks) > 0):
     results = lm_eval.simple_evaluate(

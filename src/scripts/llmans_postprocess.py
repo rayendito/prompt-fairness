@@ -2,7 +2,7 @@ import json
 import pandas as pd
 
 SAMPLE_FOR_EACH_QUESTION = 5
-QUESTIONS_FILE = "question_artefacts/pfairness_questions_only.csv"
+QUESTIONS_FILE = "question_artefacts/pfairness_questions - questions_only.csv"
 PROMPT_HISTORY_FILE =  "question_artefacts/history-openai_answers.json"
 
 questions_df = pd.read_csv(QUESTIONS_FILE, header=0)
