@@ -13,4 +13,9 @@
 
 conda activate env_prompt_fairness
 export TOKENIZERS_PARALLELISM=false
-python lmh_test.py --run_name "gpt2-question0lim100" --model_string "openai-community/gpt2" --question_indices 0
+python lmh_test.py --run_name "llama3dot2_1BIns-question0" --model_string "meta-llama/Llama-3.2-1B-Instruct" --question_indices 0
+python lmh_test.py --run_name "llama3dot2_1BIns-question1" --model_string "meta-llama/Llama-3.2-1B-Instruct" --question_indices 1
+python lmh_test.py --run_name "llama3dot2_1BIns-question2" --model_string "meta-llama/Llama-3.2-1B-Instruct" --question_indices 2
+python lmh_test.py --run_name "llama3dot2_1BIns-question3" --model_string "meta-llama/Llama-3.2-1B-Instruct" --question_indices 3
+python lmh_test.py --run_name "llama3dot2_1BIns-question4" --model_string "meta-llama/Llama-3.2-1B-Instruct" --question_indices 4
+python lmh_test.py --run_name "llama3dot2_1BIns-question20" --model_string "meta-llama/Llama-3.2-1B-Instruct" --question_indices 20
