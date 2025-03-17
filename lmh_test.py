@@ -52,7 +52,8 @@ for anjson in sorted(os.listdir(PASSED_ANNOTATORS),
                     annotator_prompt=ANNOTATOR_PROMPT,
                     placeholders=PLACEHOLDERS,
                     labels=LABELS,
-                    choices=CHOICES
+                    choices=CHOICES,
+                    metrics=questions[q]['metrics']
                 )
                 local_tasks.append(tskdef)
             tasks_to_run += local_tasks

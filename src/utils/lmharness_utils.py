@@ -43,26 +43,15 @@ def convert_to_json_friendly(obj):
     else:
         return "NON JSON SERIALIZABLE"
 
-def get_metric_list(task_type):
-    if task_type=="multiple_choice":
-        return [{
-            "metric": "f1",
-            "aggregation": weighted_f1_score,
+def get_metric_list(metrics):
+    metric_objs = []
+    for m in metrics:
+        metric_objs.append({
+            "metric": m,
+            "aggregation": m if m != "f1" else weighted_f1_score,
             "higher_is_better": True,
-        }]
-    elif(task_type=="generate_until"):
-        return [
-            {
-                "metric": "bleu",
-                "aggregation": "bleu",
-                "higher_is_better": True,
-            },
-            {
-                "metric": "rouge",
-                "aggregation": "rouge",
-                "higher_is_better": True,
-            },
-        ]
+        })
+    return metric_objs
 
 def create_task_def(
         annotator_id,
@@ -73,6 +62,7 @@ def create_task_def(
         placeholders,
         labels,
         choices,
+        metrics
 ):
     dataset_name = dataset_file.replace(".csv", "")
     task_def = {
@@ -88,7 +78,7 @@ def create_task_def(
                 "test": f"{os.getcwd()}/question_artefacts/test_datasets/{dataset_file}"
             }
         },
-        "metric_list": get_metric_list(task_type)
+        "metric_list": get_metric_list(metrics)
     }
     
     if task_type == "multiple_choice":
