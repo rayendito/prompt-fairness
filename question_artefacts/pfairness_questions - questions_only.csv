@@ -293,8 +293,8 @@ Answer: [""food"", ""positive""] [""service"", ""negative""]
 You are using a language model like ChatGPT to perform this task. The possible sentiment labels are positive, negative, and neutral. You expect the language model to output a list of words or phrases, each followed by its corresponding sentiment label. For example: ['bed', 'positive'], ['breakfast', 'neutral'].
 
 How would you phrase your request to the language model? The placeholder [TEXT] must be included in your prompt.","ABSA-Semeval2014 Task 4
-https://huggingface.co/datasets/Akash092003/ABSA-alpaca-SemEval2014Task4/",<<[TEXT]>>,generate_until,"500-absa-laptops.csv
-500-absa-restaurants.csv",,output,absa,,,
+https://huggingface.co/datasets/Akash092003/ABSA-alpaca-SemEval2014Task4/",<<[TEXT]>>,generate_until,"500-absa_laptops.csv
+500-absa_restaurants.csv",,output,absa,,,
 26,"You want to determine whether a given sentence is grammatically correct (CORRECT) or not (INCORRECT). Notably, grammaticality itself does not care about the meaningfulness of the sentence. The question is solely whether the sentence seems to violate some grammar rules of the target language or not.<b>Example:</b>The girl with many bags talk with Tim.INCORRECT (Why: since the number does not agree between the subject ""girl"" and its corresponding verb ""talk."")You are using a language model like ChatGPT to assess the grammaticality of a given sentence [TEXT]. You expect the output to be either <b>CORRECT</b> or <b>INCORRECT</b>.How would you phrase this request to the language model? <b>The placeholder [TEXT] must be included in your prompt.</b>","You want to determine whether a given sentence is grammatically correct (CORRECT) or not (INCORRECT). Notably, grammaticality itself does not care about the meaningfulness of the sentence. The question is solely whether the sentence seems to violate some grammar rules of the target language or not.
 
 Example:

@@ -1918,8 +1918,8 @@ Answer: [""food"", ""positive""] [""service"", ""negative""]
 You are using a language model like ChatGPT to perform this task. The possible sentiment labels are positive, negative, and neutral. You expect the language model to output a list of words or phrases, each followed by its corresponding sentiment label. For example: ['bed', 'positive'], ['breakfast', 'neutral'].
 
 How would you phrase your request to the language model? The placeholder [TEXT] must be included in your prompt.","ABSA-Semeval2014 Task 4
-https://huggingface.co/datasets/Akash092003/ABSA-alpaca-SemEval2014Task4/",<<[TEXT]>>,generate_until,"500-absa-laptops.csv
-500-absa-restaurants.csv",,output,absa,,,,"Please analyze the following text and identify the sentiment towards specific aspects mentioned in it. For each aspect, provide a list where each item is a word or phrase describing the aspect, followed by its corresponding sentiment label (positive, negative, or neutral). Use the format: ['aspect', 'sentiment']. The text is: [TEXT]","Please analyze the following text and identify the sentiment (positive, negative, or neutral) expressed toward specific aspects mentioned in it. Provide your answer as a list of aspects and their corresponding sentiment labels. 
+https://huggingface.co/datasets/Akash092003/ABSA-alpaca-SemEval2014Task4/",<<[TEXT]>>,generate_until,"500-absa_laptops.csv
+500-absa_restaurants.csv",,output,absa,,,,"Please analyze the following text and identify the sentiment towards specific aspects mentioned in it. For each aspect, provide a list where each item is a word or phrase describing the aspect, followed by its corresponding sentiment label (positive, negative, or neutral). Use the format: ['aspect', 'sentiment']. The text is: [TEXT]","Please analyze the following text and identify the sentiment (positive, negative, or neutral) expressed toward specific aspects mentioned in it. Provide your answer as a list of aspects and their corresponding sentiment labels. 
 
 Text: [TEXT]","Certainly! You can phrase your request to the language model as follows:
 
