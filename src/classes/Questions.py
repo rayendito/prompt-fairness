@@ -99,7 +99,11 @@ class Questions:
         
         return test
 
-    def create_dummy_dataset(self, question_index, label):    
+    def create_dummy_dataset(self, question_index, label):
+        # TODO: tech debt lol, this is to take into account the deleted question.
+        if question_index >=9:
+            question_index -= 1
+
         lines = label.split("\n")
         result = {}
         current_key = None

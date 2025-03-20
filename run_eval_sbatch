@@ -7,7 +7,7 @@
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --mem=200G
+#SBATCH --mem=100G
 #SBATCH -p cscc-gpu-p
 #SBATCH -q cscc-gpu-qos
 
