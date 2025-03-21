@@ -2,12 +2,19 @@ import os, ast
 import numpy as np
 from lm_eval.utils import weighted_f1_score # type: ignore
 
+def add_quotes(text):
+    if not text.startswith("\""):
+        text = "\"" + text
+    if not text.endswith("\""):
+        text += "\""
+    return text
+
 def create_doc_to_text(ANNOTATOR_PROMPT, PLACEHOLDERS):
     def doc_to_text(doc):
         rs = ANNOTATOR_PROMPT
         if (len(PLACEHOLDERS) > 0):
-            for ph in PLACEHOLDERS:
-                rs = rs.replace(ph, doc[ph])
+            for ph in PLACEHOLDERS: 
+                rs = rs.replace(ph, add_quotes(doc[ph]))
             return rs
         else:
             return rs
