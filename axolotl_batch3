@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=axolotl_gpu3
+#SBATCH --job-name=batch3_axolotl
 #SBATCH --output='%x-%j.out'
 #SBATCH --time=72:00:00
 #SBATCH --gres=gpu:1
@@ -18,3 +18,7 @@ python lmh_test.py --run_name 'llama32_1B_Inst-question4_0' --model_string 'meta
 python lmh_test.py --run_name 'llama32_1B_Inst-question2_5' --model_string 'meta-llama/Llama-3.2-1B-Instruct' --question_document_index 2_5
 python lmh_test.py --run_name 'llama32_1B_Inst-question2_13' --model_string 'meta-llama/Llama-3.2-1B-Instruct' --question_document_index 2_13
 python lmh_test.py --run_name 'llama32_1B_Inst-question18_0' --model_string 'meta-llama/Llama-3.2-1B-Instruct' --question_document_index 18_0
+python lmh_test.py --run_name 'llama32_1B_Inst-question2_1' --model_string 'meta-llama/Llama-3.2-1B-Instruct' --question_document_index 2_1
+python lmh_test.py --run_name 'llama32_1B_Inst-question2_9' --model_string 'meta-llama/Llama-3.2-1B-Instruct' --question_document_index 2_9
+python lmh_test.py --run_name 'llama32_1B_Inst-question6_0' --model_string 'meta-llama/Llama-3.2-1B-Instruct' --question_document_index 6_0
+python lmh_test.py --run_name 'llama32_1B_Inst-question14_0' --model_string 'meta-llama/Llama-3.2-1B-Instruct' --question_document_index 14_0
