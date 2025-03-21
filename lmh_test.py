@@ -17,12 +17,9 @@ parser.add_argument("--model_string", type=str, required=True, help="path to the
 parser.add_argument("--question_document_index", type=str, help="question index and document index")
 args = parser.parse_args()
 
-qdi = args.question_indices.split("_")
+qdi = args.question_document_index.split("_")
 question_index = int(qdi[0])
 document_index = int(qdi[1])
-
-results_dir = f"lm_harness_runs/"
-os.makedirs(results_dir, exist_ok=True)
 
 all_tasks = []
 for anjson in sorted(os.listdir(PASSED_ANNOTATORS),
@@ -63,13 +60,11 @@ if(len(all_tasks) > 0):
         write_out = True,
         log_samples = True,
     )
-    respath = os.path.join(results_dir, f"{args.run_name}")
-    respath_samples = os.getenv("SAMPLES_RESULTS_DIR")
+    respath = os.path.join(os.getenv("SAMPLES_RESULTS_DIR"), f"{args.run_name}")
     os.makedirs(respath, exist_ok=True)
-    os.makedirs(respath_samples, exist_ok=True)
     with open(os.path.join(respath, f"results-{args.run_name}-question_{args.question_document_index}.json"), "w+") as res_res:
         res_res.write(json.dumps(results["results"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
-    with open(os.path.join(respath_samples, f"samples-{args.run_name}-question_{args.question_document_index}.json"), "w+") as res_sa:
+    with open(os.path.join(respath, f"samples-{args.run_name}-question_{args.question_document_index}.json"), "w+") as res_sa:
         res_sa.write(json.dumps(results["samples"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
     with open(os.path.join(respath, f"configs-{args.run_name}-question_{args.question_document_index}.json"), "w+") as res_configs:
         res_configs.write(json.dumps(results["configs"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))

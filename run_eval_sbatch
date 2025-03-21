@@ -7,13 +7,17 @@
 #SBATCH --gres=gpu:1
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --mem=100G
+#SBATCH --mem=4G
 #SBATCH -p cscc-gpu-p
 #SBATCH -q cscc-gpu-qos
 
-python lmh_test.py --run_name "llama3dot2_1BIns-question0" --model_string "meta-llama/Llama-3.2-1B-Instruct" --question_indices 0
-python lmh_test.py --run_name "llama3dot2_1BIns-question1" --model_string "meta-llama/Llama-3.2-1B-Instruct" --question_indices 1
-python lmh_test.py --run_name "llama3dot2_1BIns-question2" --model_string "meta-llama/Llama-3.2-1B-Instruct" --question_indices 2
-python lmh_test.py --run_name "llama3dot2_1BIns-question3" --model_string "meta-llama/Llama-3.2-1B-Instruct" --question_indices 3
-python lmh_test.py --run_name "llama3dot2_1BIns-question4" --model_string "meta-llama/Llama-3.2-1B-Instruct" --question_indices 4
-python lmh_test.py --run_name "llama3dot2_1BIns-question20" --model_string "meta-llama/Llama-3.2-1B-Instruct" --question_indices 20
+export HF_HOME=/l/users/ryandito.diandaru/huggingface
+export HF_HUB_CACHE=/l/users/ryandito.diandaru/huggingface/hub
+export TRANSFORMERS_CACHE=/l/users/ryandito.diandaru/huggingface/transformers
+
+python lmh_test.py --run_name "llama3dot2_1BIns-test-question0" --model_string "meta-llama/Llama-3.2-1B-Instruct" --question_document_index 0_0
+python lmh_test.py --run_name "llama3dot2_1BIns-test-question2" --model_string "meta-llama/Llama-3.2-1B-Instruct" --question_document_index 2_2
+# python lmh_test.py --run_name "llama3dot2_1ns-question1" --model_string "meta-llama/Llama-3.2-1B-Instruct" --question_indices 1
+# python lmh_test.py --run_name "llama3dot2_1BIns-question3" --model_string "meta-llama/Llama-3.2-1B-Instruct" --question_indices 3
+# python lmh_test.py --run_name "llama3dot2_1BIns-question4" --model_string "meta-llama/Llama-3.2-1B-Instruct" --question_indices 4
+# python lmh_test.py --run_name "llama3dot2_1BIns-question20" --model_string "meta-llama/Llama-3.2-1B-Instruct" --question_indices 20BI
