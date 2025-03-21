@@ -1,0 +1,22 @@
+#!/bin/bash
+#SBATCH --job-name=axolotl_gpu1
+#SBATCH --output='%x-%j.out'
+#SBATCH --time=72:00:00
+#SBATCH --gres=gpu:1
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --mem=20G
+#SBATCH -p cscc-gpu-p
+#SBATCH -q cscc-gpu-qos
+
+export HF_HOME=/l/users/ryandito.diandaru/huggingface
+export HF_HUB_CACHE=/l/users/ryandito.diandaru/huggingface/hub
+export TRANSFORMERS_CACHE=/l/users/ryandito.diandaru/huggingface/transformers
+
+
+python lmh_test.py --run_name 'llama32_1B_Inst-question0_0' --model_string 'meta-llama/Llama-3.2-1B-Instruct' --question_document_index 0_0
+python lmh_test.py --run_name 'llama32_1B_Inst-question2_3' --model_string 'meta-llama/Llama-3.2-1B-Instruct' --question_document_index 2_3
+python lmh_test.py --run_name 'llama32_1B_Inst-question2_11' --model_string 'meta-llama/Llama-3.2-1B-Instruct' --question_document_index 2_11
+python lmh_test.py --run_name 'llama32_1B_Inst-question8_0' --model_string 'meta-llama/Llama-3.2-1B-Instruct' --question_document_index 8_0
+python lmh_test.py --run_name 'llama32_1B_Inst-question16_0' --model_string 'meta-llama/Llama-3.2-1B-Instruct' --question_document_index 16_0
+python lmh_test.py --run_name 'llama32_1B_Inst-question25_0' --model_string 'meta-llama/Llama-3.2-1B-Instruct' --question_document_index 25_0

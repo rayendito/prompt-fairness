@@ -1,0 +1,19 @@
+#!/bin/bash
+#SBATCH --job-name=axolotl_gpu5
+#SBATCH --output='%x-%j.out'
+#SBATCH --time=72:00:00
+#SBATCH --gres=gpu:1
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --mem=20G
+#SBATCH -p cscc-gpu-p
+#SBATCH -q cscc-gpu-qos
+
+export HF_HOME=/l/users/ryandito.diandaru/huggingface
+export HF_HUB_CACHE=/l/users/ryandito.diandaru/huggingface/hub
+export TRANSFORMERS_CACHE=/l/users/ryandito.diandaru/huggingface/transformers
+
+
+python lmh_test.py --run_name 'llama32_1B_Inst-question2_7' --model_string 'meta-llama/Llama-3.2-1B-Instruct' --question_document_index 2_7
+python lmh_test.py --run_name 'llama32_1B_Inst-question3_0' --model_string 'meta-llama/Llama-3.2-1B-Instruct' --question_document_index 3_0
+python lmh_test.py --run_name 'llama32_1B_Inst-question21_0' --model_string 'meta-llama/Llama-3.2-1B-Instruct' --question_document_index 21_0
