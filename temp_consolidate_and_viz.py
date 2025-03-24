@@ -1,6 +1,7 @@
 import os, sys, json, argparse
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 from dotenv import load_dotenv
 from src import AnnotatorManager, Questions
 load_dotenv()
@@ -9,6 +10,8 @@ load_dotenv()
 parser = argparse.ArgumentParser()
 parser.add_argument("--run_name", type=str, required=True, help="result json file")
 parser.add_argument("--question_document_index", type=str, help="question index and document index")
+
+print(f"visualizing {args.run_name} {args.question_document_index}")
 
 args = parser.parse_args()
 qdi = args.question_document_index.split("_")
@@ -43,31 +46,51 @@ if not os.path.isfile(res_json_path):
     print(f"Error: {res_json_path} does not exist. Make sure to run the experiment first")
     sys.exit(1)
 
-
+current_question = questions[question_list[int(question_index)]]
 results_obj = json.load(open(res_json_path, "r"))
 res_dataset  = []
 for k, v in results_obj.items():
     res_dataset.append({
         "annotator_id" : int(k.split("-")[0].split("_")[-1]),
-        f"question_{args.run_name}_score" : v['f1,none']
+        **{
+            f"question_{args.run_name}_{score}_score" : v[f'{score},none']
+            for score in current_question["metrics"]
+        }
     })
 df = pd.DataFrame(res_dataset)
 merged_df = pd.merge(ann_manager.all_df, df, on='annotator_id', how='left')
 
 # visualization
 question_demo_count = questions_profile_count[question_list[int(question_index)]]
-question_profile_score = ann_manager.get_profile_of_question(merged_df, filler=f"question_{args.run_name}_score")
-fig, axes = plt.subplots(2, len(question_profile_score), figsize=(15, 10), gridspec_kw={'height_ratios': [1, 1]})
-for i, (category, values) in enumerate(question_profile_score.items()):
-    labels, scores = zip(*values.items())
-    axes[0, i].bar(labels, scores, color='skyblue')
-    axes[0, i].set_title(category)
-    axes[0, i].set_xticks(range(len(labels)))  # Set fixed tick positions
-    axes[0, i].set_xticklabels(labels, rotation=45, ha='right')
-    axes[0, i].set_ylim(0, 1)
-    axes[0, i].grid(axis='y', linestyle='--', alpha=0.7)
-    
-    # Pie chart for annotator count
+question_score_profiles={}
+for score in current_question["metrics"]:
+    question_score_profiles[score] = ann_manager.get_profile_of_question(merged_df, filler=f"question_{args.run_name}_{score}_score")
+
+profile_categories = list(question_score_profiles[list(question_score_profiles.keys())[0]].keys())
+num_chunks = len(question_score_profiles)
+width = 0.8 / num_chunks
+
+fig, axes = plt.subplots(2, len(profile_categories), figsize=(15, 10), gridspec_kw={'height_ratios': [1, 1]})
+barlegend = []
+barlabels = []
+for i, metric in enumerate(question_score_profiles.keys()):
+    for j, category in enumerate(profile_categories):
+        labels, scores = zip(*question_score_profiles[metric][category].items())
+        x = np.arange(len(labels))
+        bar = axes[0, j].bar(x + (i - num_chunks / 2) * width, scores, width, label=metric)
+        if i == 0:
+            axes[0, j].set_title(category)
+            axes[0, j].set_xticks(range(len(labels)))
+            axes[0, j].set_xticklabels(labels, rotation=45, ha='right')
+            axes[0, j].set_ylim(0, 1)
+            axes[0, j].grid(axis='y', linestyle='--', alpha=0.7)
+        if j == 0:
+            barlegend.append(bar)
+            barlabels.append(metric)
+
+fig.legend(barlegend, barlabels)
+
+for i, category in enumerate(profile_categories):
     count_labels, count_values = zip(*question_demo_count[category].items())
     wedges, _ = axes[1, i].pie(count_values, labels=count_values, colors=plt.cm.Paired.colors)
     axes[1, i].set_title(f"{category} count")
@@ -78,4 +101,4 @@ fig.suptitle(f"{args.run_name.replace(".json", "")} dataset {document_index} Sco
 plt.tight_layout()
 plt.savefig(viz_file, dpi=300)
 with open(demo_file, "w") as dmjs:
-    dmjs.write(json.dumps(question_profile_score, indent=4))
+    dmjs.write(json.dumps(question_score_profiles, indent=4))

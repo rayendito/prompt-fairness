@@ -100,7 +100,7 @@ class Questions:
         return test
 
     def create_dummy_dataset(self, question_index, label):
-        # TODO: tech debt lol, this is to take into account the deleted question.
+        # TODO: TECH DEBT, this is to take into account the deleted question.
         if question_index >=9:
             question_index -= 1
 
