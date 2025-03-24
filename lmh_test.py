@@ -1,17 +1,14 @@
-import os, json, argparse
+import sys, os, json, argparse
 import lm_eval # type: ignore
 import pandas as pd
 import numpy as np
 from src import Questions
 from src.utils.lmharness_utils import *
 from dotenv import load_dotenv
+
 load_dotenv()
 
 parser = argparse.ArgumentParser()
-task_manager = lm_eval.tasks.TaskManager()
-PASSED_ANNOTATORS = "passed_annotator_objects"
-questions = Questions().get_questions()
-
 parser.add_argument("--run_name", type=str, required=True, help="run name")
 parser.add_argument("--model_string", type=str, required=True, help="path to the HF VLLM model")
 parser.add_argument("--question_document_index", type=str, help="question index and document index")
@@ -20,6 +17,19 @@ args = parser.parse_args()
 qdi = args.question_document_index.split("_")
 question_index = int(qdi[0])
 document_index = int(qdi[1])
+
+respath = os.path.join(os.getenv("SAMPLES_RESULTS_DIR"), f"{args.run_name}")
+
+if os.path.exists(respath):
+    print(f"Directory '{respath}' already exists (experiment have already finished running). Exiting.")
+    sys.exit(0)
+
+os.makedirs(respath, exist_ok=True)
+print(f"Created directory '{respath}'. Running inference...")
+
+task_manager = lm_eval.tasks.TaskManager()
+PASSED_ANNOTATORS = "passed_annotator_objects"
+questions = Questions().get_questions()
 
 all_tasks = []
 for anjson in sorted(os.listdir(PASSED_ANNOTATORS),
@@ -60,8 +70,6 @@ if(len(all_tasks) > 0):
         write_out = True,
         log_samples = True,
     )
-    respath = os.path.join(os.getenv("SAMPLES_RESULTS_DIR"), f"{args.run_name}")
-    os.makedirs(respath, exist_ok=True)
     with open(os.path.join(respath, f"results-{args.run_name}-question_{args.question_document_index}.json"), "w+") as res_res:
         res_res.write(json.dumps(results["results"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
     with open(os.path.join(respath, f"samples-{args.run_name}-question_{args.question_document_index}.json"), "w+") as res_sa:
