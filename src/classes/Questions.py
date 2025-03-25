@@ -24,6 +24,7 @@ class Questions:
 
             self.questions[rd['question_raw']] = {
                 "clean" : rd['question_clean'],
+                "nickname" : rd['question_nickname'],
                 "llm_answers" : {
                     "gpt-4o-mini" : [self.clean_artefacts(rd[f"gpt-4o-mini-ans_{i}"]) for i in range(1, Questions.LLMANS_PER_MODEL+1)],
                     "gpt-4o" : [self.clean_artefacts(rd[f"gpt-4o-ans_{i}"]) for i in range(1, Questions.LLMANS_PER_MODEL+1)],
