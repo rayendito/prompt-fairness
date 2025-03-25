@@ -1,3 +1,16 @@
+#! /bin/bash
+
+# identity
+#SBATCH --job-name=visualization
+#SBATCH --output="%x-%j.out"
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=Ryandito.Diandaru@mbzuai.ac.ae
+
+# compute configuration
+#SBATCH -p cscc-cpu-p
+#SBATCH -q cscc-cpu-qos
+#SBATCH --time=12:00:00
+
 model_name="llama32_1B_Inst"
 python temp_consolidate_and_viz.py --run_name "${model_name}-question0_0" --question_document_index 0_0
 python temp_consolidate_and_viz.py --run_name "${model_name}-question1_0" --question_document_index 1_0

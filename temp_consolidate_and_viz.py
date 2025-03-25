@@ -10,10 +10,9 @@ load_dotenv()
 parser = argparse.ArgumentParser()
 parser.add_argument("--run_name", type=str, required=True, help="result json file")
 parser.add_argument("--question_document_index", type=str, help="question index and document index")
+args = parser.parse_args()
 
 print(f"visualizing {args.run_name} {args.question_document_index}")
-
-args = parser.parse_args()
 qdi = args.question_document_index.split("_")
 question_index = int(qdi[0])
 document_index = int(qdi[1])
@@ -25,12 +24,6 @@ os.makedirs(viz_dir, exist_ok=True)
 os.makedirs(demo_dir, exist_ok=True)
 viz_file = os.path.join(viz_dir, f"visualization-{args.run_name}.png")
 demo_file = os.path.join(demo_dir, f"demoscores-{args.run_name}.json")
-
-if os.path.isfile(viz_file) and os.path.isfile(demo_file):
-    print(f"Visualization for {args.run_name} already exists in:")
-    print(viz_file)
-    print(demo_file)
-    sys.exit(0)
 
 # necessary question objects
 questions = Questions().get_questions()
@@ -82,7 +75,6 @@ for i, metric in enumerate(question_score_profiles.keys()):
             axes[0, j].set_title(category)
             axes[0, j].set_xticks(range(len(labels)))
             axes[0, j].set_xticklabels(labels, rotation=45, ha='right')
-            axes[0, j].set_ylim(0, 1)
             axes[0, j].grid(axis='y', linestyle='--', alpha=0.7)
         if j == 0:
             barlegend.append(bar)
