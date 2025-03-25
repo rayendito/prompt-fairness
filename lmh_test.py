@@ -19,9 +19,12 @@ question_index = int(qdi[0])
 document_index = int(qdi[1])
 
 respath = os.path.join(os.getenv("SAMPLES_RESULTS_DIR"), f"{args.run_name}")
+respath_test = os.path.join(respath, f"results-{args.run_name}-question_{args.question_document_index}.json")
 
-if os.path.exists(respath):
-    print(f"Directory '{respath}' already exists (experiment have already finished running). Exiting.")
+if os.path.exists(respath_test):
+    print("========================================================================================")
+    print(f"Directory '{respath_test}' already exists (experiment have already finished running).")
+    print("Exiting...")
     sys.exit(0)
 
 os.makedirs(respath, exist_ok=True)
