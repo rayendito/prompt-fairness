@@ -12,9 +12,12 @@ class Questions:
             for annjsp in os.listdir(rejected_dir_for_threshold_calc):
                 rejected_annotators.append(json.load(open(f"{rejected_dir_for_threshold_calc}/{annjsp}", "r")))
 
+        original_index_excluded_questions = [10]
+        qdf = qdf.drop(original_index_excluded_questions, axis=0)
+        qdf.reset_index(drop=True, inplace=True)
+
         for i, row in qdf.iterrows():
             rd = row.to_dict()
-
             custom_dataset =  False
             if (not pd.isna(rd['label']) and "<<CUSTOM>>" in rd['label']):
                 custom_dataset = True
@@ -101,10 +104,6 @@ class Questions:
         return test
 
     def create_dummy_dataset(self, question_index, label):
-        # TODO: TECH DEBT, this is to take into account the deleted question.
-        if question_index >=9:
-            question_index -= 1
-
         lines = label.split("\n")
         result = {}
         current_key = None
@@ -121,8 +120,8 @@ class Questions:
 
         dataset_name = f"question_{question_index}_test.csv"
         
-        if (os.path.exists(f"question_artefacts/test_datasets/{dataset_name}")):
-            return dataset_name, column_name[0]
+        # if (os.path.exists(f"question_artefacts/test_datasets/{dataset_name}")):
+        #     return dataset_name, column_name[0]
 
         df = pd.DataFrame({
             "prompt" : [""],
