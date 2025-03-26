@@ -82,7 +82,7 @@ elif question_attributes['task_eval_type'] == "generate_until":
             grid = {
                 "grid_info" : {
                     "project_name" : __package__,
-                    "run_name" : args.run_name,
+                    "run_name" : "llm_jugde_output-"+args.run_name,
                 },
                 "batches" : [{
                     "config" : {
