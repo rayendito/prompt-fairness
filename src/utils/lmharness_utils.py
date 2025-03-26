@@ -73,6 +73,7 @@ def create_task_def(
         metrics
 ):
     dataset_name = dataset_file.replace(".csv", "")
+    metrics_list = get_metric_list(metrics) if task_type == "multiple_choice" else []
     task_def = {
         "task": f"annotator_{str(annotator_id)}-question_{question_index}-{dataset_name}",
         "test_split": "test",
@@ -86,7 +87,7 @@ def create_task_def(
                 "test": f"{os.getcwd()}/question_artefacts/test_datasets/{dataset_file}"
             }
         },
-        "metric_list": get_metric_list(metrics)
+        "metric_list": metrics_list
     }
     
     if task_type == "multiple_choice":
