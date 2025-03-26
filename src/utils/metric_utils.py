@@ -12,7 +12,7 @@ def scorefunc_bleu(refs, preds):
     return sacrebleu.corpus_bleu(preds, [refs]).score
 
 def scorefunc_rouge(refs, preds):
-    return rouge_evaluate.compute(preds, refs)["rougeL"]
+    return rouge_evaluate.compute(predictions=preds, references=refs)["rougeL"]
 
 def scorefunc_or_custom(refs, preds):
     agg_scores = []
