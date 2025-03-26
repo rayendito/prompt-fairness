@@ -135,6 +135,8 @@ elif question_attributes['task_eval_type'] == "generate_until":
                 scoring_function=metric_utils.scorefunc_or_custom
             elif metric == "and_custom":
                 scoring_function=metric_utils.scorefunc_and_custom
+            elif metric == "embedding_similarity":
+                scoring_function=metric_utils.scorefunc_embedding_similarity
             elif metric == "absa_f1":
                 scoring_function=metric_utils.scorefunc_absa_f1
             elif metric == "squad_f1":
