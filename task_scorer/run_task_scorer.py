@@ -74,8 +74,8 @@ elif question_attributes['task_eval_type'] == "generate_until":
                 for test_instance in v:
                     llm_as_judge_prompts.append(metric_utils.llm_judge_prompt(
                         test_instance["arguments"][0][0],
-                        test_instance[test_instance["metrics"][0]][0],
-                        test_instance[test_instance["metrics"][0]][1],
+                        test_instance["doc"][question_attributes["labels"][0]],
+                        test_instance["resps"][0][0],
                     ))
                 
             # inferinter code
@@ -143,17 +143,15 @@ elif question_attributes['task_eval_type'] == "generate_until":
                 if annotator_index not in res_dataset:
                     res_dataset[annotator_index] = {}
                 
-                aggregation = []
+                refs = []
+                preds = []
                 for test_instance in v:
-                    refs = test_instance[metric][0]
-                    preds = test_instance[metric][1]
-                    aggregation.append(scoring_function(refs, preds))
-                
-                agg_avg = sum(aggregation)/len(aggregation)
+                    refs.append(test_instance["doc"][question_attributes["labels"][0]])
+                    preds.append(test_instance["resps"][0][0])
 
                 res_dataset[annotator_index][
                     f"{args.question_document_index}-{metric}_score-{question_attributes['nickname']}"
-                ] = agg_avg
+                ] = scoring_function(refs, preds)
 
     # saving all results
     df_obj_list = [

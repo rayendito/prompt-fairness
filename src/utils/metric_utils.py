@@ -1,26 +1,68 @@
 import re
+import sacrebleu
+import evaluate
 from fuzzywuzzy import fuzz
 
+rouge_evaluate = evaluate.load("rouge")
+
+# Each of the metric function takes in (as pairs):
+# refs : List[str]
+# preds: List[str]
 def scorefunc_bleu(refs, preds):
-    pass
+    return sacrebleu.corpus_bleu(preds, [refs]).score
 
 def scorefunc_rouge(refs, preds):
-    pass
+    return rouge_evaluate.compute(preds, refs)["rougeL"]
 
 def scorefunc_or_custom(refs, preds):
-    fuzzy_scores = []
-    for r in refs.split("\n"):
-        fuzzy_scores.append(fuzz.partial_ratio(r, preds)/100)
-    return max(fuzzy_scores)
+    agg_scores = []
+    for ref, pred in zip(refs, preds):
+        fuzzy_scores = []
+        for r in ref.split("\n"):
+            fuzzy_scores.append(fuzz.partial_ratio(r, pred)/100)
+        agg_scores.append(max(fuzzy_scores))
+    return sum(agg_scores)/len(agg_scores) if len(agg_scores) > 0 else 0
 
 def scorefunc_and_custom(refs, preds):
-    fuzzy_scores = []
-    for r in refs.split("\n"):
-        fuzzy_scores.append(fuzz.partial_ratio(r, preds)/100)
-    return sum(fuzzy_scores)/len(fuzzy_scores)
+    agg_scores = []
+    for ref, pred in zip(refs, preds):
+        fuzzy_scores = []
+        for r in ref.split("\n"):
+            fuzzy_scores.append(fuzz.partial_ratio(r, pred)/100)
+        agg_scores.append(sum(fuzzy_scores)/len(fuzzy_scores) if len(fuzzy_scores) > 0 else 0)
+    return sum(agg_scores)/len(agg_scores) if len(agg_scores) > 0 else 0
+
+def absa_parse_aspect_sentiment(input_strings):
+    pattern = r'\[([\'"])(.*?)[\'"],\s*([\'"])(.*?)[\'"]\]'
+    output = re.findall(pattern, input_strings)
+    if not output:
+        return {}
+    list_of_pairs = [[item[1], item[3]] for item in output]
+    return {pa[0] : pa[1] for pa in list_of_pairs}
 
 def scorefunc_absa_f1(refs, preds):
-    pass
+    agg_scores = []
+    for ref, pred in zip(refs, preds):
+        # adapted from https://github.com/IsakZhang/Generative-ABSA/blob/main/eval_utils.py
+        # number of true postive, gold standard, predicted aspect terms
+        gold_pt = absa_parse_aspect_sentiment(ref)
+        pred_pt = absa_parse_aspect_sentiment(pred)
+
+        n_tp = 0
+        n_gold = len(gold_pt)
+        n_pred = len(pred_pt)
+
+        for k, v in pred_pt.items():
+            if k in gold_pt and gold_pt[k] == v:
+                n_tp += 1
+
+        precision = float(n_tp) / float(n_pred) if n_pred != 0 else 0
+        recall = float(n_tp) / float(n_gold) if n_gold != 0 else 0
+        f1 = 2 * precision * recall / (precision + recall) if precision != 0 or recall != 0 else 0
+        scores = {'precision': precision, 'recall': recall, 'f1': f1}
+
+        agg_scores.append(scores['f1'])
+    return sum(agg_scores)/len(agg_scores) if len(agg_scores) > 0 else 0    
 
 def scorefunc_squad_f1(refs, preds):
     raise NotImplementedError("scorefunc_squad_f1 not yet implemented")
@@ -62,25 +104,3 @@ def llm_judge_extract_fn(msgs, model_answer):
         msgs["aggregations"]["llm_judge_score"] = float(score_parsed.group())
     
     return msgs
-
-# def is_msgs_done_fn(msgs):
-#     if "test_list" not in msgs["aggregations"]:
-#         return False
-#     else:
-#         if len(msgs["aggregations"]["test_list"]) == 2:
-#             return True
-#         else:
-#             return False
-
-# def extract_fn(msgs, model_answer):
-#     msgs['chat_history'].append({
-#         "role" : "assistant",
-#         "content" : model_answer
-#     })
-#     capital = model_answer.split()[-1]
-#     if "test_list" not in msgs["aggregations"]:
-#         msgs["aggregations"]["test_list"] = [capital]
-#     else:
-#         msgs["aggregations"]["test_list"].append(capital)
-    
-#     return msgs
