@@ -31,7 +31,7 @@ os.makedirs(respath, exist_ok=True)
 print(f"Created directory '{respath}'. Running inference...")
 
 task_manager = lm_eval.tasks.TaskManager()
-PASSED_ANNOTATORS = "passed_annotator_objects"
+PASSED_ANNOTATORS = "annotation_artefacts/passed_annotator_objects"
 questions = Questions().get_questions()
 
 all_tasks = []

@@ -27,7 +27,7 @@ demo_file = os.path.join(demo_dir, f"demoscores-{args.run_name}.json")
 
 # necessary question objects
 questions = Questions().get_questions()
-ann_manager = AnnotatorManager(questions, "passed_annotator_objects", refresh_qp_file=True)
+ann_manager = AnnotatorManager(questions, "annotation_artefacts/passed_annotator_objects", refresh_qp_file=True)
 questions_profile_count = json.load(open("question_artefacts/question_profiles.json", "r"))
 question_list = list(questions_profile_count.keys())
 

@@ -1,7 +1,7 @@
 import pandas as pd
 from src import Annotator, Questions
 
-final_df = pd.read_csv("annotation_result/aiusing_annotators.csv")
+final_df = pd.read_csv("annotation_artefacts/annotation_result/aiusing_annotators.csv")
 columns = final_df.columns.tolist()
 
 annotators = []
