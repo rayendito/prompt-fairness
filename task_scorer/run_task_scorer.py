@@ -36,6 +36,10 @@ qdi = args.question_document_index.split("_")
 question_index = int(qdi[0])
 document_index = int(qdi[1])
 current_question, question_attributes = list(questions.items())[question_index]
+subnickname = ""
+if question_index == 2 or question_index == 25:
+    dataset_string = question_attributes['dataset'][document_index]
+    subnickname = "-" + dataset_string.split(".")[0].split("-")[-1]
 
 csv_results_dir = f"lm_harness_processed/results_csv/{args.run_name.split("-")[0]}"
 os.makedirs(csv_results_dir, exist_ok=True)
@@ -46,7 +50,7 @@ if question_attributes['task_eval_type'] == "multiple_choice":
         res_dataset.append({
             "annotator_id" : int(k.split("-")[0].split("_")[-1]),
             **{
-                f"{args.question_document_index}-{score}_score-{question_attributes['nickname']}" : v[f'{score},none']
+                f"{args.question_document_index}-{score}_score-{question_attributes['nickname']}{subnickname}" : v[f'{score},none']
                 for score in question_attributes["metrics"]
             }
         })
@@ -55,7 +59,7 @@ if question_attributes['task_eval_type'] == "multiple_choice":
 elif question_attributes['task_eval_type'] == "generate_until":
     llm_judge_model = "gpt-4o-mini"
     res_dataset  = {}
-    for metric in question_attributes["metrics"] + ["llm_judge"]:
+    for metric in question_attributes["metrics"]:
         if metric == "llm_judge":            
             from ModelManager import ModelManager # type: ignore
             len_of_dataset = None
@@ -118,7 +122,7 @@ elif question_attributes['task_eval_type'] == "generate_until":
             
             for annotator_index, score in zip(annotator_id_order, llm_judge_scores_agg):
                 res_dataset[annotator_index][
-                    f"{args.question_document_index}-llm_judge_score-{question_attributes['nickname']}"
+                    f"{args.question_document_index}-llm_judge_score-{question_attributes['nickname']}{subnickname}"
                 ] = score
 
         else:
@@ -150,7 +154,7 @@ elif question_attributes['task_eval_type'] == "generate_until":
                     preds.append(test_instance["resps"][0][0])
 
                 res_dataset[annotator_index][
-                    f"{args.question_document_index}-{metric}_score-{question_attributes['nickname']}"
+                    f"{args.question_document_index}-{metric}_score-{question_attributes['nickname']}{subnickname}"
                 ] = scoring_function(refs, preds)
 
     # saving all results
