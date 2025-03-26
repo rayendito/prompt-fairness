@@ -12,7 +12,7 @@ parser.add_argument("--run_name", type=str, required=True, help="result json fil
 parser.add_argument("--question_document_index", type=str, help="question index and document index")
 args = parser.parse_args()
 
-print(f"visualizing {args.run_name} {args.question_document_index}")
+print(f"Visualizing {args.run_name} {args.question_document_index}")
 qdi = args.question_document_index.split("_")
 question_index = int(qdi[0])
 document_index = int(qdi[1])
