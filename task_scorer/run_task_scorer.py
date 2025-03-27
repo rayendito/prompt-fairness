@@ -139,8 +139,14 @@ elif question_attributes['task_eval_type'] == "generate_until":
                 scoring_function=metric_utils.scorefunc_embedding_similarity
             elif metric == "absa_f1":
                 scoring_function=metric_utils.scorefunc_absa_f1
-            elif metric == "squad_f1":
-                scoring_function=metric_utils.scorefunc_squad_f1
+            elif metric == "recipe_score":
+                scoring_function=metric_utils.scorefunc_recipe_score
+            elif metric == "mae":
+                scoring_function=metric_utils.scorefunc_mae
+            elif metric == "ner_f1":
+                scoring_function=metric_utils.scorefunc_ner_f1
+            elif metric == "requirement_checker":
+                scoring_function=metric_utils.scorefunc_requirement_checker
             else:
                 raise NotImplementedError(f"metric {metric} scoring scheme is not implemented!")
             

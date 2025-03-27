@@ -1,10 +1,12 @@
 import os, re
 import sacrebleu
 from fuzzywuzzy import fuzz
+from collections import Counter
 
 # Each of the metric function takes in (as pairs):
 # refs : List[str]
 # preds: List[str]
+
 def scorefunc_bleu(refs, preds):
     return sacrebleu.corpus_bleu(preds, [refs]).score
 
@@ -64,7 +66,7 @@ def scorefunc_absa_f1(refs, preds):
     return sum(agg_scores)/len(agg_scores) if len(agg_scores) > 0 else 0    
 
 def scorefunc_embedding_similarity(refs, preds):
-    from sentence_transformers import SentenceTransformer
+    from sentence_transformers import SentenceTransformer  # type: ignore
     hf_hub_cache = os.getenv("HF_HUB_CACHE")
     sent_transformer_model = SentenceTransformer("all-MiniLM-L6-v2", cache_folder=hf_hub_cache)
     refs = sent_transformer_model.encode(refs)
@@ -73,10 +75,38 @@ def scorefunc_embedding_similarity(refs, preds):
     for ref, pred in zip(refs, preds):
         similarities = sent_transformer_model.similarity(ref, pred)
         agg_scores.append(similarities.item())
-    return sum(agg_scores)/len(agg_scores) if len(agg_scores) > 0 else 0    
+    return sum(agg_scores)/len(agg_scores) if len(agg_scores) > 0 else 0
 
-def scorefunc_squad_f1(refs, preds):
-    raise NotImplementedError("scorefunc_squad_f1 not yet implemented")
+def scorefunc_recipe_score(refs, preds):
+    agg_scores = []
+    for ref, pred in zip(refs, preds):
+        ref_list_of_string = ref.strip().split("\n")
+        pred_list_of_string = pred.strip().split("\n")
+        
+        count_ref = Counter(ref_list_of_string)
+        count_pred = Counter(pred_list_of_string)
+
+        intersection = sum(min(count_ref[k], count_pred[k]) for k in count_ref.keys() & count_pred.keys())
+        precision = intersection / sum(count_pred.values()) if sum(count_pred.values()) > 0 else 0
+        recall = intersection / sum(count_ref.values()) if sum(count_ref.values()) > 0 else 0
+        
+        if precision + recall == 0:
+            agg_scores.append(0.0)
+        
+        agg_scores.append(2 * (precision * recall) / (precision + recall))
+
+    return sum(agg_scores)/len(agg_scores) if len(agg_scores) > 0 else 0
+
+def scorefunc_mae(refs, preds):
+    pass
+
+def scorefunc_ner_f1(refs, preds):
+    pass
+
+def scorefunc_recipe_score(refs, preds):
+    pass
+
+def scorefunc_requirement_checker(refs, preds):
     pass
 
 def llm_judge_prompt(prompt, refs, preds):
