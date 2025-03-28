@@ -72,6 +72,8 @@ elif question_attributes['task_eval_type'] == "generate_until":
                 prompt_function = metric_utils.llm_judge_prompt_science_project
             elif ("_aeni_school_life" in metric):
                 prompt_function = metric_utils.llm_judge_prompt_aeni_school_life
+            elif ("_grammar_sentence" in metric):
+                prompt_function = metric_utils.llm_judge_prompt_grammar_sentence
 
             for key in sorted(samples_json.keys(), key=lambda k: int(k.split("-")[0].split("_")[-1])):
                 annotator_id_order.append(int(key.split("-")[0].split("_")[-1]))

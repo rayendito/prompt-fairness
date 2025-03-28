@@ -211,6 +211,20 @@ This is the text:
 Answer only the XML format of the score: <score>0 (False) or 1(True)</score>
 """.strip()
 
+def llm_judge_prompt_grammar_sentence(prompt, refs, preds):
+    return f"""
+You are a judge that gives a score of grammar correctness given a reference and a prediction.
+On a scale of 0 (worst) to 1 (best), how would you rate the grammar correctness? (including punctuation, etc)
+
+Reference:
+{refs}
+
+Prediction:
+{preds}
+
+Answer only the XML format of the score: <score>0 (False) or 1(True)</score>
+""".strip()
+
 def llm_judge_is_msgs_done_fn(msgs):
     if "llm_judge_score" in msgs["aggregations"]:
         return True
