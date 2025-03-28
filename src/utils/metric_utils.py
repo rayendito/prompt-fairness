@@ -148,7 +148,7 @@ def scorefunc_requirement_checker(refs, preds):
         agg_scores.append(1 if is_pass else 0)
     return sum(agg_scores)/len(agg_scores) if len(agg_scores) > 0 else 0
 
-def llm_judge_prompt(prompt, refs, preds):
+def llm_judge_prompt_general(prompt, refs, preds):
     return f"""
 
 You are a judge that gives a score to a prediction answer based on how accurate it is compared to a reference answer.
@@ -165,6 +165,50 @@ Prediction Answer:
 {preds}
 
 Answer only the XML format of the score: <score>[float]</score>
+""".strip()
+
+def llm_judge_prompt_drum(prompt, refs, preds):
+    return f"""
+You are a judge that gives a holistic score to a text based on how accurate it is to these criteria:
+- How well it promotes cost
+- How well it promotes quality
+- How well it promotes environmental impact
+
+This is the text:
+{preds}
+
+Answer only the XML format of the score: <score>[float]</score>
+""".strip()
+
+def llm_judge_prompt_science_project(prompt, refs, preds):
+    return f"""
+You are a judge that gives a holistic score to a text based on how accurate it is to these criteria:
+- How convincing it is
+
+This is the text:
+{preds}
+
+Answer only the XML format of the score: <score>[float]</score>
+""".strip()
+
+def llm_judge_prompt_aeni_school_life(prompt, refs, preds):
+    return f"""
+You are a judge that gives a boolean score to a text based on how accurate it is to these criteria:
+
+1. The story has to be about:
+- Aeni's school life
+
+2. The story has exactly:
+- 2 dogs
+- 1 cat
+- 5 mice
+- 2 adults named 'Thomas' and 'Haroon'
+- 1 child named 'Aeni'
+
+This is the text:
+{preds}
+
+Answer only the XML format of the score: <score>0 (False) or 1(True)</score>
 """.strip()
 
 def llm_judge_is_msgs_done_fn(msgs):

@@ -60,11 +60,19 @@ elif question_attributes['task_eval_type'] == "generate_until":
     llm_judge_model = "gpt-4o-mini"
     res_dataset  = {}
     for metric in question_attributes["metrics"]:
-        if metric == "llm_judge":            
+        if "llm_judge" in metric:
             from ModelManager import ModelManager # type: ignore
             len_of_dataset = None
             llm_as_judge_prompts = []
             annotator_id_order = []
+            prompt_function = metric_utils.llm_judge_prompt_general
+            if ("_drum" in metric):
+                prompt_function = metric_utils.llm_judge_prompt_drum
+            elif ("_science_project" in metric):
+                prompt_function = metric_utils.llm_judge_prompt_science_project
+            elif ("_aeni_school_life" in metric):
+                prompt_function = metric_utils.llm_judge_prompt_aeni_school_life
+
             for key in sorted(samples_json.keys(), key=lambda k: int(k.split("-")[0].split("_")[-1])):
                 annotator_id_order.append(int(key.split("-")[0].split("_")[-1]))
                 v = samples_json[key]
@@ -76,7 +84,7 @@ elif question_attributes['task_eval_type'] == "generate_until":
                         raise ValueError("len of dataset mismatch!")
                     
                 for test_instance in v:
-                    llm_as_judge_prompts.append(metric_utils.llm_judge_prompt(
+                    llm_as_judge_prompts.append(prompt_function(
                         test_instance["arguments"][0][0],
                         test_instance["doc"][question_attributes["labels"][0]],
                         test_instance["resps"][0][0],
