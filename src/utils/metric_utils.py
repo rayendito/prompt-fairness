@@ -1,5 +1,6 @@
 import os, re
 import sacrebleu
+import numpy as np
 from fuzzywuzzy import fuzz
 from collections import Counter
 
@@ -33,36 +34,31 @@ def scorefunc_and_custom(refs, preds):
         agg_scores.append(sum(fuzzy_scores)/len(fuzzy_scores) if len(fuzzy_scores) > 0 else 0)
     return sum(agg_scores)/len(agg_scores) if len(agg_scores) > 0 else 0
 
-def absa_parse_aspect_sentiment(input_strings):
+def _absa_parse_aspect_sentiment(input_strings):
     pattern = r'\[([\'"])(.*?)[\'"],\s*([\'"])(.*?)[\'"]\]'
     output = re.findall(pattern, input_strings)
     if not output:
-        return {}
-    list_of_pairs = [[item[1], item[3]] for item in output]
-    return {pa[0] : pa[1] for pa in list_of_pairs}
+        return []
+    list_of_pair_strings = [f"{item[1]} {item[3]}" for item in output]
+    return list_of_pair_strings
 
 def scorefunc_absa_f1(refs, preds):
     agg_scores = []
     for ref, pred in zip(refs, preds):
-        # adapted from https://github.com/IsakZhang/Generative-ABSA/blob/main/eval_utils.py
-        # number of true postive, gold standard, predicted aspect terms
-        gold_pt = absa_parse_aspect_sentiment(ref)
-        pred_pt = absa_parse_aspect_sentiment(pred)
+        ref_list_of_string = _absa_parse_aspect_sentiment(ref)
+        pred_list_of_string = _absa_parse_aspect_sentiment(pred)
+        
+        count_ref = Counter(ref_list_of_string)
+        count_pred = Counter(pred_list_of_string)
 
-        n_tp = 0
-        n_gold = len(gold_pt)
-        n_pred = len(pred_pt)
-
-        for k, v in pred_pt.items():
-            if k in gold_pt and gold_pt[k] == v:
-                n_tp += 1
-
-        precision = float(n_tp) / float(n_pred) if n_pred != 0 else 0
-        recall = float(n_tp) / float(n_gold) if n_gold != 0 else 0
-        f1 = 2 * precision * recall / (precision + recall) if precision != 0 or recall != 0 else 0
-        scores = {'precision': precision, 'recall': recall, 'f1': f1}
-
-        agg_scores.append(scores['f1'])
+        intersection = sum(min(count_ref[k], count_pred[k]) for k in count_ref.keys() & count_pred.keys())
+        precision = intersection / sum(count_pred.values()) if sum(count_pred.values()) > 0 else 0
+        recall = intersection / sum(count_ref.values()) if sum(count_ref.values()) > 0 else 0
+        
+        if precision + recall == 0:
+            agg_scores.append(0.0)
+        
+        agg_scores.append(2 * (precision * recall) / (precision + recall))
     return sum(agg_scores)/len(agg_scores) if len(agg_scores) > 0 else 0    
 
 def scorefunc_embedding_similarity(refs, preds):
@@ -80,8 +76,8 @@ def scorefunc_embedding_similarity(refs, preds):
 def scorefunc_recipe_score(refs, preds):
     agg_scores = []
     for ref, pred in zip(refs, preds):
-        ref_list_of_string = ref.strip().split("\n")
-        pred_list_of_string = pred.strip().split("\n")
+        ref_list_of_string = ref.lower().strip().split("\n")
+        pred_list_of_string = pred.lower().strip().split("\n")
         
         count_ref = Counter(ref_list_of_string)
         count_pred = Counter(pred_list_of_string)
@@ -97,17 +93,60 @@ def scorefunc_recipe_score(refs, preds):
 
     return sum(agg_scores)/len(agg_scores) if len(agg_scores) > 0 else 0
 
-def scorefunc_mae(refs, preds):
-    pass
+def _get_first_0_to_5_range(text):
+    numbers = [float(num) for num in re.findall(r'\d+\.?\d*', text)]
+    for n in numbers:
+        if 0 <= n and n <= 5:
+            return n
+    return 0
+
+def scorefunc_pearson_corr(refs, preds):
+    extracted_preds = []
+    for pred in preds:
+        extracted_preds.append(_get_first_0_to_5_range(pred))
+    return np.corrcoef(refs, extracted_preds)[0, 1]
+
+def _postprocess_ner(text):
+    list_of_strings = text.lower().strip().split("\n")
+    for si in range(len(list_of_strings)):
+        if not any(list_of_strings[si].endswith(suffix) for suffix in ["Person", "Location", "Organization", "None"]):
+            list_of_strings[si] += " None"
+    return list_of_strings
 
 def scorefunc_ner_f1(refs, preds):
-    pass
+    agg_scores = []
+    for ref, pred in zip(refs, preds):
+        ref_list_of_string = _postprocess_ner(ref)
+        pred_list_of_string = _postprocess_ner(pred)
 
-def scorefunc_recipe_score(refs, preds):
-    pass
+        count_ref = Counter(ref_list_of_string)
+        count_pred = Counter(pred_list_of_string)
+
+        intersection = sum(min(count_ref[k], count_pred[k]) for k in count_ref.keys() & count_pred.keys())
+        precision = intersection / sum(count_pred.values()) if sum(count_pred.values()) > 0 else 0
+        recall = intersection / sum(count_ref.values()) if sum(count_ref.values()) > 0 else 0
+        
+        if precision + recall == 0:
+            agg_scores.append(0.0)
+        
+        agg_scores.append(2 * (precision * recall) / (precision + recall))
+    return sum(agg_scores)/len(agg_scores) if len(agg_scores) > 0 else 0
 
 def scorefunc_requirement_checker(refs, preds):
-    pass
+    agg_scores = []
+    for ref, pred in zip(refs, preds):
+        is_pass = True
+        elements_to_check = ref.split("-")
+        for i, e in enumerate(elements_to_check):
+            if i == 0: # words at least check
+                if len(pred.split() < int(e)):
+                    is_pass = False
+            else: # check word existence
+                if (e.lower() not in pred.lower()):
+                    is_pass = False
+            
+        agg_scores.append(1 if is_pass else 0)
+    return sum(agg_scores)/len(agg_scores) if len(agg_scores) > 0 else 0
 
 def llm_judge_prompt(prompt, refs, preds):
     return f"""
