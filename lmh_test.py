@@ -12,9 +12,9 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--run_name", type=str, required=True, help="run name")
     parser.add_argument("--model_string", type=str, required=True, help="path to the HF VLLM model")
-    parser.add_argument("--question_document_index", type=str, help="question index and document index")
-    parser.add_argument("--tensor_parallel_size", type=int, help="how many gpus to split the model into")
-    parser.add_argument("--data_parallel_size", type=int, help="how many model duplicates")
+    parser.add_argument("--question_document_index", type=str, required=True, help="question index and document index")
+    parser.add_argument("--tensor_parallel_size", type=int, required=True, help="how many gpus to split the model into")
+    parser.add_argument("--data_parallel_size", type=int, required=True, help="how many model duplicates")
     args = parser.parse_args()
 
     qdi = args.question_document_index.split("_")

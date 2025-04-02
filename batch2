@@ -33,7 +33,7 @@ export TRANSFORMERS_CACHE=/l/users/ryandito.diandaru/huggingface/transformers
 accelerate launch \
   lmh_test.py \
   --run_name "$RUN_NAME-question1_0" \
-  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --model_string "$MODEL_NAME" \
   --question_document_index 1_0 \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
@@ -42,7 +42,7 @@ sleep 10
 accelerate launch \
   lmh_test.py \
   --run_name "$RUN_NAME-question26_1" \
-  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --model_string "$MODEL_NAME" \
   --question_document_index 26_1 \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
@@ -51,7 +51,7 @@ sleep 10
 accelerate launch \
   lmh_test.py \
   --run_name "$RUN_NAME-question2_3" \
-  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --model_string "$MODEL_NAME" \
   --question_document_index 2_3 \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
@@ -60,7 +60,7 @@ sleep 10
 accelerate launch \
   lmh_test.py \
   --run_name "$RUN_NAME-question2_7" \
-  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --model_string "$MODEL_NAME" \
   --question_document_index 2_7 \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
@@ -69,7 +69,7 @@ sleep 10
 accelerate launch \
   lmh_test.py \
   --run_name "$RUN_NAME-question2_11" \
-  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --model_string "$MODEL_NAME" \
   --question_document_index 2_11 \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
@@ -78,7 +78,7 @@ sleep 10
 accelerate launch \
   lmh_test.py \
   --run_name "$RUN_NAME-question3_0" \
-  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --model_string "$MODEL_NAME" \
   --question_document_index 3_0 \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
@@ -87,7 +87,7 @@ sleep 10
 accelerate launch \
   lmh_test.py \
   --run_name "$RUN_NAME-question8_0" \
-  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --model_string "$MODEL_NAME" \
   --question_document_index 8_0 \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
@@ -96,7 +96,7 @@ sleep 10
 accelerate launch \
   lmh_test.py \
   --run_name "$RUN_NAME-question12_0" \
-  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --model_string "$MODEL_NAME" \
   --question_document_index 12_0 \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
@@ -105,7 +105,7 @@ sleep 10
 accelerate launch \
   lmh_test.py \
   --run_name "$RUN_NAME-question16_0" \
-  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --model_string "$MODEL_NAME" \
   --question_document_index 16_0 \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
@@ -114,7 +114,7 @@ sleep 10
 accelerate launch \
   lmh_test.py \
   --run_name "$RUN_NAME-question21_0" \
-  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --model_string "$MODEL_NAME" \
   --question_document_index 21_0 \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
@@ -123,7 +123,7 @@ sleep 10
 accelerate launch \
   lmh_test.py \
   --run_name "$RUN_NAME-question25_0" \
-  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --model_string "$MODEL_NAME" \
   --question_document_index 25_0 \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
@@ -132,7 +132,7 @@ sleep 10
 accelerate launch \
   lmh_test.py \
   --run_name "$RUN_NAME-question27_2" \
-  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --model_string "$MODEL_NAME" \
   --question_document_index 27_2 \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
@@ -141,7 +141,7 @@ sleep 10
 accelerate launch \
   lmh_test.py \
   --run_name "$RUN_NAME-question28_0" \
-  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --model_string "$MODEL_NAME" \
   --question_document_index 28_0 \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
