@@ -13,11 +13,15 @@ def main():
     parser.add_argument("--run_name", type=str, required=True, help="run name")
     parser.add_argument("--model_string", type=str, required=True, help="path to the HF VLLM model")
     parser.add_argument("--question_document_index", type=str, help="question index and document index")
+    parser.add_argument("--tensor_parallel_size", type=int, help="how many gpus to split the model into")
+    parser.add_argument("--data_parallel_size", type=int, help="how many model duplicates")
     args = parser.parse_args()
 
     qdi = args.question_document_index.split("_")
     question_index = int(qdi[0])
     document_index = int(qdi[1])
+    args.tensor_parallel_size = int(args.tensor_parallel_size)
+    args.data_parallel_size = int(args.data_parallel_size)
 
     respath = os.path.join(os.getenv("SAMPLES_RESULTS_DIR"), f"{args.run_name}")
     respath_test = os.path.join(respath, f"results-{args.run_name}-question_{args.question_document_index}.json")
@@ -66,7 +70,9 @@ def main():
         results = lm_eval.simple_evaluate(
             model="vllm",
             model_args = {
-                "pretrained" : args.model_string
+                "pretrained" : args.model_string,
+                "tensor_parallel_size" : args.tensor_parallel_size,
+                "data_parallel_size" : args.data_parallel_size,
             },
             tasks=all_tasks,
             num_fewshot=0,
