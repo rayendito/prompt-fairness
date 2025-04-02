@@ -1,0 +1,139 @@
+#!/bin/bash
+#SBATCH --job-name=batch4-prompt_fairness
+#SBATCH --output='%x-%j.out'
+#SBATCH --time=72:00:00
+#SBATCH --nodes=1
+#SBATCH --gres=gpu:2
+#SBATCH --ntasks=2
+#SBATCH --mem=20G
+#SBATCH -p cscc-gpu-p
+#SBATCH -q cscc-gpu-qos
+
+RUN_NAME='axolotl'
+MODEL_NAME='meta-llama/Llama-3.2-1B-Instruct'
+TENSOR_PARALLEL_SIZE=1
+DATA_PARALLEL_SIZE=2
+
+echo "Starting NVIDIA SMI..."
+nvidia-smi
+
+# log the sbatch environment
+echo "start time: $(date)"
+echo "SLURM_JOBID="$SLURM_JOBID
+echo "SLURM_JOB_NODELIST"=$SLURM_JOB_NODELIST
+echo "SLURM_JOB_PARTITION"=$SLURM_JOB_PARTITION
+echo "SLURM_NNODES"=$SLURM_NNODES
+echo "SLURM_GPUS_ON_NODE"=$SLURM_GPUS_ON_NODE
+echo "SLURM_SUBMIT_DIR"=$SLURM_SUBMIT_DIR
+
+export HF_HOME=/l/users/ryandito.diandaru/huggingface
+export HF_HUB_CACHE=/l/users/ryandito.diandaru/huggingface/hub
+export TRANSFORMERS_CACHE=/l/users/ryandito.diandaru/huggingface/transformers
+
+accelerate launch \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question20_0" \
+  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --question_document_index 20_0 \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question2_1" \
+  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --question_document_index 2_1 \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question2_5" \
+  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --question_document_index 2_5 \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question2_9" \
+  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --question_document_index 2_9 \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question2_13" \
+  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --question_document_index 2_13 \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question6_0" \
+  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --question_document_index 6_0 \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question10_0" \
+  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --question_document_index 10_0 \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question14_0" \
+  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --question_document_index 14_0 \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question18_0" \
+  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --question_document_index 18_0 \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question23_0" \
+  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --question_document_index 23_0 \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question27_0" \
+  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --question_document_index 27_0 \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question27_4" \
+  --model_string "$TENSOR_PARALLEL_SIZE" \
+  --question_document_index 27_4 \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
