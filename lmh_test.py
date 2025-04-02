@@ -23,7 +23,7 @@ def main():
     args.tensor_parallel_size = int(args.tensor_parallel_size)
     args.data_parallel_size = int(args.data_parallel_size)
 
-    respath = os.path.join(os.getenv("SAMPLES_RESULTS_DIR"), f"{args.run_name}")
+    respath = os.path.join(os.getenv("SAMPLES_RESULTS_DIR"), f"{args.run_name}".split("-")[0], f"{args.run_name}")
     respath_test = os.path.join(respath, f"results-{args.run_name}-question_{args.question_document_index}.json")
 
     if os.path.exists(respath_test):
