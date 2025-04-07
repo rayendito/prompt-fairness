@@ -3,19 +3,17 @@
 #SBATCH --output='%x-%j.out'
 #SBATCH --time=72:00:00
 #SBATCH --nodes=1
-#SBATCH --gres=gpu:2
-#SBATCH --ntasks=2
-#SBATCH --mem=20G
+#SBATCH --gres=gpu:1
+#SBATCH --ntasks=1
+#SBATCH --mem=40G
 #SBATCH -p cscc-gpu-p
 #SBATCH -q cscc-gpu-qos
 
-
 RUN_NAME='llama32_1B_Inst'
 MODEL_NAME='meta-llama/Llama-3.2-1B-Instruct'
+MODEL_PROVIDER='vllm'
 TENSOR_PARALLEL_SIZE=1
-DATA_PARALLEL_SIZE=2
-
-export LD_LIBRARY_PATH=$HOME/.config/vllm/nccl/cu12
+DATA_PARALLEL_SIZE=1
 
 echo "Starting NVIDIA SMI..."
 nvidia-smi
@@ -29,126 +27,558 @@ echo "SLURM_NNODES"=$SLURM_NNODES
 echo "SLURM_GPUS_ON_NODE"=$SLURM_GPUS_ON_NODE
 echo "SLURM_SUBMIT_DIR"=$SLURM_SUBMIT_DIR
 
+# env variables
 export HF_HOME=/l/users/ryandito.diandaru/huggingface
 export HF_HUB_CACHE=/l/users/ryandito.diandaru/huggingface/hub
-export TRANSFORMERS_CACHE=/l/users/ryandito.diandaru/huggingface/transformers
+export SAMPLES_RESULTS_DIR=/l/users/ryandito.diandaru/lm_harness_runs/
+export TOKENIZERS_PARALLELISM=false
 
 accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
   lmh_test.py \
   --run_name "$RUN_NAME-question0_0" \
   --model_string "$MODEL_NAME" \
   --question_document_index 0_0 \
+  --inference_provider "$MODEL_PROVIDER" \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
 sleep 10
 
 accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question1_0" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 1_0 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question4_0" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 4_0 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question20_0" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 20_0 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
   lmh_test.py \
   --run_name "$RUN_NAME-question26_0" \
   --model_string "$MODEL_NAME" \
   --question_document_index 26_0 \
+  --inference_provider "$MODEL_PROVIDER" \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
 sleep 10
 
 accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question26_1" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 26_1 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question2_0" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 2_0 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question2_1" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 2_1 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
   lmh_test.py \
   --run_name "$RUN_NAME-question2_2" \
   --model_string "$MODEL_NAME" \
   --question_document_index 2_2 \
+  --inference_provider "$MODEL_PROVIDER" \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
 sleep 10
 
 accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question2_3" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 2_3 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question2_4" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 2_4 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question2_5" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 2_5 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
   lmh_test.py \
   --run_name "$RUN_NAME-question2_6" \
   --model_string "$MODEL_NAME" \
   --question_document_index 2_6 \
+  --inference_provider "$MODEL_PROVIDER" \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
 sleep 10
 
 accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question2_7" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 2_7 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question2_8" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 2_8 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question2_9" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 2_9 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
   lmh_test.py \
   --run_name "$RUN_NAME-question2_10" \
   --model_string "$MODEL_NAME" \
   --question_document_index 2_10 \
+  --inference_provider "$MODEL_PROVIDER" \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
 sleep 10
 
 accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question2_11" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 2_11 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question2_12" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 2_12 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question2_13" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 2_13 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
   lmh_test.py \
   --run_name "$RUN_NAME-question2_14" \
   --model_string "$MODEL_NAME" \
   --question_document_index 2_14 \
+  --inference_provider "$MODEL_PROVIDER" \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
 sleep 10
 
 accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question3_0" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 3_0 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question5_0" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 5_0 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question6_0" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 6_0 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
   lmh_test.py \
   --run_name "$RUN_NAME-question7_0" \
   --model_string "$MODEL_NAME" \
   --question_document_index 7_0 \
+  --inference_provider "$MODEL_PROVIDER" \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
 sleep 10
 
 accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question8_0" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 8_0 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question9_0" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 9_0 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question10_0" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 10_0 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
   lmh_test.py \
   --run_name "$RUN_NAME-question11_0" \
   --model_string "$MODEL_NAME" \
   --question_document_index 11_0 \
+  --inference_provider "$MODEL_PROVIDER" \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
 sleep 10
 
 accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question12_0" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 12_0 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question13_0" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 13_0 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question14_0" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 14_0 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
   lmh_test.py \
   --run_name "$RUN_NAME-question15_0" \
   --model_string "$MODEL_NAME" \
   --question_document_index 15_0 \
+  --inference_provider "$MODEL_PROVIDER" \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
 sleep 10
 
 accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question16_0" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 16_0 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question17_0" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 17_0 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question18_0" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 18_0 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
   lmh_test.py \
   --run_name "$RUN_NAME-question19_0" \
   --model_string "$MODEL_NAME" \
   --question_document_index 19_0 \
+  --inference_provider "$MODEL_PROVIDER" \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
 sleep 10
 
 accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question21_0" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 21_0 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question22_0" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 22_0 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question23_0" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 23_0 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
   lmh_test.py \
   --run_name "$RUN_NAME-question24_0" \
   --model_string "$MODEL_NAME" \
   --question_document_index 24_0 \
+  --inference_provider "$MODEL_PROVIDER" \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
 sleep 10
 
 accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question25_0" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 25_0 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question25_1" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 25_1 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question27_0" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 27_0 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
   lmh_test.py \
   --run_name "$RUN_NAME-question27_1" \
   --model_string "$MODEL_NAME" \
   --question_document_index 27_1 \
+  --inference_provider "$MODEL_PROVIDER" \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
 sleep 10
 
 accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
   lmh_test.py \
-  --run_name "$RUN_NAME-question27_5" \
+  --run_name "$RUN_NAME-question27_2" \
   --model_string "$MODEL_NAME" \
-  --question_document_index 27_5 \
+  --question_document_index 27_2 \
+  --inference_provider "$MODEL_PROVIDER" \
   --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
   --data_parallel_size "$DATA_PARALLEL_SIZE"
 sleep 10
 
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question27_3" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 27_3 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
 
-lmh_test.py  --run_name "llama32_1B_Inst-question0_0" --model_string "meta-llama/Llama-3.2-1B-Instruct"  --question_document_index 0_0  --tensor_parallel_size"2"  --data_parallel_size "2"
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question27_4" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 27_4 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question27_5" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 27_5 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10
+
+accelerate launch \
+  --num_processes=$DATA_PARALLEL_SIZE \
+  lmh_test.py \
+  --run_name "$RUN_NAME-question28_0" \
+  --model_string "$MODEL_NAME" \
+  --question_document_index 28_0 \
+  --inference_provider "$MODEL_PROVIDER" \
+  --tensor_parallel_size "$TENSOR_PARALLEL_SIZE" \
+  --data_parallel_size "$DATA_PARALLEL_SIZE"
+sleep 10

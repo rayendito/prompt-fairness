@@ -5,16 +5,20 @@ import numpy as np
 from src import Questions
 from src.utils.lmharness_utils import *
 from dotenv import load_dotenv
+from huggingface_hub import login
 
 def main():
     load_dotenv()
+    login(token=os.getenv("HF_TOKEN"))
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--run_name", type=str, required=True, help="run name")
     parser.add_argument("--model_string", type=str, required=True, help="path to the HF VLLM model")
     parser.add_argument("--question_document_index", type=str, required=True, help="question index and document index")
-    parser.add_argument("--tensor_parallel_size", type=int, required=True, help="how many gpus to split the model into")
-    parser.add_argument("--data_parallel_size", type=int, required=True, help="how many model duplicates")
+    parser.add_argument("--inference_provider", type=str, required=True, help="hf or vllm")
+    parser.add_argument("--parallelize", action="store_true", help="enable parallelization (hf only)")
+    parser.add_argument("--tensor_parallel_size", type=int, default=1, help="how many gpus to split the model into (vllm only)")
+    parser.add_argument("--data_parallel_size", type=int, default=1, help="how many model duplicates (vllm only)")
     args = parser.parse_args()
 
     qdi = args.question_document_index.split("_")
@@ -25,6 +29,21 @@ def main():
 
     respath = os.path.join(os.getenv("SAMPLES_RESULTS_DIR"), f"{args.run_name}".split("-")[0], f"{args.run_name}")
     respath_test = os.path.join(respath, f"results-{args.run_name}-question_{args.question_document_index}.json")
+
+    if args.inference_provider == "hf":
+        modelargs = {
+            "pretrained" : args.model_string,
+            "parallelize" : args.parallelize,
+        }
+    elif args.inference_provider == "vllm":
+        modelargs = {
+            "pretrained" : args.model_string,
+            "tensor_parallel_size" : args.tensor_parallel_size,
+            "data_parallel_size" : args.data_parallel_size,
+        }
+    else:
+        raise ValueError(f"{args.inference_provider} is not recognized!")
+    
 
     if os.path.exists(respath_test):
         print("========================================================================================")
@@ -68,12 +87,8 @@ def main():
     print(f"total tasks to run {len(all_tasks)}")
     if(len(all_tasks) > 0):
         results = lm_eval.simple_evaluate(
-            model="vllm",
-            model_args = {
-                "pretrained" : args.model_string,
-                "tensor_parallel_size" : args.tensor_parallel_size,
-                "data_parallel_size" : args.data_parallel_size,
-            },
+            model=args.inference_provider,
+            model_args = modelargs,
             tasks=all_tasks,
             num_fewshot=0,
             task_manager=task_manager,
