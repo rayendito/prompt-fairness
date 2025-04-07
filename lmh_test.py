@@ -6,10 +6,12 @@ from src import Questions
 from src.utils.lmharness_utils import *
 from dotenv import load_dotenv
 from huggingface_hub import login
+from accelerate import Accelerator
 
 def main():
     load_dotenv()
     login(token=os.getenv("HF_TOKEN"))
+    accelerator = Accelerator()
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--run_name", type=str, required=True, help="run name")
@@ -44,12 +46,12 @@ def main():
     else:
         raise ValueError(f"{args.inference_provider} is not recognized!")
     
-
-    if os.path.exists(respath_test):
-        print("========================================================================================")
-        print(f"Directory '{respath_test}' already exists (experiment have already finished running).")
-        print("Exiting...")
-        sys.exit(0)
+    if accelerator.is_main_process:
+        if os.path.exists(respath_test):
+            print("========================================================================================")
+            raise RuntimeError(f"Directory '{respath_test}' already exists (experiment have already finished running).")
+    
+    accelerator.wait_for_everyone()
 
     os.makedirs(respath, exist_ok=True)
     print(f"Created directory '{respath}'. Running inference...")
@@ -95,16 +97,19 @@ def main():
             write_out = True,
             log_samples = True,
         )
-        with open(os.path.join(respath, f"results-{args.run_name}-question_{args.question_document_index}.json"), "w+") as res_res:
-            res_res.write(json.dumps(results["results"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
-        with open(os.path.join(respath, f"samples-{args.run_name}-question_{args.question_document_index}.json"), "w+") as res_sa:
-            res_sa.write(json.dumps(results["samples"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
-        with open(os.path.join(respath, f"configs-{args.run_name}-question_{args.question_document_index}.json"), "w+") as res_configs:
-            res_configs.write(json.dumps(results["configs"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
-        with open(os.path.join(respath, f"config-{args.run_name}-question_{args.question_document_index}.json"), "w+") as res_config:
-            res_config.write(json.dumps(results["config"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
+
+        if accelerator.is_main_process:
+            with open(os.path.join(respath, f"results-{args.run_name}-question_{args.question_document_index}.json"), "w+") as res_res:
+                res_res.write(json.dumps(results["results"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
+            with open(os.path.join(respath, f"samples-{args.run_name}-question_{args.question_document_index}.json"), "w+") as res_sa:
+                res_sa.write(json.dumps(results["samples"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
+            with open(os.path.join(respath, f"configs-{args.run_name}-question_{args.question_document_index}.json"), "w+") as res_configs:
+                res_configs.write(json.dumps(results["configs"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
+            with open(os.path.join(respath, f"config-{args.run_name}-question_{args.question_document_index}.json"), "w+") as res_config:
+                res_config.write(json.dumps(results["config"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
     else:
         print(f"no tasks to run for annotator{ann_obj['id']}!")
+    accelerator.end_training()
 
 
 if __name__ == "__main__":
