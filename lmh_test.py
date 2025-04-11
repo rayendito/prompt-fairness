@@ -96,6 +96,7 @@ def main():
             task_manager=task_manager,
             write_out = True,
             log_samples = True,
+            batch_size = "auto:3"
         )
 
         if accelerator.is_main_process:
