@@ -22,8 +22,10 @@ for annotator, prompts in sample_results.items():
     run_dict[annotator] = final_prompts
 
 run_name = f"{args.openai_model.replace("-", "_")}-question{args.question_document_index}"
-run_experiment(args.openai_model, run_name, run_dict)
+run_experiment(args.openai_model, args.run_name, run_dict, results_dir="tezt/")
 
+# model_name = "gpt-4o"
+# run_name = "redir_test"
 # run_dict = {
 #     "runone" : [
 #         "what is the capital of Germany",
@@ -35,3 +37,4 @@ run_experiment(args.openai_model, run_name, run_dict)
 #     ],
 # }
 
+# run_experiment(model_name, run_name, run_dict, results_dir="tezt/")

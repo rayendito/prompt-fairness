@@ -3,7 +3,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../i
 
 from ModelManager import ModelManager # type: ignore
 
-def run_experiment(model, run_name, expriment_dict):
+def run_experiment(model, run_name, expriment_dict, results_dir=__package__):
     """
         experiment dict:
             key : what to name the exp
@@ -27,10 +27,10 @@ def run_experiment(model, run_name, expriment_dict):
         "batches" : batches
     }
     
-    grid_path = f"{__package__}/{grid['grid_info']['run_name']}/submitted_grid.json"
+    grid_path = f"{results_dir}/{grid['grid_info']['run_name']}/submitted_grid.json"
     os.makedirs(os.path.dirname(grid_path), exist_ok=True)
     with open(grid_path, "w") as gg:
         json.dump(grid, gg, indent=4)
 
     modman = ModelManager(grid)
-    modman.run_grid(grid)
+    modman.run_grid(grid, results_dir=results_dir)
