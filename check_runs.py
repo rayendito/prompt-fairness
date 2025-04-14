@@ -1,9 +1,8 @@
 import os, argparse
-from dotenv import load_dotenv
 
-load_dotenv()
 parser = argparse.ArgumentParser()
 parser.add_argument("--run_name", type=str, required=True, help="run name")
+parser.add_argument("--results_dir", type=str, required=True, help="results_dir")
 args = parser.parse_args()
 
 runs = """
@@ -60,7 +59,7 @@ runs = """
 """.strip().split()
 
 for r in runs:
-    respath = os.path.join(os.getenv("SAMPLES_RESULTS_DIR"), f"{args.run_name}", f"{args.run_name}-question{r}")
+    respath = os.path.join(args.results_dir, f"{args.run_name}", f"{args.run_name}-question{r}")
     respath_test = os.path.join(respath, f"results-{args.run_name}-question{r}-question_{r}.json")
     if not(os.path.exists(respath_test)):
         print(f"{args.run_name} question {r} not finished yet")
