@@ -48,11 +48,6 @@ EXP_NAMES=(
   twentyeight
 )
 
-EXP_NAMES=(
-  zero
-  nodp
-)
-
 for name in "${EXP_NAMES[@]}"; do
 	str="${!name}"  # Indirect expansion to get value of variable named $name
 	if [[ "$name" == "nodp" ]]; then
