@@ -110,7 +110,7 @@ def run_task_scorer(samples_results_dir, run_name, question_document_index):
                 with open(grid_path, "w") as gg:
                     json.dump(grid, gg, indent=4)
                 
-                modman = ModelManager()
+                modman = ModelManager(grid)
                 modman.run_grid(grid,
                                 metric_utils.llm_judge_is_msgs_done_fn,
                                 metric_utils.llm_judge_extract_fn)

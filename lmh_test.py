@@ -23,14 +23,13 @@ def main():
     parser.add_argument("--data_parallel_size", type=int, default=1, help="how many model duplicates (vllm only)")
     args = parser.parse_args()
 
-    qdi = args.question_document_index.split("_")
-    question_index = int(qdi[0])
-    document_index = int(qdi[1])
+    qdi_list = args.question_document_index.strip().split()
     args.tensor_parallel_size = int(args.tensor_parallel_size)
     args.data_parallel_size = int(args.data_parallel_size)
 
+    question_identifier = args.run_name.split("-")[-1] # convention
     respath = os.path.join(os.getenv("SAMPLES_RESULTS_DIR"), f"{args.run_name}".split("-")[0], f"{args.run_name}")
-    respath_test = os.path.join(respath, f"results-{args.run_name}-question_{args.question_document_index}.json")
+    respath_test = os.path.join(respath, f"results-{args.run_name}-question_{question_identifier}.json")
 
     if args.inference_provider == "hf":
         modelargs = {
@@ -65,27 +64,32 @@ def main():
                         key=lambda x: int(x.replace("annotator", "").replace(".json", ""))
     ):
         ann_obj = json.load(open(os.path.join(PASSED_ANNOTATORS, anjson)))
-        tasks_to_run = []
-        q = list(ann_obj['answers'].keys())[question_index]
-        if(not pd.isna(ann_obj['answers'][q]['answer'])):
-            ANNOTATOR_PROMPT = ann_obj['answers'][q]['answer']
-            PLACEHOLDERS = questions[q]['placeholders']
-            TASK_EVAL_TYPE = questions[q]['task_eval_type']
-            LABELS = questions[q]['labels']
-            CHOICES = questions[q]['choices']
-            tskdef = create_task_def(
-                annotator_id = ann_obj['id'],
-                dataset_file=questions[q]['dataset'][document_index],
-                task_type=TASK_EVAL_TYPE,
-                question_index=question_index,
-                annotator_prompt=ANNOTATOR_PROMPT,
-                placeholders=PLACEHOLDERS,
-                labels=LABELS,
-                choices=CHOICES,
-                metrics=questions[q]['metrics']
-            )
-            tasks_to_run.append(tskdef)
-        all_tasks += tasks_to_run
+        for qdi in qdi_list:
+            qdi = qdi.split("_")
+            question_index = int(qdi[0])
+            document_index = int(qdi[1])
+
+            local_tasks = []
+            q = list(ann_obj['answers'].keys())[question_index]
+            if(not pd.isna(ann_obj['answers'][q]['answer'])):
+                ANNOTATOR_PROMPT = ann_obj['answers'][q]['answer']
+                PLACEHOLDERS = questions[q]['placeholders']
+                TASK_EVAL_TYPE = questions[q]['task_eval_type']
+                LABELS = questions[q]['labels']
+                CHOICES = questions[q]['choices']
+                tskdef = create_task_def(
+                    annotator_id = ann_obj['id'],
+                    dataset_file=questions[q]['dataset'][document_index],
+                    task_type=TASK_EVAL_TYPE,
+                    question_index=question_index,
+                    annotator_prompt=ANNOTATOR_PROMPT,
+                    placeholders=PLACEHOLDERS,
+                    labels=LABELS,
+                    choices=CHOICES,
+                    metrics=questions[q]['metrics']
+                )
+                local_tasks.append(tskdef)
+            all_tasks += local_tasks
     print(f"total tasks to run {len(all_tasks)}")
     if(len(all_tasks) > 0):
         results = lm_eval.simple_evaluate(
@@ -100,13 +104,14 @@ def main():
         )
 
         if accelerator.is_main_process:
-            with open(os.path.join(respath, f"results-{args.run_name}-question_{args.question_document_index}.json"), "w+") as res_res:
+            
+            with open(os.path.join(respath, f"results-{args.run_name}-question_{question_identifier}.json"), "w+") as res_res:
                 res_res.write(json.dumps(results["results"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
-            with open(os.path.join(respath, f"samples-{args.run_name}-question_{args.question_document_index}.json"), "w+") as res_sa:
+            with open(os.path.join(respath, f"samples-{args.run_name}-question_{question_identifier}.json"), "w+") as res_sa:
                 res_sa.write(json.dumps(results["samples"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
-            with open(os.path.join(respath, f"configs-{args.run_name}-question_{args.question_document_index}.json"), "w+") as res_configs:
+            with open(os.path.join(respath, f"configs-{args.run_name}-question_{question_identifier}.json"), "w+") as res_configs:
                 res_configs.write(json.dumps(results["configs"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
-            with open(os.path.join(respath, f"config-{args.run_name}-question_{args.question_document_index}.json"), "w+") as res_config:
+            with open(os.path.join(respath, f"config-{args.run_name}-question_{question_identifier}.json"), "w+") as res_config:
                 res_config.write(json.dumps(results["config"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
     else:
         print(f"no tasks to run for annotator{ann_obj['id']}!")
