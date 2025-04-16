@@ -10,6 +10,7 @@ def main():
     parser.add_argument("--run_name", type=str, required=True, help="run name")
     parser.add_argument("--model_string", type=str, required=True, help="path to the HF VLLM model")
     parser.add_argument("--question_document_index", type=str, required=True, help="question index and document index")
+    parser.add_argument("--batch_size", type=str, default="auto:3", help="Batch size, e.g. 16 or auto:3")
     parser.add_argument("--inference_provider", type=str, required=True, help="hf or vllm")
     parser.add_argument("--parallelize", action="store_true", help="enable parallelization (hf only)")
     parser.add_argument("--tensor_parallel_size", type=int, default=1, help="how many gpus to split the model into (vllm only)")
@@ -19,6 +20,7 @@ def main():
     qdi_list = args.question_document_index.strip().split()
     args.tensor_parallel_size = int(args.tensor_parallel_size)
     args.data_parallel_size = int(args.data_parallel_size)
+    args.batch_size = int(args.batch_size) if "auto" not in args.batch_size else args.batch_size
 
     question_identifier = args.run_name.split("-")[-1].replace("question", "question_") # convention
     respath = os.path.join(os.getenv("SAMPLES_RESULTS_DIR"), f"{args.run_name}".split("-")[0], f"{args.run_name}")
@@ -104,7 +106,7 @@ def main():
             task_manager=task_manager,
             write_out = True,
             log_samples = True,
-            batch_size = "auto:3"
+            batch_size = args.batch_size
         )
 
         if accelerator.is_main_process:
