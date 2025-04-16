@@ -1,18 +1,11 @@
 import sys, os, json, argparse
-import lm_eval # type: ignore
-import pandas as pd
-import numpy as np
-from src import Questions
 from src.utils.lmharness_utils import *
 from dotenv import load_dotenv
-from huggingface_hub import login
 from accelerate import Accelerator
 
 def main():
     load_dotenv()
-    login(token=os.getenv("HF_TOKEN"))
     accelerator = Accelerator()
-
     parser = argparse.ArgumentParser()
     parser.add_argument("--run_name", type=str, required=True, help="run name")
     parser.add_argument("--model_string", type=str, required=True, help="path to the HF VLLM model")
@@ -27,9 +20,25 @@ def main():
     args.tensor_parallel_size = int(args.tensor_parallel_size)
     args.data_parallel_size = int(args.data_parallel_size)
 
-    question_identifier = args.run_name.split("-")[-1] # convention
+    question_identifier = args.run_name.split("-")[-1].replace("question", "question_") # convention
     respath = os.path.join(os.getenv("SAMPLES_RESULTS_DIR"), f"{args.run_name}".split("-")[0], f"{args.run_name}")
-    respath_test = os.path.join(respath, f"results-{args.run_name}-question_{question_identifier}.json")
+    
+    res_jsonp = os.path.join(respath, f"results-{args.run_name}-{question_identifier}.json")
+    conf_jsonp = os.path.join(respath, f"config-{args.run_name}-{question_identifier}.json")
+    confs_jsonp = os.path.join(respath, f"configs-{args.run_name}-{question_identifier}.json")
+    samples_jsonp = os.path.join(respath, f"samples-{args.run_name}-{question_identifier}.json")
+
+    if accelerator.is_main_process:
+        if os.path.exists(res_jsonp):
+            print("========================================================================================")
+            raise RuntimeError(f"Directory '{res_jsonp}' already exists (experiment have already finished running).")
+    accelerator.wait_for_everyone()
+
+    import lm_eval # type: ignore
+    import pandas as pd
+    import numpy as np
+    from src import Questions
+    from huggingface_hub import login
 
     if args.inference_provider == "hf":
         modelargs = {
@@ -44,13 +53,8 @@ def main():
         }
     else:
         raise ValueError(f"{args.inference_provider} is not recognized!")
-    
-    if accelerator.is_main_process:
-        if os.path.exists(respath_test):
-            print("========================================================================================")
-            raise RuntimeError(f"Directory '{respath_test}' already exists (experiment have already finished running).")
-    
-    accelerator.wait_for_everyone()
+
+    login(token=os.getenv("HF_TOKEN"))
 
     os.makedirs(respath, exist_ok=True)
     print(f"Created directory '{respath}'. Running inference...")
@@ -104,14 +108,13 @@ def main():
         )
 
         if accelerator.is_main_process:
-            
-            with open(os.path.join(respath, f"results-{args.run_name}-question_{question_identifier}.json"), "w+") as res_res:
+            with open(res_jsonp, "w+") as res_res:
                 res_res.write(json.dumps(results["results"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
-            with open(os.path.join(respath, f"samples-{args.run_name}-question_{question_identifier}.json"), "w+") as res_sa:
+            with open(samples_jsonp, "w+") as res_sa:
                 res_sa.write(json.dumps(results["samples"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
-            with open(os.path.join(respath, f"configs-{args.run_name}-question_{question_identifier}.json"), "w+") as res_configs:
+            with open(confs_jsonp, "w+") as res_configs:
                 res_configs.write(json.dumps(results["configs"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
-            with open(os.path.join(respath, f"config-{args.run_name}-question_{question_identifier}.json"), "w+") as res_config:
+            with open(conf_jsonp, "w+") as res_config:
                 res_config.write(json.dumps(results["config"], indent=4, ensure_ascii=False, default=convert_to_json_friendly))
     else:
         print(f"no tasks to run for annotator{ann_obj['id']}!")
