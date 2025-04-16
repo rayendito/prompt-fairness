@@ -1,10 +1,14 @@
 import os, json, argparse
+from dotenv import load_dotenv
 from openai_runner.submit_batch import run_experiment
+
+load_dotenv()
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--question_document_index", type=str, required=True, help="question index and document index")
 parser.add_argument("--openai_model", type=str, default="gpt-4o", help="OpenAI model to use (default: gpt-4o)")
-parser.add_argument("--reference_dir", type=str, default="dummy_lm_harness_runs/llama32_1B_Inst", help="Directory to get prompts from (default: /results)")
+parser.add_argument("--results_dir", type=str, required=True, help="Directory to store results")
+parser.add_argument("--reference_dir", type=str, required=True, help="Directory to get prompts from (default: /results)")
 args = parser.parse_args()
 
 ref_experiment_name = args.reference_dir.split("/")[-1]
@@ -22,7 +26,7 @@ for annotator, prompts in sample_results.items():
     run_dict[annotator] = final_prompts
 
 run_name = f"{args.openai_model.replace("-", "_")}-question{args.question_document_index}"
-run_experiment(args.openai_model, args.run_name, run_dict, results_dir="tezt/")
+run_experiment(args.openai_model, run_name, run_dict, results_dir=args.results_dir)
 
 # model_name = "gpt-4o"
 # run_name = "redir_test"
