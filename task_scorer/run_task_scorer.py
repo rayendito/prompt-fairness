@@ -8,8 +8,18 @@ from src.utils import metric_utils
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../inferinter")))
 load_dotenv()
 
+def flatten_dict(d, parent_key=''):
+    items = {}
+    for k, v in d.items():
+        new_key = f"{parent_key}@{k}" if parent_key else k
+        if isinstance(v, dict):
+            items.update(flatten_dict(v, new_key))
+        else:
+            items[new_key] = v
+    return items
 
-def run_task_scorer(samples_results_dir, run_name, question_document_index):
+
+def run_task_scorer(postprocess_dir, samples_results_dir, run_name, question_document_index):
     respath = os.path.join(samples_results_dir, f"{run_name}", f"{run_name}-question{question_document_index}")
     results_path = os.path.join(respath, f"results-{run_name}-question{question_document_index}-question_{question_document_index}.json")
     samples_path = os.path.join(respath, f"samples-{run_name}-question{question_document_index}-question_{question_document_index}.json")
@@ -31,8 +41,10 @@ def run_task_scorer(samples_results_dir, run_name, question_document_index):
         dataset_string = question_attributes['dataset'][document_index]
         subnickname = "-" + dataset_string.split(".")[0].split("-")[-1]
 
-    csv_results_dir = f"lm_harness_processed/results_csv/{run_name}"
+    csv_results_dir = os.path.join(postprocess_dir, run_name)
+    oai_inference_dir = os.path.join(postprocess_dir, f"{run_name}-inferoai")
     os.makedirs(csv_results_dir, exist_ok=True)
+    os.makedirs(oai_inference_dir, exist_ok=True)
 
     if question_attributes['task_eval_type'] == "multiple_choice":
         res_dataset  = []
@@ -105,7 +117,7 @@ def run_task_scorer(samples_results_dir, run_name, question_document_index):
                     }]
                 }
 
-                grid_path = f"{__package__}/{grid['grid_info']['run_name']}/submitted_grid.json"
+                grid_path = f"{oai_inference_dir}/{grid['grid_info']['run_name']}/submitted_grid.json"
                 os.makedirs(os.path.dirname(grid_path), exist_ok=True)
                 with open(grid_path, "w") as gg:
                     json.dump(grid, gg, indent=4)
@@ -113,11 +125,11 @@ def run_task_scorer(samples_results_dir, run_name, question_document_index):
                 modman = ModelManager(grid)
                 modman.run_grid(grid,
                                 metric_utils.llm_judge_is_msgs_done_fn,
-                                metric_utils.llm_judge_extract_fn)
-                
-                # grid_path = f"{__package__}/{grid['grid_info']['run_name']}/submitted_grid.json"
+                                metric_utils.llm_judge_extract_fn,
+                                results_dir=oai_inference_dir)
+
                 llm_judge_res_json_file = os.path.join(
-                    __package__,
+                    oai_inference_dir,
                     grid['grid_info']['run_name'],
                     f"history-{grid['grid_info']['run_name']}.json",
                 )
