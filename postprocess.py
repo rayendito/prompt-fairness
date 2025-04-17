@@ -9,7 +9,6 @@ load_dotenv()
 
 POSTPROCESS_DIR = "/l/users/ryandito.diandaru/lm_harness_postprocess/"
 ALL_QDI = "5_0 6_0 7_0 8_0 9_0 10_0 11_0 12_0 13_0 14_0 15_0 16_0 17_0 18_0 19_0 0_0 1_0 4_0 20_0 26_0 26_1 2_0 2_1 2_2 2_3 2_4 2_5 2_6 2_7 2_8 2_9 2_10 2_11 2_12 2_13 2_14 3_0 21_0 22_0 23_0 24_0 25_0 25_1 27_0 27_1 27_2 27_3 27_4 27_5 28_0".split()
-ALL_QDI = "5_0".split()
 os.makedirs(POSTPROCESS_DIR, exist_ok=True)
 
 # parsers
@@ -50,27 +49,28 @@ for qdi in ALL_QDI:
     resdf = pd.read_csv(processed_csv_file)
     merged_df = pd.merge(ann_manager.all_df, resdf, on='annotator_id', how='left')
 
+    fullname = current_question['nickname']
+    if len(current_question['dataset']) > 1:
+        dataset_string = current_question['dataset'][document_index]
+        fullname += "-" + dataset_string.split(".")[0].split("-")[-1]
+
     aggregated_csv.append({
-        "task_name" : current_question['nickname'],
+        "task_name" : fullname,
         "metric" : "respondent_count",
         **flatten_dict(ann_manager.get_profile_of_question(merged_df))
     })
 
     for score_col in [col for col in resdf.columns if col != "annotator_id"]:
         aggregated_csv.append({
-            "task_name" : current_question['nickname'],
+            "task_name" : fullname,
             "metric" : score_col.split("-")[-1],
             **flatten_dict(ann_manager.get_profile_of_question(merged_df, filler=score_col))
         })
-
 
 # result object
 final_csv_dir = os.path.join("lm_harness_processed", f"final-{args.run_name}.csv")
 df = pd.DataFrame(aggregated_csv)
 df.to_csv(final_csv_dir, index=False)
-
-# with open("bjierrrr.json", "w") as dmjs:
-#     dmjs.write(json.dumps(aggregated_csv, indent=4))
 
 # visualization ======================================================================================================================
 # if (args.visualize):

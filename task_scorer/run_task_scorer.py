@@ -37,9 +37,11 @@ def run_task_scorer(postprocess_dir, samples_results_dir, run_name, question_doc
     current_question, question_attributes = list(questions.items())[question_index]
     
     subnickname = ""
-    if question_index == 2 or question_index == 25:
+    if len(question_attributes['dataset']) > 1:
         dataset_string = question_attributes['dataset'][document_index]
         subnickname = "-" + dataset_string.split(".")[0].split("-")[-1]
+
+    print(f"Processing : {question_attributes['nickname']}{subnickname}")
 
     csv_results_dir = os.path.join(postprocess_dir, run_name)
     oai_inference_dir = os.path.join(postprocess_dir, f"{run_name}-inferoai")
