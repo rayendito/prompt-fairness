@@ -22,8 +22,7 @@ print(f"Postprocessing: {args.run_name}")
 if args.inference_type == "separate":
     for qdi in ALL_QDI:
         print(f"Running: {qdi}")
-        # TODO: some break if prompting is not finished yet
-        run_task_scorer(POSTPROCESS_DIR, os.getenv("SAMPLES_RESULTS_DIR"), args.run_name, qdi)
+        run_task_scorer(POSTPROCESS_DIR, os.getenv("SAMPLES_RESULTS_DIR"), args.run_name, qdi, oai_infer_tries=100)
 elif args.inference_type == "chunk":
     pass
 elif args.inference_type == "oai":
@@ -57,7 +56,7 @@ for qdi in ALL_QDI:
     aggregated_csv.append({
         "task_name" : fullname,
         "metric" : "respondent_count",
-        **flatten_dict(ann_manager.get_profile_of_question(merged_df))
+        **flatten_dict(questions_profile_count[question_list[int(question_index)]])
     })
 
     for score_col in [col for col in resdf.columns if col != "annotator_id"]:

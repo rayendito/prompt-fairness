@@ -19,7 +19,7 @@ def flatten_dict(d, parent_key=''):
     return items
 
 
-def run_task_scorer(postprocess_dir, samples_results_dir, run_name, question_document_index):
+def run_task_scorer(postprocess_dir, samples_results_dir, run_name, question_document_index, oai_infer_tries=5):
     respath = os.path.join(samples_results_dir, f"{run_name}", f"{run_name}-question{question_document_index}")
     results_path = os.path.join(respath, f"results-{run_name}-question{question_document_index}-question_{question_document_index}.json")
     samples_path = os.path.join(respath, f"samples-{run_name}-question{question_document_index}-question_{question_document_index}.json")
@@ -125,10 +125,16 @@ def run_task_scorer(postprocess_dir, samples_results_dir, run_name, question_doc
                     json.dump(grid, gg, indent=4)
                 
                 modman = ModelManager(grid)
-                modman.run_grid(grid,
-                                metric_utils.llm_judge_is_msgs_done_fn,
-                                metric_utils.llm_judge_extract_fn,
-                                results_dir=oai_inference_dir)
+                for t in range(oai_infer_tries):
+                    print(f"OPENAI INFER TRIAL NO {t+1} / {oai_infer_tries}")
+                    empty = modman.run_grid(grid,
+                                    metric_utils.llm_judge_is_msgs_done_fn,
+                                    metric_utils.llm_judge_extract_fn,
+                                    results_dir=oai_inference_dir)
+                    if empty == 0:
+                        break
+                    else:
+                        print(f"still has {empty} invalid responses, rerunning...")
 
                 llm_judge_res_json_file = os.path.join(
                     oai_inference_dir,
