@@ -57,8 +57,8 @@ def scorefunc_absa_f1(refs, preds):
         
         if precision + recall == 0:
             agg_scores.append(0.0)
-        
-        agg_scores.append(2 * (precision * recall) / (precision + recall))
+        else:
+            agg_scores.append(2 * (precision * recall) / (precision + recall))
     return sum(agg_scores)/len(agg_scores) if len(agg_scores) > 0 else 0    
 
 def scorefunc_embedding_similarity(refs, preds):
@@ -76,6 +76,8 @@ def scorefunc_embedding_similarity(refs, preds):
 def scorefunc_recipe_score(refs, preds):
     agg_scores = []
     for ref, pred in zip(refs, preds):
+        if ref == None:
+            continue
         ref_list_of_string = ref.lower().strip().split("\n")
         pred_list_of_string = pred.lower().strip().split("\n")
         
@@ -88,8 +90,8 @@ def scorefunc_recipe_score(refs, preds):
         
         if precision + recall == 0:
             agg_scores.append(0.0)
-        
-        agg_scores.append(2 * (precision * recall) / (precision + recall))
+        else:
+            agg_scores.append(2 * (precision * recall) / (precision + recall))
 
     return sum(agg_scores)/len(agg_scores) if len(agg_scores) > 0 else 0
 
@@ -128,8 +130,8 @@ def scorefunc_ner_f1(refs, preds):
         
         if precision + recall == 0:
             agg_scores.append(0.0)
-        
-        agg_scores.append(2 * (precision * recall) / (precision + recall))
+        else:
+            agg_scores.append(2 * (precision * recall) / (precision + recall))
     return sum(agg_scores)/len(agg_scores) if len(agg_scores) > 0 else 0
 
 def scorefunc_requirement_checker(refs, preds):
@@ -139,7 +141,7 @@ def scorefunc_requirement_checker(refs, preds):
         elements_to_check = ref.split("-")
         for i, e in enumerate(elements_to_check):
             if i == 0: # words at least check
-                if len(pred.split() < int(e)):
+                if len(pred.split()) < int(e):
                     is_pass = False
             else: # check word existence
                 if (e.lower() not in pred.lower()):
