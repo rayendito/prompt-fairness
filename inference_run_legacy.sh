@@ -1,23 +1,16 @@
 #!/bin/bash
-#SBATCH --job-name=Qwen25_1dot5B_Inst-prompt_fairness
-#SBATCH --output='%x-%j.out'
-#SBATCH --time=72:00:00
-#SBATCH --nodes=1
-#SBATCH --gres=gpu:2
-#SBATCH --ntasks=1
-#SBATCH --mem=40G
-#SBATCH -p cscc-gpu-p
-#SBATCH -q cscc-gpu-qos
 
-RUN_NAME='Qwen25_1dot5B_Inst'
-MODEL_NAME='Qwen/Qwen2.5-1.5B-Instruct'
+RUN_NAME="$1"
+MODEL_NAME="$2"
 MODEL_PROVIDER='hf'
 TENSOR_PARALLEL=false
-DATA_PARALLEL_SIZE=2
+DATA_PARALLEL_SIZE=1
+BATCH_SIZE=$3
 
-export HF_HOME=/l/users/ryandito.diandaru/huggingface
-export HF_HUB_CACHE=/l/users/ryandito.diandaru/huggingface/hub
-export SAMPLES_RESULTS_DIR=/l/users/ryandito.diandaru/lm_harness_runs/
+export CUDA_VISIBLE_DEVICES=0
+export HF_HOME=/mnt/data/users/ryandito/huggingface
+export HF_HUB_CACHE=/mnt/data/users/ryandito/huggingface/hub
+export SAMPLES_RESULTS_DIR=/mnt/data/users/ryandito/lm_harness_runs/
 export TOKENIZERS_PARALLELISM=false
 
 NO_DP="5_0 6_0 7_0 8_0 9_0 10_0 11_0 12_0 13_0 14_0 15_0 16_0 17_0 18_0 19_0"
@@ -31,7 +24,8 @@ for run_idx in $NO_DP $OK_DP; do
 			--run_name \"$RUN_NAME-question$run_idx\" \
 			--model_string \"$MODEL_NAME\" \
 			--question_document_index \"$run_idx\" \
-			--inference_provider \"$MODEL_PROVIDER\""
+			--inference_provider \"$MODEL_PROVIDER\" \
+			--batch_size $BATCH_SIZE"
 	else
 		CMD="accelerate launch \
 			--num_processes $DATA_PARALLEL_SIZE \
@@ -39,7 +33,8 @@ for run_idx in $NO_DP $OK_DP; do
 			--run_name \"$RUN_NAME-question$run_idx\" \
 			--model_string \"$MODEL_NAME\" \
 			--question_document_index \"$run_idx\" \
-			--inference_provider \"$MODEL_PROVIDER\""
+			--inference_provider \"$MODEL_PROVIDER\" \
+			--batch_size $BATCH_SIZE"
 	fi
 
 	if [ "$TENSOR_PARALLEL" = true ]; then
