@@ -6,6 +6,7 @@ PROFILE_COLUMNS = [
     "Sex",
     "Age",
     "English speaking monolingual",
+    "Nationality",
 ]
 
 def get_empty_question_profile(empty=[]):
@@ -19,8 +20,6 @@ def get_empty_question_profile(empty=[]):
             "White" : empty.copy(),
             "Asian" : empty.copy(),
             "Black" : empty.copy(),
-            # "Mixed" : empty.copy(),
-            # "Other" : empty.copy(),
         },
         "education" : {
             "Highschool" : empty.copy(),
@@ -40,6 +39,12 @@ def get_empty_question_profile(empty=[]):
             "L1" : empty.copy(),
             "L2" : empty.copy(),
         },
+        "nationality_group" : {
+            "North America": empty.copy(),
+            "Africa": empty.copy(),
+            "Asia": empty.copy(),
+            "Europe": empty.copy(),
+        }
     }
 
 def update_question_profile(empty_profile, row, filler, exclude_highschool):
@@ -67,10 +72,6 @@ def update_question_profile(empty_profile, row, filler, exclude_highschool):
                 empty_profile["race"]["Asian"] += value
             elif row[pc] == "Black":
                 empty_profile["race"]["Black"] += value
-            # elif row[pc] == "Mixed":
-            #     empty_profile["race"]["Mixed"] += value
-            # elif row[pc] == "Other":
-            #     empty_profile["race"]["Other"] += value
         elif (pc == "Highest education level completed"):
             if row[pc] in ["High school diploma/A-levels", "Technical/community college", "Highschool"]:
                 empty_profile["education"]["Highschool"] += value
@@ -99,6 +100,17 @@ def update_question_profile(empty_profile, row, filler, exclude_highschool):
                 empty_profile["language"]["L1"] += value
             elif row[pc] in ["Guaranteed non English L1"]:
                 empty_profile["language"]["L2"] += value
+        elif (pc == "Nationality"):
+            if exclude_highschool and is_highschool(row):
+                continue
+            if row[pc] in ["United States", "Canada"]:
+                empty_profile["nationality_group"]["North America"] += value
+            elif row[pc] in ["Cameroon", "Egypt", "Nigeria", "South Africa"]:
+                empty_profile["nationality_group"]["Africa"] += value
+            elif row[pc] in ["India", "Indonesia", "Iran", "South Korea", "United Arab Emirates"]:
+                empty_profile["nationality_group"]["Asia"] += value
+            elif row[pc] in ["Ireland", "United Kingdom"]:
+                empty_profile["nationality_group"]["Europe"] += value
 
 def reduce_dict(d, method="avg"):
     def compute(lst):
