@@ -15,13 +15,21 @@ os.makedirs(POSTPROCESS_DIR, exist_ok=True)
 parser = argparse.ArgumentParser()
 parser.add_argument("--run_name", type=str, required=True, help="result json file")
 parser.add_argument("--inference_type", type=str, default="separate", help="type of inference: separate, chunk, or oai")
+parser.add_argument("--use_existing", action="store_true", help="if set, do not recalculate metrics if .csv for question already exists")
 args = parser.parse_args()
 
 print(f"Postprocessing: {args.run_name}")
 if args.inference_type == "separate":
     for qdi in ALL_QDI:
         print(f"Running: {qdi}")
-        run_task_scorer(POSTPROCESS_DIR, os.getenv("SAMPLES_RESULTS_DIR"), args.run_name, qdi, oai_infer_tries=100)
+        processed_csv_file = os.path.join(POSTPROCESS_DIR, args.run_name, f"question_{qdi}.csv")
+        if os.path.exists(processed_csv_file):
+            if (args.use_existing):
+                print("not running because csv file already exists and use_existing is set")
+            else:
+                run_task_scorer(POSTPROCESS_DIR, os.getenv("SAMPLES_RESULTS_DIR"), args.run_name, qdi, oai_infer_tries=100)
+        else:
+            run_task_scorer(POSTPROCESS_DIR, os.getenv("SAMPLES_RESULTS_DIR"), args.run_name, qdi, oai_infer_tries=100)
 elif args.inference_type == "chunk":
     pass
 elif args.inference_type == "oai":

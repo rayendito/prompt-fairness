@@ -3,6 +3,9 @@ import sacrebleu
 import numpy as np
 from fuzzywuzzy import fuzz
 from collections import Counter
+import evaluate
+from sentence_transformers import SentenceTransformer  # type: ignore
+rouge_evaluate = evaluate.load("rouge")
 
 # Each of the metric function takes in (as pairs):
 # refs : List[str]
@@ -12,8 +15,6 @@ def scorefunc_bleu(refs, preds):
     return sacrebleu.corpus_bleu(preds, [refs]).score
 
 def scorefunc_rouge(refs, preds):
-    import evaluate
-    rouge_evaluate = evaluate.load("rouge")
     return rouge_evaluate.compute(predictions=preds, references=refs)["rougeL"]
 
 def scorefunc_or_custom(refs, preds):
@@ -62,7 +63,6 @@ def scorefunc_absa_f1(refs, preds):
     return sum(agg_scores)/len(agg_scores) if len(agg_scores) > 0 else 0    
 
 def scorefunc_embedding_similarity(refs, preds):
-    from sentence_transformers import SentenceTransformer  # type: ignore
     hf_hub_cache = os.getenv("HF_HUB_CACHE")
     sent_transformer_model = SentenceTransformer("all-MiniLM-L6-v2", cache_folder=hf_hub_cache)
     refs = sent_transformer_model.encode(refs)
