@@ -117,7 +117,12 @@ def reduce_dict(d, method="avg"):
         cleaned = [x for x in lst if not (isinstance(x, float) and pd.isna(x))]
         if not cleaned:
             return 0
-        return sum(cleaned) if method == "sum" else sum(cleaned) / len(cleaned)
+        if method == "sum":
+            return sum(cleaned)
+        elif method == "avg":
+            return sum(cleaned) / len(cleaned)
+        else:
+            return cleaned
 
     if isinstance(d, dict):
         return {k: reduce_dict(v, method) for k, v in d.items()}
