@@ -27,9 +27,6 @@ if args.inference_type == "separate":
         
         if not os.path.exists(processed_csv_file) or args.recalculate:
             run_task_scorer(POSTPROCESS_DIR, os.getenv("SAMPLES_RESULTS_DIR"), args.run_name, qdi, oai_infer_tries=100)
-        
-        # atp question_qdi file exists
-
 elif args.inference_type == "oai":
     pass
 else:
@@ -77,7 +74,7 @@ if not os.path.exists(final_csv_dir) or args.recalculate:
     df = pd.DataFrame(aggregated_csv)
     df.to_csv(final_csv_dir, index=False)
 
-# update annotator files to include linguistic information and score
+# update annotator files to include linguistic information and benchmark scores
 CHATGPT_CLASSIFIER_RES = "/mnt/data/users/ryandito/lm_harness_postprocess/annotator_answer_type_inferoai/ans_classifier_run-chatgpt-4o-latest/history-ans_classifier_run-chatgpt-4o-latest.json"
 SCORED_ANNOTATOR_DIR = "annotation_artefacts/scored_passed_annotators"
 os.makedirs(SCORED_ANNOTATOR_DIR, exist_ok=True)
@@ -87,19 +84,48 @@ with open(CHATGPT_CLASSIFIER_RES, "r") as clsrf:
 
 for annfilename in os.listdir(SCORED_ANNOTATOR_DIR):
     annotator_filepath = os.path.join(SCORED_ANNOTATOR_DIR, annfilename)
-    with open(annotator_filepath, "r") as  ao:
-        annotator_object = json.load(ao)
-    classif_results = chatgpt_linguistic_score_results[f"annotator-{annotator_object["id"]}-chatgpt_4o_latest"]
-    
-    assert len(classif_results["messages"]) == len(annotator_object["answers"])
-    for i, ao_key in enumerate(annotator_object["answers"].keys()):
-        if "sentence_class" in classif_results["messages"][i]["aggregations"]: # the "<<<SKIP_THIS_PROMPT>>>"
-            sentence_type = classif_results["messages"][i]["aggregations"]["sentence_class"]
-            annotator_object["answers"][ao_key]["sentence_type"] = sentence_type
-            annotator_object["answers"][ao_key]["sentence_length"] = len(remove_placeholders(annotator_object["answers"][ao_key]["answer"]).split())
+    # if not os.path.exists(annotator_filepath) or args.recalculate:
+    if True:
+        # opening annotator file
+        with open(annotator_filepath, "r") as  ao:
+            annotator_object = json.load(ao)
+        
+        # linguistic information
+        classif_results = chatgpt_linguistic_score_results[f"annotator-{annotator_object["id"]}-chatgpt_4o_latest"]
+        assert len(classif_results["messages"]) == len(annotator_object["answers"])
+        for i, ao_key in enumerate(annotator_object["answers"].keys()):
+            if "sentence_class" in classif_results["messages"][i]["aggregations"]: # the "<<<SKIP_THIS_PROMPT>>>"
+                sentence_type = classif_results["messages"][i]["aggregations"]["sentence_class"]
+                annotator_object["answers"][ao_key]["sentence_type"] = sentence_type
+                annotator_object["answers"][ao_key]["sentence_length"] = len(remove_placeholders(annotator_object["answers"][ao_key]["answer"]).split())
 
-    with open(annotator_filepath, "w") as ao:
-        json.dump(annotator_object, ao, indent=4)
+        # benchmark scores
+        annotator_id = annotator_object["id"]
+        run_name_postproc_dir = os.path.join(POSTPROCESS_DIR, args.run_name)
+        all_result_files = [os.path.join(run_name_postproc_dir, f) for f in os.listdir(run_name_postproc_dir)]
+        
+        annotator_answer_dict_keys = list(annotator_object["answers"].keys())
+        for question_number in range(29):
+            answer_dict_key = annotator_answer_dict_keys[question_number]
+
+            if (annotator_object["answers"][answer_dict_key]["answer"] == None):
+                continue
+
+            if "downstream_scores" not in annotator_object["answers"][answer_dict_key]:
+                annotator_object["answers"][answer_dict_key]["downstream_scores"] = {}
+
+            annotator_object["answers"][answer_dict_key]["downstream_scores"][args.run_name] = {}
+
+            relevant_res_files = [rezf for rezf in all_result_files if f"question_{question_number}_" in rezf]
+            for rf in relevant_res_files:
+                df = pd.read_csv(rf)
+                resf_obj = df.set_index('annotator_id').loc[annotator_id].to_dict()
+                task_qdi = rf.split("/")[-1].replace("question_", "").replace(".csv", "")
+                annotator_object["answers"][answer_dict_key]["downstream_scores"][args.run_name][task_qdi] = resf_obj            
+
+        # updating annotator file
+        with open(annotator_filepath, "w") as ao:
+            json.dump(annotator_object, ao, indent=4)
 
 # visualization ======================================================================================================================
 # if (args.visualize):

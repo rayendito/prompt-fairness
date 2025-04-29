@@ -106,7 +106,8 @@ def scorefunc_pearson_corr(refs, preds):
     extracted_preds = []
     for pred in preds:
         extracted_preds.append(_get_first_0_to_5_range(pred))
-    return np.corrcoef(refs, extracted_preds)[0, 1]
+    corr = np.corrcoef(refs, extracted_preds)[0, 1]
+    return 0 if np.isnan(corr) else corr
 
 def _postprocess_ner(text):
     list_of_strings = text.lower().strip().split("\n")
