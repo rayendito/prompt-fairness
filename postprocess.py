@@ -32,7 +32,7 @@ elif args.inference_type == "oai":
 else:
     raise ValueError(f"{args.inference_type} is an unrecognized inference_type")
 
-final_csv_dir = os.path.join("lm_harness_processed", f"final-{args.run_name}.csv")
+final_csv_dir = os.path.join("lm_harness_processed", f"final_agg-{args.run_name}.csv")
 if not os.path.exists(final_csv_dir) or args.recalculate:
     # Consolidating the results
     aggregated_csv = []
