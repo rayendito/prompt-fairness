@@ -25,9 +25,6 @@ def plot_histogram_by_category(data, ax, bin_edges=np.arange(100, 1001, 50)):
         x = np.linspace(bin_edges[0], bin_edges[-1], 1000)
         p = norm.pdf(x, mu, std)
 
-        if std == 0 or np.isnan(std) or len(counts) == 0:
-            continue
-
         scale = max(counts) / np.max(p)
         ax.plot(x, p * scale, color=color, label=f'{key}')
 

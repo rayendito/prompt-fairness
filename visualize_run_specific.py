@@ -1,4 +1,4 @@
-import os, json, argparse
+import os, json, argparse, math
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
@@ -64,21 +64,33 @@ length_correlation_df = pd.DataFrame(length_correlation_df)
 length_correlation_df.to_csv(f"lm_harness_processed/prompt_length_correlation-{args.run_name}.csv")
 
 
-# number_of_tasks = int(len(score_cols)/3) # each task has: prompt_kind, length, default score used
-# fig, axes = plt.subplots(number_of_tasks, 1, figsize=(10, 4 * number_of_tasks))
+number_of_tasks = int(len(score_cols)/3) # each task has: prompt_kind, length, default score used
+fig, axes = plt.subplots(number_of_tasks, 1, figsize=(10, 4 * number_of_tasks))
 
-    # prompt_type_freqtable = {}
-    # for _, row in subset_df.iterrows():
-    #     ptype = row.to_dict()[task_cols[0]]
-    #     score = row.to_dict()[task_cols[-1]]
-    #     if ptype in prompt_type_freqtable:
-    #         prompt_type_freqtable[ptype].append(score)
-    #     else:
-    #         prompt_type_freqtable[ptype] = [score]
+for i in range(0, len(score_cols), 3):
+    task_cols = score_cols[i:i+3]
+    subset_df = downstream_score_df[task_cols].dropna()
+    task_name = "-".join(task_cols[-1].split("-")[:-2])
+    metric_name = task_cols[-1].split("-")[-1]
     
-    # prompt_type_freqtable = dict(sorted(prompt_type_freqtable.items()))
+    prompt_type_freqtable = {}
+    for _, row in subset_df.iterrows():
+        ptype = row.to_dict()[task_cols[0]]
+        score = row.to_dict()[task_cols[-1]]
+        if ptype in prompt_type_freqtable:
+            prompt_type_freqtable[ptype].append(score)
+        else:
+            prompt_type_freqtable[ptype] = [score]
 
-    # axes[i].set_ylabel(task_name, fontsize=10, rotation=90)
-    # bin_edges=np.arange(0,1,10)
-    # plot_histogram_by_category(prompt_type_freqtable, axes[i], bin_edges=bin_edges)
-    # break
+    prompt_type_freqtable = dict(sorted(prompt_type_freqtable.items(), reverse=True))
+    
+    min_value = math.floor(min(min(v) for v in prompt_type_freqtable.values()))
+    max_value = math.ceil(max(max(v) for v in prompt_type_freqtable.values()))
+    bin_edges=np.linspace(min_value,max_value,15)
+    plot_histogram_by_category(prompt_type_freqtable, axes[int(i/3)], bin_edges=bin_edges)
+    axes[int(i/3)].set_xlabel(metric_name, fontsize=10)
+    axes[int(i/3)].set_ylabel(task_name, fontsize=10, rotation=90)
+
+# print(json.dumps(prompt_type_freqtable, indent=4))
+fig.subplots_adjust(hspace=0.4)
+fig.savefig(f"visualization_results/{args.run_name}-prompt_char_vs_downstream_score.png", bbox_inches='tight')
