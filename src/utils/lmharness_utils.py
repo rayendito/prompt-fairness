@@ -87,7 +87,12 @@ def create_task_def(
                 "test": f"{os.getcwd()}/question_artefacts/test_datasets/{dataset_file}"
             }
         },
-        "metric_list": metrics_list
+        "metric_list": metrics_list,
+        "generation_kwargs" : {
+            "temperature" : 1,
+            "top_p" : 1,
+            "until" : None,
+        }
     }
     
     if task_type == "multiple_choice":
