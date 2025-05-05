@@ -3,7 +3,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../i
 
 from ModelManager import ModelManager # type: ignore
 
-def run_experiment(model, run_name, expriment_dict, results_dir=__package__):
+def run_experiment(model_provider, model, run_name, expriment_dict, results_dir=__package__):
     """
         experiment dict:
             key : what to name the exp
@@ -12,7 +12,7 @@ def run_experiment(model, run_name, expriment_dict, results_dir=__package__):
     batches = [{
         "config" : {
             "tag" : exp_name,
-            "model_provider" : "openai",
+            "model_provider" : model_provider,
             "model_name" : model,
             "in_one_context" : False,
         },

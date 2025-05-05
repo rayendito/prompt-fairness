@@ -1,8 +1,15 @@
-import os, argparse
+import sys, os, argparse
+from dotenv import load_dotenv
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../inferinter")))
+from agents import CustomSyncAgent # type: ignore
+
+load_dotenv()
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--run_name", type=str, required=True, help="run name")
 parser.add_argument("--results_dir", type=str, required=True, help="results_dir")
+parser.add_argument("--through_api", action="store_true", help="Call through API")
 args = parser.parse_args()
 
 runs = """
@@ -58,8 +65,22 @@ runs = """
 28_0
 """.strip().split()
 
+# throwaway api inference agent
+csa = CustomSyncAgent(model_provider = "openrouter", model_name="anymodel")
+
+print("===========================================")
 for r in runs:
     respath = os.path.join(args.results_dir, f"{args.run_name}", f"{args.run_name}-question{r}")
-    respath_test = os.path.join(respath, f"results-{args.run_name}-question{r}-question_{r}.json")
-    if not(os.path.exists(respath_test)):
-        print(f"{args.run_name} question {r} not finished yet")
+    if args.through_api:
+        history_file = os.path.join(respath, f"history-{args.run_name}-question{r}.json")
+        if not(os.path.exists(history_file)):
+            print(f"{args.run_name} question number {r} is not even found")
+        else:
+            n_unanswered = csa.how_many_unanswered(history_file, csa.default_is_messages_done_fn)
+            if n_unanswered > 0:
+                print(f"{args.run_name} question number {r} n_unanswered: {n_unanswered}")
+    else:
+        respath_test = os.path.join(respath, f"results-{args.run_name}-question{r}-question_{r}.json")
+        if not(os.path.exists(respath_test)):
+            print(f"{args.run_name} question {r} not finished yet")
+print("===========================================")
