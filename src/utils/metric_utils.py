@@ -11,8 +11,24 @@ rouge_evaluate = evaluate.load("rouge")
 # refs : List[str]
 # preds: List[str]
 
+def best_matching_preds(refs, preds_raw):
+    best_preds = []
+    for ref, pred_raw in zip(refs, preds_raw):
+        pred_candidates = [p.strip() for p in pred_raw.split("\n\n") if p.strip()]
+        if not pred_candidates:
+            best_preds.append("")
+            continue
+
+        best_pred = max(
+            pred_candidates,
+            key=lambda pred: sacrebleu.sentence_bleu(pred, [ref]).score
+        )
+        best_preds.append(best_pred)
+    return best_preds
+
 def scorefunc_bleu(refs, preds):
-    return sacrebleu.corpus_bleu(preds, [refs]).score
+    cleaned_preds = best_matching_preds(refs, preds)
+    return sacrebleu.corpus_bleu(cleaned_preds, [refs]).score
 
 def scorefunc_rouge(refs, preds):
     return rouge_evaluate.compute(predictions=preds, references=refs)["rougeL"]
