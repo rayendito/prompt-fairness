@@ -11,6 +11,7 @@ parser.add_argument("--run_name", type=str, required=True, help="result json fil
 args = parser.parse_args()
 
 SCORED_ANNOTATOR_DIR = "annotation_artefacts/scored_passed_annotators"
+PROCESSED_DIR = "lm_harness_processed_v2"
 questions = Questions().get_questions()
 
 # making a raw scores (both characteristic and downstream) for each annotator
@@ -41,9 +42,7 @@ for annfilename in os.listdir(SCORED_ANNOTATOR_DIR):
 
 downstream_score_df = sorted(downstream_score_df, key=lambda x: x["id"])
 downstream_score_df = pd.DataFrame(downstream_score_df)
-downstream_score_df.to_csv(f"lm_harness_processed/raw_scores-{args.run_name}.csv")
-
-
+downstream_score_df.to_csv(f"{PROCESSED_DIR}/raw_scores-{args.run_name}.csv")
 
 score_cols = [col for col in downstream_score_df.columns if col != 'id']
 
@@ -61,7 +60,7 @@ for i in range(0, len(score_cols), 3):
         f"{args.run_name}-length_correlation" : pearson_corr[0][-1]
     })
 length_correlation_df = pd.DataFrame(length_correlation_df)
-length_correlation_df.to_csv(f"lm_harness_processed/prompt_length_correlation-{args.run_name}.csv")
+length_correlation_df.to_csv(f"{PROCESSED_DIR}/prompt_length_correlation-{args.run_name}.csv")
 
 
 number_of_tasks = int(len(score_cols)/3) # each task has: prompt_kind, length, default score used
