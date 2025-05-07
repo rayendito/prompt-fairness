@@ -1,5 +1,5 @@
 import sys, os, json, argparse
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../inferinter")))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../inferinter")))
 
 from ModelManager import ModelManager # type: ignore
 

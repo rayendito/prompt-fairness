@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from src import Questions
 from src.utils import metric_utils
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../inferinter")))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../inferinter")))
 load_dotenv()
 
 def flatten_dict(d, parent_key=''):

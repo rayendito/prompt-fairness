@@ -38,6 +38,3 @@ for anf in os.listdir(PASSED_ANNOTATOR_DIRS):
         with open(f"{FINAL_ANNOTATOR_OBJECTS}/annotator{annotator_object["id"]}.json", "w") as nf:
             json.dump(new_ann_obj, nf, indent=4)
         break
-
-
-

@@ -1,6 +1,6 @@
 import os, json, argparse
 from dotenv import load_dotenv
-from openai_runner.submit_batch import run_experiment
+from src.openai_runner.run_for_tasks import run_experiment
 
 load_dotenv()
 

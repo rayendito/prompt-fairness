@@ -5,7 +5,7 @@ import numpy as np
 from dotenv import load_dotenv
 from src import AnnotatorManager, Questions
 from src.utils.metric_utils import remove_placeholders
-from openai_scorer.run_task_scorer import run_task_scorer, flatten_dict
+from ..openai_runner.run_as_evaluator import run_task_scorer, flatten_dict
 load_dotenv()
 
 POSTPROCESS_DIR = "/mnt/data/users/ryandito/lm_harness_postprocess_v2/"
