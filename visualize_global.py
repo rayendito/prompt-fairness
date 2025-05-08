@@ -20,6 +20,7 @@ for annfilename in os.listdir(SCORED_ANNOTATOR_DIR):
         "interrogative" : 0,
         "declarative" : 0,
     }
+    
     for v in annotator_object["answers"].values():
         if v["answer"]:
             prompt_lengths.append(v["sentence_length"])

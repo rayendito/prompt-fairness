@@ -1,0 +1,2 @@
+tmux new-session -d -s oai_3to25 './inference_run_oai.sh "3_0 21_0 22_0 23_0 24_0 25_0 25_1" > oai_3to25.log 2>&1'
+tmux new-session -d -s oai_27to28 './inference_run_oai.sh "27_0 27_1 27_2 27_3 27_4 27_5 28_0" > oai_27to28.log 2>&1'

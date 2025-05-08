@@ -1,3 +1,5 @@
+#TODO: CLEAN THIS UP. WHAT A MESS
+
 import sys, os, json, argparse
 # import pandas as pd
 
@@ -9,9 +11,11 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../i
 from ModelManager import ModelManager # type: ignore
 load_dotenv()
 
+TO_CHECK = "grammar"
 llm_judge_model="chatgpt-4o-latest"
-POSTPROCESS_DIR = "/mnt/data/users/ryandito/lm_harness_postprocess/"
-ans_classifier_infer_dir = os.path.join(POSTPROCESS_DIR, f"annotator_answer_type_inferoai")
+POSTPROCESS_DIR = "/l/users/ryandito.diandaru/lm_harness_postprocess/"
+
+ans_classifier_infer_dir = os.path.join(POSTPROCESS_DIR, f"annotator_{TO_CHECK}_inferoai")
 os.makedirs(ans_classifier_infer_dir, exist_ok=True)
 
 
@@ -39,8 +43,21 @@ Turn down the volume.
 Answer only in one word.
 """.strip()
 
+
+def classify_answer_sentence_prompt_grammaticality(answer):
+    return f"""
+Given this request sentence:
+\"{answer}\""
+
+Decide if it's grammatically correct or incorrect.
+Exclude placeholder strings that are not part of the request. e.g. [TEXT] becuse they are going to be replaced with something else.
+If it's a request to correct the grammar of some given text, ignore the given text. Only assess the user request string.
+
+Answer only in one word. ("correct" or "incorrect")
+""".strip()
+
 batches = []
-ANNOTATOR_FILES = "annotation_artefacts/passed_annotator_objects"
+ANNOTATOR_FILES = "annotation_artefacts/annotation_filtering/passed_annotator_objects"
 for filename in os.listdir(ANNOTATOR_FILES):
     filepath = os.path.join(ANNOTATOR_FILES, filename)
     
@@ -50,7 +67,10 @@ for filename in os.listdir(ANNOTATOR_FILES):
     
     for k, v in annotator_data["answers"].items():
         if v['answer']:
-            prompts.append(classify_answer_sentence_prompt(remove_placeholders(v['answer'])))
+            if (TO_CHECK == "answer_type"):
+                prompts.append(classify_answer_sentence_prompt(remove_placeholders(v['answer'])))
+            elif(TO_CHECK == "grammar"):
+                prompts.append(classify_answer_sentence_prompt_grammaticality(v['answer']))
         else:
             prompts.append("<<<SKIP_THIS_PROMPT>>>")
     
@@ -106,10 +126,37 @@ def llm_judge_extract_fn(msgs, model_answer):
     
     return msgs
 
+
+def grammar_is_msgs_done_fn(msgs):
+    if msgs['chat_history'][0]['content'] == "<<<SKIP_THIS_PROMPT>>>":
+        return True
+    
+    if "grammaticality" in msgs["aggregations"]:
+        return True
+    else:
+        return False
+
+def grammar_extract_fn(msgs, model_answer):
+    msgs['chat_history'].append({
+        "role" : "assistant",
+        "content" : model_answer
+    })
+    
+    classification = None
+    if model_answer.lower() == "incorrect":
+        classification = "incorrect"
+    elif model_answer.lower() == "correct":
+        classification = "correct"
+
+    if "grammaticality" not in msgs["aggregations"] and classification:
+        msgs["aggregations"]["grammaticality"] = classification
+    
+    return msgs
+
 modman = ModelManager(grid)
 stillempty = modman.run_grid(grid,
-                llm_judge_is_msgs_done_fn,
-                llm_judge_extract_fn,
+                grammar_is_msgs_done_fn,
+                grammar_extract_fn,
                 results_dir=ans_classifier_infer_dir)
 
 print(f"{stillempty=}")
