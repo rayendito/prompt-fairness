@@ -144,6 +144,7 @@ def run_task_scorer(postprocess_dir, samples_results_dir, run_name, question_doc
 
                 history = json.load(open(llm_judge_res_json_file, "r"))
                 llm_judge_scores = [h["aggregations"]["llm_judge_score"] for h in history[list(history.keys())[0]]["messages"]]
+                llm_judge_scores = [val if 0 <= val <= 1 else 0 for val in llm_judge_scores]
                 llm_judge_scores_agg = [sum(llm_judge_scores[i:i+len_of_dataset]) for i in range(0, len(llm_judge_scores), len_of_dataset)]
                 
                 for annotator_index, score in zip(annotator_id_order, llm_judge_scores_agg):
