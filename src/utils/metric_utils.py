@@ -167,17 +167,16 @@ def scorefunc_ner_f1(refs, preds):
 def scorefunc_requirement_checker(refs, preds):
     agg_scores = []
     for ref, pred in zip(refs, preds):
-        is_pass = True
         elements_to_check = ref.split("-")
+        fullscore = len(elements_to_check)
         for i, e in enumerate(elements_to_check):
             if i == 0: # words at least check
                 if len(pred.split()) < int(e):
-                    is_pass = False
+                    fullscore -= 1
             else: # check word existence
                 if (e.lower() not in pred.lower()):
-                    is_pass = False
-            
-        agg_scores.append(1 if is_pass else 0)
+                    fullscore -= 1
+        agg_scores.append(fullscore/len(elements_to_check))
     return sum(agg_scores)/len(agg_scores) if len(agg_scores) > 0 else 0
 
 def llm_judge_prompt_general(prompt, refs, preds):
