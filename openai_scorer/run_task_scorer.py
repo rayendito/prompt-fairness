@@ -142,23 +142,45 @@ def run_task_scorer(postprocess_dir, samples_results_dir, run_name, question_doc
                 elif ("_grammar_sentence" in metric):
                     prompt_function = metric_utils.llm_judge_prompt_grammar_sentence
 
-                for key in sorted(samples_json.keys(), key=lambda k: int(k.split("-")[0].split("_")[-1])):
+                if (inference_type == "local"):
+                    main_answers_json = samples_json
+                elif (inference_type == "api"):
+                    main_answers_json = history_json
+                
+                for key in sorted(main_answers_json.keys(), key=lambda k: int(k.split("-")[0].split("_")[-1])):
                     annotator_id_order.append(int(key.split("-")[0].split("_")[-1]))
-                    v = samples_json[key]
+
+                    if(inference_type == "local"):
+                        v = main_answers_json[key]
+                    elif(inference_type == "api"):
+                        v = main_answers_json[key]["messages"]
+
+                        refkey = key.replace(f"-{run_name}", "")
+                        ref_v = reference_json[refkey]
+                    
                     # sanity check
                     if (len_of_dataset == None):
                         len_of_dataset = len(v)
                     else:
                         if(len(v) != len_of_dataset):
                             raise ValueError("len of dataset mismatch!")
-                        
-                    for test_instance in v:
-                        llm_as_judge_prompts.append(prompt_function(
-                            test_instance["arguments"][0][0],
-                            test_instance["doc"][question_attributes["labels"][0]],
-                            test_instance["resps"][0][0],
-                        ))
-                
+                    
+                    if(inference_type == "local"):
+                        for test_instance in v:
+                            llm_as_judge_prompts.append(prompt_function(
+                                test_instance["arguments"][0][0],
+                                test_instance["doc"][question_attributes["labels"][0]],
+                                test_instance["resps"][0][0],
+                            ))
+                    elif(inference_type == "api"):
+                        assert len(v) == len(ref_v)
+                        for pred_instance, ref_instance in zip(v, ref_v):
+                            llm_as_judge_prompts.append(prompt_function(
+                                ref_instance["arguments"][0][0],
+                                ref_instance["doc"][question_attributes["labels"][0]],
+                                pred_instance["chat_history"][1]["content"],
+                            ))
+
                 # inferinter code
                 grid = {
                     "grid_info" : {
@@ -234,17 +256,46 @@ def run_task_scorer(postprocess_dir, samples_results_dir, run_name, question_doc
                 else:
                     raise NotImplementedError(f"metric {metric} scoring scheme is not implemented!")
                 
-                for k, v in samples_json.items():
-                    annotator_index = int(k.split("-")[0].split("_")[-1])
-                    refs = []
-                    preds = []
-                    for test_instance in v:
-                        refs.append(test_instance["doc"][question_attributes["labels"][0]])
-                        preds.append(test_instance["resps"][0][0])
+                if(inference_type == "local"):
+                    for k, v in samples_json.items():
+                        annotator_index = int(k.split("-")[0].split("_")[-1])
+                        refs = []
+                        preds = []
+                        for test_instance in v:
+                            refs.append(test_instance["doc"][question_attributes["labels"][0]])
+                            preds.append(test_instance["resps"][0][0])
 
-                    res_dataset[annotator_index][
-                        f"{question_attributes['nickname']}{subnickname}-{question_document_index}-{metric}_score"
-                    ] = scoring_function(refs, preds)
+                        res_dataset[annotator_index][
+                            f"{question_attributes['nickname']}{subnickname}-{question_document_index}-{metric}_score"
+                        ] = scoring_function(refs, preds)
+                elif(inference_type == "api"):
+                    for k, v in history_json.items():
+                        annotator_index = int(k.split("-")[0].split("_")[-1])
+                        this_annotator_key = next(
+                            rk for rk in reference_json.keys() if rk.startswith(f"annotator_{annotator_index}-")
+                        )
+
+                        # reference_answers_and_labels = reference_json[this_annotator_key]
+                        reference_answers_and_labels = {
+                            doc["arguments"][0][0] : doc["doc"]
+                            for doc in reference_json[this_annotator_key]
+                        }
+                        reference_answers_and_labels = dict(sorted(reference_answers_and_labels.items()))
+
+                        user_answers = {
+                            message["chat_history"][0]["content"] : message["chat_history"][1]["content"]
+                            for message in v["messages"]
+                        }
+                        user_answers = dict(sorted(user_answers.items()))
+
+                        refs = []
+                        preds = []
+                        for questionky in reference_answers_and_labels.keys():
+                            refs.append(reference_answers_and_labels[questionky][question_attributes["labels"][0]])
+                            preds.append(user_answers[questionky])
+                        res_dataset[annotator_index][
+                            f"{question_attributes['nickname']}{subnickname}-{question_document_index}-{metric}_score"
+                        ] = scoring_function(refs, preds)
 
         # saving all results
         df_obj_list = [

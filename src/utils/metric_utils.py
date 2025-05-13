@@ -309,10 +309,4 @@ def parse_strings_for_f1(model_answers, reference_answers, reference_choices):
         for c in choices:
             fuzzy_scores.append(fuzz.partial_ratio(c, answer)/100)
         parsed_answers.append(choices[fuzzy_scores.index(max(fuzzy_scores))])
-
-    # with open("satu.json", "w") as satu:
-    #     satu.write(json.dumps(reference_answers, indent=4))
-    # with open("dua.json", "w") as dua:
-    #     dua.write(json.dumps(parsed_answers, indent=4))
-
     return f1_score(reference_answers, parsed_answers, average='macro')
