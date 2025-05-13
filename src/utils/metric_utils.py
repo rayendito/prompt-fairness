@@ -6,6 +6,7 @@ from collections import Counter
 import evaluate
 from sentence_transformers import SentenceTransformer  # type: ignore
 from rouge_score import rouge_scorer
+from sklearn.metrics import f1_score
 
 rouge_evaluate = evaluate.load("rouge")
 rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
@@ -298,3 +299,20 @@ def remove_placeholders(answer):
         answer = answer.replace(p, "")
     
     return answer.strip()
+
+
+def parse_strings_for_f1(model_answers, reference_answers, reference_choices):
+    import json
+    parsed_answers = []
+    for answer, choices in zip(model_answers, reference_choices):
+        fuzzy_scores = []
+        for c in choices:
+            fuzzy_scores.append(fuzz.partial_ratio(c, answer)/100)
+        parsed_answers.append(choices[fuzzy_scores.index(max(fuzzy_scores))])
+
+    # with open("satu.json", "w") as satu:
+    #     satu.write(json.dumps(reference_answers, indent=4))
+    # with open("dua.json", "w") as dua:
+    #     dua.write(json.dumps(parsed_answers, indent=4))
+
+    return f1_score(reference_answers, parsed_answers, average='macro')

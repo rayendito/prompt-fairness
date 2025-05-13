@@ -1,4 +1,4 @@
-import sys, os, json, argparse
+import sys, os, json, argparse, ast
 import pandas as pd
 
 from dotenv import load_dotenv
@@ -19,13 +19,26 @@ def flatten_dict(d, parent_key=''):
     return items
 
 
-def run_task_scorer(postprocess_dir, samples_results_dir, run_name, question_document_index, oai_infer_tries=5):
-    respath = os.path.join(samples_results_dir, f"{run_name}", f"{run_name}-question{question_document_index}")
-    results_path = os.path.join(respath, f"results-{run_name}-question{question_document_index}-question_{question_document_index}.json")
-    samples_path = os.path.join(respath, f"samples-{run_name}-question{question_document_index}-question_{question_document_index}.json")
+def run_task_scorer(postprocess_dir, samples_results_dir, run_name, question_document_index, oai_infer_tries=5, inference_type="local"):
+    if(inference_type == "local"):
+        respath = os.path.join(samples_results_dir, f"{run_name}", f"{run_name}-question{question_document_index}")
+        results_path = os.path.join(respath, f"results-{run_name}-question{question_document_index}-question_{question_document_index}.json")
+        samples_path = os.path.join(respath, f"samples-{run_name}-question{question_document_index}-question_{question_document_index}.json")
 
-    results_json = json.load(open(results_path, "r"))
-    samples_json = json.load(open(samples_path, "r"))
+        results_json = json.load(open(results_path, "r"))
+        samples_json = json.load(open(samples_path, "r"))
+    elif(inference_type == "api"):
+        # STATIC, not rly good
+        REFERENCE_DIR="/workspace/lm_harness_runs_v2/llama32_1B_Inst"
+        REF_NAME="llama32_1B_Inst"
+        refpath = os.path.join(REFERENCE_DIR, f"{REF_NAME}-question{question_document_index}")
+        reference_path = os.path.join(refpath, f"samples-{REF_NAME}-question{question_document_index}-question_{question_document_index}.json")
+        
+        hispath = os.path.join(samples_results_dir, f"{run_name}", f"{run_name}-question{question_document_index}")
+        history_path = os.path.join(hispath, f"history-{run_name}-question{question_document_index}.json")
+        
+        reference_json = json.load(open(reference_path, "r"))
+        history_json = json.load(open(history_path, "r"))
 
     # question object
     questions = Questions().get_questions()
@@ -49,18 +62,62 @@ def run_task_scorer(postprocess_dir, samples_results_dir, run_name, question_doc
     os.makedirs(oai_inference_dir, exist_ok=True)
 
     if question_attributes['task_eval_type'] == "multiple_choice":
-        res_dataset  = []
-        for k, v in results_json.items():
-            res_dataset.append({
-                "annotator_id" : int(k.split("-")[0].split("_")[-1]),
-                **{
-                    f"{question_attributes['nickname']}{subnickname}-{question_document_index}-{metric}_score" : v[f'{metric},none']
-                    for metric in question_attributes["metrics"]
+        if (inference_type == "local"):
+            res_dataset  = []
+            for k, v in results_json.items():
+                res_dataset.append({
+                    "annotator_id" : int(k.split("-")[0].split("_")[-1]),
+                    **{
+                        f"{question_attributes['nickname']}{subnickname}-{question_document_index}-{metric}_score" : v[f'{metric},none']
+                        for metric in question_attributes["metrics"]
+                    }
+                })
+            df = pd.DataFrame(res_dataset).sort_values(by="annotator_id").reset_index(drop=True)
+            df.dropna(inplace=True)
+            df.to_csv(os.path.join(csv_results_dir, f"question_{question_document_index}.csv"), index=False)
+        elif(inference_type == "api"):
+            res_dataset=[]
+            for k, v in history_json.items():
+                annotator_id = int(k.split("-")[0].split("_")[-1])
+                this_annotator_key = next(
+                    rk for rk in reference_json.keys() if rk.startswith(f"annotator_{annotator_id}-")
+                )
+
+                # reference_answers_and_labels = reference_json[this_annotator_key]
+                reference_answers_and_labels = {
+                    doc["arguments"][0][0] : doc["doc"]
+                    for doc in reference_json[this_annotator_key]
                 }
-            })
-        df = pd.DataFrame(res_dataset).sort_values(by="annotator_id").reset_index(drop=True)
-        df.dropna(inplace=True)
-        df.to_csv(os.path.join(csv_results_dir, f"question_{question_document_index}.csv"), index=False)
+                reference_answers_and_labels = dict(sorted(reference_answers_and_labels.items()))
+
+                user_answers = {
+                    message["chat_history"][0]["content"] : message["chat_history"][1]["content"]
+                    for message in v["messages"]
+                }
+                user_answers = dict(sorted(user_answers.items()))
+
+                reference_answers = []
+                reference_choices = []
+                for rref in reference_answers_and_labels.values():
+                    ans_idx = rref[question_attributes["labels"][0]]
+                    choices = ast.literal_eval(rref["choices"])
+                    reference_answers.append(choices[ans_idx])
+                    reference_choices.append(choices)
+
+                f1_score = metric_utils.parse_strings_for_f1(
+                    list(user_answers.values()),
+                    reference_answers,
+                    reference_choices
+                )
+                res_dataset.append({
+                    "annotator_id" : annotator_id,
+                    f"{question_attributes['nickname']}{subnickname}-{question_document_index}-f1_score" : f1_score
+                })
+            df = pd.DataFrame(res_dataset).sort_values(by="annotator_id").reset_index(drop=True)
+            df.dropna(inplace=True)
+            df.to_csv(os.path.join(csv_results_dir, f"question_{question_document_index}.csv"), index=False)
+        else:
+            raise ValueError(f"{inference_type} unknown inference type")
     elif question_attributes['task_eval_type'] == "generate_until":
         llm_judge_model = "gpt-4o"
         
