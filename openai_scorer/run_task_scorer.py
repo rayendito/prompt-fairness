@@ -163,6 +163,8 @@ def run_task_scorer(postprocess_dir, samples_results_dir, run_name, question_doc
                         v = main_answers_json[key]["messages"]
 
                         refkey = key.replace(f"-{run_name}", "")
+                        refkey = key.replace(f"-meta_llama_llama_3.1_70b_instruct", "")
+                        refkey = key.replace(f"-qwen2.5_72b_instruct", "")
                         ref_v = reference_json[refkey]
                     
                     # sanity check
