@@ -98,8 +98,15 @@ def run_task_scorer(postprocess_dir, samples_results_dir, run_name, question_doc
 
                 reference_answers = []
                 reference_choices = []
+
                 for rref in reference_answers_and_labels.values():
                     ans_idx = rref[question_attributes["labels"][0]]
+                    
+                    # special case for arc quesitons, 20_0
+                    if (question_index == 20):
+                        if "1)" in rref["[OPTIONS]"] and "2)" in rref["[OPTIONS]"] and "3)" in rref["[OPTIONS]"] and "4)" in rref["[OPTIONS]"]:
+                            ans_idx -= 1
+                    
                     choices = ast.literal_eval(rref["choices"])
                     reference_answers.append(choices[ans_idx])
                     reference_choices.append(choices)

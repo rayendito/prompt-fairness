@@ -306,7 +306,17 @@ def parse_strings_for_f1(model_answers, reference_answers, reference_choices):
     parsed_answers = []
     for answer, choices in zip(model_answers, reference_choices):
         fuzzy_scores = []
-        for c in choices:
-            fuzzy_scores.append(fuzz.partial_ratio(c, answer)/100)
+        if "CORRECT" in choices and "INCORRECT" in choices:
+            fuzzy_scores = [0 for _ in range(len(choices))]
+            choices_dict = {
+                c.lower() : i for i, c in enumerate(choices)
+            }
+            if "incorrect" in answer.lower():
+                fuzzy_scores[choices_dict["incorrect"]] = 1
+            else:
+                fuzzy_scores[choices_dict["correct"]] = 1
+        else:
+            for c in choices:
+                fuzzy_scores.append(fuzz.partial_ratio(c, answer)/100)
         parsed_answers.append(choices[fuzzy_scores.index(max(fuzzy_scores))])
     return f1_score(reference_answers, parsed_answers, average='macro')
