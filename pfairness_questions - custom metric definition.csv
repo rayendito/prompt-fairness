@@ -1,0 +1,88 @@
+metric name,description or prompt
+and_custom,"Given a model answer and a list of references, get the fuzzy string match score for each reference. Return the average."
+or_custom,"Given a model answer and a list of references, get the fuzzy string match score for each reference. Return the maximum."
+requirement_checker,"Given a set of rules, which consists only of minimum generation length and the existence of certain words, score based on how many rules an answer abides by."
+llm_judge,"You are a judge that gives a score to a prediction answer based on how accurate it is compared to a reference answer.
+
+Given this instruction right here:
+{prompt}
+
+
+On a scale of 0 (worst) to 1 (best), how would you rate the machine's answer?
+Reference Answer: 
+{refs}
+
+Prediction Answer:
+{preds}
+
+Answer only the XML format of the score: <score>[float]</score>"
+llm_judge_drum,"You are a judge that gives a holistic score to a text based on how accurate it is to these criteria:
+- How well it promotes cost
+- How well it promotes quality
+- How well it promotes environmental impact
+
+This is the text:
+{preds}
+
+Score it on a scale of 0 (worst) to 1 (best). Answer only the XML format of the score: <score>[float]</score>"
+llm_judge_science_project,"You are a judge that gives a holistic score to a text based on how accurate it is to these criteria:
+- How convincing it is
+
+This is the text:
+{preds}
+
+Score it on a scale of 0 (worst) to 1 (best). Answer only the XML format of the score: <score>[float]</score>"
+llm_judge_aeni_school_life,"You are a judge that gives a score to a text based on how accurate it is to these criteria:
+
+1. The story has to be about:
+- Aeni's school life
+
+2. The story has exactly:
+- 2 dogs
+- 1 cat
+- 5 mice
+- 2 adults named 'Thomas' and 'Haroon'
+- 1 child named 'Aeni'
+
+This is the text:
+{preds}
+
+Score it on a scale of 0 (least accurate) to 1 (most accurate). Answer only the XML format of the score: <score>[float]</score>"
+llm_judge_grammar_sentence,"You are a judge that gives a score of grammar correctness given a reference and a prediction.
+On a scale of 0 (worst) to 1 (best), how would you rate the grammar correctness? (including punctuation, etc)
+
+Reference:
+{refs}
+
+Prediction:
+{preds}
+
+Answer only the XML format of the score: <score>[float]</score>"
+prompt tone classifier,"Given this request sentence:
+\""{answer}\""""
+
+Classify it as either ""Declarative"", ""Interrogative"", or ""Imperative"".
+
+Declarative is a statement-like request. You state a situation that implies a request.
+Example:
+I really need some help right now.
+It would be great if you could stay a bit longer.
+
+Interrogative is a question-like request. You ask like a question, but it's really a polite request.
+Example:
+Could you help me with this?
+Would you mind closing the door?
+
+Imperative is a command-like request. You give a direct command, often softened with ""please.""
+Please pass the salt.
+Turn down the volume.
+
+Answer only in one word."
+prompt grammaticality classifier,"Given this request sentence:
+\""{answer}\""""
+
+Decide if it's grammatically correct or incorrect.
+Exclude placeholder strings that are not part of the request. e.g. [TEXT] becuse they are going to be replaced with something else.
+If it's a request to correct the grammar of some given text, ignore the given text. Only assess the user request string.
+
+Answer only in one word. (""correct"" or ""incorrect"")"
