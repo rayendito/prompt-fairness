@@ -30,6 +30,13 @@ def plot_histogram_by_category(data, ax, bin_edges=np.arange(100, 1001, 50)):
 
     ax.legend()
 
+def make_percent_category(data):
+    result = {}
+    for category, type_counts in data.items():
+        total = sum(type_counts.values())
+        result[category] = {k: (v / total * 100) for k, v in type_counts.items()} if total > 0 else {k: 0 for k in type_counts}
+    return result
+
 def plot_grouped_bar_chart(data, ax, width=0.25):
     """
     Plots a grouped bar chart for category-type counts.
@@ -39,7 +46,7 @@ def plot_grouped_bar_chart(data, ax, width=0.25):
         ax (matplotlib.axes.Axes): The Axes object to draw on.
         width (float): Width of each bar in the group.
     """
-    
+    data = make_percent_category(data)
     categories = list(data.keys())
     types = list(next(iter(data.values())).keys())
     x = np.arange(len(categories))
