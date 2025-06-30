@@ -39,22 +39,22 @@
             "downstream_scores": {
                 "llama32_1B_Inst": {
                     "0_0": {
-                        "Sentiment Analysis 3 Classes-0_0-f1_score": 0.2619894590135692
+                        "Sentiment Analysis 3 Classes-0_0-f1_score": 0.1955152696747422
                     }
                 },
                 "Qwen25_7B_Inst": {
                     "0_0": {
-                        "Sentiment Analysis 3 Classes-0_0-f1_score": 0.651681270580806
+                        "Sentiment Analysis 3 Classes-0_0-f1_score": 0.7129567085233078
                     }
                 },
                 "Qwen25_1dot5B_Inst": {
                     "0_0": {
-                        "Sentiment Analysis 3 Classes-0_0-f1_score": 0.4995641995808379
+                        "Sentiment Analysis 3 Classes-0_0-f1_score": 0.5912848782031503
                     }
                 },
                 "llama31_8B_Inst": {
                     "0_0": {
-                        "Sentiment Analysis 3 Classes-0_0-f1_score": 0.1697265664160401
+                        "Sentiment Analysis 3 Classes-0_0-f1_score": 0.4130493658618376
                     }
                 },
                 "llama31_70b_Inst": {
@@ -79,22 +79,22 @@
             "downstream_scores": {
                 "llama32_1B_Inst": {
                     "1_0": {
-                        "Sentiment Analysis 2 Classes-1_0-f1_score": 0.3584741635288634
+                        "Sentiment Analysis 2 Classes-1_0-f1_score": 0.7318278052223006
                     }
                 },
                 "Qwen25_7B_Inst": {
                     "1_0": {
-                        "Sentiment Analysis 2 Classes-1_0-f1_score": 0.3894058075427543
+                        "Sentiment Analysis 2 Classes-1_0-f1_score": 0.8888435280659986
                     }
                 },
                 "Qwen25_1dot5B_Inst": {
                     "1_0": {
-                        "Sentiment Analysis 2 Classes-1_0-f1_score": 0.3333333333333333
+                        "Sentiment Analysis 2 Classes-1_0-f1_score": 0.8872041122157945
                     }
                 },
                 "llama31_8B_Inst": {
                     "1_0": {
-                        "Sentiment Analysis 2 Classes-1_0-f1_score": 0.7209821428571429
+                        "Sentiment Analysis 2 Classes-1_0-f1_score": 0.8167027082689733
                     }
                 },
                 "llama31_70b_Inst": {
@@ -118,191 +118,191 @@
             "sentence_length": 3,
             "downstream_scores": {
                 "llama32_1B_Inst": {
-                    "2_5": {
-                        "Machine Translation-ind_Latn-2_5-bleu_score": 0.5476002568305609
-                    },
-                    "2_3": {
-                        "Machine Translation-deu_Latn-2_3-bleu_score": 0.1456841768505175
-                    },
-                    "2_0": {
-                        "Machine Translation-zho_Hans-2_0-bleu_score": 0.0208448075833939
-                    },
-                    "2_14": {
-                        "Machine Translation-hau_Latn-2_14-bleu_score": 0.0388244230584228
-                    },
-                    "2_8": {
-                        "Machine Translation-arb_Arab-2_8-bleu_score": 0.0211548882200549
-                    },
-                    "2_10": {
-                        "Machine Translation-ace_Latn-2_10-bleu_score": 0.0677808056087232
-                    },
                     "2_11": {
-                        "Machine Translation-bug_Latn-2_11-bleu_score": 0.0169614127167824
-                    },
-                    "2_4": {
-                        "Machine Translation-jpn_Jpan-2_4-bleu_score": 0.0105219929414951
-                    },
-                    "2_6": {
-                        "Machine Translation-tgl_Latn-2_6-bleu_score": 0.3516453677690113
-                    },
-                    "2_12": {
-                        "Machine Translation-uig_Arab-2_12-bleu_score": 0.0139402594708594
-                    },
-                    "2_9": {
-                        "Machine Translation-tur_Latn-2_9-bleu_score": 0.1731878948441913
+                        "Machine Translation-bug_Latn-2_11-bleu_score": 2.446412703974504
                     },
                     "2_2": {
-                        "Machine Translation-spa_Latn-2_2-bleu_score": 0.4189894383241997
+                        "Machine Translation-spa_Latn-2_2-bleu_score": 16.58380680692754
                     },
-                    "2_13": {
-                        "Machine Translation-amh_Ethi-2_13-bleu_score": 0.0128754004436985
+                    "2_5": {
+                        "Machine Translation-ind_Latn-2_5-bleu_score": 16.195941274968167
+                    },
+                    "2_10": {
+                        "Machine Translation-ace_Latn-2_10-bleu_score": 3.54153109889148
+                    },
+                    "2_4": {
+                        "Machine Translation-jpn_Jpan-2_4-bleu_score": 0.7299435325223442
+                    },
+                    "2_3": {
+                        "Machine Translation-deu_Latn-2_3-bleu_score": 12.60436187682994
+                    },
+                    "2_0": {
+                        "Machine Translation-zho_Hans-2_0-bleu_score": 1.0147640371701443
                     },
                     "2_7": {
-                        "Machine Translation-hin_Deva-2_7-bleu_score": 0.0775641021935118
+                        "Machine Translation-hin_Deva-2_7-bleu_score": 8.074327597277554
+                    },
+                    "2_9": {
+                        "Machine Translation-tur_Latn-2_9-bleu_score": 3.841539286092611
+                    },
+                    "2_13": {
+                        "Machine Translation-amh_Ethi-2_13-bleu_score": 0.3141204306534179
+                    },
+                    "2_14": {
+                        "Machine Translation-hau_Latn-2_14-bleu_score": 2.0554173601010857
+                    },
+                    "2_8": {
+                        "Machine Translation-arb_Arab-2_8-bleu_score": 2.0455354534493453
+                    },
+                    "2_6": {
+                        "Machine Translation-tgl_Latn-2_6-bleu_score": 7.5629867224876515
                     },
                     "2_1": {
-                        "Machine Translation-rus_Cyrl-2_1-bleu_score": 0.2220609068607235
+                        "Machine Translation-rus_Cyrl-2_1-bleu_score": 6.321686468761663
+                    },
+                    "2_12": {
+                        "Machine Translation-uig_Arab-2_12-bleu_score": 0.3286664741748836
                     }
                 },
                 "Qwen25_7B_Inst": {
-                    "2_5": {
-                        "Machine Translation-ind_Latn-2_5-bleu_score": 22.082561805531224
-                    },
-                    "2_3": {
-                        "Machine Translation-deu_Latn-2_3-bleu_score": 18.37267034113332
-                    },
-                    "2_0": {
-                        "Machine Translation-zho_Hans-2_0-bleu_score": 0.3242474857503018
-                    },
-                    "2_14": {
-                        "Machine Translation-hau_Latn-2_14-bleu_score": 2.6637499751214646
-                    },
-                    "2_8": {
-                        "Machine Translation-arb_Arab-2_8-bleu_score": 10.041013079909222
-                    },
-                    "2_10": {
-                        "Machine Translation-ace_Latn-2_10-bleu_score": 2.751271827137327
-                    },
-                    "2_11": {
-                        "Machine Translation-bug_Latn-2_11-bleu_score": 2.4538810860768
-                    },
-                    "2_4": {
-                        "Machine Translation-jpn_Jpan-2_4-bleu_score": 0.1523390944718904
-                    },
                     "2_6": {
-                        "Machine Translation-tgl_Latn-2_6-bleu_score": 7.814341042773577
-                    },
-                    "2_12": {
-                        "Machine Translation-uig_Arab-2_12-bleu_score": 0.5695136682516794
-                    },
-                    "2_9": {
-                        "Machine Translation-tur_Latn-2_9-bleu_score": 7.059148470705911
-                    },
-                    "2_2": {
-                        "Machine Translation-spa_Latn-2_2-bleu_score": 17.97432180468558
+                        "Machine Translation-tgl_Latn-2_6-bleu_score": 10.66110567316878
                     },
                     "2_13": {
-                        "Machine Translation-amh_Ethi-2_13-bleu_score": 0.353804161830283
+                        "Machine Translation-amh_Ethi-2_13-bleu_score": 0.4737708704799187
                     },
-                    "2_7": {
-                        "Machine Translation-hin_Deva-2_7-bleu_score": 6.858218585977085
+                    "2_14": {
+                        "Machine Translation-hau_Latn-2_14-bleu_score": 3.005952395738176
                     },
                     "2_1": {
-                        "Machine Translation-rus_Cyrl-2_1-bleu_score": 15.528126437714834
+                        "Machine Translation-rus_Cyrl-2_1-bleu_score": 22.209319768660556
+                    },
+                    "2_8": {
+                        "Machine Translation-arb_Arab-2_8-bleu_score": 11.486776117527356
+                    },
+                    "2_9": {
+                        "Machine Translation-tur_Latn-2_9-bleu_score": 8.925344408443392
+                    },
+                    "2_0": {
+                        "Machine Translation-zho_Hans-2_0-bleu_score": 2.062493211866248
+                    },
+                    "2_7": {
+                        "Machine Translation-hin_Deva-2_7-bleu_score": 7.775600384297778
+                    },
+                    "2_12": {
+                        "Machine Translation-uig_Arab-2_12-bleu_score": 0.3860066205248639
+                    },
+                    "2_4": {
+                        "Machine Translation-jpn_Jpan-2_4-bleu_score": 1.1006194100043472
+                    },
+                    "2_11": {
+                        "Machine Translation-bug_Latn-2_11-bleu_score": 2.450833774423166
+                    },
+                    "2_3": {
+                        "Machine Translation-deu_Latn-2_3-bleu_score": 21.30813502051319
+                    },
+                    "2_2": {
+                        "Machine Translation-spa_Latn-2_2-bleu_score": 22.599642808450884
+                    },
+                    "2_5": {
+                        "Machine Translation-ind_Latn-2_5-bleu_score": 27.811699806207564
+                    },
+                    "2_10": {
+                        "Machine Translation-ace_Latn-2_10-bleu_score": 2.4946658958328056
                     }
                 },
                 "Qwen25_1dot5B_Inst": {
                     "2_5": {
-                        "Machine Translation-ind_Latn-2_5-bleu_score": 4.307369273481955
-                    },
-                    "2_3": {
-                        "Machine Translation-deu_Latn-2_3-bleu_score": 5.023485083810688
-                    },
-                    "2_0": {
-                        "Machine Translation-zho_Hans-2_0-bleu_score": 0.1197039088599018
-                    },
-                    "2_14": {
-                        "Machine Translation-hau_Latn-2_14-bleu_score": 0.360183359808961
-                    },
-                    "2_8": {
-                        "Machine Translation-arb_Arab-2_8-bleu_score": 1.6570042465810575
-                    },
-                    "2_10": {
-                        "Machine Translation-ace_Latn-2_10-bleu_score": 0.7344238027176335
+                        "Machine Translation-ind_Latn-2_5-bleu_score": 11.454444972910316
                     },
                     "2_11": {
-                        "Machine Translation-bug_Latn-2_11-bleu_score": 0.533832909627241
-                    },
-                    "2_4": {
-                        "Machine Translation-jpn_Jpan-2_4-bleu_score": 0.0509482709290003
-                    },
-                    "2_6": {
-                        "Machine Translation-tgl_Latn-2_6-bleu_score": 1.981394567975053
-                    },
-                    "2_12": {
-                        "Machine Translation-uig_Arab-2_12-bleu_score": 0.0465210349213163
-                    },
-                    "2_9": {
-                        "Machine Translation-tur_Latn-2_9-bleu_score": 2.4909805016400166
+                        "Machine Translation-bug_Latn-2_11-bleu_score": 1.455823528431642
                     },
                     "2_2": {
-                        "Machine Translation-spa_Latn-2_2-bleu_score": 4.237824681298765
+                        "Machine Translation-spa_Latn-2_2-bleu_score": 13.545057817272372
                     },
-                    "2_13": {
-                        "Machine Translation-amh_Ethi-2_13-bleu_score": 0.1065035706627106
+                    "2_3": {
+                        "Machine Translation-deu_Latn-2_3-bleu_score": 10.14547675287666
+                    },
+                    "2_4": {
+                        "Machine Translation-jpn_Jpan-2_4-bleu_score": 0.5367668447584357
+                    },
+                    "2_10": {
+                        "Machine Translation-ace_Latn-2_10-bleu_score": 1.5577996992802785
                     },
                     "2_7": {
-                        "Machine Translation-hin_Deva-2_7-bleu_score": 0.5855596382900171
+                        "Machine Translation-hin_Deva-2_7-bleu_score": 1.4513763772439805
+                    },
+                    "2_13": {
+                        "Machine Translation-amh_Ethi-2_13-bleu_score": 0.1602926265694341
+                    },
+                    "2_14": {
+                        "Machine Translation-hau_Latn-2_14-bleu_score": 0.9685086894711168
+                    },
+                    "2_0": {
+                        "Machine Translation-zho_Hans-2_0-bleu_score": 2.794801322759896
+                    },
+                    "2_9": {
+                        "Machine Translation-tur_Latn-2_9-bleu_score": 3.6027824632751084
+                    },
+                    "2_8": {
+                        "Machine Translation-arb_Arab-2_8-bleu_score": 4.772009965622524
                     },
                     "2_1": {
-                        "Machine Translation-rus_Cyrl-2_1-bleu_score": 4.805669328368999
+                        "Machine Translation-rus_Cyrl-2_1-bleu_score": 8.940715352398819
+                    },
+                    "2_6": {
+                        "Machine Translation-tgl_Latn-2_6-bleu_score": 2.4457083492267726
+                    },
+                    "2_12": {
+                        "Machine Translation-uig_Arab-2_12-bleu_score": 0.2046370026638599
                     }
                 },
                 "llama31_8B_Inst": {
-                    "2_5": {
-                        "Machine Translation-ind_Latn-2_5-bleu_score": 3.743190220191356
-                    },
-                    "2_3": {
-                        "Machine Translation-deu_Latn-2_3-bleu_score": 3.09839985295889
-                    },
-                    "2_0": {
-                        "Machine Translation-zho_Hans-2_0-bleu_score": 0.049172613408712
-                    },
-                    "2_14": {
-                        "Machine Translation-hau_Latn-2_14-bleu_score": 0.9836166037258204
-                    },
-                    "2_8": {
-                        "Machine Translation-arb_Arab-2_8-bleu_score": 1.0570777018828978
-                    },
-                    "2_10": {
-                        "Machine Translation-ace_Latn-2_10-bleu_score": 0.6953685760893084
-                    },
-                    "2_11": {
-                        "Machine Translation-bug_Latn-2_11-bleu_score": 0.3629692837660653
-                    },
-                    "2_4": {
-                        "Machine Translation-jpn_Jpan-2_4-bleu_score": 0.0429393684646685
-                    },
                     "2_6": {
-                        "Machine Translation-tgl_Latn-2_6-bleu_score": 3.482047737635689
-                    },
-                    "2_12": {
-                        "Machine Translation-uig_Arab-2_12-bleu_score": 0.0502364451970855
-                    },
-                    "2_9": {
-                        "Machine Translation-tur_Latn-2_9-bleu_score": 1.6131479013994714
-                    },
-                    "2_2": {
-                        "Machine Translation-spa_Latn-2_2-bleu_score": 2.604416782393675
-                    },
-                    "2_13": {
-                        "Machine Translation-amh_Ethi-2_13-bleu_score": 0.4148423406834558
-                    },
-                    "2_7": {
-                        "Machine Translation-hin_Deva-2_7-bleu_score": 3.617074577704359
+                        "Machine Translation-tgl_Latn-2_6-bleu_score": 18.13306263434629
                     },
                     "2_1": {
-                        "Machine Translation-rus_Cyrl-2_1-bleu_score": 2.1290764850506347
+                        "Machine Translation-rus_Cyrl-2_1-bleu_score": 20.60397422938468
+                    },
+                    "2_8": {
+                        "Machine Translation-arb_Arab-2_8-bleu_score": 8.429306230358849
+                    },
+                    "2_12": {
+                        "Machine Translation-uig_Arab-2_12-bleu_score": 0.4684597291218946
+                    },
+                    "2_9": {
+                        "Machine Translation-tur_Latn-2_9-bleu_score": 12.871600516784763
+                    },
+                    "2_0": {
+                        "Machine Translation-zho_Hans-2_0-bleu_score": 3.517854749664911
+                    },
+                    "2_7": {
+                        "Machine Translation-hin_Deva-2_7-bleu_score": 17.256958805892456
+                    },
+                    "2_13": {
+                        "Machine Translation-amh_Ethi-2_13-bleu_score": 0.5571283100021469
+                    },
+                    "2_14": {
+                        "Machine Translation-hau_Latn-2_14-bleu_score": 4.532430606033879
+                    },
+                    "2_10": {
+                        "Machine Translation-ace_Latn-2_10-bleu_score": 4.162018394828168
+                    },
+                    "2_4": {
+                        "Machine Translation-jpn_Jpan-2_4-bleu_score": 1.8084212784576068
+                    },
+                    "2_3": {
+                        "Machine Translation-deu_Latn-2_3-bleu_score": 23.504422943711305
+                    },
+                    "2_11": {
+                        "Machine Translation-bug_Latn-2_11-bleu_score": 2.0860971972713807
+                    },
+                    "2_2": {
+                        "Machine Translation-spa_Latn-2_2-bleu_score": 23.016773059862533
+                    },
+                    "2_5": {
+                        "Machine Translation-ind_Latn-2_5-bleu_score": 31.03410391732941
                     }
                 },
                 "llama31_70b_Inst": {
@@ -411,22 +411,22 @@
             "downstream_scores": {
                 "llama32_1B_Inst": {
                     "3_0": {
-                        "Dialogue Summarization-3_0-rouge_score": 0.0442188120039746
+                        "Dialogue Summarization-3_0-rouge_score": 0.1324050897273311
                     }
                 },
                 "Qwen25_7B_Inst": {
                     "3_0": {
-                        "Dialogue Summarization-3_0-rouge_score": 0.1306164525156749
+                        "Dialogue Summarization-3_0-rouge_score": 0.1786666441845343
                     }
                 },
                 "Qwen25_1dot5B_Inst": {
                     "3_0": {
-                        "Dialogue Summarization-3_0-rouge_score": 0.0822486869935264
+                        "Dialogue Summarization-3_0-rouge_score": 0.1111192228295531
                     }
                 },
                 "llama31_8B_Inst": {
                     "3_0": {
-                        "Dialogue Summarization-3_0-rouge_score": 0.1086840410910951
+                        "Dialogue Summarization-3_0-rouge_score": 0.1535156974059286
                     }
                 },
                 "llama31_70b_Inst": {
@@ -451,22 +451,22 @@
             "downstream_scores": {
                 "llama32_1B_Inst": {
                     "4_0": {
-                        "Topic Classification-4_0-f1_score": 0.4819571633996821
+                        "Topic Classification-4_0-f1_score": 0.4899912711296639
                     }
                 },
                 "Qwen25_7B_Inst": {
                     "4_0": {
-                        "Topic Classification-4_0-f1_score": 0.6526375996782788
+                        "Topic Classification-4_0-f1_score": 0.7974263530915722
                     }
                 },
                 "Qwen25_1dot5B_Inst": {
                     "4_0": {
-                        "Topic Classification-4_0-f1_score": 0.3800980424635435
+                        "Topic Classification-4_0-f1_score": 0.7166015222820002
                     }
                 },
                 "llama31_8B_Inst": {
                     "4_0": {
-                        "Topic Classification-4_0-f1_score": 0.1043885651125401
+                        "Topic Classification-4_0-f1_score": 0.7380120413918032
                     }
                 },
                 "llama31_70b_Inst": {
@@ -497,26 +497,26 @@
             "downstream_scores": {
                 "llama32_1B_Inst": {
                     "7_0": {
-                        "Free Generation: Hijrah-7_0-embedding_similarity_score": 0.3994932472705841,
-                        "Free Generation: Hijrah-7_0-llm_judge_score": 0.3
+                        "Free Generation: Hijrah-7_0-llm_judge_score": 0.3,
+                        "Free Generation: Hijrah-7_0-embedding_similarity_score": 0.7314690351486206
                     }
                 },
                 "Qwen25_7B_Inst": {
                     "7_0": {
-                        "Free Generation: Hijrah-7_0-embedding_similarity_score": 0.6376562118530273,
-                        "Free Generation: Hijrah-7_0-llm_judge_score": 0.9
+                        "Free Generation: Hijrah-7_0-llm_judge_score": 0.8,
+                        "Free Generation: Hijrah-7_0-embedding_similarity_score": 0.6751788258552551
                     }
                 },
                 "Qwen25_1dot5B_Inst": {
                     "7_0": {
-                        "Free Generation: Hijrah-7_0-embedding_similarity_score": 0.6813523769378662,
-                        "Free Generation: Hijrah-7_0-llm_judge_score": 0.8
+                        "Free Generation: Hijrah-7_0-llm_judge_score": 0.0,
+                        "Free Generation: Hijrah-7_0-embedding_similarity_score": 0.5559561252593994
                     }
                 },
                 "llama31_8B_Inst": {
                     "7_0": {
-                        "Free Generation: Hijrah-7_0-embedding_similarity_score": 0.660946249961853,
-                        "Free Generation: Hijrah-7_0-llm_judge_score": 0.9
+                        "Free Generation: Hijrah-7_0-llm_judge_score": 0.9,
+                        "Free Generation: Hijrah-7_0-embedding_similarity_score": 0.693297803401947
                     }
                 },
                 "llama31_70b_Inst": {
@@ -543,26 +543,26 @@
             "downstream_scores": {
                 "llama32_1B_Inst": {
                     "8_0": {
-                        "Free Generation: Adhan-8_0-and_custom_score": 0.4676923076923077,
-                        "Free Generation: Adhan-8_0-llm_judge_score": 0.0
+                        "Free Generation: Adhan-8_0-llm_judge_score": 0.1,
+                        "Free Generation: Adhan-8_0-and_custom_score": 0.4507692307692308
                     }
                 },
                 "Qwen25_7B_Inst": {
                     "8_0": {
-                        "Free Generation: Adhan-8_0-and_custom_score": 0.5638461538461539,
-                        "Free Generation: Adhan-8_0-llm_judge_score": 0.3
+                        "Free Generation: Adhan-8_0-llm_judge_score": 0.2,
+                        "Free Generation: Adhan-8_0-and_custom_score": 0.46
                     }
                 },
                 "Qwen25_1dot5B_Inst": {
                     "8_0": {
-                        "Free Generation: Adhan-8_0-and_custom_score": 0.0,
-                        "Free Generation: Adhan-8_0-llm_judge_score": 0.0
+                        "Free Generation: Adhan-8_0-llm_judge_score": 0.0,
+                        "Free Generation: Adhan-8_0-and_custom_score": 0.4692307692307692
                     }
                 },
                 "llama31_8B_Inst": {
                     "8_0": {
-                        "Free Generation: Adhan-8_0-and_custom_score": 0.4561538461538461,
-                        "Free Generation: Adhan-8_0-llm_judge_score": 0.3
+                        "Free Generation: Adhan-8_0-llm_judge_score": 0.0,
+                        "Free Generation: Adhan-8_0-and_custom_score": 0.4592307692307692
                     }
                 },
                 "llama31_70b_Inst": {
@@ -595,22 +595,22 @@
             "downstream_scores": {
                 "llama32_1B_Inst": {
                     "11_0": {
-                        "Free Generation: Scientific Letter-11_0-llm_judge_science_project_score": 0.3
+                        "Free Generation: Scientific Letter-11_0-llm_judge_science_project_score": 0.8
                     }
                 },
                 "Qwen25_7B_Inst": {
                     "11_0": {
-                        "Free Generation: Scientific Letter-11_0-llm_judge_science_project_score": 0.6
+                        "Free Generation: Scientific Letter-11_0-llm_judge_science_project_score": 0.8
                     }
                 },
                 "Qwen25_1dot5B_Inst": {
                     "11_0": {
-                        "Free Generation: Scientific Letter-11_0-llm_judge_science_project_score": 0.0
+                        "Free Generation: Scientific Letter-11_0-llm_judge_science_project_score": 7.5
                     }
                 },
                 "llama31_8B_Inst": {
                     "11_0": {
-                        "Free Generation: Scientific Letter-11_0-llm_judge_science_project_score": 5.0
+                        "Free Generation: Scientific Letter-11_0-llm_judge_science_project_score": 4.5
                     }
                 },
                 "llama31_70b_Inst": {
@@ -675,22 +675,22 @@
             "downstream_scores": {
                 "llama32_1B_Inst": {
                     "13_0": {
-                        "Free Generation: Olympics Medallists-13_0-llm_judge_score": 0.0
+                        "Free Generation: Olympics Medallists-13_0-llm_judge_score": 0.1
                     }
                 },
                 "Qwen25_7B_Inst": {
                     "13_0": {
-                        "Free Generation: Olympics Medallists-13_0-llm_judge_score": 0.2
+                        "Free Generation: Olympics Medallists-13_0-llm_judge_score": 0.1
                     }
                 },
                 "Qwen25_1dot5B_Inst": {
                     "13_0": {
-                        "Free Generation: Olympics Medallists-13_0-llm_judge_score": 0.0
+                        "Free Generation: Olympics Medallists-13_0-llm_judge_score": 0.1
                     }
                 },
                 "llama31_8B_Inst": {
                     "13_0": {
-                        "Free Generation: Olympics Medallists-13_0-llm_judge_score": 0.6
+                        "Free Generation: Olympics Medallists-13_0-llm_judge_score": 0.3
                     }
                 },
                 "llama31_70b_Inst": {
@@ -715,26 +715,26 @@
             "downstream_scores": {
                 "llama32_1B_Inst": {
                     "14_0": {
-                        "Free Generation: Hillary Clinton-14_0-embedding_similarity_score": 0.482615202665329,
-                        "Free Generation: Hillary Clinton-14_0-llm_judge_score": 0.2
+                        "Free Generation: Hillary Clinton-14_0-llm_judge_score": 0.8,
+                        "Free Generation: Hillary Clinton-14_0-embedding_similarity_score": 0.7705796360969543
                     }
                 },
                 "Qwen25_7B_Inst": {
                     "14_0": {
-                        "Free Generation: Hillary Clinton-14_0-embedding_similarity_score": 0.428115576505661,
-                        "Free Generation: Hillary Clinton-14_0-llm_judge_score": 0.5
+                        "Free Generation: Hillary Clinton-14_0-llm_judge_score": 0.95,
+                        "Free Generation: Hillary Clinton-14_0-embedding_similarity_score": 0.7713576555252075
                     }
                 },
                 "Qwen25_1dot5B_Inst": {
                     "14_0": {
-                        "Free Generation: Hillary Clinton-14_0-embedding_similarity_score": 0.7959476113319397,
-                        "Free Generation: Hillary Clinton-14_0-llm_judge_score": 0.6
+                        "Free Generation: Hillary Clinton-14_0-llm_judge_score": 0.0,
+                        "Free Generation: Hillary Clinton-14_0-embedding_similarity_score": 0.3665588796138763
                     }
                 },
                 "llama31_8B_Inst": {
                     "14_0": {
-                        "Free Generation: Hillary Clinton-14_0-embedding_similarity_score": 0.4288695156574249,
-                        "Free Generation: Hillary Clinton-14_0-llm_judge_score": 0.3
+                        "Free Generation: Hillary Clinton-14_0-llm_judge_score": 0.9,
+                        "Free Generation: Hillary Clinton-14_0-embedding_similarity_score": 0.7067747712135315
                     }
                 },
                 "llama31_70b_Inst": {
@@ -761,26 +761,26 @@
             "downstream_scores": {
                 "llama32_1B_Inst": {
                     "15_0": {
-                        "Free Generation: MBZUAI-15_0-and_custom_score": 0.855,
-                        "Free Generation: MBZUAI-15_0-llm_judge_score": 0.0
+                        "Free Generation: MBZUAI-15_0-llm_judge_score": 0.2,
+                        "Free Generation: MBZUAI-15_0-and_custom_score": 0.34
                     }
                 },
                 "Qwen25_7B_Inst": {
                     "15_0": {
-                        "Free Generation: MBZUAI-15_0-and_custom_score": 0.98,
-                        "Free Generation: MBZUAI-15_0-llm_judge_score": 0.5
+                        "Free Generation: MBZUAI-15_0-llm_judge_score": 0.5,
+                        "Free Generation: MBZUAI-15_0-and_custom_score": 0.855
                     }
                 },
                 "Qwen25_1dot5B_Inst": {
                     "15_0": {
-                        "Free Generation: MBZUAI-15_0-and_custom_score": 0.855,
-                        "Free Generation: MBZUAI-15_0-llm_judge_score": 0.5
+                        "Free Generation: MBZUAI-15_0-llm_judge_score": 0.2,
+                        "Free Generation: MBZUAI-15_0-and_custom_score": 0.73
                     }
                 },
                 "llama31_8B_Inst": {
                     "15_0": {
-                        "Free Generation: MBZUAI-15_0-and_custom_score": 0.73,
-                        "Free Generation: MBZUAI-15_0-llm_judge_score": 0.5
+                        "Free Generation: MBZUAI-15_0-llm_judge_score": 0.5,
+                        "Free Generation: MBZUAI-15_0-and_custom_score": 0.73
                     }
                 },
                 "llama31_70b_Inst": {
@@ -812,7 +812,7 @@
                 },
                 "Qwen25_7B_Inst": {
                     "16_0": {
-                        "Free Generation: Grammar Correction I-16_0-llm_judge_grammar_sentence_score": 0.0
+                        "Free Generation: Grammar Correction I-16_0-llm_judge_grammar_sentence_score": 1.0
                     }
                 },
                 "Qwen25_1dot5B_Inst": {
@@ -822,7 +822,7 @@
                 },
                 "llama31_8B_Inst": {
                     "16_0": {
-                        "Free Generation: Grammar Correction I-16_0-llm_judge_grammar_sentence_score": 0.0
+                        "Free Generation: Grammar Correction I-16_0-llm_judge_grammar_sentence_score": 1.0
                     }
                 },
                 "llama31_70b_Inst": {
@@ -847,22 +847,22 @@
             "downstream_scores": {
                 "llama32_1B_Inst": {
                     "17_0": {
-                        "Free Generation: Grammar Correction II-17_0-llm_judge_score": 0.9
+                        "Free Generation: Grammar Correction II-17_0-llm_judge_score": 0.0
                     }
                 },
                 "Qwen25_7B_Inst": {
                     "17_0": {
-                        "Free Generation: Grammar Correction II-17_0-llm_judge_score": 0.5
+                        "Free Generation: Grammar Correction II-17_0-llm_judge_score": 0.6
                     }
                 },
                 "Qwen25_1dot5B_Inst": {
                     "17_0": {
-                        "Free Generation: Grammar Correction II-17_0-llm_judge_score": 0.9
+                        "Free Generation: Grammar Correction II-17_0-llm_judge_score": 0.0
                     }
                 },
                 "llama31_8B_Inst": {
                     "17_0": {
-                        "Free Generation: Grammar Correction II-17_0-llm_judge_score": 0.0
+                        "Free Generation: Grammar Correction II-17_0-llm_judge_score": 0.5
                     }
                 },
                 "llama31_70b_Inst": {
@@ -892,12 +892,12 @@
                 },
                 "Qwen25_7B_Inst": {
                     "18_0": {
-                        "Free Generation: Arithmetic-18_0-llm_judge_score": 0.0
+                        "Free Generation: Arithmetic-18_0-llm_judge_score": 1.0
                     }
                 },
                 "Qwen25_1dot5B_Inst": {
                     "18_0": {
-                        "Free Generation: Arithmetic-18_0-llm_judge_score": 0.8
+                        "Free Generation: Arithmetic-18_0-llm_judge_score": 1.0
                     }
                 },
                 "llama31_8B_Inst": {
@@ -927,26 +927,26 @@
             "downstream_scores": {
                 "llama32_1B_Inst": {
                     "19_0": {
-                        "Free Generation: Shakespeare-Prompt Jailbreak-19_0-and_custom_score": 0.4433333333333333,
-                        "Free Generation: Shakespeare-Prompt Jailbreak-19_0-llm_judge_score": 0.0
+                        "Free Generation: Shakespeare-Prompt Jailbreak-19_0-llm_judge_score": 0.8,
+                        "Free Generation: Shakespeare-Prompt Jailbreak-19_0-and_custom_score": 0.4533333333333333
                     }
                 },
                 "Qwen25_7B_Inst": {
                     "19_0": {
-                        "Free Generation: Shakespeare-Prompt Jailbreak-19_0-and_custom_score": 0.4949999999999999,
-                        "Free Generation: Shakespeare-Prompt Jailbreak-19_0-llm_judge_score": 0.8
+                        "Free Generation: Shakespeare-Prompt Jailbreak-19_0-llm_judge_score": 0.0,
+                        "Free Generation: Shakespeare-Prompt Jailbreak-19_0-and_custom_score": 0.445
                     }
                 },
                 "Qwen25_1dot5B_Inst": {
                     "19_0": {
-                        "Free Generation: Shakespeare-Prompt Jailbreak-19_0-and_custom_score": 0.5466666666666667,
-                        "Free Generation: Shakespeare-Prompt Jailbreak-19_0-llm_judge_score": 0.3
+                        "Free Generation: Shakespeare-Prompt Jailbreak-19_0-llm_judge_score": 0.5,
+                        "Free Generation: Shakespeare-Prompt Jailbreak-19_0-and_custom_score": 0.6116666666666667
                     }
                 },
                 "llama31_8B_Inst": {
                     "19_0": {
-                        "Free Generation: Shakespeare-Prompt Jailbreak-19_0-and_custom_score": 0.4933333333333333,
-                        "Free Generation: Shakespeare-Prompt Jailbreak-19_0-llm_judge_score": 0.8
+                        "Free Generation: Shakespeare-Prompt Jailbreak-19_0-llm_judge_score": 0.8,
+                        "Free Generation: Shakespeare-Prompt Jailbreak-19_0-and_custom_score": 0.4466666666666667
                     }
                 },
                 "llama31_70b_Inst": {
@@ -973,22 +973,22 @@
             "downstream_scores": {
                 "llama32_1B_Inst": {
                     "20_0": {
-                        "Multiple Choice Questions-20_0-f1_score": 0.3568733273182726
+                        "Multiple Choice Questions-20_0-f1_score": 0.4269549518665906
                     }
                 },
                 "Qwen25_7B_Inst": {
                     "20_0": {
-                        "Multiple Choice Questions-20_0-f1_score": 0.6608265035841484
+                        "Multiple Choice Questions-20_0-f1_score": 0.7289095000409604
                     }
                 },
                 "Qwen25_1dot5B_Inst": {
                     "20_0": {
-                        "Multiple Choice Questions-20_0-f1_score": 0.5077660591617665
+                        "Multiple Choice Questions-20_0-f1_score": 0.6573562059395542
                     }
                 },
                 "llama31_8B_Inst": {
                     "20_0": {
-                        "Multiple Choice Questions-20_0-f1_score": 0.5143731313189753
+                        "Multiple Choice Questions-20_0-f1_score": 0.7567460554897327
                     }
                 },
                 "llama31_70b_Inst": {
@@ -1013,22 +1013,22 @@
             "downstream_scores": {
                 "llama32_1B_Inst": {
                     "21_0": {
-                        "Extractive QA-21_0-or_custom_score": 0.38532
+                        "Extractive QA-21_0-or_custom_score": 0.75398
                     }
                 },
                 "Qwen25_7B_Inst": {
                     "21_0": {
-                        "Extractive QA-21_0-or_custom_score": 0.8982
+                        "Extractive QA-21_0-or_custom_score": 0.90878
                     }
                 },
                 "Qwen25_1dot5B_Inst": {
                     "21_0": {
-                        "Extractive QA-21_0-or_custom_score": 0.85314
+                        "Extractive QA-21_0-or_custom_score": 0.79306
                     }
                 },
                 "llama31_8B_Inst": {
                     "21_0": {
-                        "Extractive QA-21_0-or_custom_score": 0.84836
+                        "Extractive QA-21_0-or_custom_score": 0.92182
                     }
                 },
                 "llama31_70b_Inst": {
@@ -1053,22 +1053,22 @@
             "downstream_scores": {
                 "llama32_1B_Inst": {
                     "22_0": {
-                        "MultispanQA-22_0-and_custom_score": 0.19178
+                        "MultispanQA-22_0-and_custom_score": 0.6907269682539683
                     }
                 },
                 "Qwen25_7B_Inst": {
                     "22_0": {
-                        "MultispanQA-22_0-and_custom_score": 0.8846828174603174
+                        "MultispanQA-22_0-and_custom_score": 0.8907645555555556
                     }
                 },
                 "Qwen25_1dot5B_Inst": {
                     "22_0": {
-                        "MultispanQA-22_0-and_custom_score": 0.8160435714285714
+                        "MultispanQA-22_0-and_custom_score": 0.7161459047619048
                     }
                 },
                 "llama31_8B_Inst": {
                     "22_0": {
-                        "MultispanQA-22_0-and_custom_score": 0.8183504920634921
+                        "MultispanQA-22_0-and_custom_score": 0.855955865079365
                     }
                 },
                 "llama31_70b_Inst": {
@@ -1094,26 +1094,10 @@
             "sentence_type": "imperative",
             "sentence_length": 4,
             "downstream_scores": {
-                "llama32_1B_Inst": {
-                    "24_0": {
-                        "Regression-24_0-pearson_corr_score": -0.1800671234413328
-                    }
-                },
-                "Qwen25_7B_Inst": {
-                    "24_0": {
-                        "Regression-24_0-pearson_corr_score": 0.0195205199974901
-                    }
-                },
-                "Qwen25_1dot5B_Inst": {
-                    "24_0": {
-                        "Regression-24_0-pearson_corr_score": 0.0293003861925641
-                    }
-                },
-                "llama31_8B_Inst": {
-                    "24_0": {
-                        "Regression-24_0-pearson_corr_score": 0.1578433412930181
-                    }
-                },
+                "llama32_1B_Inst": {},
+                "Qwen25_7B_Inst": {},
+                "Qwen25_1dot5B_Inst": {},
+                "llama31_8B_Inst": {},
                 "llama31_70b_Inst": {
                     "24_0": {
                         "Regression-24_0-pearson_corr_score": -0.0254328926337878
@@ -1134,38 +1118,10 @@
             "sentence_type": "imperative",
             "sentence_length": 3,
             "downstream_scores": {
-                "llama32_1B_Inst": {
-                    "25_1": {
-                        "Aspect-Based Sentiment Analysis-absa_restaurants-25_1-absa_f1_score": 0.0
-                    },
-                    "25_0": {
-                        "Aspect-Based Sentiment Analysis-absa_laptops-25_0-absa_f1_score": 0.0
-                    }
-                },
-                "Qwen25_7B_Inst": {
-                    "25_1": {
-                        "Aspect-Based Sentiment Analysis-absa_restaurants-25_1-absa_f1_score": 0.0
-                    },
-                    "25_0": {
-                        "Aspect-Based Sentiment Analysis-absa_laptops-25_0-absa_f1_score": 0.0
-                    }
-                },
-                "Qwen25_1dot5B_Inst": {
-                    "25_1": {
-                        "Aspect-Based Sentiment Analysis-absa_restaurants-25_1-absa_f1_score": 0.0
-                    },
-                    "25_0": {
-                        "Aspect-Based Sentiment Analysis-absa_laptops-25_0-absa_f1_score": 0.0
-                    }
-                },
-                "llama31_8B_Inst": {
-                    "25_1": {
-                        "Aspect-Based Sentiment Analysis-absa_restaurants-25_1-absa_f1_score": 0.0
-                    },
-                    "25_0": {
-                        "Aspect-Based Sentiment Analysis-absa_laptops-25_0-absa_f1_score": 0.0
-                    }
-                },
+                "llama32_1B_Inst": {},
+                "Qwen25_7B_Inst": {},
+                "Qwen25_1dot5B_Inst": {},
+                "llama31_8B_Inst": {},
                 "llama31_70b_Inst": {
                     "25_1": {
                         "Aspect-Based Sentiment Analysis-absa_restaurants-25_1-absa_f1_score": 0.0
@@ -1195,110 +1151,10 @@
             "sentence_type": "imperative",
             "sentence_length": 5,
             "downstream_scores": {
-                "llama32_1B_Inst": {
-                    "27_0": {
-                        "Named Entity Recognition-ner_en-27_0-and_custom_score": 0.4875278966316621,
-                        "Named Entity Recognition-ner_en-27_0-ner_f1_score": 0.0
-                    },
-                    "27_1": {
-                        "Named Entity Recognition-ner_af-27_1-and_custom_score": 0.4988255699341989,
-                        "Named Entity Recognition-ner_af-27_1-ner_f1_score": 0.0
-                    },
-                    "27_4": {
-                        "Named Entity Recognition-ner_de-27_4-and_custom_score": 0.5007774942930306,
-                        "Named Entity Recognition-ner_de-27_4-ner_f1_score": 0.0
-                    },
-                    "27_2": {
-                        "Named Entity Recognition-ner_es-27_2-and_custom_score": 0.4772773807401749,
-                        "Named Entity Recognition-ner_es-27_2-ner_f1_score": 0.0
-                    },
-                    "27_5": {
-                        "Named Entity Recognition-ner_pt-27_5-and_custom_score": 0.4600244542059248,
-                        "Named Entity Recognition-ner_pt-27_5-ner_f1_score": 0.0
-                    },
-                    "27_3": {
-                        "Named Entity Recognition-ner_zh-27_3-and_custom_score": 0.3811841418681298,
-                        "Named Entity Recognition-ner_zh-27_3-ner_f1_score": 0.0
-                    }
-                },
-                "Qwen25_7B_Inst": {
-                    "27_0": {
-                        "Named Entity Recognition-ner_en-27_0-and_custom_score": 0.5548912962718826,
-                        "Named Entity Recognition-ner_en-27_0-ner_f1_score": 0.0
-                    },
-                    "27_1": {
-                        "Named Entity Recognition-ner_af-27_1-and_custom_score": 0.5644836341841039,
-                        "Named Entity Recognition-ner_af-27_1-ner_f1_score": 0.0
-                    },
-                    "27_4": {
-                        "Named Entity Recognition-ner_de-27_4-and_custom_score": 0.556267136464861,
-                        "Named Entity Recognition-ner_de-27_4-ner_f1_score": 0.0
-                    },
-                    "27_2": {
-                        "Named Entity Recognition-ner_es-27_2-and_custom_score": 0.559956918947066,
-                        "Named Entity Recognition-ner_es-27_2-ner_f1_score": 0.0
-                    },
-                    "27_5": {
-                        "Named Entity Recognition-ner_pt-27_5-and_custom_score": 0.5411188016721841,
-                        "Named Entity Recognition-ner_pt-27_5-ner_f1_score": 0.0
-                    },
-                    "27_3": {
-                        "Named Entity Recognition-ner_zh-27_3-and_custom_score": 0.4508572930423953,
-                        "Named Entity Recognition-ner_zh-27_3-ner_f1_score": 0.0
-                    }
-                },
-                "Qwen25_1dot5B_Inst": {
-                    "27_0": {
-                        "Named Entity Recognition-ner_en-27_0-and_custom_score": 0.5201353462320703,
-                        "Named Entity Recognition-ner_en-27_0-ner_f1_score": 0.0
-                    },
-                    "27_1": {
-                        "Named Entity Recognition-ner_af-27_1-and_custom_score": 0.516008808568491,
-                        "Named Entity Recognition-ner_af-27_1-ner_f1_score": 0.0
-                    },
-                    "27_4": {
-                        "Named Entity Recognition-ner_de-27_4-and_custom_score": 0.5078400782955509,
-                        "Named Entity Recognition-ner_de-27_4-ner_f1_score": 0.0
-                    },
-                    "27_2": {
-                        "Named Entity Recognition-ner_es-27_2-and_custom_score": 0.5065751821054763,
-                        "Named Entity Recognition-ner_es-27_2-ner_f1_score": 0.0
-                    },
-                    "27_5": {
-                        "Named Entity Recognition-ner_pt-27_5-and_custom_score": 0.5119260903149139,
-                        "Named Entity Recognition-ner_pt-27_5-ner_f1_score": 0.0
-                    },
-                    "27_3": {
-                        "Named Entity Recognition-ner_zh-27_3-and_custom_score": 0.4883983682582423,
-                        "Named Entity Recognition-ner_zh-27_3-ner_f1_score": 0.0
-                    }
-                },
-                "llama31_8B_Inst": {
-                    "27_0": {
-                        "Named Entity Recognition-ner_en-27_0-and_custom_score": 0.5455481474420832,
-                        "Named Entity Recognition-ner_en-27_0-ner_f1_score": 0.0
-                    },
-                    "27_1": {
-                        "Named Entity Recognition-ner_af-27_1-and_custom_score": 0.5309447696356017,
-                        "Named Entity Recognition-ner_af-27_1-ner_f1_score": 0.0
-                    },
-                    "27_4": {
-                        "Named Entity Recognition-ner_de-27_4-and_custom_score": 0.5487693808147589,
-                        "Named Entity Recognition-ner_de-27_4-ner_f1_score": 0.0
-                    },
-                    "27_2": {
-                        "Named Entity Recognition-ner_es-27_2-and_custom_score": 0.5482289317055493,
-                        "Named Entity Recognition-ner_es-27_2-ner_f1_score": 0.0
-                    },
-                    "27_5": {
-                        "Named Entity Recognition-ner_pt-27_5-and_custom_score": 0.5323770581869112,
-                        "Named Entity Recognition-ner_pt-27_5-ner_f1_score": 0.0
-                    },
-                    "27_3": {
-                        "Named Entity Recognition-ner_zh-27_3-and_custom_score": 0.4677556911453176,
-                        "Named Entity Recognition-ner_zh-27_3-ner_f1_score": 0.0
-                    }
-                },
+                "llama32_1B_Inst": {},
+                "Qwen25_7B_Inst": {},
+                "Qwen25_1dot5B_Inst": {},
+                "llama31_8B_Inst": {},
                 "llama31_70b_Inst": {
                     "27_0": {
                         "Named Entity Recognition-ner_en-27_0-and_custom_score": 0.5244807662594543,
