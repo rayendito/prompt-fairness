@@ -62,7 +62,7 @@ def main():
     print(f"Created directory '{respath}'. Running inference...")
 
     task_manager = lm_eval.tasks.TaskManager()
-    PASSED_ANNOTATORS = "annotation_artefacts/passed_annotator_objects"
+    PASSED_ANNOTATORS = "annotation_artefacts/annotation_filtering/passed_annotator_objects"
     questions = Questions().get_questions()
 
     all_tasks = []
@@ -106,7 +106,8 @@ def main():
             task_manager=task_manager,
             write_out = True,
             log_samples = True,
-            batch_size = args.batch_size
+            batch_size = args.batch_size,
+            apply_chat_template = True,
         )
 
         if accelerator.is_main_process:
