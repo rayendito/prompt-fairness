@@ -25,7 +25,7 @@ for anf in os.listdir(PASSED_ANNOTATOR_DIRS):
         }
 
         new_answers = {}
-        transferred_keys = ["answer", "sentence_type", "sentence_length"]
+        transferred_keys = ["answer", "sentence_type", "sentence_length", "downstream_scores"]
         for raw_question, answer_and_scores in annotator_object["answers"].items():
             new_answer_and_scores = {}
             for k, v in answer_and_scores.items():
