@@ -5,25 +5,38 @@ from fuzzywuzzy import fuzz
 from collections import Counter
 import evaluate
 from sentence_transformers import SentenceTransformer  # type: ignore
+from rouge_score import rouge_scorer
+from sklearn.metrics import f1_score
+
 rouge_evaluate = evaluate.load("rouge")
+rouge_scorer = rouge_scorer.RougeScorer(['rougeL'], use_stemmer=True)
+
 
 # Each of the metric function takes in (as pairs):
 # refs : List[str]
 # preds: List[str]
 
-def best_matching_preds(refs, preds_raw):
+def best_matching_preds(refs, preds_raw, method = "bleu"):
     best_preds = []
     for ref, pred_raw in zip(refs, preds_raw):
-        pred_candidates = [p.strip() for p in pred_raw.split("\n\n") if p.strip()]
+        pred_candidates = [p.strip() for p in pred_raw.split("\n") if p.strip()]
         if not pred_candidates:
             best_preds.append("")
             continue
 
-        best_pred = max(
-            pred_candidates,
-            key=lambda pred: sacrebleu.sentence_bleu(pred, [ref]).score
-        )
-        best_preds.append(best_pred)
+        if method == "bleu":
+            best_pred = max(
+                pred_candidates,
+                key=lambda pred: sacrebleu.sentence_bleu(pred, [ref]).score
+            )
+        elif method == "rouge":
+            best_pred = max(
+                pred_candidates,
+                key=lambda pred: rouge_scorer.score(ref, pred)['rougeL'].fmeasure
+            )
+        else:
+            raise ValueError(f"{method} is not a recognized scoring method")
+        best_preds.append(best_pred.strip())
     return best_preds
 
 def scorefunc_bleu(refs, preds):
@@ -31,7 +44,8 @@ def scorefunc_bleu(refs, preds):
     return sacrebleu.corpus_bleu(cleaned_preds, [refs]).score
 
 def scorefunc_rouge(refs, preds):
-    return rouge_evaluate.compute(predictions=preds, references=refs)["rougeL"]
+    cleaned_preds = best_matching_preds(refs, preds, method="rouge")
+    return 100*(rouge_evaluate.compute(predictions=cleaned_preds, references=refs)["rougeL"])
 
 def scorefunc_or_custom(refs, preds):
     agg_scores = []
@@ -154,17 +168,16 @@ def scorefunc_ner_f1(refs, preds):
 def scorefunc_requirement_checker(refs, preds):
     agg_scores = []
     for ref, pred in zip(refs, preds):
-        is_pass = True
         elements_to_check = ref.split("-")
+        fullscore = len(elements_to_check)
         for i, e in enumerate(elements_to_check):
             if i == 0: # words at least check
                 if len(pred.split()) < int(e):
-                    is_pass = False
+                    fullscore -= 1
             else: # check word existence
                 if (e.lower() not in pred.lower()):
-                    is_pass = False
-            
-        agg_scores.append(1 if is_pass else 0)
+                    fullscore -= 1
+        agg_scores.append(fullscore/len(elements_to_check))
     return sum(agg_scores)/len(agg_scores) if len(agg_scores) > 0 else 0
 
 def llm_judge_prompt_general(prompt, refs, preds):
@@ -196,7 +209,7 @@ You are a judge that gives a holistic score to a text based on how accurate it i
 This is the text:
 {preds}
 
-Answer only the XML format of the score: <score>[float]</score>
+Score it on a scale of 0 (worst) to 1 (best). Answer only the XML format of the score: <score>[float]</score>
 """.strip()
 
 def llm_judge_prompt_science_project(prompt, refs, preds):
@@ -207,12 +220,12 @@ You are a judge that gives a holistic score to a text based on how accurate it i
 This is the text:
 {preds}
 
-Answer only the XML format of the score: <score>[float]</score>
+Score it on a scale of 0 (worst) to 1 (best). Answer only the XML format of the score: <score>[float]</score>
 """.strip()
 
 def llm_judge_prompt_aeni_school_life(prompt, refs, preds):
     return f"""
-You are a judge that gives a boolean score to a text based on how accurate it is to these criteria:
+You are a judge that gives a score to a text based on how accurate it is to these criteria:
 
 1. The story has to be about:
 - Aeni's school life
@@ -227,7 +240,7 @@ You are a judge that gives a boolean score to a text based on how accurate it is
 This is the text:
 {preds}
 
-Answer only the XML format of the score: <score>0 (False) or 1(True)</score>
+Score it on a scale of 0 (least accurate) to 1 (most accurate). Answer only the XML format of the score: <score>[float]</score>
 """.strip()
 
 def llm_judge_prompt_grammar_sentence(prompt, refs, preds):
@@ -241,7 +254,7 @@ Reference:
 Prediction:
 {preds}
 
-Answer only the XML format of the score: <score>0 (False) or 1(True)</score>
+Answer only the XML format of the score: <score>[float]</score>
 """.strip()
 
 def llm_judge_is_msgs_done_fn(msgs):
@@ -286,3 +299,24 @@ def remove_placeholders(answer):
         answer = answer.replace(p, "")
     
     return answer.strip()
+
+
+def parse_strings_for_f1(model_answers, reference_answers, reference_choices):
+    import json
+    parsed_answers = []
+    for answer, choices in zip(model_answers, reference_choices):
+        fuzzy_scores = []
+        if "CORRECT" in choices and "INCORRECT" in choices:
+            fuzzy_scores = [0 for _ in range(len(choices))]
+            choices_dict = {
+                c.lower() : i for i, c in enumerate(choices)
+            }
+            if "incorrect" in answer.lower():
+                fuzzy_scores[choices_dict["incorrect"]] = 1
+            else:
+                fuzzy_scores[choices_dict["correct"]] = 1
+        else:
+            for c in choices:
+                fuzzy_scores.append(fuzz.partial_ratio(c, answer)/100)
+        parsed_answers.append(choices[fuzzy_scores.index(max(fuzzy_scores))])
+    return f1_score(reference_answers, parsed_answers, average='macro')

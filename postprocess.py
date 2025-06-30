@@ -1,6 +1,6 @@
 import os, sys, json, argparse
 import pandas as pd
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import numpy as np
 from dotenv import load_dotenv
 from src import AnnotatorManager, Questions
@@ -8,30 +8,31 @@ from src.utils.metric_utils import remove_placeholders
 from openai_scorer.run_task_scorer import run_task_scorer, flatten_dict
 load_dotenv()
 
-POSTPROCESS_DIR = "/mnt/data/users/ryandito/lm_harness_postprocess_v2/"
+POSTPROCESS_DIR = "/workspace/lm_harness_postprocess_v2"
 PROCESSED_DIR = "lm_harness_processed_v2"
 ALL_QDI = "5_0 6_0 7_0 8_0 9_0 10_0 11_0 12_0 13_0 14_0 15_0 16_0 17_0 18_0 19_0 0_0 1_0 4_0 20_0 26_0 26_1 2_0 2_1 2_2 2_3 2_4 2_5 2_6 2_7 2_8 2_9 2_10 2_11 2_12 2_13 2_14 3_0 21_0 22_0 23_0 24_0 25_0 25_1 27_0 27_1 27_2 27_3 27_4 27_5 28_0".split()
+ALL_QDI = "0_0 1_0".split()
 os.makedirs(POSTPROCESS_DIR, exist_ok=True)
 
 # parsers
 parser = argparse.ArgumentParser()
 parser.add_argument("--run_name", type=str, required=True, help="result json file")
-parser.add_argument("--inference_type", type=str, default="separate", help="type of inference: separate, chunk, or oai")
+parser.add_argument("--inference_type", type=str, default="local", help="type of inference: separate, chunk, or oai")
 parser.add_argument("--recalculate", action="store_true", help="if set, do not recalculate metrics if .csv for question already exists")
 args = parser.parse_args()
 
 print(f"Postprocessing: {args.run_name}")
-if args.inference_type == "separate":
-    for qdi in ALL_QDI:
-        print(f"Running: {qdi}")
-        processed_csv_file = os.path.join(POSTPROCESS_DIR, args.run_name, f"question_{qdi}.csv")
-        
-        if not os.path.exists(processed_csv_file) or args.recalculate:
-            run_task_scorer(POSTPROCESS_DIR, os.getenv("SAMPLES_RESULTS_DIR"), args.run_name, qdi, oai_infer_tries=100)
-elif args.inference_type == "oai":
-    pass
-else:
-    raise ValueError(f"{args.inference_type} is an unrecognized inference_type")
+for qdi in ALL_QDI:
+    print(f"Running: {qdi}")
+    processed_csv_file = os.path.join(POSTPROCESS_DIR, args.run_name, f"question_{qdi}.csv")
+    
+    if not os.path.exists(processed_csv_file) or args.recalculate:
+        run_task_scorer(POSTPROCESS_DIR,
+                        os.getenv("SAMPLES_RESULTS_DIR"),
+                        args.run_name,
+                        qdi,
+                        oai_infer_tries=100,
+                        inference_type=args.inference_type)
 
 final_csv_dir = os.path.join(PROCESSED_DIR, f"final_agg-{args.run_name}.csv")
 if not os.path.exists(final_csv_dir) or args.recalculate:
@@ -44,7 +45,7 @@ if not os.path.exists(final_csv_dir) or args.recalculate:
 
         # necessary question objects
         questions = Questions().get_questions()
-        ann_manager = AnnotatorManager(questions, "annotation_artefacts/passed_annotator_objects", refresh_qp_file=True)
+        ann_manager = AnnotatorManager(questions, "annotation_artefacts/annotation_filtering/passed_annotator_objects", refresh_qp_file=True)
         questions_profile_count = json.load(open("question_artefacts/question_profiles.json", "r"))
         question_list = list(questions_profile_count.keys())
 
@@ -76,12 +77,12 @@ if not os.path.exists(final_csv_dir) or args.recalculate:
     df.to_csv(final_csv_dir, index=False)
 
 # update annotator files to include linguistic information and benchmark scores
-CHATGPT_CLASSIFIER_RES = "/mnt/data/users/ryandito/lm_harness_postprocess/annotator_answer_type_inferoai/ans_classifier_run-chatgpt-4o-latest/history-ans_classifier_run-chatgpt-4o-latest.json"
-SCORED_ANNOTATOR_DIR = "annotation_artefacts/scored_passed_annotators"
+# CHATGPT_CLASSIFIER_RES = "/mnt/data/users/ryandito/lm_harness_postprocess/annotator_answer_type_inferoai/ans_classifier_run-chatgpt-4o-latest/history-ans_classifier_run-chatgpt-4o-latest.json"
+SCORED_ANNOTATOR_DIR = "annotation_artefacts/final_annotator_objects"
 os.makedirs(SCORED_ANNOTATOR_DIR, exist_ok=True)
 
-with open(CHATGPT_CLASSIFIER_RES, "r") as clsrf:
-    chatgpt_linguistic_score_results = json.load(clsrf)
+# with open(CHATGPT_CLASSIFIER_RES, "r") as clsrf:
+#     chatgpt_linguistic_score_results = json.load(clsrf)
 
 for annfilename in os.listdir(SCORED_ANNOTATOR_DIR):
     annotator_filepath = os.path.join(SCORED_ANNOTATOR_DIR, annfilename)
@@ -91,14 +92,14 @@ for annfilename in os.listdir(SCORED_ANNOTATOR_DIR):
         with open(annotator_filepath, "r") as  ao:
             annotator_object = json.load(ao)
         
-        # linguistic information
-        classif_results = chatgpt_linguistic_score_results[f"annotator-{annotator_object["id"]}-chatgpt_4o_latest"]
-        assert len(classif_results["messages"]) == len(annotator_object["answers"])
-        for i, ao_key in enumerate(annotator_object["answers"].keys()):
-            if "sentence_class" in classif_results["messages"][i]["aggregations"]: # the "<<<SKIP_THIS_PROMPT>>>"
-                sentence_type = classif_results["messages"][i]["aggregations"]["sentence_class"]
-                annotator_object["answers"][ao_key]["sentence_type"] = sentence_type
-                annotator_object["answers"][ao_key]["sentence_length"] = len(remove_placeholders(annotator_object["answers"][ao_key]["answer"]).split())
+        # # linguistic information
+        # classif_results = chatgpt_linguistic_score_results[f"annotator-{annotator_object["id"]}-chatgpt_4o_latest"]
+        # assert len(classif_results["messages"]) == len(annotator_object["answers"])
+        # for i, ao_key in enumerate(annotator_object["answers"].keys()):
+        #     if "sentence_class" in classif_results["messages"][i]["aggregations"]: # the "<<<SKIP_THIS_PROMPT>>>"
+        #         sentence_type = classif_results["messages"][i]["aggregations"]["sentence_class"]
+        #         annotator_object["answers"][ao_key]["sentence_type"] = sentence_type
+        #         annotator_object["answers"][ao_key]["sentence_length"] = len(remove_placeholders(annotator_object["answers"][ao_key]["answer"]).split())
 
         # benchmark scores
         annotator_id = annotator_object["id"]

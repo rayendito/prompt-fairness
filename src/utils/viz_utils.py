@@ -22,13 +22,20 @@ def plot_histogram_by_category(data, ax, bin_edges=np.arange(100, 1001, 50)):
 
         # Gaussian fit (scaled to match histogram max height)
         mu, std = np.mean(values), np.std(values)        
-        x = np.linspace(bin_edges[0], bin_edges[-1], 1000)
+        x = np.linspace(0, bin_edges[-1], 1000)
         p = norm.pdf(x, mu, std)
 
         scale = max(counts) / np.max(p)
         ax.plot(x, p * scale, color=color, label=f'{key}')
 
     ax.legend()
+
+def make_percent_category(data):
+    result = {}
+    for category, type_counts in data.items():
+        total = sum(type_counts.values())
+        result[category] = {k: (v / total * 100) for k, v in type_counts.items()} if total > 0 else {k: 0 for k in type_counts}
+    return result
 
 def plot_grouped_bar_chart(data, ax, width=0.25):
     """
@@ -39,14 +46,20 @@ def plot_grouped_bar_chart(data, ax, width=0.25):
         ax (matplotlib.axes.Axes): The Axes object to draw on.
         width (float): Width of each bar in the group.
     """
+    data = make_percent_category(data)
     categories = list(data.keys())
     types = list(next(iter(data.values())).keys())
     x = np.arange(len(categories))
 
+    if len(types) == 2:
+        colors = ['#6084f7', '#d6425d']
+    else:
+        colors = None
+
     for i, t in enumerate(types):
         values = [data[cat][t] for cat in categories]
-        ax.bar(x + i * width, values, width=width, label=t)
+        ax.bar(x + i * width, values, width=width, label=t, color=colors[i] if colors else None)
     
     ax.set_xticks(x + width)
-    ax.set_xticklabels(categories, rotation=0)
+    ax.set_xticklabels(categories, rotation=5)
     ax.legend()
