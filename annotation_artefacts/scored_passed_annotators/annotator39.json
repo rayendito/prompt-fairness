@@ -66,6 +66,11 @@
                     "0_0": {
                         "Sentiment Analysis 3 Classes-0_0-f1_score": 0.5028230287859825
                     }
+                },
+                "gpt_4o": {
+                    "0_0": {
+                        "Sentiment Analysis 3 Classes-0_0-f1_score": 0.6411171092664519
+                    }
                 }
             }
         },
@@ -105,6 +110,11 @@
                 "qwen25_72b_Inst": {
                     "1_0": {
                         "Sentiment Analysis 2 Classes-1_0-f1_score": 0.8949494949494949
+                    }
+                },
+                "gpt_4o": {
+                    "1_0": {
+                        "Sentiment Analysis 2 Classes-1_0-f1_score": 0.9297952830453604
                     }
                 }
             }
@@ -398,6 +408,53 @@
                     "2_1": {
                         "Machine Translation-rus_Cyrl-2_1-bleu_score": 0.0128424821845652
                     }
+                },
+                "gpt_4o": {
+                    "2_11": {
+                        "Machine Translation-bug_Latn-2_11-bleu_score": 1.938658305457437
+                    },
+                    "2_3": {
+                        "Machine Translation-deu_Latn-2_3-bleu_score": 37.22824710982393
+                    },
+                    "2_4": {
+                        "Machine Translation-jpn_Jpan-2_4-bleu_score": 5.533409598501608
+                    },
+                    "2_10": {
+                        "Machine Translation-ace_Latn-2_10-bleu_score": 1.6229605878164377
+                    },
+                    "2_5": {
+                        "Machine Translation-ind_Latn-2_5-bleu_score": 39.57923941309494
+                    },
+                    "2_2": {
+                        "Machine Translation-spa_Latn-2_2-bleu_score": 28.746290960739454
+                    },
+                    "2_1": {
+                        "Machine Translation-rus_Cyrl-2_1-bleu_score": 32.51246419499314
+                    },
+                    "2_6": {
+                        "Machine Translation-tgl_Latn-2_6-bleu_score": 33.97824586680195
+                    },
+                    "2_8": {
+                        "Machine Translation-arb_Arab-2_8-bleu_score": 23.367678366022545
+                    },
+                    "2_14": {
+                        "Machine Translation-hau_Latn-2_14-bleu_score": 18.441644111607975
+                    },
+                    "2_13": {
+                        "Machine Translation-amh_Ethi-2_13-bleu_score": 4.207374190823273
+                    },
+                    "2_9": {
+                        "Machine Translation-tur_Latn-2_9-bleu_score": 24.437750147041328
+                    },
+                    "2_7": {
+                        "Machine Translation-hin_Deva-2_7-bleu_score": 30.742510505133737
+                    },
+                    "2_0": {
+                        "Machine Translation-zho_Hans-2_0-bleu_score": 0.9316021489594768
+                    },
+                    "2_12": {
+                        "Machine Translation-uig_Arab-2_12-bleu_score": 3.4088288946479386
+                    }
                 }
             }
         },
@@ -438,6 +495,11 @@
                     "3_0": {
                         "Dialogue Summarization-3_0-rouge_score": 0.2045607003774621
                     }
+                },
+                "gpt_4o": {
+                    "3_0": {
+                        "Dialogue Summarization-3_0-rouge_score": 20.744180766917463
+                    }
                 }
             }
         },
@@ -477,6 +539,11 @@
                 "qwen25_72b_Inst": {
                     "4_0": {
                         "Topic Classification-4_0-f1_score": 0.8810575344500984
+                    }
+                },
+                "gpt_4o": {
+                    "4_0": {
+                        "Topic Classification-4_0-f1_score": 0.8564002284683052
                     }
                 }
             }
@@ -524,6 +591,12 @@
                         "Free Generation: Balonku Song-5_0-or_custom_score": 0.88,
                         "Free Generation: Balonku Song-5_0-llm_judge_score": 0.0
                     }
+                },
+                "gpt_4o": {
+                    "5_0": {
+                        "Free Generation: Balonku Song-5_0-llm_judge_score": 1.0,
+                        "Free Generation: Balonku Song-5_0-or_custom_score": 0.88
+                    }
                 }
             }
         },
@@ -569,6 +642,12 @@
                     "6_0": {
                         "Free Generation: G30SPKI-6_0-and_custom_score": 0.4057142857142857,
                         "Free Generation: G30SPKI-6_0-llm_judge_score": 0.8
+                    }
+                },
+                "gpt_4o": {
+                    "6_0": {
+                        "Free Generation: G30SPKI-6_0-llm_judge_score": 1.0,
+                        "Free Generation: G30SPKI-6_0-and_custom_score": 0.9742857142857144
                     }
                 }
             }
@@ -616,6 +695,12 @@
                         "Free Generation: Hijrah-7_0-embedding_similarity_score": 0.7380317449569702,
                         "Free Generation: Hijrah-7_0-llm_judge_score": 0.5
                     }
+                },
+                "gpt_4o": {
+                    "7_0": {
+                        "Free Generation: Hijrah-7_0-llm_judge_score": 0.9,
+                        "Free Generation: Hijrah-7_0-embedding_similarity_score": 0.7571539878845215
+                    }
                 }
             }
         },
@@ -661,6 +746,12 @@
                     "8_0": {
                         "Free Generation: Adhan-8_0-and_custom_score": 0.4615384615384615,
                         "Free Generation: Adhan-8_0-llm_judge_score": 0.0
+                    }
+                },
+                "gpt_4o": {
+                    "8_0": {
+                        "Free Generation: Adhan-8_0-llm_judge_score": 0.9,
+                        "Free Generation: Adhan-8_0-and_custom_score": 0.7100000000000001
                     }
                 }
             }
@@ -708,6 +799,12 @@
                         "Free Generation: Karak Kaliang-9_0-or_custom_score": 0.43,
                         "Free Generation: Karak Kaliang-9_0-llm_judge_score": 0.3
                     }
+                },
+                "gpt_4o": {
+                    "9_0": {
+                        "Free Generation: Karak Kaliang-9_0-llm_judge_score": 0.5,
+                        "Free Generation: Karak Kaliang-9_0-or_custom_score": 0.5
+                    }
                 }
             }
         },
@@ -747,6 +844,11 @@
                 "qwen25_72b_Inst": {
                     "10_0": {
                         "Free Generation: Giant Drum-10_0-llm_judge_drum_score": 0.0
+                    }
+                },
+                "gpt_4o": {
+                    "10_0": {
+                        "Free Generation: Giant Drum-10_0-llm_judge_drum_score": 1.0
                     }
                 }
             }
@@ -791,6 +893,11 @@
                     "12_0": {
                         "Free Generation: School Life-12_0-llm_judge_aeni_school_life_score": 0.0
                     }
+                },
+                "gpt_4o": {
+                    "12_0": {
+                        "Free Generation: School Life-12_0-llm_judge_aeni_school_life_score": 1.0
+                    }
                 }
             }
         },
@@ -830,6 +937,11 @@
                 "qwen25_72b_Inst": {
                     "13_0": {
                         "Free Generation: Olympics Medallists-13_0-llm_judge_score": 0.0
+                    }
+                },
+                "gpt_4o": {
+                    "13_0": {
+                        "Free Generation: Olympics Medallists-13_0-llm_judge_score": 0.5
                     }
                 }
             }
@@ -877,6 +989,12 @@
                         "Free Generation: Hillary Clinton-14_0-embedding_similarity_score": 0.8790590167045593,
                         "Free Generation: Hillary Clinton-14_0-llm_judge_score": 0.9
                     }
+                },
+                "gpt_4o": {
+                    "14_0": {
+                        "Free Generation: Hillary Clinton-14_0-llm_judge_score": 0.9,
+                        "Free Generation: Hillary Clinton-14_0-embedding_similarity_score": 0.8549078702926636
+                    }
                 }
             }
         },
@@ -923,6 +1041,12 @@
                         "Free Generation: MBZUAI-15_0-and_custom_score": 0.98,
                         "Free Generation: MBZUAI-15_0-llm_judge_score": 0.9
                     }
+                },
+                "gpt_4o": {
+                    "15_0": {
+                        "Free Generation: MBZUAI-15_0-llm_judge_score": 0.8,
+                        "Free Generation: MBZUAI-15_0-and_custom_score": 0.98
+                    }
                 }
             }
         },
@@ -962,6 +1086,11 @@
                 "qwen25_72b_Inst": {
                     "16_0": {
                         "Free Generation: Grammar Correction I-16_0-llm_judge_grammar_sentence_score": 0.0
+                    }
+                },
+                "gpt_4o": {
+                    "16_0": {
+                        "Free Generation: Grammar Correction I-16_0-llm_judge_grammar_sentence_score": 0.95
                     }
                 }
             }
@@ -1003,6 +1132,11 @@
                     "17_0": {
                         "Free Generation: Grammar Correction II-17_0-llm_judge_score": 0.0
                     }
+                },
+                "gpt_4o": {
+                    "17_0": {
+                        "Free Generation: Grammar Correction II-17_0-llm_judge_score": 0.5
+                    }
                 }
             }
         },
@@ -1040,6 +1174,11 @@
                     }
                 },
                 "qwen25_72b_Inst": {
+                    "18_0": {
+                        "Free Generation: Arithmetic-18_0-llm_judge_score": 1.0
+                    }
+                },
+                "gpt_4o": {
                     "18_0": {
                         "Free Generation: Arithmetic-18_0-llm_judge_score": 1.0
                     }
@@ -1089,6 +1228,12 @@
                         "Free Generation: Shakespeare-Prompt Jailbreak-19_0-and_custom_score": 0.4516666666666666,
                         "Free Generation: Shakespeare-Prompt Jailbreak-19_0-llm_judge_score": 0.2
                     }
+                },
+                "gpt_4o": {
+                    "19_0": {
+                        "Free Generation: Shakespeare-Prompt Jailbreak-19_0-llm_judge_score": 0.8,
+                        "Free Generation: Shakespeare-Prompt Jailbreak-19_0-and_custom_score": 0.8716666666666666
+                    }
                 }
             }
         },
@@ -1128,6 +1273,11 @@
                 "qwen25_72b_Inst": {
                     "20_0": {
                         "Multiple Choice Questions-20_0-f1_score": 0.6164894162774959
+                    }
+                },
+                "gpt_4o": {
+                    "20_0": {
+                        "Multiple Choice Questions-20_0-f1_score": 0.2489063867016623
                     }
                 }
             }
@@ -1169,6 +1319,11 @@
                     "21_0": {
                         "Extractive QA-21_0-or_custom_score": 0.34054
                     }
+                },
+                "gpt_4o": {
+                    "21_0": {
+                        "Extractive QA-21_0-or_custom_score": 0.92384
+                    }
                 }
             }
         },
@@ -1209,6 +1364,11 @@
                     "22_0": {
                         "MultispanQA-22_0-and_custom_score": 0.557795492063492
                     }
+                },
+                "gpt_4o": {
+                    "22_0": {
+                        "MultispanQA-22_0-and_custom_score": 0.9070066984126984
+                    }
                 }
             }
         },
@@ -1233,7 +1393,8 @@
                     "23_0": {
                         "Entity Extraction from Recipe Coreference-23_0-recipe_score_score": 0.0
                     }
-                }
+                },
+                "gpt_4o": {}
             }
         },
         "Semantic similarity measures how closely two texts or concepts share the same meaning or convey similar ideas. In this task, the similarity score is <b>a decimal number between 0 and 5</b>.<b>Example:</b>* Sentence 1: All questions were answered to the parent's satisfaction.* Sentence 2: All questions were answered and consent given to proceed.* Output: 4.0You are using a language model like ChatGPT to predict the semantic similarity score between two sentences: [SENTENCE1] and [SENTENCE2]How would you phrase your request to the language model? <b>The placeholder [SENTENCE1] and [SENTENCE2] must be included in your prompt.</b>": {
@@ -1257,7 +1418,8 @@
                     "24_0": {
                         "Regression-24_0-pearson_corr_score": -0.0170165838077796
                     }
-                }
+                },
+                "gpt_4o": {}
             }
         },
         "Sentiment refers to the emotional tone or attitude expressed in a piece of text, often categorized as positive, negative, or neutral based on the conveyed feelings or opinions. Instead of assessing the overall sentiment of a sentence, your focus is on identifying the emotional tone or attitude toward specific aspects of a subject within the text.<b>Example:</b>The text: Great food but the service was dreadful!Answer: [\"food\", \"positive\"] [\"service\", \"negative\"]You are using a language model like ChatGPT to perform this task. The possible sentiment labels are <b>positive, negative, and neutral.</b> You expect the language model to output a list of words or phrases, each followed by its corresponding sentiment label. For example: ['bed', 'positive'], ['breakfast', 'neutral'].How would you phrase your request to the language model? <b>The placeholder [TEXT] must be included in your prompt.</b>": {
@@ -1287,7 +1449,8 @@
                     "25_0": {
                         "Aspect-Based Sentiment Analysis-absa_laptops-25_0-absa_f1_score": 0.0
                     }
-                }
+                },
+                "gpt_4o": {}
             }
         },
         "You want to determine whether a given sentence is grammatically correct (CORRECT) or not (INCORRECT). Notably, grammaticality itself does not care about the meaningfulness of the sentence. The question is solely whether the sentence seems to violate some grammar rules of the target language or not.<b>Example:</b>The girl with many bags talk with Tim.INCORRECT (Why: since the number does not agree between the subject \"girl\" and its corresponding verb \"talk.\")You are using a language model like ChatGPT to assess the grammaticality of a given sentence [TEXT]. You expect the output to be either <b>CORRECT</b> or <b>INCORRECT</b>.How would you phrase this request to the language model? <b>The placeholder [TEXT] must be included in your prompt.</b>": {
@@ -1344,6 +1507,14 @@
                     },
                     "26_1": {
                         "Grammar Correctness Classifcation-grammatical_classification_colorless-26_1-f1_score": 0.3365929083349004
+                    }
+                },
+                "gpt_4o": {
+                    "26_0": {
+                        "Grammar Correctness Classification-grammatical_classification_blimp-26_0-f1_score": 0.733136786458598
+                    },
+                    "26_1": {
+                        "Grammar Correctness Classification-grammatical_classification_colorless-26_1-f1_score": 0.438647342995169
                     }
                 }
             }
@@ -1411,7 +1582,8 @@
                         "Named Entity Recognition-ner_zh-27_3-and_custom_score": 0.4851549016403345,
                         "Named Entity Recognition-ner_zh-27_3-ner_f1_score": 0.0
                     }
-                }
+                },
+                "gpt_4o": {}
             }
         },
         "You are using a language model like ChatGPT to generate a sentence that meets specific criteria. The criteria can vary, such as the topic being about a car or the sentence having at least 10 words.<b>Example</b><i>Requirement</i>: The sentence is shorter than 100 characters and includes the word \"chocolate\".<i>Output</i>: She likes eating chocolate.Suppose you have a particular requirement [REQUIREMENT]. How would you phrase your request to the language model? <b>Your response must include the placeholder [REQUIREMENT].</b>": {
@@ -1450,6 +1622,11 @@
                 "qwen25_72b_Inst": {
                     "28_0": {
                         "Linguistically-conditioned Text Generation-28_0-requirement_checker_score": 0.0
+                    }
+                },
+                "gpt_4o": {
+                    "28_0": {
+                        "Linguistically-conditioned Text Generation-28_0-requirement_checker_score": 0.96
                     }
                 }
             }

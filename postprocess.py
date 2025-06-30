@@ -79,8 +79,7 @@ if not os.path.exists(final_csv_dir) or args.recalculate:
     df.to_csv(final_csv_dir, index=False)
 
 # update annotator files to include linguistic information and benchmark scores
-# CHATGPT_CLASSIFIER_RES = "/mnt/data/users/ryandito/lm_harness_postprocess/annotator_answer_type_inferoai/ans_classifier_run-chatgpt-4o-latest/history-ans_classifier_run-chatgpt-4o-latest.json"
-SCORED_ANNOTATOR_DIR = "annotation_artefacts/final_annotator_objects"
+SCORED_ANNOTATOR_DIR = "annotation_artefacts/scored_passed_annotators"
 os.makedirs(SCORED_ANNOTATOR_DIR, exist_ok=True)
 
 # with open(CHATGPT_CLASSIFIER_RES, "r") as clsrf:

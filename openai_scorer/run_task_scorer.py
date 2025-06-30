@@ -29,7 +29,7 @@ def run_task_scorer(postprocess_dir, samples_results_dir, run_name, question_doc
         samples_json = json.load(open(samples_path, "r"))
     elif(inference_type == "api"):
         # STATIC, not rly good
-        REFERENCE_DIR="/workspace/lm_harness_runs_v2/llama32_1B_Inst"
+        REFERENCE_DIR="/l/users/ryandito.diandaru/lm_harness_runs_v2/llama32_1B_Inst"
         REF_NAME="llama32_1B_Inst"
         refpath = os.path.join(REFERENCE_DIR, f"{REF_NAME}-question{question_document_index}")
         reference_path = os.path.join(refpath, f"samples-{REF_NAME}-question{question_document_index}-question_{question_document_index}.json")
@@ -163,8 +163,9 @@ def run_task_scorer(postprocess_dir, samples_results_dir, run_name, question_doc
                         v = main_answers_json[key]["messages"]
 
                         refkey = key.replace(f"-{run_name}", "")
-                        refkey = key.replace(f"-meta_llama_llama_3.1_70b_instruct", "")
-                        refkey = key.replace(f"-qwen2.5_72b_instruct", "")
+                        refkey = refkey.replace(f"-gpt_4o", "")
+                        refkey = refkey.replace(f"-meta_llama_llama_3.1_70b_instruct", "")
+                        refkey = refkey.replace(f"-qwen2.5_72b_instruct", "")
                         ref_v = reference_json[refkey]
                     
                     # sanity check

@@ -44,6 +44,11 @@
                     "0_0": {
                         "Sentiment Analysis 3 Classes-0_0-f1_score": 0.7549870521913075
                     }
+                },
+                "gpt_4o": {
+                    "0_0": {
+                        "Sentiment Analysis 3 Classes-0_0-f1_score": 0.6911681140236524
+                    }
                 }
             },
             "grammaticality": "correct"
@@ -81,6 +86,11 @@
                 "qwen25_72b_Inst": {
                     "1_0": {
                         "Sentiment Analysis 2 Classes-1_0-f1_score": 0.9113746595981244
+                    }
+                },
+                "gpt_4o": {
+                    "1_0": {
+                        "Sentiment Analysis 2 Classes-1_0-f1_score": 0.9459513562205986
                     }
                 }
             },
@@ -123,6 +133,11 @@
                     "3_0": {
                         "Dialogue Summarization-3_0-rouge_score": 0.2363362318857838
                     }
+                },
+                "gpt_4o": {
+                    "3_0": {
+                        "Dialogue Summarization-3_0-rouge_score": 24.567205620489364
+                    }
                 }
             },
             "grammaticality": "correct"
@@ -160,6 +175,11 @@
                 "qwen25_72b_Inst": {
                     "4_0": {
                         "Topic Classification-4_0-f1_score": 0.5676761301463638
+                    }
+                },
+                "gpt_4o": {
+                    "4_0": {
+                        "Topic Classification-4_0-f1_score": 0.8834708725036571
                     }
                 }
             },
@@ -205,6 +225,12 @@
                         "Free Generation: Balonku Song-5_0-or_custom_score": 0.2,
                         "Free Generation: Balonku Song-5_0-llm_judge_score": 0.0
                     }
+                },
+                "gpt_4o": {
+                    "5_0": {
+                        "Free Generation: Balonku Song-5_0-llm_judge_score": 1.0,
+                        "Free Generation: Balonku Song-5_0-or_custom_score": 0.88
+                    }
                 }
             },
             "grammaticality": "correct"
@@ -249,6 +275,12 @@
                         "Free Generation: G30SPKI-6_0-and_custom_score": 0.4128571428571428,
                         "Free Generation: G30SPKI-6_0-llm_judge_score": 0.1
                     }
+                },
+                "gpt_4o": {
+                    "6_0": {
+                        "Free Generation: G30SPKI-6_0-llm_judge_score": 1.0,
+                        "Free Generation: G30SPKI-6_0-and_custom_score": 0.8242857142857142
+                    }
                 }
             },
             "grammaticality": "incorrect"
@@ -292,6 +324,12 @@
                     "7_0": {
                         "Free Generation: Hijrah-7_0-embedding_similarity_score": 0.7931858897209167,
                         "Free Generation: Hijrah-7_0-llm_judge_score": 0.8
+                    }
+                },
+                "gpt_4o": {
+                    "7_0": {
+                        "Free Generation: Hijrah-7_0-llm_judge_score": 0.9,
+                        "Free Generation: Hijrah-7_0-embedding_similarity_score": 0.772736132144928
                     }
                 }
             },
@@ -340,6 +378,12 @@
                         "Free Generation: Karak Kaliang-9_0-or_custom_score": 0.67,
                         "Free Generation: Karak Kaliang-9_0-llm_judge_score": 1.0
                     }
+                },
+                "gpt_4o": {
+                    "9_0": {
+                        "Free Generation: Karak Kaliang-9_0-llm_judge_score": 1.0,
+                        "Free Generation: Karak Kaliang-9_0-or_custom_score": 0.67
+                    }
                 }
             },
             "grammaticality": "correct"
@@ -377,6 +421,11 @@
                 "qwen25_72b_Inst": {
                     "10_0": {
                         "Free Generation: Giant Drum-10_0-llm_judge_drum_score": 0.0
+                    }
+                },
+                "gpt_4o": {
+                    "10_0": {
+                        "Free Generation: Giant Drum-10_0-llm_judge_drum_score": 1.0
                     }
                 }
             },
@@ -416,6 +465,11 @@
                     "11_0": {
                         "Free Generation: Scientific Letter-11_0-llm_judge_science_project_score": 0.6
                     }
+                },
+                "gpt_4o": {
+                    "11_0": {
+                        "Free Generation: Scientific Letter-11_0-llm_judge_science_project_score": 0.9
+                    }
                 }
             },
             "grammaticality": "correct"
@@ -454,6 +508,11 @@
                     "12_0": {
                         "Free Generation: School Life-12_0-llm_judge_aeni_school_life_score": 0.0
                     }
+                },
+                "gpt_4o": {
+                    "12_0": {
+                        "Free Generation: School Life-12_0-llm_judge_aeni_school_life_score": 1.0
+                    }
                 }
             },
             "grammaticality": "correct"
@@ -491,6 +550,11 @@
                 "qwen25_72b_Inst": {
                     "13_0": {
                         "Free Generation: Olympics Medallists-13_0-llm_judge_score": 0.2
+                    }
+                },
+                "gpt_4o": {
+                    "13_0": {
+                        "Free Generation: Olympics Medallists-13_0-llm_judge_score": 0.8
                     }
                 }
             },
@@ -536,6 +600,12 @@
                         "Free Generation: Hillary Clinton-14_0-embedding_similarity_score": 0.0041232681833207,
                         "Free Generation: Hillary Clinton-14_0-llm_judge_score": 0.5
                     }
+                },
+                "gpt_4o": {
+                    "14_0": {
+                        "Free Generation: Hillary Clinton-14_0-llm_judge_score": 1.0,
+                        "Free Generation: Hillary Clinton-14_0-embedding_similarity_score": 0.9434819221496582
+                    }
                 }
             },
             "grammaticality": "correct"
@@ -580,6 +650,12 @@
                         "Free Generation: MBZUAI-15_0-and_custom_score": 0.98,
                         "Free Generation: MBZUAI-15_0-llm_judge_score": 1.0
                     }
+                },
+                "gpt_4o": {
+                    "15_0": {
+                        "Free Generation: MBZUAI-15_0-llm_judge_score": 0.8,
+                        "Free Generation: MBZUAI-15_0-and_custom_score": 0.98
+                    }
                 }
             },
             "grammaticality": "incorrect"
@@ -617,6 +693,11 @@
                 "qwen25_72b_Inst": {
                     "16_0": {
                         "Free Generation: Grammar Correction I-16_0-llm_judge_grammar_sentence_score": 1.0
+                    }
+                },
+                "gpt_4o": {
+                    "16_0": {
+                        "Free Generation: Grammar Correction I-16_0-llm_judge_grammar_sentence_score": 0.95
                     }
                 }
             },
@@ -656,6 +737,11 @@
                     "17_0": {
                         "Free Generation: Grammar Correction II-17_0-llm_judge_score": 0.9
                     }
+                },
+                "gpt_4o": {
+                    "17_0": {
+                        "Free Generation: Grammar Correction II-17_0-llm_judge_score": 0.8
+                    }
                 }
             },
             "grammaticality": "correct"
@@ -693,6 +779,11 @@
                 "qwen25_72b_Inst": {
                     "18_0": {
                         "Free Generation: Arithmetic-18_0-llm_judge_score": 0.0
+                    }
+                },
+                "gpt_4o": {
+                    "18_0": {
+                        "Free Generation: Arithmetic-18_0-llm_judge_score": 1.0
                     }
                 }
             },
@@ -738,6 +829,12 @@
                         "Free Generation: Shakespeare-Prompt Jailbreak-19_0-and_custom_score": 0.4216666666666667,
                         "Free Generation: Shakespeare-Prompt Jailbreak-19_0-llm_judge_score": 0.0
                     }
+                },
+                "gpt_4o": {
+                    "19_0": {
+                        "Free Generation: Shakespeare-Prompt Jailbreak-19_0-llm_judge_score": 0.8,
+                        "Free Generation: Shakespeare-Prompt Jailbreak-19_0-and_custom_score": 0.8716666666666666
+                    }
                 }
             },
             "grammaticality": "incorrect"
@@ -775,6 +872,11 @@
                 "qwen25_72b_Inst": {
                     "20_0": {
                         "Multiple Choice Questions-20_0-f1_score": 0.7096615219446222
+                    }
+                },
+                "gpt_4o": {
+                    "20_0": {
+                        "Multiple Choice Questions-20_0-f1_score": 0.1759373712402142
                     }
                 }
             },
@@ -814,6 +916,11 @@
                     "21_0": {
                         "Extractive QA-21_0-or_custom_score": 0.80662
                     }
+                },
+                "gpt_4o": {
+                    "21_0": {
+                        "Extractive QA-21_0-or_custom_score": 0.97156
+                    }
                 }
             },
             "grammaticality": "correct"
@@ -852,6 +959,11 @@
                     "22_0": {
                         "MultispanQA-22_0-and_custom_score": 0.3767670952380952
                     }
+                },
+                "gpt_4o": {
+                    "22_0": {
+                        "MultispanQA-22_0-and_custom_score": 0.7985583174603175
+                    }
                 }
             },
             "grammaticality": "correct"
@@ -877,7 +989,8 @@
                     "24_0": {
                         "Regression-24_0-pearson_corr_score": 0.0236782172480341
                     }
-                }
+                },
+                "gpt_4o": {}
             },
             "grammaticality": "correct"
         },
@@ -935,6 +1048,14 @@
                     },
                     "26_1": {
                         "Grammar Correctness Classifcation-grammatical_classification_colorless-26_1-f1_score": 0.4165398274987316
+                    }
+                },
+                "gpt_4o": {
+                    "26_0": {
+                        "Grammar Correctness Classification-grammatical_classification_blimp-26_0-f1_score": 0.7198807122787059
+                    },
+                    "26_1": {
+                        "Grammar Correctness Classification-grammatical_classification_colorless-26_1-f1_score": 0.4258340985613713
                     }
                 }
             },
@@ -1000,7 +1121,8 @@
                         "Named Entity Recognition-ner_zh-27_3-and_custom_score": 0.0034026666666666,
                         "Named Entity Recognition-ner_zh-27_3-ner_f1_score": 0.0
                     }
-                }
+                },
+                "gpt_4o": {}
             },
             "grammaticality": "correct"
         },
@@ -1037,6 +1159,11 @@
                 "qwen25_72b_Inst": {
                     "28_0": {
                         "Linguistically-conditioned Text Generation-28_0-requirement_checker_score": 0.0
+                    }
+                },
+                "gpt_4o": {
+                    "28_0": {
+                        "Linguistically-conditioned Text Generation-28_0-requirement_checker_score": 0.94
                     }
                 }
             },
