@@ -63,3 +63,42 @@ def plot_grouped_bar_chart(data, ax, width=0.25):
     ax.set_xticks(x + width)
     ax.set_xticklabels(categories, rotation=5)
     ax.legend()
+
+
+def plot_stacked_bar_chart(data, ax, height=0.5):
+    """
+    Horizontal stacked bar chart that writes each category label
+    in the middle of the stacked bar.
+
+    Args:
+        data (dict): Nested dict with structure {category: {type: count}}.
+        ax (matplotlib.axes.Axes): The Axes object to draw on.
+        height (float): Height of each bar.
+    """
+    data = make_percent_category(data)
+    categories = list(data.keys())
+    types = list(next(iter(data.values())).keys())
+    y = np.arange(len(categories))
+
+    colors = ['#6084f7', '#d6425d'] if len(types) == 2 else None
+    lefts = [0] * len(categories)
+
+    for i, t in enumerate(types):
+        values = [data[cat][t] for cat in categories]
+        ax.barh(y, values, left=lefts, height=height,
+                label=t, color=colors[i] if colors else None)
+        lefts = [l + v for l, v in zip(lefts, values)]
+
+    # --- label in the middle of each bar -------------------------------------
+    for idx, cat in enumerate(categories):
+        total = sum(data[cat].values())
+        ax.text(total / 2, idx, cat,
+                va='center', ha='center',
+                color='white', weight='bold')
+
+    # remove the default y-ticks/labels
+    ax.set_yticks([])
+    ax.set_yticklabels([])
+    ax.set_xlim(0,100)
+    ax.legend()
+    
