@@ -97,7 +97,7 @@ def plot_stacked_bar_chart(data, ax, height=0.5):
                 color='white', weight='bold')
 
     # remove the default y-ticks/labels
-    ax.set_yticks([])
+    ax.set_yticks([], fontsize = 19)
     ax.set_yticklabels([])
     ax.set_xlim(0,100)
     ax.legend()
