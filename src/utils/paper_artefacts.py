@@ -46,8 +46,17 @@ GROUP_MM_LOOKUP_TABLE_DEFINITION = {
     "qa_extraction_2" : [21,22]
 }
 
+ALL_COLOR_DICT = {
+    "imperative" : "#1f77b4",
+    "interrogative" : "#ff7f0e",
+    "declarative" : "#2ca02c",
+    "correct" : "#6084f7",
+    "incorrect" : "#d6425d",
+    "white" : "#ffffff",
+}
+
 #====================================================================
-# PAPER MAIN 1
+# PAPER MAIN TABLES 1
 #====================================================================
 TASK_GROUP_DICT = {}
 for i, k in enumerate(QUESTIONS.keys()):
@@ -186,3 +195,114 @@ def compute_anova_score(data_dict, min_val, max_val, clip_llm_judge=False):
     # Perform one-way ANOVA
     f_statistic, p_value = f_oneway(*groups)
     return f_statistic, p_value
+
+
+#====================================================================
+# PAPER MAIN TABLES 2 (tone and grammar)
+#====================================================================
+
+
+TASK_TYPES = []
+for i, k in enumerate(QUESTIONS.keys()):
+    TASK_TYPES.append(QUESTIONS[k]["question_type"])
+TASK_TYPES = list(set(TASK_TYPES))
+
+
+ALL_TASKTYPE_DF_BY_MODEL = {} # TO IMPORT =================================================
+for presented_model in ALL_MODELS:
+    all_tasktype_df = {}
+    for tt in TASK_TYPES:
+        downstream_score_df = []
+        for annfilename in os.listdir(FINAL_ANNOTATOR_DIR):
+            annotator_filepath = os.path.join(FINAL_ANNOTATOR_DIR, annfilename)
+            with open(annotator_filepath, "r") as  ao:
+                annotator_object = json.load(ao)
+            
+            downstream_scores = {}
+            for question_key, values in annotator_object["answers"].items():
+                if values["answer"] == None or QUESTIONS[question_key]["question_type"] != tt:
+                    continue
+                for qid, score_s in values["downstream_scores"][presented_model].items():
+                    postfix = QUESTIONS[question_key]["metrics"][0] # first metric entry is by convention default
+                    matching_keys = [k for k in score_s if k.endswith(f"{postfix}_score")]
+                    if not matching_keys:
+                        raise ValueError(f"No key ends with '{postfix}' for qid {qid}")
+                    correct_key = matching_keys[0]
+                    downstream_scores[f"{qid}-sentence_type"] = values["sentence_type"]
+                    downstream_scores[f"{qid}-sentence_length"] = values["sentence_length"]
+                    downstream_scores[f"{qid}-sentence_grammaticality"] = values["grammaticality"]
+                    downstream_scores[correct_key] = score_s[correct_key]
+
+            downstream_score_df.append({
+                "id" : annotator_object["id"],
+                **downstream_scores,
+            })
+        all_tasktype_df[tt] = pd.DataFrame(downstream_score_df)
+    ALL_TASKTYPE_DF_BY_MODEL[presented_model] = all_tasktype_df
+
+
+#====================================================================
+# ARCHIVED (too scared to delete lol)
+#====================================================================
+
+# def pairwise_p_values_with_higher(data_dict, min_val, max_val, clip_llm_judge=False):
+#     results = {}
+#     for (key1, values1), (key2, values2) in combinations(data_dict.items(), 2):
+#         if clip_llm_judge:
+#             sanity1 = [v for v in values1 if 0 <= v <= 1]
+#             sanity2 = [v for v in values2 if 0 <= v <= 1]
+#             # sanity check because some of them are in the range 1-10. if so, scale down
+#             if sanity1 == [] or sanity2 == []:
+#                 values1 = [v*0.1 for v in values1]
+#                 values2 = [v*0.1 for v in values2]
+#             values1 = [v for v in values1 if 0 <= v <= 1]
+#             values2 = [v for v in values2 if 0 <= v <= 1]
+        
+#         values1 = [(v - min_val) / (max_val - min_val) for v in values1]
+#         values2 = [(v - min_val) / (max_val - min_val) for v in values2]
+        
+#         _, p = ttest_ind(values1, values2, equal_var=False)
+        
+#         mean1 = sum(values1) / len(values1)
+#         mean2 = sum(values2) / len(values2)
+#         higher = key1 if mean1 > mean2 else key2
+
+#         results[(key1, key2)] = {
+#             "p" : p,
+#             "higher" : higher,
+#         }
+#     return results
+
+# def df_with_hexcolor_to_latex(values_df, color_df):
+#     from collections import OrderedDict
+
+#     latex_rows = []
+#     defined_colors = OrderedDict()
+#     color_idx = 0
+
+#     for i in range(values_df.shape[0]):
+#         row = []
+#         for j in range(values_df.shape[1]):
+#             val = values_df.iat[i, j]
+#             hex_color = color_df.iat[i, j]
+#             if isinstance(hex_color, str) and hex_color.startswith("#"):
+#                 if hex_color not in defined_colors:
+#                     defined_colors[hex_color] = f"customcolor{color_idx}"
+#                     color_idx += 1
+#                 colorname = defined_colors[hex_color]
+#                 cell = f"\\cellcolor{{{colorname}!30}}{val}"
+#             else:
+#                 cell = str(val)
+#             row.append(cell)
+#         latex_rows.append(" & ".join(row) + r" \\")
+    
+#     col_headers = " & ".join(values_df.columns) + r" \\"
+#     header = r"\begin{tabular}{" + "l" * values_df.shape[1] + "}\n\\hline\n" + col_headers + "\n\\hline"
+#     body = "\n".join(latex_rows)
+#     footer = "\n\\hline\n\\end{tabular}"
+
+#     color_defs = "\n".join(
+#         [f"\\definecolor{{{name}}}{{HTML}}{{{hex[1:]}}}" for hex, name in defined_colors.items()]
+#     )
+
+#     return color_defs + "\n\n" + header + "\n" + body + footer
