@@ -240,6 +240,45 @@ for presented_model in ALL_MODELS:
         all_tasktype_df[tt] = pd.DataFrame(downstream_score_df)
     ALL_TASKTYPE_DF_BY_MODEL[presented_model] = all_tasktype_df
 
+#====================================================================
+# visualization functions
+#====================================================================
+
+def format_default(val):
+    if isinstance(val, float):
+        return f"{round(val, 2)}"
+    return str(val)
+
+def format_to_percentage(val):
+    if isinstance(val, float):
+        return f"{round(val * 100, 1)}%"
+    return str(val)
+
+def df_to_latex(df, format="default"):
+    formatted_df = df.copy()
+    for col in formatted_df.columns:
+        if format == "default":
+            formatfunc = format_default
+        elif(format == "percentage"):
+            formatfunc = format_to_percentage
+        formatted_df[col] = formatted_df[col].apply(formatfunc)
+    
+    results_str = formatted_df.to_latex(index=False, escape=True)
+    
+    # patch correction:
+    results_str = results_str.replace("70b", "70B").replace("72b", "72B").replace("qwen25", "Qwen25")
+    results_str = results_str.replace(r"employment\_sector", "industry").replace(r"nationality\_group", "nationality")
+    
+    return results_str
+
+def df_to_latex_one_column(df, caption, format="default"):
+    return r"""\begin{table*}[t]
+\resizebox{\textwidth}{!}{%
+""" + df_to_latex(df, format) + rf"""}}
+\caption{{{caption.replace("_",r"\_")}}}
+\label{{tab:{caption}}}
+\end{{table*}}
+"""
 
 #====================================================================
 # ARCHIVED (too scared to delete lol)
