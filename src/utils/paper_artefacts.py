@@ -144,6 +144,18 @@ for k in GROUP_MM_LOOKUP_TABLE_DEFINITION:
     for qid in GROUP_MM_LOOKUP_TABLE_DEFINITION[k]:
         INDEX_MM_LOOKUP_TABLE[qid] = lut
 
+def just_normalize(values, min_val, max_val, clip_llm_judge=False):
+    if clip_llm_judge:
+        sanity = [v for v in values if 0 <= v <= 1]
+        # sanity check because some of them are in the range 1-10. if so, scale down
+        if sanity == []:
+            values = [v*0.1 for v in values]
+        values = [v for v in values if 0 <= v <= 1]
+    
+    values = [x for x in values if min_val <= x <= max_val] # removing outliers this way
+    normalized = [(x - min_val) / (max_val - min_val) for x in values]
+
+    return normalized
 
 def compute_diversity_score(data_dict, min_val, max_val, clip_llm_judge=False):
     if len(data_dict) < 2:
