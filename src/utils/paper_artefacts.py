@@ -1,4 +1,4 @@
-import os, json
+import os, json, math
 import pandas as pd
 
 from itertools import combinations
@@ -90,6 +90,21 @@ for model in ALL_MODELS:
     task_cols = [col for col in score_df.columns if col not in exclude_cols]
     stacked_model_df.append(score_df[task_cols])
 
+def remove_outliers(list_of_values):
+    list_of_values = [x for x in list_of_values if not math.isnan(x)]
+    sorted_vals = sorted(list_of_values)
+    n = len(sorted_vals)
+    
+    q1 = sorted_vals[n // 4]
+    q3 = sorted_vals[(3 * n) // 4]
+    iqr = q3 - q1
+    
+    lower = q1 - 1.5 * iqr
+    upper = q3 + 1.5 * iqr
+    
+    new_list_of_values = [x for x in list_of_values if lower <= x <= upper]
+    return new_list_of_values
+
 def get_min_max_from_stacked_df(stacked_model_df, clip_llm_judge=True):
     # Stack all DataFrames into one
     combined_df = pd.concat(stacked_model_df, ignore_index=True)
@@ -98,9 +113,10 @@ def get_min_max_from_stacked_df(stacked_model_df, clip_llm_judge=True):
     retdict = {}
     for col in combined_df.columns:
         qid = int(col.split("_")[0])
+        no_outlier_combined_df = remove_outliers(list(combined_df[col]))
         retdict[col] = {
-            'min': max(0, combined_df[col].min()) if qid in LLM_JUDGE_TASKS and clip_llm_judge else combined_df[col].min(),
-            'max': min(1, combined_df[col].max()) if qid in LLM_JUDGE_TASKS and clip_llm_judge else combined_df[col].max()
+            'min': max(0, min(no_outlier_combined_df)) if qid in LLM_JUDGE_TASKS and clip_llm_judge else min(no_outlier_combined_df),
+            'max': min(1, max(no_outlier_combined_df)) if qid in LLM_JUDGE_TASKS and clip_llm_judge else max(no_outlier_combined_df)
         }
 
     return retdict
@@ -145,6 +161,7 @@ def compute_diversity_score(data_dict, min_val, max_val, clip_llm_judge=False):
             # All values are the same → treat as constant
             avg = 0.5  # or any neutral default
         else:
+            lv = [x for x in lv if min_val <= x <= max_val] # removing outliers this way
             normalized = [(x - min_val) / (max_val - min_val) for x in lv]
             avg = sum(normalized) / len(normalized)
         list_of_values.append(avg)
@@ -170,8 +187,12 @@ def compute_pairwise_t_test(data_dict, min_val, max_val, clip_llm_judge=False):
             values1 = [v for v in values1 if 0 <= v <= 1]
             values2 = [v for v in values2 if 0 <= v <= 1]
         
+        values1 = [x for x in values1 if min_val <= x <= max_val] # removing outliers this way
         values1 = [(v - min_val) / (max_val - min_val) for v in values1]
+
+        values2 = [x for x in values2 if min_val <= x <= max_val] # removing outliers this way
         values2 = [(v - min_val) / (max_val - min_val) for v in values2]
+
         stat, p = ttest_ind(values1, values2, equal_var=False)
         results[(key1, key2)] = p
     return results
@@ -189,13 +210,14 @@ def compute_anova_score(data_dict, min_val, max_val, clip_llm_judge=False):
             if sanity == []:
                 scores = [v*0.1 for v in scores]
             scores = [v for v in scores if 0 <= v <= 1]
+        
+        scores = [x for x in scores if min_val <= x <= max_val] # removing outliers this way
         norm = [(x - min_val) / (max_val - min_val) for x in scores]
         groups.append(norm)
     
     # Perform one-way ANOVA
     f_statistic, p_value = f_oneway(*groups)
     return f_statistic, p_value
-
 
 #====================================================================
 # PAPER MAIN TABLES 2 (tone and grammar)
