@@ -9,6 +9,7 @@ from src.classes.Questions import Questions
 # GENERAL MACROS
 #====================================================================
 FINAL_ANNOTATOR_DIR = "annotation_artefacts/final_annotator_objects"
+FINAL_ANNOTATOR_DIR = "annotation_artefacts/final_annotator_objects_with_feats_v2"
 EXCLUDED_SCORES = ["2_13", "23_", "24_", "25_", "27_"]
 EXCLUDED_WHOLE = [23, 24, 25, 27]
 LLM_JUDGE_TASKS=[5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
@@ -70,6 +71,8 @@ stacked_model_df = []
 for model in ALL_MODELS:
     model_specific_scores = []
     for annfilename in os.listdir(FINAL_ANNOTATOR_DIR):
+        if annfilename.startswith("."):
+            continue
         annobj_for_df = {}
         annotator_filepath = os.path.join(FINAL_ANNOTATOR_DIR, annfilename)
         with open(annotator_filepath, "r") as ao:
@@ -241,13 +244,37 @@ for i, k in enumerate(QUESTIONS.keys()):
     TASK_TYPES.append(QUESTIONS[k]["question_type"])
 TASK_TYPES = list(set(TASK_TYPES))
 
-
+feats_to_add = [
+    "num_words",
+    "num_short_words",
+    "num_chars",
+    "num_stopwords",
+    "num_nouns",
+    "num_pronouns",
+    "num_exclamation",
+    "num_long_words",
+]
+# v2
+feats_to_add = [
+    "ratio_exclamation",
+    "ttr",
+    "ratio_pronouns",
+    "ratio_adjectives",
+    "ratio_nouns",
+    "num_words",
+    #"sentence_type",
+    "ratio_capital_words",
+    #"grammaticality",
+    "ratio_question",
+]
 ALL_TASKTYPE_DF_BY_MODEL = {} # TO IMPORT =================================================
 for presented_model in ALL_MODELS:
     all_tasktype_df = {}
     for tt in TASK_TYPES:
         downstream_score_df = []
         for annfilename in os.listdir(FINAL_ANNOTATOR_DIR):
+            if annfilename.startswith("."):
+                continue
             annotator_filepath = os.path.join(FINAL_ANNOTATOR_DIR, annfilename)
             with open(annotator_filepath, "r") as  ao:
                 annotator_object = json.load(ao)
@@ -265,7 +292,11 @@ for presented_model in ALL_MODELS:
                     downstream_scores[f"{qid}-sentence_type"] = values["sentence_type"]
                     downstream_scores[f"{qid}-sentence_length"] = values["sentence_length"]
                     downstream_scores[f"{qid}-sentence_grammaticality"] = values["grammaticality"]
+                    # add additional features - num_words, num_chars, etc.
+                    for feat in feats_to_add:
+                        downstream_scores[f"{qid}-{feat}"] = values[feat]
                     downstream_scores[correct_key] = score_s[correct_key]
+                    
 
             downstream_score_df.append({
                 "id" : annotator_object["id"],
